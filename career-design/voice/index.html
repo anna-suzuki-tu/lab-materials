@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10人の視点からの7つの問い — 音声版</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary:    #207A91;
+  --secondary:  #356F8C;
+  --accent:     #C6A44A;
+  --bg:         #E7F2F6;
+  --text:       #1F2937;
+  --text-muted: #5D5D5D;
+  --surface:    #FFFFFF;
+  --border:     #E5E7EB;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body {
+  background: var(--bg);
+  font-family: 'Noto Sans JP', system-ui, sans-serif;
+  color: var(--text);
+  padding: 24px 16px 48px;
+  line-height: 1.6;
+}
+.wrap { max-width: 520px; margin: 0 auto; }
+
+/* ヘッダー */
+header { margin-bottom: 20px; }
+.kicker {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
+  color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;
+}
+.title-row { display: flex; align-items: stretch; gap: 12px; }
+.bar { width: 6px; border-radius: 3px; background: var(--primary); flex-shrink: 0; }
+h1 { font-size: 22px; font-weight: 900; line-height: 1.35; letter-spacing: -0.01em; }
+.subtitle { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+.note {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  padding: 12px 14px; font-size: 12.5px; color: var(--text-muted);
+  margin: 16px 0 22px;
+}
+.note b { color: var(--text); }
+
+/* カード */
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  padding: 16px 16px 14px; margin-bottom: 14px;
+}
+.q-head { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+.q-num {
+  width: 30px; height: 30px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 14px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  margin-top: 1px;
+}
+.q-title { font-size: 15px; font-weight: 700; line-height: 1.45; }
+audio { width: 100%; height: 40px; display: block; }
+
+/* 再生速度 */
+.speed { display: flex; gap: 8px; margin-top: 10px; }
+.speed span { font-size: 11px; color: var(--text-muted); align-self: center; margin-right: 2px; }
+.speed button {
+  font-family: inherit; font-size: 12px; font-weight: 700;
+  border: 1px solid var(--border); border-radius: 999px;
+  background: var(--bg); color: var(--text-muted);
+  padding: 5px 12px; cursor: pointer;
+}
+.speed button.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+footer {
+  margin-top: 28px; text-align: center;
+  font-size: 11.5px; color: var(--text-muted);
+}
+footer a { color: var(--primary); font-weight: 700; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Career Design — Reflection</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>10人の視点からの7つの問い<br>音声版</h1>
+      <div class="subtitle">7 Questions from 10 Perspectives — Audio</div>
+    </div>
+  </div>
+</header>
+
+<div class="note">
+  各問いには、立場の異なる<b>10人の視点</b>（事実と意見を分けて）が収録されています。
+  聞きながら、<b>11人目（わたし）のワークシート</b>に自分の考えを書き込んでください。
+</div>
+
+<div id="players"></div>
+
+<footer>
+  DeSFE Lab · Tohoku University<br>
+  <a href="https://app.notion.com/p/Career-Design-Reflection-39a78de69f6780f796b3c977494a4fd3" id="notion-link">ワークシートはこちら（Notion）</a>
+</footer>
+
+</div>
+
+<script>
+const QUESTIONS = [
+  "AIによって変わった変化、今後5年・10年先の見通し",
+  "AIによっても変わらない市場",
+  "これからの時代の「働くことの意味」「生きることの意味」",
+  "アカデミア・大学の存在の可能性",
+  "研究者という仕事の行方",
+  "修士（Master）を取る価値、博士（PhD）を取る価値はあるのか",
+  "これからの若者は何を考えてキャリアデザインをすべきか",
+];
+const NUMS = ["❶","❷","❸","❹","❺","❻","❼"];
+const SPEEDS = [1, 1.25, 1.5, 2];
+
+const root = document.getElementById("players");
+QUESTIONS.forEach((q, i) => {
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <div class="q-head">
+      <div class="q-num">${i + 1}</div>
+      <div class="q-title">${q}</div>
+    </div>
+    <audio controls preload="none" src="7q-from-10-perspectives-${i + 1}.mp3"></audio>
+    <div class="speed"><span>速度</span>${SPEEDS.map(s =>
+      `<button data-s="${s}" class="${s === 1 ? "active" : ""}">${s}×</button>`).join("")}
+    </div>`;
+  const audio = card.querySelector("audio");
+  card.querySelectorAll(".speed button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      audio.playbackRate = parseFloat(btn.dataset.s);
+      card.querySelectorAll(".speed button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+  // 他のプレーヤーを再生したら止める
+  audio.addEventListener("play", () => {
+    document.querySelectorAll("audio").forEach(a => { if (a !== audio) a.pause(); });
+  });
+  root.appendChild(card);
+});
+</script>
+</body>
+</html>
