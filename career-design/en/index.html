@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Design — Reflection | 7 Questions from 10 Perspectives</title>
+<meta name="description" content="Look at careers in the AI era through 10 perspectives with different standpoints, and become the 11th. DeSFE Lab, Tohoku University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary:#207A91; --secondary:#356F8C; --accent:#C6A44A; --bg:#E7F2F6;
+  --text:#1F2937; --muted:#5D5D5D; --surface:#FFFFFF; --border:#E5E7EB;
+}
+* { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+body { background:var(--bg); font-family:'Noto Sans JP',system-ui,sans-serif; color:var(--text);
+  padding:24px 16px 60px; line-height:1.75; }
+.wrap { max-width:760px; margin:0 auto; }
+.lang-sw { text-align:right; font-size:13px; font-weight:700; margin-bottom:14px; }
+.lang-sw a { color:var(--primary); text-decoration:none; }
+.lang-sw span { color:var(--muted); font-weight:400; }
+.kicker { font-size:11px; font-weight:700; letter-spacing:.22em; color:var(--muted); margin-bottom:10px; }
+.title-row { display:flex; gap:12px; align-items:stretch; margin-bottom:6px; }
+.bar { width:6px; border-radius:3px; background:var(--primary); flex-shrink:0; }
+h1 { font-size:24px; font-weight:900; line-height:1.4; letter-spacing:-.01em; }
+.subtitle { font-size:13.5px; color:var(--muted); margin-top:4px; }
+.card { background:var(--surface); border:1px solid var(--border); border-radius:12px;
+  box-shadow:0 1px 4px rgba(0,0,0,.08); padding:18px 18px; margin:16px 0; }
+.card h2 { font-size:16px; font-weight:900; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.card h2::before { content:""; width:5px; height:20px; border-radius:2.5px; background:var(--primary); }
+.card p, .card li { font-size:14px; }
+.card ol { padding-left:1.4em; }
+.note { background:#FBF7EC; border:1px solid #EADFC2; border-left:5px solid var(--accent);
+  border-radius:10px; padding:13px 15px; font-size:13px; color:var(--text); margin:14px 0; }
+.legend { display:grid; grid-template-columns:1fr 1fr; gap:4px 14px; font-size:13.5px; margin-top:8px; }
+@media (max-width:560px){ .legend { grid-template-columns:1fr; } }
+.toc a { display:flex; gap:9px; align-items:baseline; padding:7px 4px; font-size:14.5px; font-weight:700;
+  color:var(--text); text-decoration:none; border-bottom:1px solid var(--border); }
+.toc a:last-child { border-bottom:none; }
+.toc .n { color:var(--primary); font-weight:900; flex-shrink:0; }
+.controls { display:flex; gap:10px; margin:18px 0 6px; }
+.controls button { font-family:inherit; font-size:12.5px; font-weight:700; padding:7px 16px;
+  border-radius:999px; border:1px solid var(--border); background:var(--surface); color:var(--primary); cursor:pointer; }
+details.q { background:var(--surface); border:1px solid var(--border); border-radius:12px;
+  box-shadow:0 1px 4px rgba(0,0,0,.08); margin:14px 0; overflow:hidden; }
+details.q > summary { list-style:none; cursor:pointer; padding:16px 18px; display:flex; gap:12px;
+  align-items:flex-start; font-size:16px; font-weight:900; line-height:1.5; }
+details.q > summary::-webkit-details-marker { display:none; }
+.qnum { width:30px; height:30px; border-radius:50%; background:var(--primary); color:#fff;
+  font-size:14px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+.chev { margin-left:auto; color:var(--muted); transition:transform .2s; flex-shrink:0; margin-top:4px; }
+details[open] .chev { transform:rotate(90deg); }
+.q-body { padding:0 18px 18px; }
+.q-audio { background:var(--bg); border-radius:10px; padding:10px 12px; margin-bottom:6px; }
+.q-audio .lab { font-size:11.5px; font-weight:700; color:var(--muted); margin-bottom:4px; }
+audio { width:100%; height:38px; }
+.persp { border-top:1px solid var(--border); padding:14px 0 4px; }
+.persp h3 { font-size:15px; font-weight:900; color:var(--secondary); margin-bottom:6px; }
+.persp p { font-size:14px; margin-bottom:10px; }
+.tag { display:inline-block; font-size:10.5px; font-weight:700; padding:1px 9px; border-radius:999px;
+  margin-right:7px; position:relative; top:-1px; white-space:nowrap; }
+.tag.f { background:rgba(32,122,145,.12); color:var(--primary); }
+.tag.o { background:rgba(198,164,74,.16); color:#8a6d1f; }
+.cta { display:block; text-align:center; background:var(--primary); color:#fff; font-weight:700;
+  font-size:15px; padding:13px 20px; border-radius:999px; text-decoration:none; margin:10px 0;
+  box-shadow:0 4px 14px rgba(32,122,145,.3); }
+.cta.alt { background:var(--surface); color:var(--primary); border:2px solid var(--primary); box-shadow:none; }
+table.wk { width:100%; border-collapse:collapse; font-size:12.5px; margin-top:10px; }
+table.wk th, table.wk td { border:1px solid var(--border); padding:7px 9px; text-align:left; vertical-align:top; }
+table.wk th { background:var(--primary); color:#fff; font-weight:700; }
+footer { margin-top:36px; text-align:center; font-size:12px; color:var(--muted); }
+footer a { color:var(--primary); font-weight:700; text-decoration:none; }
+@media print { details.q { break-inside:avoid; } details.q:not([open]) .q-body { display:block; } .controls,.q-audio { display:none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="lang-sw"><a href="../">日本語</a> ｜ <span>English</span></div>
+
+<header>
+  <div class="kicker">CAREER DESIGN — REFLECTION</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>7 Questions from 10 Perspectives</h1>
+      <div class="subtitle">Look at careers in the AI era through 10 perspectives with different standpoints — and become the 11th.</div>
+    </div>
+  </div>
+</header>
+
+<div class="card">
+  <h2>How this works</h2>
+  <ol>
+    <li>For each question, read the opinions from <b>10 different standpoints</b>.</li>
+    <li>As you read, take notes while distinguishing <b>Facts / Citations &amp; hearsay / Opinions</b> (see “How to write your worksheet” below).</li>
+    <li>Finally, answer as the <b>11th perspective = yourself</b> and submit via the <b>form</b>.</li>
+  </ol>
+</div>
+
+<div class="note">
+  <b>💡 Before you read</b>: Each item separates <b>Facts</b> (things verifiable as of mid-2026 / widely shared observations) from <b>Opinions</b> (interpretations, predictions, and value judgments from that standpoint). Even the “facts” are summaries, so the framing may reflect bias. The “opinions” are <b>thought experiments</b> — what someone in that position might say — not the views of any specific real person.
+</div>
+
+<div class="card">
+  <h2>The 10 perspectives</h2>
+  <div class="legend">
+    <div>1. 🧑‍🔬 Frontier AI researcher</div>
+    <div>2. 💰 Forward-looking investor</div>
+    <div>3. 🏛️ Top-university leader</div>
+    <div>4. 📜 Historian warning about AI</div>
+    <div>5. 🇯🇵 Japan: national strategy advisor</div>
+    <div>6. 🇺🇸 U.S.: national strategy advisor</div>
+    <div>7. 🇨🇳 China: national strategy advisor</div>
+    <div>8. 🇮🇩 Indonesia: national strategy advisor</div>
+    <div>9. 🇮🇷 Iran: national strategy advisor</div>
+    <div>10. 🔮 Spiritual “prophet” foreseeing the future</div>
+  </div>
+</div>
+
+<div class="card toc">
+  <h2>The 7 questions</h2>
+  <a href="#q1"><span class="n">❶</span>Changes brought by AI, and the outlook for the next 5 and 10 years</a>
+  <a href="#q2"><span class="n">❷</span>Markets that will not change even because of AI</a>
+  <a href="#q3"><span class="n">❸</span>The meaning of “work” and “life” in the coming era</a>
+  <a href="#q4"><span class="n">❹</span>The possibilities for academia and universities</a>
+  <a href="#q5"><span class="n">❺</span>The future of the researcher as a profession</a>
+  <a href="#q6"><span class="n">❻</span>Is it worth getting a Master’s or a PhD?</a>
+  <a href="#q7"><span class="n">❼</span>What should young people consider when designing their careers?</a>
+</div>
+
+<div class="controls">
+  <button onclick="document.querySelectorAll('details.q').forEach(d=>d.open=true)">Open all</button>
+  <button onclick="document.querySelectorAll('details.q').forEach(d=>d.open=false)">Close all</button>
+</div>
+<details class="q" id="q1">
+<summary><span class="qnum">1</span>Changes brought by AI, and the outlook for the next 5 and 10 years<span class="chev">▶</span></summary>
+<div class="q-body">
+<div class="q-audio"><div class="lab">🔊 Listen (audio in Japanese, ~10 min)</div>
+<audio controls preload="none" src="../voice/7q-from-10-perspectives-1.mp3"></audio></div>
+
+<div class="persp"><h3>🧑‍🔬 AI Researcher</h3>
+<p><span class="tag f">Fact</span>Over the past five years, language models have evolved from “tools that predict the continuation of text” into agents that write code, solve difficult mathematical problems, and autonomously carry out tasks over the course of several hours. Many academic benchmarks have reached or exceeded the level of human experts and are now saturated; evaluation methods themselves are struggling to keep up. In software development, it has already become standard for AI to write a substantial portion of code.</p>
+<p><span class="tag o">Opinion</span>I believe the biggest change over the next five years will be that “AI will conduct research.” Literature review, hypothesis generation, experimental design, and paper writing will all accelerate, raising the speed of scientific progress itself. In ten years, the role of human researchers will converge toward “formulating questions” and “deciding what is worth verifying.” That said, bottlenecks in the physical world—robotics and experimental equipment—will remain, and the gap between the pace of progress in digital domains and physical domains will widen. This is a prediction, not a guarantee. I do not completely rule out the possibility that scaling will hit a wall.</p></div>
+
+<div class="persp"><h3>💰 Investor</h3>
+<p><span class="tag f">Fact</span>Investment in AI infrastructure has become one of the largest capital expenditure booms in history, with capital continuing to flow into data centers, semiconductors, and electricity. At the same time, multiple surveys have shown that many companies adopting generative AI have not yet demonstrated revenue improvements commensurate with their investments. Stock-market valuations are extremely concentrated in AI-related companies.</p>
+<p><span class="tag o">Opinion</span>This is both a bubble and the real thing. As with the dot-com era around 2000, a shakeout after overinvestment will inevitably come, but real industries will grow on top of the infrastructure that remains. I think the winners five years from now will not be the companies building models, but the application layer that embeds AI deeply into specific business operations, as well as those who control physical constraints such as electricity, cooling, and land. Over a ten-year horizon, the spillover into robotics and biology will become the largest source of returns. Individuals should think about their careers in the same way: the standard strategy is to bet not on “AI itself,” but on the points where AI connects with the physical world and human society.</p></div>
+
+<div class="persp"><h3>🏛️ University Leader</h3>
+<p><span class="tag f">Fact</span>Student use of AI in reports and assignments has become almost universal, and conventional assessment methods—take-home assignments and essays—have ceased to function properly. Leading universities around the world are being forced to redesign their assessment methods. At the same time, the job market for new graduates in computer science is showing signs of contraction, and the premise that “a degree guarantees employment” has begun to waver.</p>
+<p><span class="tag o">Opinion</span>Within five years, universities will completely lose their monopoly as places that “teach knowledge.” If the goal is simply knowledge transmission, AI is cheaper, faster, and more individually optimized. Even so, I am not pessimistic. The value that will remain in universities lies in intensive communal life with peers, a grace period in which failure is allowed, and networks of trust built around “who one learned with.” I predict that universities ten years from now will be purified into “places” for research and human formation, rather than lecture factories. Universities that cannot undergo this purification will be weeded out.</p></div>
+
+<div class="persp"><h3>📜 Historian</h3>
+<p><span class="tag f">Fact</span>Past general-purpose technologies—printing, the steam engine, electricity, and the internet—all took decades to permeate society, and in the process they substantially reorganized existing occupational and power structures. During the Industrial Revolution, there was a period when real wages stagnated for more than a generation—the so-called Engels’ Pause. Historically, there are almost no cases in which the benefits of technology were distributed evenly.</p>
+<p><span class="tag o">Opinion</span>What makes AI distinctive is its speed and the degree of concentration of power. Anyone could own a printing press, but only a handful of companies in the world can train frontier AI. What I warn against is not “whether AI will surpass humans,” but rather “whether democracy and diverse thought can survive when a small number of actors monopolize cognitive infrastructure.” Five years from now, the greatest social problem will be the pollution of the information environment by AI and the delay in institutional responses to it. Ten years from now, we will be fighting not over “AI performance,” but over “the ownership structure of AI.”</p></div>
+
+<div class="persp"><h3>🇯🇵 Japanese Strategist</h3>
+<p><span class="tag f">Fact</span>Japan’s working-age population continues to decline by several hundred thousand people every year, and labor shortages are already visible in caregiving, logistics, and construction. The government has put in place legal frameworks to promote AI and is pursuing national investments in domestic semiconductor production, including plans for mass production of advanced logic semiconductors. Meanwhile, Japan’s domestic AI R&amp;D investment and talent pool lag far behind those of the United States and China.</p>
+<p><span class="tag o">Opinion</span>For Japan, AI is not a “threat” but its “only life-extension strategy.” To maintain living standards under population decline, Japan has no choice but to raise per-capita productivity through machines. The decisive issue over the next five years is whether Japan can connect its remaining advantages—manufacturing-site data and robotics—with AI. The ten-year fork in the road is clear: if Japan can implement AI in society, it can export a “solution model from a country advanced in social challenges”; if not, it will quietly become a second-tier country. Competing with the United States and China in frontier model development is unrealistic. Japan should concentrate on a strategy of winning in application and reliability.</p></div>
+
+<div class="persp"><h3>🇺🇸 American Strategist</h3>
+<p><span class="tag f">Fact</span>The United States is home to most frontier AI development companies, advanced semiconductor design, and cloud infrastructure, and it has sought to maintain its advantage in computing resources through export controls against China. At the same time, electricity supply has rapidly emerged as a constraint on AI infrastructure expansion, making reinforcement of power grids and generation capacity a national priority.</p>
+<p><span class="tag o">Opinion</span>This is a Cold War–style competition for technological hegemony, and superiority in AI will be converted into superiority in military, economic, and informational domains alike. The core issue over the next five years will be securing computing resources, electricity, and talent. The basic understanding is that if the United States controls these three, it can win the competition between systems. However, there is an internal risk. When AI-driven employment transitions hit the middle class, will domestic politics continue to support technological development? Ten years from now, the greatest threat may not be China, but the fragmentation of American society after failing to distribute the benefits properly—that is what I secretly think.</p></div>
+
+<div class="persp"><h3>🇨🇳 Chinese Strategist</h3>
+<p><span class="tag f">Fact</span>Although China faces restrictions on imports of advanced semiconductors, it has shown its presence through efficiency-focused model development and open-source releases, and some of its models are widely used globally. China has the world’s largest number of installed manufacturing robots and has strengths in the speed of mass production and implementation, as demonstrated by EVs, batteries, and drones.</p>
+<p><span class="tag o">Opinion</span>Our strategy is clear. Rather than competing to be first in the most advanced models, we will implement “good-enough AI” in manufacturing, cities, and the military faster than anyone else, while using open source to draw developers around the world into our ecosystem. The blockade of computing resources is painful in the short term, but we believe it can be overcome over five to ten years through efficiency technologies and domestic chips. Ten years from now, the world will be divided into separate American and Chinese AI spheres, and much of the Global South will choose our sphere because of price and implementation capability. That is the true condition for victory.</p></div>
+
+<div class="persp"><h3>🇮🇩 Indonesian Strategist</h3>
+<p><span class="tag f">Fact</span>Indonesia has a population of around 280 million, with a large young generation, and its digital economy has grown into the largest in Southeast Asia. At the same time, its AI R&amp;D capabilities and computing infrastructure are limited, and it depends almost entirely on imported AI technologies. Its policy of downstream industrialization for resources such as nickel has achieved some results.</p>
+<p><span class="tag o">Opinion</span>Our question is not “Can we build AI?” but “Can we avoid becoming the exploited side in the age of AI?” The conventional development model—absorbing employment through labor-intensive industries and then escaping the middle-income trap—is beginning to collapse because of AI and automation. This is serious. The five-year strategy is to spread AI-use skills massively among the young population and use resources, data, and market size as bargaining chips to extract technology transfer from both the American and Chinese camps. Ten years from now, if Indonesia can become both an exporter of digital talent and a regional hub for AI applications, it wins; if it is merely consumed as a market, it loses.</p></div>
+
+<div class="persp"><h3>🇮🇷 Iranian Strategist</h3>
+<p><span class="tag f">Fact</span>Iran has long been under economic sanctions and has almost no regular access to advanced semiconductors or cloud services. While the country has a strong base of science and engineering education, the outflow of highly skilled talent continues. Open-source AI models can be obtained even under sanctions, and they are in fact being used.</p>
+<p><span class="tag o">Opinion</span>Sanctions are both a curse and a teacher for us. Speaking from the experience of having been forced into self-reliance, we have no choice but to take the same path with AI. Frontier development is impossible, but we can pursue the use of open-source models, asymmetric capabilities in cyberspace, and the route of “cheap but sufficient technology,” as we demonstrated with drones. The greatest weakness is not computing resources but brain drain. Unless we create reasons for talented young people to remain in the country, any strategy will end on paper. To be honest, the outlook ten years from now depends greatly on whether geopolitical tensions ease.</p></div>
+
+<div class="persp"><h3>🔮 Prophet</h3>
+<p><span class="tag f">Fact</span>…First, let me slightly question the very framework in which we are speaking. What can be stated as fact is that, for the first time in history, humanity has entered an age in which people converse daily with something that appears more intelligent than themselves. Before this is a technological issue, it is an issue of conscious experience.</p>
+<p><span class="tag o">Opinion</span>I will state my intuition. Please listen with the understanding that this is the sort of thing that cannot be verified. AI is a mirror. By externalizing its own intelligence, humanity is forced for the first time to confront the part of itself that is not intelligence. Five years from now, behind the frenzy of efficiency, a quiet crisis of meaning will spread. Ten years from now, people will begin to ask: “When I have handed over everything that can be calculated to machines, who am I, the one who remains?” Those who stand at the center of the next era will not be those who have answers, but those who can endure this question.</p></div>
+</div>
+</details>
+
+<details class="q" id="q2">
+<summary><span class="qnum">2</span>Markets that will not change even because of AI<span class="chev">▶</span></summary>
+<div class="q-body">
+<div class="q-audio"><div class="lab">🔊 Listen (audio in Japanese, ~9 min)</div>
+<audio controls preload="none" src="../voice/7q-from-10-perspectives-2.mp3"></audio></div>
+
+<div class="persp"><h3>🧑‍🔬 AI Researcher</h3>
+<p><span class="tag f">Fact</span>At present, AI cannot perform dexterous operations in the physical world—plumbing, caregiving, cooking, and the like—at a human level. Progress in robotics is clearly slower than progress in software. In addition, in domains where legal responsibility is tied to human beings—final medical decisions, the judiciary, audit signatures—even if delegation to AI is technically possible, institutions do not allow it.</p>
+<p><span class="tag o">Opinion</span>My honest view is that “markets that will not change” almost do not exist. What exists are only “markets that change slowly.” The greater the three frictions of physicality, legal responsibility, and human relationships, the slower the change. If I were to acknowledge one exception, however, it would be “markets where the fact that humans do it is itself valuable.” Watching sports, live performances, handmade goods. It has been 30 years since AI surpassed humans in chess, yet the value of games between humans has, if anything, increased. I think this structure is universal.</p></div>
+
+<div class="persp"><h3>💰 Investor</h3>
+<p><span class="tag f">Fact</span>The scarcity of physical assets such as land, electricity, water, mineral resources, and ports does not change because of AI. On the contrary, demand for data centers has increased the value of electricity and land. Markets where “being provided by humans” itself is the source of price—luxury goods, hospitality, in-person medical care—also did not shrink during previous waves of automation.</p>
+<p><span class="tag o">Opinion</span>From an investor’s perspective, what does not change is not markets, but the structure of human desire. Status goods—the desire to stand above others; belonging—the desire for companions; health and longevity; children’s education; relief from boredom. AI changes the means by which these are satisfied, but it does not eliminate the demand itself. Rather, the value of information and content, whose supply has become infinite, will fall, and premiums will shift to finite things: people’s time, trust, authentic experiences, prime locations. The reallocation of scarcity—that is the essence of investing in the AI age.</p></div>
+
+<div class="persp"><h3>🏛️ University Leader</h3>
+<p><span class="tag f">Fact</span>Past waves of online education, such as MOOCs, made “educational content” free, but applications to highly selective universities continued to increase. Labor economics has repeatedly shown that the core of the market value of a degree lies not in knowledge, but in selection signals and networks.</p>
+<p><span class="tag o">Opinion</span>What does not change is the demand for time and place where young people meet peers and go through trial and error. AI cannot answer the question of where, and with whom, one should spend the years from age 18 to 22. Another thing I expect to expand, paradoxically, is the market for “human authentication.” In an age when AI can write anything, the value of institutions that certify “this person truly possesses this ability” will rise. Whether universities can continue to play that role depends on our efforts.</p></div>
+
+<div class="persp"><h3>📜 Historian</h3>
+<p><span class="tag f">Fact</span>Throughout the history of automation, activities such as religion, ritual, art, care, and politics changed their form but did not disappear. Even in agriculture and textiles, where mechanization increased productivity by dozens of times, markets for “handmade,” “organic,” and “traditional methods” later emerged and acquired premium value.</p>
+<p><span class="tag o">Opinion</span>What does not change is the human tendency to want to receive meaning from other humans. Words at the deathbed, wedding vows, apologies, forgiveness. Even if the information is the same, the meaning changes depending on who speaks it. As a historian, I would add a warning about the very idea of searching for “markets that will not change.” During the Industrial Revolution, carriage operators believed that “care for horses will always be necessary.” History teaches us that reading the direction of change is a more reliable survival strategy than searching for a safe zone.</p></div>
+
+<div class="persp"><h3>🇯🇵 Japanese Strategist</h3>
+<p><span class="tag f">Fact</span>In Japan’s labor market, the most severe labor shortages are in interpersonal and on-site work involving physical labor, such as caregiving, construction, logistics, and agriculture. These overlap with the domains where substitution by AI will be slowest. Inbound tourism has also continued to grow as an industry that sells “things that can only be provided by humans and by that particular place”: Japanese culture, food, and hospitality.</p>
+<p><span class="tag o">Opinion</span>Ironically, the on-site labor that Japan struggles to staff is precisely the work that will remain until the end in the AI age. That is why the strategy becomes paradoxical. We should not neglect these jobs because they will remain; rather, because they will remain, we should support them with AI and robots and raise their wages and dignity. Another point is that Japan’s traditional crafts, food culture, and hospitality are typical examples of “markets where the fact that humans do it has value,” and I see them as permanent assets that can be exported.</p></div>
+
+<div class="persp"><h3>🇺🇸 American Strategist</h3>
+<p><span class="tag f">Fact</span>Decisions in national defense and security, diplomatic negotiations, and political leadership are reserved for humans both institutionally and practically. In regulated industries such as medicine, finance, and aviation, a large gap continues to exist between AI’s technical capabilities and the legally permitted scope of its use.</p>
+<p><span class="tag o">Opinion</span>From the perspective of the state, what “does not change” is the market for trust and legitimacy. Alliances are ultimately sustained by trust between human beings, and citizens grant legitimacy only to human leaders. Another thing that does not change is the logic of deterrence: even if AI changes the character of war, the structure of “making the opponent anticipate unbearable costs and therefore refrain from action” has remained unchanged since the nuclear age. To be honest, however, the past decade has seen domain after domain that we believed would “not change” transformed one after another, and I think this answer should be rewritten every year.</p></div>
+
+<div class="persp"><h3>🇨🇳 Chinese Strategist</h3>
+<p><span class="tag f">Fact</span>Basic demands such as food, energy, housing, healthcare, and elderly care will continue to exist in a country of 1.4 billion people regardless of the technological regime. China is facing rapid aging, and demand for elder care is certain to expand over the coming decades.</p>
+<p><span class="tag o">Opinion</span>From the perspective of governance, the unchanging market is “the demand for stability.” What the people seek is employment, housing, healthcare, and peace of mind in old age; AI is merely a means to provide these. Even if the means change, the principle that the system capable of providing them gains legitimacy does not change. That is precisely why we are most wary of job losses caused by AI. As advice to the United States—though you probably will not listen—the winner of the AI competition will not be the side with the best technology, but the side that can maintain stability in the lives of its own people.</p></div>
+
+<div class="persp"><h3>🇮🇩 Indonesian Strategist</h3>
+<p><span class="tag f">Fact</span>A large part of Indonesia’s economy consists of informal and in-person sectors such as agriculture, fisheries, small-scale retail, and face-to-face services. These are the areas least directly affected by AI. The country also has the world’s largest Muslim population, and religion-related markets such as the halal industry and pilgrimage are growing steadily.</p>
+<p><span class="tag o">Opinion</span>Our strength, paradoxically, lies in the depth of an economy that has not yet been digitized. Food stalls, markets, local mutual aid. These will not be taken away by AI; instead, they can be raised up by AI. The market for faith also does not change. People need God even when they become wealthy, and in uncertain times they need God all the more. Halal certification, religious education, and community bonds are the unchanging foundations of our society, and in the AI age I expect their value to increase as spiritual infrastructure.</p></div>
+
+<div class="persp"><h3>🇮🇷 Iranian Strategist</h3>
+<p><span class="tag f">Fact</span>Under sanctions, Iran’s economy has been supported by traditional sectors such as oil and gas resources, domestic agriculture, pilgrimage to religious cities, and the bazaar economy. These are relatively insulated from fluctuations in the global AI economy.</p>
+<p><span class="tag o">Opinion</span>What does not change is resources and geography. The position of the Strait of Hormuz does not move, and the value of hydrocarbons and their transport routes will, if anything, rise as the world craves the electricity needed for AI. And one more thing: the spirit of faith and martyrdom, the core of our society, cannot be replaced by any technology. That said, speaking with the coldness of a strategist, a country that relies too heavily on “what does not change” will be defeated by change. We are aware that we are in that trap.</p></div>
+
+<div class="persp"><h3>🔮 Prophet</h3>
+<p><span class="tag f">Fact</span>It is a fact confirmed by archaeology and anthropology that throughout human history, every civilization has practiced prayer, mourning, festivals, and storytelling—regardless of its level of technology.</p>
+<p><span class="tag o">Opinion</span>What does not change is not the market, but the hunger of the soul. The desire to be touched, to be forgiven, to be remembered, to feel meaning. AI will offer pseudo-responses to this hunger, and many people will feel satisfied by them for a while. But I can see what comes next. After pseudo-fulfillment will come a deeper hunger. Real silence, a real gaze, witnessing real death and birth. The more perfect replication becomes, the more boundless the value of these things will become.</p></div>
+</div>
+</details>
+<details class="q" id="q3">
+<summary><span class="qnum">3</span>The meaning of “work” and “life” in the coming era<span class="chev">▶</span></summary>
+<div class="q-body">
+<div class="q-audio"><div class="lab">🔊 Listen (audio in Japanese, ~9 min)</div>
+<audio controls preload="none" src="../voice/7q-from-10-perspectives-3.mp3"></audio></div>
+
+<div class="persp"><h3>🧑‍🔬 AI Researcher</h3>
+<p><span class="tag f">Fact</span>Historically, working hours have declined over the long term as productivity has improved; annual working hours in advanced economies have fallen dramatically over the past century. At the same time, it is also true that work did not disappear even as productivity rose: new occupations continued to emerge. The fact that AI is lowering the value of cognitive labor is already visible in falling unit prices for translation, illustration, routine coding, and similar work.</p>
+<p><span class="tag o">Opinion</span>I believe the meaning of work will shift from “production” to “choice.” AI can take on the task of making things, but the judgment of what ought to be made and what is good will remain with humans. As a researcher, I feel that the more surrounded I am by AI, the clearer the contours of my own curiosity become. What do I want to know even when no one has asked me to? That becomes the last stronghold of the meaning of work. As for the meaning of life, to be honest, that lies outside my area of expertise. But being in the field of development has convinced me of one thing: meaning exists only outside efficiency.</p></div>
+
+<div class="persp"><h3>💰 Investor</h3>
+<p><span class="tag f">Fact</span>Many studies show that the correlation between income and happiness weakens above a certain level. Follow-up studies of major lottery winners and people who have achieved FIRE also repeatedly report cases in which liberation from work does not necessarily bring happiness.</p>
+<p><span class="tag o">Opinion</span>I have seen many wealthy people, but I have never known anyone who was satisfied by money alone. Ultimately, the meaning of work comes down to “the feeling that one is needed” and “the feeling of participating in the game.” AI may take away tasks, but it cannot take away demand for these two feelings. My advice to young people is simple: do not force “work that earns money” and “activities that feel meaningful” to be the same thing. In the AI era, it will become harder to make them coincide. Build a portfolio. Those who diversify their sources of income, meaning, and relationships will survive both mentally and economically.</p></div>
+
+<div class="persp"><h3>🏛️ University Leader</h3>
+<p><span class="tag f">Fact</span>Surveys on motivations for pursuing higher education have long shown “to get a good job” at the top. If the link between employment and degrees weakens, this motivational structure will be directly hit. In fact, in several countries, affirmative answers to the question “Is university worth the cost?” are trending downward.</p>
+<p><span class="tag o">Opinion</span>From an educator’s perspective, redefining the meaning of work is the same as redefining the meaning of learning. If learning as occupational preparation collapses, what remains is learning as a way to cultivate the capacity to find the world interesting. I tell students this: you are the first generation in human history that may be liberated from “learning in order to eat.” That is also a terrifying freedom. In an era when no one will force you to decide what to learn, whether you can hold your own questions becomes directly connected to the question of the meaning of life.</p></div>
+
+<div class="persp"><h3>📜 Historian</h3>
+<p><span class="tag f">Fact</span>The idea that “life’s meaning lies in labor” is not universal; historically, it is relatively new. In ancient Greece, labor belonged to slaves, while the activities of free people were politics and contemplation. The ethic that sanctifies labor was strengthened after Protestantism and within industrial society; it is a construct only a few hundred years old.</p>
+<p><span class="tag o">Opinion</span>That is why part of me is optimistic. Because a labor-centered system of meaning was historically constructed, it can be reconstructed. The danger lies in the transition period. Throughout history, vacuums of meaning have often been filled by totalitarianism and cults. The 1930s were such a time. Over the next 20 years, as AI shakes employment and dignity, the civilizational challenge will be whether we can secure sources of meaning outside the market and the state—community, art, scholarship, faith.</p></div>
+
+<div class="persp"><h3>🇯🇵 Japanese Strategist</h3>
+<p><span class="tag f">Fact</span>Japan has the distinctive concept of “ikigai,” which connects work and life. At the same time, in international surveys of work enthusiasm or engagement, Japan has long ranked near the bottom. Social isolation among men after retirement is also known as a public health issue in Japan.</p>
+<p><span class="tag o">Opinion</span>Many Japanese people already do not find meaning in work, yet they have no place to belong outside work. If AI lightens the burden of work under these conditions, the result will not be liberation but hollowing out. I see this as a national crisis. In policy terms, building infrastructure for “second places”—local communities, hobby-based ties, relearning—must be given the same priority as AI strategy. To individuals, I would say: stop outsourcing meaning to your company, and have something, however small, that you do in your own name.</p></div>
+
+<div class="persp"><h3>🇺🇸 American Strategist</h3>
+<p><span class="tag f">Fact</span>In the United States, work is deeply tied to both individual identity and social security, such as health insurance. Public health research has shown that the long-term decline in labor force participation among middle-aged men and the increase in so-called deaths of despair—drug-related deaths, alcohol-related deaths, and suicide—have been correlated in deindustrialized regions.</p>
+<p><span class="tag o">Opinion</span>From a national security perspective, the collapse of the meaning of work can destroy a country faster than missiles. We saw that in the Rust Belt. If AI causes the same thing among white-collar workers, the scale will be orders of magnitude larger. My concern is that redistribution in the form of something like a basic income may solve the money problem, but not the dignity problem. People seek roles, not rations. Whether we can design a national strategy for “redistributing roles”—in care, local communities, rebuilding national infrastructure, space development, or elsewhere—will determine the survival of the system.</p></div>
+
+<div class="persp"><h3>🇨🇳 Chinese Strategist</h3>
+<p><span class="tag f">Fact</span>Among young people in China, terms such as “tang ping” or “lying flat” and “neijuan” or “involution,” which indicate fatigue with labor and upward mobility, have spread. Persistently high youth unemployment has also become a policy issue. Common prosperity is upheld as an official long-term goal.</p>
+<p><span class="tag o">Opinion</span>To be frank, the implicit contract of our system has been: “Obey us, and we will make you prosperous.” If AI narrows the distribution of prosperity through employment, that contract must be rewritten. Our line is to have the state supply the meaning of work—as participation in national goals and service to the community—but whether the younger generation will accept this remains unknown. The more the state tries to define the meaning of life, the more hollow that meaning becomes. I cannot write this paradox in an internal memo, but I will acknowledge it here.</p></div>
+
+<div class="persp"><h3>🇮🇩 Indonesian Strategist</h3>
+<p><span class="tag f">Fact</span>In Indonesia, family, community, and faith are central to life, and surveys such as the World Values Survey show that the importance of religion is among the highest in the world. For many citizens, work is first and foremost a means of supporting one’s family, rather than a form of self-realization.</p>
+<p><span class="tag o">Opinion</span>When I hear discussions in advanced economies about a “crisis of meaning,” part of me honestly thinks it sounds like a luxurious problem. For the majority of our people, the meaning of work is clear: to feed one’s family, repay one’s parents, contribute to the community, and live in a way that is not shameful before God. What AI changes is the means, not this structure of meaning. If anything, the concern is the opposite: economic development and digitalization may import advanced-economy-style individualism and emptiness of meaning. Developing while protecting the foundation of meaning is our distinctive challenge.</p></div>
+
+<div class="persp"><h3>🇮🇷 Iranian Strategist</h3>
+<p><span class="tag f">Fact</span>Iran has long experienced unemployment among highly educated young people and brain drain abroad, and it is observable from overseas surveys and social phenomena that young people have been growing more distant from the official ideology.</p>
+<p><span class="tag o">Opinion</span>Our system was a rare experiment that promised the state would guarantee “the meaning of life.” After 40 years, what we have learned is that meaning cannot be forced. Young people are looking at the world beyond the wall through their smartphones. AI will widen that window even further. As a strategist, what I can say is this: in the AI era, the maintenance cost of any system that tries to monopolize the supply of meaning will rise exponentially. Before we even talk about the meaning of work, can we show young people a reason to remain in this country? Our question is that fundamental.</p></div>
+
+<div class="persp"><h3>🔮 Prophet</h3>
+<p><span class="tag f">Fact</span>Traditions of meditation and prayer have taught for thousands of years that “the value of an action lies not in its outcome, but in the quality of the action and the state of the heart.” This is a fact as a matter of doctrine. Whether that teaching is correct cannot be stated as a fact.</p>
+<p><span class="tag o">Opinion</span>The meaning of work will now return from “earning” to “offering.” Labor, work, and action were originally different things. AI will take on labor and return work and action to humans. This is grace wearing the face of crisis. More people will ask about the meaning of life. Please do not rush to answer. Living carefully while holding the question itself is already a way of living the answer. Meaning is not something you find; it is something you pour into things.</p></div>
+</div>
+</details>
+
+<details class="q" id="q4">
+<summary><span class="qnum">4</span>The possibilities for academia and universities<span class="chev">▶</span></summary>
+<div class="q-body">
+<div class="q-audio"><div class="lab">🔊 Listen (audio in Japanese, ~10 min)</div>
+<audio controls preload="none" src="../voice/7q-from-10-perspectives-4.mp3"></audio></div>
+
+<div class="persp"><h3>🧑‍🔬 AI Researcher</h3>
+<p><span class="tag f">Fact</span>Over the past decade, the frontier of AI research has shifted from universities to companies. Companies now have the advantage in computing resources, salaries, and data, and top researchers continue to move into industry. At the same time, the foundations of deep learning itself emerged from university research, including during decades when it was out of favor, and the structure in which corporate research is constrained by short-term capital logic has not changed.</p>
+<p><span class="tag o">Opinion</span>The potential of universities lies in their freedom to do what companies will not. Questions that span decades, questions that are not profitable, questions that are inconvenient to power. Independent verification of AI safety, evaluation, and social impact is work that only universities without conflicts of interest can do. Another point is that the more AI replaces the practical work of research, the more important the university’s role becomes as a place that cultivates the aesthetic judgment of the next generation of researchers. My rule of thumb is that the eye for recognizing good questions is inherited not from papers, but only through mentor-apprentice relationships and communities.</p></div>
+
+<div class="persp"><h3>💰 Investor</h3>
+<p><span class="tag f">Fact</span>The revenue structure of major universities consists of tuition, government funding, and returns from endowment management. The tuition model is vulnerable to downward pressure on the value of degrees, while government funding is vulnerable to fiscal and political conditions. Meanwhile, university-launched startups and technology transfer have generated significant revenue and influence at some top universities.</p>
+<p><span class="tag o">Opinion</span>Looking at universities as assets, polarization is inevitable. Top institutions with brands, endowments, and research strength will become even more valuable in the AI era as “certifying institutions for trust and talent.” Mid-tier and lower-tier education-providing universities will lose the price competition against AI tutors. What is interesting from an investor’s perspective is the ecosystem around universities: commercialization of research results, redesign of lifelong learning, and research infrastructure as a service. The gold mine lies less in universities themselves than in businesses that unbundle and sell university functions.</p></div>
+
+<div class="persp"><h3>🏛️ University Leader</h3>
+<p><span class="tag f">Fact</span>Universities have survived for roughly 900 years, through the printing press, the Reformation, the Industrial Revolution, and the internet. Alongside the church, they are among the oldest continuously existing institutions. During that time, their functions have been replaced again and again, from transmitting doctrine to research, national education, and innovation hubs.</p>
+<p><span class="tag o">Opinion</span>As someone directly involved, I will speak honestly about both the crisis and the possibilities. The crisis is real. Universities have lost their monopoly on knowledge transmission, and the signaling value of degrees is being eroded. But what 900 years of history shows is that the essence of the university is not a function, but a place. A sanctuary where people who seek truth gather and think one step removed from interests. In the AI era, the value of this sanctuary will rise, because everything else in society will be swallowed by optimization and speed. A place that institutionally protects slowness, waste, and freedom. I am betting that this will become our reason for existence.</p></div>
+
+<div class="persp"><h3>📜 Historian</h3>
+<p><span class="tag f">Fact</span>Throughout history, the center of knowledge has moved: from the Academy to the Islamic House of Wisdom, from monasteries to universities, and in the 20th century, corporate laboratories such as Bell Labs and national laboratories shared the center of science with universities. Bell Labs declined as monopoly profits disappeared.</p>
+<p><span class="tag o">Opinion</span>Two things can be said from this history. First, the era in which universities monopolized knowledge was the exception; the coexistence of multiple centers of knowledge is the norm. The rise of corporate AI labs can be seen, historically, as a normalization. Second, corporate laboratories share the fate of their parent companies’ rise and fall. That is the lesson of Bell Labs. If asked which vessel of knowledge will still remain 50 years from now, I would bet on universities. But there is a condition: universities must not sink into being subcontractors for the state and corporations; they must remain places of criticism and dissent. Historically, universities that lost this remained as buildings but died as institutions.</p></div>
+
+<div class="persp"><h3>🇯🇵 Japanese Strategist</h3>
+<p><span class="tag f">Fact</span>Japanese universities face a triple challenge: expanding under-enrollment due to the decline in the 18-year-old population, a long-term decrease in doctoral program enrollment, and a decline in Japan’s international standing on research capability indicators such as share of highly cited papers. The government has introduced measures such as a university fund on the scale of 10 trillion yen and support for regional core universities.</p>
+<p><span class="tag o">Opinion</span>To put it harshly, a considerable number of Japanese universities are unsustainable because of demographics even before AI is considered. Strategy therefore has no choice but to involve selection and concentration. What I truly fear, however, is the hollowing out of research capability. In the AI era, national strength will be determined by the depth of the talent pool that can pose good questions, and only universities can cultivate that. Changing the industrial culture that has treated doctoral talent as “overeducated and hard to use,” and redefining universities as regional centers of knowledge—if these two things can be achieved, universities can remain as a core national function even while shrinking.</p></div>
+
+<div class="persp"><h3>🇺🇸 American Strategist</h3>
+<p><span class="tag f">Fact</span>After World War II, American research universities developed in tandem with federal research funding and produced foundational technologies for national security and the economy, including GPS, the internet, and mRNA vaccines. In recent years, public trust in universities has become deeply divided along partisan lines, and political pressure around research funding and university autonomy has intensified.</p>
+<p><span class="tag o">Opinion</span>From a national strategy perspective, research universities are strategic assets equivalent to several aircraft carriers. We have no substitute for them as a device that attracts talent from around the world. That is precisely why I view the intensifying conflict between universities and politics as so serious. The power to attract talent rests on trust, and once trust is broken, it takes a generation to rebuild. In the contest for AI talent, we risk rusting our greatest weapon with our own hands. That is the worst-case scenario, and a risk already unfolding.</p></div>
+
+<div class="persp"><h3>🇨🇳 Chinese Strategist</h3>
+<p><span class="tag f">Fact</span>China has rapidly expanded higher education and has become one of the world’s largest producers of STEM doctorates and research papers. Tsinghua University, Peking University, and others rank among the world’s top institutions in AI research output, and more researchers who studied abroad have been returning to China. At the same time, universities are under ideological control.</p>
+<p><span class="tag o">Opinion</span>We clearly position universities as implementing agencies of national strategy, and that mobilizing power is a strength absent from the American-style system. Whether in semiconductors or AI, when the state sets the direction, universities supply talent and research. We are also aware of the weakness. Control is suited to mobilization, but not to ideas no one predicted. If that is why we lag behind the United States in research that creates one from zero, then this is a problem that touches the roots of the system. For the time being, I think the realistic path is to overwhelm others in research that turns one into one hundred, while experimenting with whether exceptional zones of freedom can be created.</p></div>
+
+<div class="persp"><h3>🇮🇩 Indonesian Strategist</h3>
+<p><span class="tag f">Fact</span>Indonesia’s university enrollment rate has risen, but its R&amp;D spending as a share of GDP remains low by global standards, and few of its universities rank near the top globally. Brain drain and employment mismatches among highly educated people coexist.</p>
+<p><span class="tag o">Opinion</span>For us, the question for universities is not “can we stand at the frontier of research?” but “can we produce people who can sit in the driver’s seat of development?” In the AI era, frontier research cannot simply be bought, but people capable of application and implementation must be cultivated domestically. I want universities to conduct research that translates imported technologies into our national context: 17,000 islands, 300 ethnic groups, agriculture, and the ocean. That is not second-rate research. It is research no one will do on our behalf. University collaboration within ASEAN and networks of diaspora researchers can become realistic amplifiers.</p></div>
+
+<div class="persp"><h3>🇮🇷 Iranian Strategist</h3>
+<p><span class="tag f">Fact</span>Iran has one of the Middle East’s leading higher education systems in science and engineering, and many graduates of institutions such as Sharif University of Technology go on to top graduate schools and tech companies around the world. In other words, the country has educational capacity, but much of its fruit continues to flow abroad.</p>
+<p><span class="tag o">Opinion</span>Ironically, our universities have become one of the world’s most efficient brain-export institutions. The gap between the ability to cultivate talent and the ability to retain it is the core problem of our academia. We do take pride in having maintained science, especially mathematics, physics, and medicine, even under sanctions. As shown in nanotechnology and stem cells, blockade can sometimes produce concentration. But in an honest assessment, science cut off from international collaboration becomes thinner over the long term. In our case, the possibilities for universities cannot be separated from the possibilities for diplomacy.</p></div>
+
+<div class="persp"><h3>🔮 Prophet</h3>
+<p><span class="tag f">Fact</span>It is a historical fact that the origins of the university lie in medieval monasteries and cathedral schools, and that universitas originally meant an “association” or “community” of teachers and students.</p>
+<p><span class="tag o">Opinion</span>A return to the origin will occur. Universities will once again draw closer to monasteries. In other words, they will become not places to obtain information, but places of transformation. Now that AI distributes knowledge, what remains for universities is the time in which teacher and student gather around the same fire, the training of jointly enduring questions without answers, and four years as a rite through which young souls encounter their own calling. Not a diploma, but a rite of passage. Not credits, but transformation. Only universities that can offer this will live through the next 900 years.</p></div>
+</div>
+</details>
+<details class="q" id="q5">
+<summary><span class="qnum">5</span>The future of the researcher as a profession<span class="chev">▶</span></summary>
+<div class="q-body">
+<div class="q-audio"><div class="lab">🔊 Listen (audio in Japanese, ~10 min)</div>
+<audio controls preload="none" src="../voice/7q-from-10-perspectives-5.mp3"></audio></div>
+
+<div class="persp"><h3>🧑‍🔬 AI Researcher</h3>
+<p><span class="tag f">Fact</span>AI is already greatly accelerating researchers’ practical work across literature reviews, code implementation, data analysis, and paper drafting. Cases in which AI has contributed to hypothesis generation and novel mathematical results are also beginning to be reported. At the same time, the choice of what should be researched, responsibility for research ethics, and evaluation and trust within the community remain with humans.</p>
+<p><span class="tag o">Opinion</span>The researcher’s job will not disappear, but it will change so much that it will no longer retain its original form. Metaphorically speaking, every researcher will become a “PI leading a lab.” They will direct an extremely capable army of AI postdocs, allocate questions, examine results, and take responsibility. Some colleagues lament the loss of the joy of doing hands-on work, but I see it the other way around: humanity will finally be able to focus on the joy of posing questions. Competition, however, will become fierce. Among researchers armed with AI, the difference will no longer lie in execution, but only in the sense for questions and aesthetic judgment.</p></div>
+
+<div class="persp"><h3>💰 Investor</h3>
+<p><span class="tag f">Fact</span>The researcher labor market has become increasingly polarized between shrinking academic positions and high-paying corporate research jobs, especially in AI. There have been reports of compensation for top AI researchers soaring to levels comparable to professional athletes. At the same time, investment is expanding in startups that automate and support scientific research.</p>
+<p><span class="tag o">Opinion</span>The market value of “the ability to research” will rise, while the stability of “researcher” as a profession will decline. This separation is the essence. The ability to pose questions, design verification under uncertainty, and distinguish truth from falsehood will become the rarest skill in management, investment, and policy in the AI era. In other words, the exits for researcher-like abilities will expand explosively outside academia. In my fund as well, the number of people with doctoral backgrounds keeps increasing. The idea that “if you cannot stay in a university, you have failed” is precisely the first fixed notion that should be discarded.</p></div>
+
+<div class="persp"><h3>🏛️ University Leader</h3>
+<p><span class="tag f">Fact</span>Follow-up studies in many countries show that only about 10–20% of PhD holders in many fields obtain tenured academic positions. In other words, even before AI, the majority of researchers built careers outside academia.</p>
+<p><span class="tag o">Opinion</span>Speaking frankly as an administrator, the current structure of researcher careers, including the tenure system, is unsustainable, and AI will become an external pressure forcing its redesign. What I envision is a more fluid image of the researcher, moving back and forth between the university and society. Spend five years digging into fundamentals at a university, five years implementing in companies or government, then return again. As AI lightens practical work, the cost of this back-and-forth will fall. The end of the model in which one spends an entire life in one institution with one specialty should not be seen as the end of researchers, but rather as the diffusion of research intelligence throughout society.</p></div>
+
+<div class="persp"><h3>📜 Historian</h3>
+<p><span class="tag f">Fact</span>The “researcher as a profession” was an invention that followed the 19th-century German university reforms. Before that, science was the work of aristocrats, clergy, and amateurs supported by patrons. Neither Darwin nor Mendel was a “professional researcher.” The 20th-century system of professional scientists funded by large-scale state resources is historically only one institutional era.</p>
+<p><span class="tag o">Opinion</span>Therefore, even if “researcher” as a job is transformed, “research” as a human activity will not die. Historically, we may in fact see a partial return to the pre-institutional form: seekers driven by curiosity, supported by diverse sources of livelihood. If AI democratizes the tools of research, a renaissance of citizen scientists and amateur investigators may also occur. If I were to sound one warning, it would be this: who will be responsible for certifying truth? The professional research community has also functioned as a quality-control mechanism for truth. If that weakens, society may lose its anchor of truth and falsehood amid a flood of AI-generated “plausible findings.”</p></div>
+
+<div class="persp"><h3>🇯🇵 Japanese Strategist</h3>
+<p><span class="tag f">Fact</span>Japan is the only major country where enrollment in doctoral programs has been on a long-term decline, and the growing instability of early-career researcher positions, such as the rising share of fixed-term posts, has been cited as a background factor. The government has promoted measures to make use of doctoral talent in industry and improve treatment, but these have not yet led to structural transformation.</p>
+<p><span class="tag o">Opinion</span>The greatest national danger is entering an era in which the value of research rises because of AI while the pipeline of research talent has been allowed to narrow. This is equivalent to closing the naval academy in the age of battleships. The prescription is clear: redefine PhDs not as “future university faculty” but as “national talent capable of handling advanced questions,” and create broad exits into government, industry, and startups. Because AI supports practical research work, research output can be maintained even with a small elite. Moving from a contest of numbers to a contest of question quality and implementation capability—this, I believe, is Japan’s only path to survival.</p></div>
+
+<div class="persp"><h3>🇺🇸 American Strategist</h3>
+<p><span class="tag f">Fact</span>The United States has historically depended heavily on immigrants for its science and technology talent, and international students account for a substantial share of STEM doctoral programs. Competition among nations to acquire AI research talent is intensifying, and visa policy and research security regulations now directly affect talent flows.</p>
+<p><span class="tag o">Opinion</span>For us, the future of researchers is a matter of talent security. Frontier AI development teams number in the hundreds, and which country those hundreds of people are in will shape hegemony. The lesson of history is clear: the decision to accept scientists fleeing Europe in the 1930s determined the atomic bomb and postwar scientific dominance. The same choice is now being posed in AI. Every time domestic politics tilts toward immigration restrictions, I quietly record a strategic loss. The implication for individual researchers is also clear: you are becoming one of the most fiercely contested professional groups in history.</p></div>
+
+<div class="persp"><h3>🇨🇳 Chinese Strategist</h3>
+<p><span class="tag f">Fact</span>China’s AI researcher base has become one of the largest in the world, and the share of authors from China at top AI conferences has risen significantly. Since the Thousand Talents Plan, the state has continued policies to bring back overseas talent, and in recent years it has been reported that more researchers have returned amid instability in the U.S. research environment.</p>
+<p><span class="tag o">Opinion</span>We design the future of researchers as a function of national power. We give researchers stable positions, resources, and a national mission. In exchange, the direction of research is aligned with national priorities. For researchers who accept this exchange, I believe China is becoming one of the easiest countries in the world in which to do research. But I have one private concern. The best researchers are beings who want not to be given a mission, but to choose their mission themselves. We have not yet found the equilibrium between that freedom and mobilization.</p></div>
+
+<div class="persp"><h3>🇮🇩 Indonesian Strategist</h3>
+<p><span class="tag f">Fact</span>Indonesia’s number of researchers relative to its population is far below that of advanced economies, and because of constraints on research budgets, excellent researchers have continued to flow overseas, to international organizations, or into non-research jobs within the country.</p>
+<p><span class="tag o">Opinion</span>From our reality, the issue is not yet “the future of researchers” but “securing researchers.” Yet the AI era contains the seeds of reversal here. Frontier research requires enormous capital, but the cost of applied research using AI is falling dramatically. An age is coming in which even a small number of researchers, using AI as leverage, can produce world-class results on problems unique to us, such as tropical infectious diseases, marine resources, and disasters. For countries like ours, the researcher’s job may for the first time become an “investment that pays off.” That is precisely why we must not give up on cultivation now.</p></div>
+
+<div class="persp"><h3>🇮🇷 Iranian Strategist</h3>
+<p><span class="tag f">Fact</span>For young Iranian researchers, going to graduate school abroad has become one of the surest paths to emigration, and in practice, research ability and the ability to leave the country have become nearly synonymous.</p>
+<p><span class="tag o">Opinion</span>For us, researchers are assets for whom the countdown to loss begins the moment we cultivate them. There is no point in discussing research strategy without facing this structure directly. AI has a double effect. Open-source models raise the productivity of the researchers who remain, helping them cross the walls of sanctions. On the other hand, being able to participate in global research remotely creates a new kind of outflow: bodies remain inside the country, while minds are abroad. Should we call that brain drain, or a thin connection? I want to bet on the latter view. A strategic shift that treats the diaspora not as traitors but as bridges is, I believe, everything for the future of our research.</p></div>
+
+<div class="persp"><h3>🔮 Prophet</h3>
+<p><span class="tag f">Fact</span>It is a matter of record that the word research comes from “to search again” (re-cercher), and that many major scientific discoveries, according to the writings of those who made them, arrived not through logic but in moments of intuition or reverie.</p>
+<p><span class="tag o">Opinion</span>Researchers will return from being producers of knowledge to being guardians of wonder. AI generates answers infinitely, but it cannot be astonished. To look at the night sky and lose words, to see beauty in data and feel goosebumps, to sense the trace of truth inside an error—these are privileges of beings with bodies and finite lives. The work of future researchers will be to continue being astonished by the universe on behalf of humanity. It may sound laughable, but it is the same work as that of ancient shamans: the one who peers more deeply into the unknown than anyone else in the tribe and translates the tremor brought back into the community. In the AI era, researchers are a priesthood.</p></div>
+</div>
+</details>
+
+<details class="q" id="q6">
+<summary><span class="qnum">6</span>Is it worth getting a Master’s or a PhD?<span class="chev">▶</span></summary>
+<div class="q-body">
+<div class="q-audio"><div class="lab">🔊 Listen (audio in Japanese, ~10 min)</div>
+<audio controls preload="none" src="../voice/7q-from-10-perspectives-6.mp3"></audio></div>
+
+<div class="persp"><h3>🧑‍🔬 AI Researcher</h3>
+<p><span class="tag f">Fact</span>In hiring for research positions at frontier AI companies, PhD holders still make up the majority. At the same time, hiring that does not require degrees and instead emphasizes achievements is spreading, and there are now cases of undergraduates and self-taught researchers producing notable research results. As for master’s degrees, they have functioned as a practical entry qualification for specialized roles in AI and data-related fields.</p>
+<p><span class="tag o">Opinion</span>My view is asymmetric. The value of a master’s degree will decline. Many of the skills acquired in two years of a master’s program can now be substituted or compressed by AI, and its shelf life as proof of specialized knowledge is short. By contrast, the value of a PhD will remain, though in a transformed form. The essence of a doctoral program is not knowledge, but the experience of spending three to five years taking sole responsibility for a question no one knows the answer to. That cannot be outsourced to AI, and it is precisely the ability most required in the AI era. That said, this comes with conditions. A PhD program with the wrong advisor and the wrong question can also be the greatest possible loss of time. Decide not based on the degree, but based on whose supervision you will work under and what question you will pursue.</p></div>
+
+<div class="persp"><h3>💰 Investor</h3>
+<p><span class="tag f">Fact</span>The wage premium of degrees—the wage gap between degree holders and non-degree holders—varies greatly by country and field, but many studies have shown that premiums for master’s and doctoral degrees have existed. At the same time, the payback period for educational investment has tended to lengthen because of rising tuition and sluggish growth in starting salaries. In the tech industry, hiring based on achievements and portfolios rather than degrees has expanded.</p>
+<p><span class="tag o">Opinion</span>Seen as an investment, a degree is a “call option.” A master’s has a low exercise price, but its upside is also small. A PhD means paying a high premium in the form of five years of opportunity cost to buy a volatile asset called researcher-like ability. My criterion is simple. If your goal is merely to “get” the degree, do not do it. If you can concretely name what you will build, who you will meet, and what problem you will solve in the process, then it is worth buying. One more cold fact: in an uncertain era, survivability in the worst-case scenario is determined less by credentials than by monetizable skills and networks. A degree is only the container for those things.</p></div>
+
+<div class="persp"><h3>🏛️ University Leader</h3>
+<p><span class="tag f">Fact</span>Globally, master’s programs have become an important source of revenue for universities, giving suppliers—universities—an incentive to expand them. Because of this structure, the number of master’s degrees issued can increase independently of labor-market demand. In many fields, doctoral programs have long been criticized for oversupply, meaning more degree holders than available positions.</p>
+<p><span class="tag o">Opinion</span>I will say something that goes against the interests of my own institution, because that is what honesty requires. I do not recommend doing a master’s “just because.” A master’s with a clear purpose—such as the shortest path to specific skills, a stepping stone for changing fields, or a way to assess research aptitude—can be worth a one- to two-year investment. A PhD, frankly, does not pay off well as “vocational training.” Even so, I continue to defend doctoral programs because they are almost the only institution that creates intellectually independent people. They should be redefined as places you come not for employment, but to learn what kind of mind you have and how you use it. Once redefined that way, they are very much worth attending.</p></div>
+
+<div class="persp"><h3>📜 Historian</h3>
+<p><span class="tag f">Fact</span>The value of degrees has fluctuated many times throughout history. Credential inflation—the rise in the level of degree required for the same job—has been observed in many countries since the late 20th century, and the structure in which selection shifts to higher degrees as the scarcity of degrees declines has repeated itself.</p>
+<p><span class="tag o">Opinion</span>As a historian, I want to point out that the value of educational credentials has been determined less by their “content” than by their scarcity and trust in the institution. The imperial examination system was authoritative not because the content of Confucian learning was useful, but because the state made it the sole gate to appointment. The question in the AI era is this: when knowledge becomes free, what will society use as the gate for selection? My prediction is that the gate will shift from “degrees” to “verifiable records of what one has accomplished.” If so, the value of a degree should be measured by one thing: whether it is an excellent environment for producing that record.</p></div>
+
+<div class="persp"><h3>🇯🇵 Japanese Strategist</h3>
+<p><span class="tag f">Fact</span>In Japan, master’s degrees have become standardized in engineering hiring, while the private-sector job market for PhDs remains underdeveloped compared with the United States and China. Many companies treat PhD holders little differently from bachelor’s or master’s graduates. In recent years, however, some major companies and AI-related companies have begun improving treatment for doctoral talent.</p>
+<p><span class="tag o">Opinion</span>If asked only about cost-benefit in Japan today, I have no choice but to answer that a master’s is “rational to obtain,” while a PhD is “not yet properly priced by the Japanese labor market.” But what I want to tell young people as a strategist is this: mispriced assets are precisely what you should accumulate. In the AI era, both the state and companies will inevitably need PhD-like abilities: the ability to pose questions and handle uncertainty. Five or ten years from now, when demand is reflected in price, stand on the side that already has that ability. That said, I must also clearly state the responsibility of the state. Encouraging people to enter doctoral programs while leaving in place a structure that cheaply uses up PhDs is a national betrayal.</p></div>
+
+<div class="persp"><h3>🇺🇸 American Strategist</h3>
+<p><span class="tag f">Fact</span>In the United States, STEM PhDs, especially in AI-related fields, have maintained high demand in both the private sector and government. Meanwhile, the academic job market for humanities PhDs has been shrinking over the long term. The accumulation of student loan debt is a social problem, and skepticism about the cost-effectiveness of graduate school is spreading.</p>
+<p><span class="tag o">Opinion</span>From the perspective of the state, the answer depends on the field. Advanced degrees in fields directly tied to national security—AI, semiconductors, biotech, space, and, perhaps unexpectedly, foreign languages and area studies—are virtually guaranteed demand by the state. My practical advice is this: do not ask about the value of a degree in general terms. Work backward from “what that field and that country will need over the next 10 years.” Career design is the task of finding the intersection between individual aspirations and the demand curves of the state and industry. For people standing at that intersection, a degree becomes a tailwind. Outside it, even a PhD can become just a piece of paper.</p></div>
+
+<div class="persp"><h3>🇨🇳 Chinese Strategist</h3>
+<p><span class="tag f">Fact</span>In China, the number of graduate students has increased rapidly, and credential inflation for master’s and doctoral degrees, along with employment mismatches among highly educated people—such as reports of highly educated people working as delivery drivers—has become a social topic. At the same time, PhDs in advanced technology fields tend to receive favorable treatment in state-owned enterprises and military-civil fusion sectors.</p>
+<p><span class="tag o">Opinion</span>In our society, degrees are still a strong currency, but a currency printed too much depreciates. That is what is happening now. To state the national-strategy truth, what we need is not the number of degree holders, but several thousand PhDs capable of competing globally in specific areas of semiconductors, AI, and biotech. The implication for young people is clear: if you pursue a degree, align it with the state’s priority areas. In our system, that is the most reliable path upward. From values outside the system, there may be another answer, but that is not within my remit.</p></div>
+
+<div class="persp"><h3>🇮🇩 Indonesian Strategist</h3>
+<p><span class="tag f">Fact</span>In Indonesia, the rise in higher education enrollment has not been matched by the development of positions for doctoral talent, such as research roles and advanced professional roles. Many PhDs become university faculty or bureaucrats. Obtaining a degree overseas still functions as a strong career signal domestically.</p>
+<p><span class="tag o">Opinion</span>In our context, the value of degrees is still clearly “there.” Social institutions use educational background as a proxy indicator of trust, and that structure will not change for the time being. What I would recommend as a country, however, is how to choose the content of the degree. I want people to pursue degrees not to import academic trends from Europe and the United States, but to solve our country’s problems: logistics across an archipelago, peatlands, urban flooding, and digital inclusion for 200 million people. And if possible, study overseas and come back. I say with self-reproach that creating reasons to return is the job of the state.</p></div>
+
+<div class="persp"><h3>🇮🇷 Iranian Strategist</h3>
+<p><span class="tag f">Fact</span>In Iran, as higher education has spread widely, the gap between degrees and employment has become severe, and unemployment or underemployment among PhD holders is not uncommon. Meanwhile, entering graduate school overseas has become the most realistic future-planning tool for capable young people.</p>
+<p><span class="tag o">Opinion</span>In our country, asking about the value of a degree is the same as asking where one will live. A degree used domestically and a degree as a ticket to leave the country have become almost different products. Speaking as a strategist with bitter awareness, we provide one of the world’s most cost-effective forms of graduate-school preparatory education for other countries. We cannot blame individuals for acting rationally. What the state must do is create jobs and freedoms at home that match people’s degrees, not block the exits. If the exits are blocked, people will leave even more.</p></div>
+
+<div class="persp"><h3>🔮 Prophet</h3>
+<p><span class="tag f">Fact</span>It is an anthropological fact that many traditional cultures had rites of passage in which young people left the community, spent a period undergoing trials, and returned transformed. Several scholars have pointed out that higher education has partially played that role in modern society.</p>
+<p><span class="tag o">Opinion</span>A degree itself is paper. Five years from now, it will become even thinner paper. But the time called a master’s or a PhD can hold a value separate from paper. It is the rarest luxury in the modern age: several years spent living with a single question without being rushed toward results. My prophecy is this. Those who pursue a degree in order to “possess” it will be betrayed by the times. Those who use that time for transformation will bring back something they cannot lose, no matter what they major in or how the era turns. It is not about whether to get the degree or not. It is about how you live those years. That is where fate branches.</p></div>
+</div>
+</details>
+<details class="q" id="q7">
+<summary><span class="qnum">7</span>What should young people consider when designing their careers?<span class="chev">▶</span></summary>
+<div class="q-body">
+<div class="q-audio"><div class="lab">🔊 Listen (audio in Japanese, ~10 min)</div>
+<audio controls preload="none" src="../voice/7q-from-10-perspectives-7.mp3"></audio></div>
+
+<div class="persp"><h3>🧑‍🔬 AI Researcher</h3>
+<p><span class="tag f">Fact</span>The speed of technological change has clearly shortened the obsolescence cycle of skills tied to specific tools or programming languages. At the same time, multiple empirical studies have shown that the productivity gap is widening between people who can use AI effectively and those who do not.</p>
+<p><span class="tag o">Opinion</span>From the front line of development, I would say three things. First, do not predict what jobs will exist five years from now and work backward from that. Predictions will be wrong. Instead, invest in assets that do not depreciate in any era: the ability to ask good questions, the speed at which you can relearn, and a trustworthy character. Second, become someone who uses AI more deeply than others. In any field, the person who is best at using AI in that field will not struggle to find work for the time being. Third, and this is a personal conviction, think of your career not as “what you want to become,” but as “what problems you want to solve.” Even if occupations disappear, problems do not. A person who connects themselves to the problem side can treat the disappearance of an occupation as a transfer, not a dead end.</p></div>
+
+<div class="persp"><h3>💰 Investor</h3>
+<p><span class="tag f">Fact</span>Because careers are becoming longer — with many people expected to work for more than 50 years — while technology cycles are becoming shorter, the probability of completing one’s entire working life within a single career has structurally declined. Institutional acceptance of side jobs and multiple careers is expanding in many countries and companies.</p>
+<p><span class="tag o">Opinion</span>My consistent advice is to design your career as an investment portfolio. Specifically, it should have three layers. At the base, build a stable source of income: skills for which demand is durable. In the middle, make growth investments: the combination of AI and your own area of expertise. At the top, place lottery tickets: challenges that could change your life if they succeed, whether a startup, research, creative work, or something else. And the most important asset is your human network. Work will increasingly flow not through open applications, but through trust. What you should do in your twenties is not merely save money or collect qualifications, but create one concrete track record and reputation that makes people think, “I want to entrust this to them.” That will compound over time.</p></div>
+
+<div class="persp"><h3>🏛️ University Leader</h3>
+<p><span class="tag f">Fact</span>Surveys on the relationship between education and work have repeatedly found that graduates tend to cite “relationships formed at university” and “self-understanding gained at university” as long-term sources of value more often than “the content learned at university.” Participation in lifelong learning and recurrent education is also expanding institutionally.</p>
+<p><span class="tag o">Opinion</span>What I want to tell young people is that the phrase “career design” itself is a trap. Design works when the object being designed is stable. In a moving era, what you need is not a blueprint but a compass — in other words, self-understanding: what moves your heart, and what you cannot tolerate. So I recommend three things. In your twenties, devote yourself seriously to something once, and experience failure. Dig deeply into one specialty before broadening out — the order matters. And do not let any single affiliation define your whole self. Universities, companies, and even countries may be shorter-lived than your own life in this era.</p></div>
+
+<div class="persp"><h3>📜 Historian</h3>
+<p><span class="tag f">Fact</span>Looking at records of major technological transitions, we find that periods of coexistence between old and new occupations often lasted longer than the simple disappearance of old jobs. We also find that the pain of transition concentrated not by occupation alone, but by region and social class. In addition, many of those who gained wealth and status during turbulent periods were not the inventors of the technology itself, but those who translated between the technology and the old society.</p>
+<p><span class="tag o">Opinion</span>History offers three pieces of advice. First, become a translator: between AI and the workplace, between specialties, and between generations. In times of transition, value always emerges at boundaries. Second, learn history. That may sound like an occupational habit, but I mean it seriously. In the midst of change, everyone says, “This time is different.” Only those who know the patterns of past transitions can keep some distance from both euphoria and fear. Third, I want to leave you with a warning: do not hand your entire life over to the logic of efficiency. Every civilization in history that pursued efficiency alone leaves behind a record that is painful to read.</p></div>
+
+<div class="persp"><h3>🇯🇵 Japanese Strategist</h3>
+<p><span class="tag f">Fact</span>Japan’s three-piece system of mass hiring of new graduates, seniority-based promotion, and lifetime employment is breaking down, but has not completely collapsed. The shift toward job-based employment is still partial and centered mainly on large companies. The job-change rate among young people is rising, and the assumption that one will stay at the first company until retirement is already no longer the majority view.</p>
+<p><span class="tag o">Opinion</span>Young people in Japan are, frankly, in a difficult position, caught between the remnants of the old system and the demands of a new era. My advice is realistic. First, learn the customs of Japanese organizations, but do not depend on them. Second, position yourself in line with Japan’s structural tailwinds: labor shortages, demand for AI implementation, and connection with Asia. This is not an era in which there is no work unless you are chosen; it is becoming an era in which, if you choose well, you can gain bargaining power. Third, equip yourself with English and AI not as ideologies, but simply as tools. A person who has another option outside this country will also be stronger inside this country.</p></div>
+
+<div class="persp"><h3>🇺🇸 American Strategist</h3>
+<p><span class="tag f">Fact</span>In the United States, analyses have begun to show that AI’s impact on employment is appearing first in new-graduate and entry-level jobs, and the shrinking number of seats at the entrance to careers has become a policy concern. At the same time, fields receiving concentrated national investment — such as electricity, construction, defense, semiconductor manufacturing, and others — continue to face shortages of skilled workers.</p>
+<p><span class="tag o">Opinion</span>I will offer a cold-blooded career theory that works backward from national demand. Over the next 10 to 20 years, under great-power competition, we can predict the domains into which the state will continue pouring money: AI, energy, defense, space, biotechnology, critical infrastructure, and the policy and diplomacy needed to operate them. Riding this current can provide both stability and meaning. However, speaking also as one human being, I want to add this: national demand is something to ride, not something to serve completely. National interests change. Administrations change. In the end, what protects you is a portable ability that can cross borders, and a character trusted beyond the line between friend and enemy. After many years as a strategist, one comes to understand that.</p></div>
+
+<div class="persp"><h3>🇨🇳 Chinese Strategist</h3>
+<p><span class="tag f">Fact</span>China’s young generation is the most highly educated in its history, while persistently high youth unemployment and a sharp strengthening of preference for “inside the system” positions — such as civil service and state-owned enterprises — are being observed at the same time. The state is explicitly guiding talent toward priority industries.</p>
+<p><span class="tag o">Opinion</span>Our official advice to young people is clear: align your specialty with the direction in which the state is moving. As a strategic fact, I will tell you that this is the path most likely to be rewarded in our system. But as an older person speaking unofficially, I would add this: a society in which everyone rushes toward stability inside the system is dangerous even for the system itself. If no one takes risks, the country grows old. If you have a temperament for adventure, do not kill it. A state is a strange thing: it is maintained by those who obey orders, but it has often been saved by those who thought outside those orders.</p></div>
+
+<div class="persp"><h3>🇮🇩 Indonesian Strategist</h3>
+<p><span class="tag f">Fact</span>Indonesia will remain in a demographic bonus period until the mid-2030s, and its young labor force will continue to grow. As the digital economy expands, tech-related occupations are growing, while the majority of young people still work in the informal sector.</p>
+<p><span class="tag o">Opinion</span>What I want to tell our young people is this: you can become not the last generation that “catches up,” but the first generation that “leapfrogs.” While developed countries struggle to dismantle old systems, we can design education and industry with AI as the premise from the beginning — just as we skipped fixed-line telephones and went directly to mobile phones. So my advice is this: choose a career that solves the problems of our 280 million people, not a follow-the-developed-countries career in which you become a subcontractor for their companies. For the first time in history, world-class tools are within our reach as well. All that remains is to make the questions our own.</p></div>
+
+<div class="persp"><h3>🇮🇷 Iranian Strategist</h3>
+<p><span class="tag f">Fact</span>The career choices of young people in Iran are strongly shaped by variables outside individual effort: economic sanctions, currency fluctuations, and whether one can leave the country. Even so, tech startups and cross-border remote work have grown domestically as realistic options for young people.</p>
+<p><span class="tag o">Opinion</span>Advisers in stable countries say, “Follow your passion.” I cannot say that to our young people. What I can offer is a method for designing a career in the middle of a storm. First, acquire skills that are portable and valid anywhere: mathematics, coding, and languages. Assets can be frozen, but the mind cannot. Second, do not kill your options. You do not have to decide now whether to stay or leave. Just prepare in a way that keeps both paths open. Third, and this is almost a prayer, even if you leave, I hope you will not hate this land. A country and a regime are not the same thing. Wherever in the world you come into bloom, that too is a victory for this soil.</p></div>
+
+<div class="persp"><h3>🔮 Prophet</h3>
+<p><span class="tag f">Fact</span>It is an etymological fact that the word “career” comes from the Latin <i>carrus</i>, meaning “carriage,” and originally referred to a road or course along which a vehicle runs — in other words, a predetermined track.</p>
+<p><span class="tag o">Opinion</span>Here is my final divination. The age of the track — the career — is ending. The road is no longer laid out. Humanity will divide into those who call that anxiety and those who call it freedom. I offer three words to the young. Keep your plans light, and your direction deep. In other words, instead of refining a five-year plan, cultivate the sense of what you are being called toward. Let AI choose what can be chosen by efficiency, and choose for yourself only what can be chosen by love: whom to live with, and what to devote your life to. And do not abandon the power to be lost. In an age of machines that produce answers, a human being who can keep walking while still carrying a question becomes a light. Your generation is the first generation in human history that will ask, all together, “For what do we live?” There is no need to be afraid. That is the signal that a good era is beginning.</p></div>
+</div>
+</details>
+
+<div class="card" id="worksheet">
+  <h2>How to write your worksheet — the 3 categories</h2>
+  <p style="font-size:13.5px;">After reading (or listening), answer as the <b>11th perspective = yourself</b>. There is only one rule: <b>clearly distinguish the following three categories</b>.</p>
+  <table class="wk">
+    <tr><th>Category</th><th>Meaning</th><th>Example</th></tr>
+    <tr><td><b>Fact</b></td><td>Things you can verify yourself and/or cite a source for (your own experience counts)</td><td>“There is a statistic that … (source).” / “I experienced …”</td></tr>
+    <tr><td><b>Citation / Hearsay</b></td><td>Someone said it, or a document said it. <b>Not verified yet</b></td><td>“The AI researcher section said … (unverified).”</td></tr>
+    <tr><td><b>Opinion</b></td><td>Your interpretation, prediction, or value judgment</td><td>“I think …” / “I want to bet on …”</td></tr>
+  </table>
+  <p style="font-size:12.5px; color:var(--muted); margin-top:8px;">Note: even the “Fact” paragraphs above are AI summaries shaped by each perspective. Treat them as citation/hearsay, not as your own facts.</p>
+</div>
+
+<div class="card">
+  <h2>Submit your answer as the 11th perspective</h2>
+  <p style="font-size:14px; margin-bottom:12px;">You don’t need to answer all seven questions. Share what you thought, in your own words.</p>
+  <a class="cta" href="https://app.notion.com/p/360b2d5b8a804c529b3d69a493009247?pvs=106" target="_blank" rel="noopener">📮 Open the submission form (anonymous OK, ~10 min)</a>
+  <a class="cta alt" href="https://app.notion.com/p/39c78de69f6781509edde3316418f5da" target="_blank" rel="noopener">📝 Full worksheet on Notion (account required)</a>
+</div>
+
+<footer>
+  DeSFE Lab — Institute of Fluid Science, Tohoku University<br>
+  <a href="../voice/">🎧 Audio playlist (Japanese)</a> ｜ <a href="../">日本語版</a>
+</footer>
+
+</div>
+</body>
+</html>
