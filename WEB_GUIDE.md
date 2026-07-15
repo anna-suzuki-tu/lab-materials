@@ -32,11 +32,15 @@ career-design/ (+en/)      ← 【完成・公開済み】
 各ページ完成時は、ポータル（index.html / en/index.html）の該当タイルを
 `div.tile.soon` → `a.tile`（badge を `live` に）へ更新すること。
 
-## デザイン規約
+## デザイン規約（2026-07-16 ダークテーマに刷新）
 
 - 共通CSS: `assets/style.css` を `<link>` で読み込む（コピーしない）。
   ページ固有の微調整のみ `<style>` で追加可
-- トーン: アイスブルー #E7F2F6 / Primary #207A91 / Accent #C6A44A（多用禁止）
+- トーン: **濃グレー地 #2E333A ＋ 白カード**。地の上の文字は #E6E9ED／補助 #9AA3AD。
+  強調色は くすんだ青（塗り=#207A91・ダーク地の文字/リンク=#6FB9CC）と くすんだ金 #C6A44A（多用禁止）
+- カード（白面）内の文字は濃色（--text #1F2937 / --muted #5D5D5D）。カード内の薄面は --panel #F1F3F5
+- クリックできない情報（Lab Values等）は白カードにせず `.value`（金の左ライン銘板）を使う
+- ※ スライド（slide_framework/SLIDE.md）は投影可読性のため**ライトテーマのまま**。Webのみダーク
 - 構成テンプレ: career-design/index.html を手本にする
   （lang-sw → kicker → title-row → 本文カード → footer）
 - 全ページ: スマホ最適化・日英相互リンク（lang-sw）・パンくず（.breadcrumb でポータルへ）
