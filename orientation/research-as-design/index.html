@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>02 研究は設計で進める — Lab OS｜DeSFE Lab</title>
+<meta name="description" content="研究が止まる理由は能力ではなく、順番と構造の欠如。Framingを起点とする研究設計と、Paper Cardという装置について。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<div class="breadcrumb"><a href="../../">🏠 教育ポータル</a> › <a href="../">Lab OS</a> › 02</div>
+
+<header>
+  <div class="kicker">LAB OS — CHAPTER 02</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>研究は設計で進める</h1>
+      <div class="subtitle">Research as Design — 研究が止まる理由は能力ではない。順番と構造の欠如である</div>
+    </div>
+  </div>
+</header>
+
+<div class="card">
+  <h2>止まる原因はデータ不足ではない。方向性の欠如である</h2>
+  <p>研究が停滞する瞬間を観察すると、共通点があります。データは増えている。解析も進んでいる。それでも、<b>何を示したいのかが曖昧なまま</b>——つまり問いが不在なのです。止まる原因は能力でもデータ不足でもなく、方向性の欠如です。</p>
+</div>
+
+<div class="card">
+  <h2>失敗パターン：データ先行</h2>
+  <p>最も典型的な失敗は「データ先行」です。</p>
+  <ol>
+    <li>🧪 <b>とりあえず実験</b> — まず手を動かす</li>
+    <li>📊 <b>とりあえず解析</b> — 出たデータを解析する</li>
+    <li>❓ <b>あとで意味を考える</b> — 方向なき探索、迷走のループへ</li>
+  </ol>
+  <p style="margin-top:8px;">意味が後から立ち上がることを祈る——これは設計ではありません。探索の迷走です。地図を持たずに森に入るような研究は、今日で終わりにしましょう。</p>
+</div>
+
+<div class="card">
+  <h2>正しい順番：Framingが研究全体の設計図</h2>
+  <p>正しい順番はこうです。</p>
+  <p style="font-size:15px; font-weight:700; margin:8px 0;">Idea → <span style="color:var(--primary);">Framing ★</span> → Figures → Draft</p>
+  <p><b>Framing（構造化）が KEY STEP</b>。下流のすべて——どんな図を作るか、何を書くか——は Framing から決まります。順番がすべてです。</p>
+</div>
+
+<div class="card">
+  <h2>Framingとは何か — 書くのは3つだけ</h2>
+  <ol>
+    <li><b>問いを1文で書く</b> — Core Question in 1 sentence</li>
+    <li><b>先行研究との差分を明示する</b> — "Compared to X, we Y."</li>
+    <li><b>貢献を最大3点に絞る</b> — Key contributions (3 max)</li>
+  </ol>
+  <p style="margin-top:8px;">注意：ここに<b>結果を書いてはいけません。手法も書いてはいけません</b>。Framingは「何を主張するか」の構造だけを固定する工程です。</p>
+</div>
+
+<div class="card">
+  <h2>Framingが弱いと、全て崩れる</h2>
+  <p><span class="tag o">✕ 曖昧な問い</span>"We studied X and found something interesting..." — 何が新しいのか、条件は何かが不明。</p>
+  <p><span class="tag f">○ 構造化された問い</span>"Compared to prior method X, our approach Y achieves <b>Z</b> under condition C." — 差分・成果・条件が1文で明確。</p>
+  <p style="margin-top:8px;">問いは<b>「Compared to X, we Y」の型で言い切る</b>。言い切れないなら、Framingがまだ弱いということです。</p>
+</div>
+
+<div class="card">
+  <h2>良い研究の問いは、必ず「型」に収まる</h2>
+  <table class="wk">
+    <tr><th>問いの型</th><th>問いの形</th></tr>
+    <tr><td>推定型 / Estimation</td><td>How much / many?</td></tr>
+    <tr><td>機構型 / Mechanism</td><td>How / why does it work?</td></tr>
+    <tr><td>妥当性型 / Validity</td><td>Does method X work?</td></tr>
+    <tr><td>不確実型 / Uncertainty</td><td>What are the limits?</td></tr>
+    <tr><td>スケール型 / Scale</td><td>Does it scale?</td></tr>
+    <tr><td>動態型 / Dynamics</td><td>How does it change?</td></tr>
+    <tr><td>設計型 / Design</td><td>How should we build X?</td></tr>
+  </table>
+  <p style="margin-top:8px;">自分の問いがどの型か選べないなら、その問いはまだ曖昧です。</p>
+</div>
+
+<div class="card">
+  <h2>問いが決まると、必要なデータが決まる</h2>
+  <p>設計としての研究では、順序が逆転します。</p>
+  <ol>
+    <li><b>Question</b> — 問いを確定する。構造がデータを呼び込む</li>
+    <li><b>Required Data</b> — 必要なデータが問いから逆算される</li>
+    <li><b>Method / Experiment</b> — 手法・実験。データは最後</li>
+  </ol>
+  <p style="margin-top:8px;"><span class="tag o">✕</span>Data → 意味が生まれることを祈る　<span class="tag f">○</span>Question → Required Data</p>
+</div>
+
+<div class="card">
+  <h2>1図＝1主張 — 図は説明ではない。主張そのものである</h2>
+  <p><span class="tag o">BAD</span>1つの図に主張Aと主張Bを詰め込む → 何を読み取ればいいのか分からない。</p>
+  <p><span class="tag f">GOOD</span>1つの図に主張は<b>1つ</b>。主張Bは次の図へ。</p>
+  <p style="margin-top:8px;">読者は論文を図で読みます。あなたも論文を読むとき、まず図から読んでください（Read papers via figures first）。</p>
+</div>
+
+<div class="card">
+  <h2>構造が生産性を決める — 能力差ではない。構造差である</h2>
+  <p><b>High Structure</b>：Framing → Figures → Draft → Submit。設計の質が成果を決める。<br>
+  <b>Low Structure</b>：Data → ??? → Repeat。同じ時間でも成果が出ない。</p>
+  <p style="margin-top:8px;">同じ時間投資でも、構造が違えば成果が変わる。だから研究室として共通のOSが必要なのです。</p>
+</div>
+
+<div class="card">
+  <h2>Paper Card：構造を固定する装置</h2>
+  <p>不確かなアイデア（Doubt）を確信ある設計（Belief）へ変えるために、鈴木研では <b>Paper Card</b> という1枚のカードを使います。書く項目は5つ：</p>
+  <ol>
+    <li><b>Core Question</b> — 問いを1文で</li>
+    <li><b>Compared to X, we Y</b> — 先行研究との差分の明示</li>
+    <li><b>Key Contributions</b> — 貢献は3点以内</li>
+    <li><b>Main Figures (sketch)</b> — 図の配置スケッチ</li>
+    <li><b>Contribution Statement</b> — 貢献の要約</li>
+  </ol>
+  <p style="margin-top:8px;"><b>Structure before data — No Card → No Paper.</b> カードなしに論文は始まりません。</p>
+</div>
+
+<div class="note">
+  <b>この章のまとめ</b>：止まる原因は問いの不在 ／ 順番は Idea → Framing → Figures → Draft ／ 問いは「Compared to X, we Y」で言い切る ／ 問いがデータを決める（逆ではない）／ 1図1主張 ／ Paper Card で構造を固定する。
+</div>
+
+<footer>
+  <a href="../what-is-research/">← 01 研究とは何か</a> ｜ <a href="../">目次</a> ｜ <a href="../paper-types/">次章：03 論文タイプと責任 →</a><br>
+  DeSFE Lab — Institute of Fluid Science, Tohoku University
+</footer>
+
+</div>
+</body>
+</html>
