@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 3: Research as Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            overflow: hidden;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            padding: 4rem;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #ffffff;
+            color: #1f2937;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .slide.active { display: flex; }
+
+        /* ── colour tokens (identical to part0) ── */
+        .text-accent { color: #356f8c; }
+        .bg-accent   { background-color: #356f8c !important; }
+        .text-sub    { color: #c6a54a; }
+        .bg-sub      { background-color: #c6a54a !important; }
+        .bg-dark     { background-color: #1f2937 !important; }
+
+        /* dot-grid background */
+        .grid-bg {
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* progress bar */
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 6px;
+            background-color: #356f8c;
+            transition: width 0.3s ease;
+            z-index: 10;
+        }
+
+        /* nav controls */
+        .controls {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .btn {
+            padding: 0.6rem 1.4rem;
+            background: #1f2937;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: inherit;
+            font-size: 15px;
+            transition: all 0.2s;
+            user-select: none;
+            border: none;
+        }
+        .btn:hover { background: #374151; transform: translateY(-1px); }
+
+        #slideNum {
+            background: #ffffff !important;
+            color: #1f2937 !important;
+            border: 2px solid #1f2937;
+        }
+
+        /* line-break guard */
+        .keep-together { display: inline-block; white-space: nowrap; }
+
+        /* ── typography scale (20 pt minimum = 26.7 px) ── */
+        /* All body copy uses Tailwind text-xl (20px) or larger.
+           Section labels use text-base only as supplementary sub-captions. */
+    </style>
+</head>
+<body>
+<div class="slide-container" id="container">
+
+<!-- ╔═══════════════════════════════════════════════════════╗
+     ║  SLIDE 1 — Title                                     ║
+     ╚═══════════════════════════════════════════════════════╝ -->
+<div class="slide active">
+    <div class="max-w-5xl mx-auto text-center">
+        <p class="text-xl font-bold text-accent mb-6 tracking-[0.2em]">ORIENTATION DAY 1 — PART 3</p>
+        <h1 class="text-6xl font-extrabold mb-6 leading-tight">
+            Research as <span class="text-accent">Design</span>
+        </h1>
+        <p class="text-3xl font-medium text-gray-500 mb-14">研究は設計で進める</p>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="progress-bar" id="progressBar"></div>
+</div><!-- end slide-container -->
+
+<!-- navigation -->
+<div class="controls">
+    <div class="btn" onclick="prevSlide()">BACK</div>
+    <div id="slideNum" class="btn" style="background:#fff;color:#1f2937;border:2px solid #1f2937;">1 / 12</div>
+    <div class="btn" onclick="nextSlide()">NEXT</div>
+</div>
+
+<script>
+    let cur = 0;
+    const slides = document.querySelectorAll('.slide');
+    const pb     = document.getElementById('progressBar');
+    const sn     = document.getElementById('slideNum');
+
+    function update() {
+        slides.forEach((s, i) => s.classList.toggle('active', i === cur));
+        pb.style.width = ((cur + 1) / slides.length * 100) + '%';
+        sn.innerText   = (cur + 1) + ' / ' + slides.length;
+    }
+
+    function nextSlide() { if (cur < slides.length - 1) { cur++; update(); } }
+    function prevSlide() { if (cur > 0)                 { cur--; update(); } }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+        if (e.key === 'ArrowLeft')                   prevSlide();
+    });
+
+    update();
+</script>
+</body>
+</html>

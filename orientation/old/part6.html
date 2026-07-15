@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Orientation - Research Habits & Culture</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap');
+
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1f2937;
+            --accent-blue: #356f8c;
+            --accent-mustard: #c6a54a;
+            --sub-text: #6b7280;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: #f3f4f6;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            background-color: var(--bg-color);
+            padding: 60px 80px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 40px;
+            border-bottom: 4px solid var(--accent-mustard);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .content {
+            font-size: 27px; /* 20pt approx */
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .bilingual {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+        }
+
+        .en { font-weight: 700; }
+        .jp { font-size: 0.85em; color: var(--sub-text); font-weight: 400; }
+
+        .highlight { color: var(--accent-blue); font-weight: 700; }
+        .emphasis { color: var(--accent-mustard); font-weight: 700; }
+
+        /* Layout Helpers */
+        .flex-row { display: flex; gap: 60px; align-items: center; }
+        .flex-1 { flex: 1; }
+        .center-all { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; }
+
+        /* Diagrams */
+        .pyramid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+        .pyramid-item {
+            padding: 20px;
+            text-align: center;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+        }
+        .pyramid-item.active {
+            background-color: var(--accent-blue);
+            color: white;
+            border-color: var(--accent-blue);
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(53, 111, 140, 0.3);
+        }
+
+        .two-column-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .box {
+            border: 2px solid #e2e8f0;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        .quadrant {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 20px;
+            height: 400px;
+            margin-top: 20px;
+        }
+        .quad-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+        .quad-item:hover { border-color: var(--accent-blue); background: #f0f9ff; }
+
+        .arrow-flow {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        .arrow { font-size: 40px; color: var(--accent-mustard); }
+
+        .footer-msg {
+            position: absolute;
+            bottom: 60px;
+            right: 80px;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        /* Visual Icons / Shapes */
+        .circle-growth {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 8px solid var(--accent-mustard);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1 -->
+    <div class="slide">
+        <h1>Essential Habits / 必須習慣</h1>
+        <div class="content flex-row">
+            <div class="flex-1">
+                <div class="bilingual">
+                    <span class="en">Research moves through "daily practice."</span>
+                    <span class="jp">研究は“日常”で進む。</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">You are the one who accumulates the daily efforts.</span>
+                    <span class="jp">日常を積み重ねるのは、あなた。</span>
+                </div>
+                <div style="margin-top: 60px; background: #f0f4f8; padding: 20px; border-left: 8px solid var(--accent-blue);">
+                    <p style="font-size: 0.9em;">
+                        Research outcome is decided not by <span class="emphasis">Talent</span>,<br>
+                        but by the <span class="emphasis">Density of Daily Routine</span>.
+                    </p>
+                    <p class="jp">研究の差は「才能」ではなく「日常の密度」</p>
+                </div>
+            </div>
+            <div class="flex-1">
+                <div class="pyramid">
+                    <div class="pyramid-item">
+                        <div class="en">Quarter Plan</div>
+                        <div class="jp">Individual meeting</div>
+                    </div>
+                    <div class="pyramid-item">
+                        <div class="en">Paper Board</div>
+                        <div class="jp">Team meeting / Lab forum</div>
+                    </div>
+                    <div class="pyramid-item active">
+                        <div class="en">Research Log & Thinking Log</div>
+                        <div class="jp">Every day / 毎日</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+        <h1>What is Research & Thinking Log?</h1>
+        <div class="content">
+            <div class="two-column-box">
+                <div class="box">
+                    <h2 class="highlight">Research Log</h2>
+                    <div class="bilingual">
+                        <span class="en">What you did today</span>
+                        <span class="jp">今日、何をやったか</span>
+                    </div>
+                    <p style="font-size: 1.2em; font-weight: 700; margin-top: 20px;">Facts</p>
+                </div>
+                <div class="box">
+                    <h2 class="emphasis">Thinking Log</h2>
+                    <div class="bilingual">
+                        <span class="en">What you thought today</span>
+                        <span class="jp">何を考えたか</span>
+                    </div>
+                    <p style="font-size: 1.2em; font-weight: 700; margin-top: 20px;">Interpretation</p>
+                </div>
+            </div>
+            <div class="center-all" style="margin-top: 40px;">
+                <p>Research progresses through:<br>
+                <span class="highlight">Fact</span> → <span class="emphasis">Interpretation</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+        <h1>Why Log? / なぜ記録するのか</h1>
+        <div class="content center-all">
+            <div class="bilingual" style="font-size: 1.2em;">
+                <span class="en">Thinking happens <span class="highlight">outside</span> the brain.</span>
+                <span class="jp">研究は記憶ではなく外部記録で進む。</span>
+            </div>
+            
+            <div class="arrow-flow">
+                <div class="box">Brain / 頭</div>
+                <div class="arrow">→</div>
+                <div class="box" style="border-color: var(--accent-mustard);">Note / 記録</div>
+                <div class="arrow">→</div>
+                <div class="box">Update / 思考更新</div>
+            </div>
+
+            <div style="background: #fff1f2; padding: 30px; border-radius: 12px; border: 2px solid #f43f5e;">
+                <p class="en" style="color: #be123c;">Humans who do not write are destined to repeat the same mistakes.</p>
+                <p class="jp">書かない人間は必ず同じ失敗を繰り返す。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+        <h1>How to Log / 記録の方法</h1>
+        <div class="content flex-row">
+            <div class="flex-1">
+                <ul>
+                    <li>• <span class="en">One entry every day</span> <span class="jp">(毎日1回)</span></li>
+                    <li>• <span class="en">No need for perfection</span> <span class="jp">(完璧不要)</span></li>
+                    <li>• <span class="en">Write Hypotheses, Facts & Interpretation</span> <span class="jp">(仮説と事実と解釈)</span></li>
+                </ul>
+                <p class="emphasis" style="margin-top: 40px;">Demo next week.</p>
+            </div>
+            <div class="flex-1 center-all">
+                <div style="border: 4px dashed var(--accent-blue); padding: 40px; border-radius: 20px;">
+                    <span class="en" style="font-size: 40px;">Log → Paper Arc</span>
+                </div>
+                <p class="highlight" style="margin-top: 20px;">Writing drives the research forward.</p>
+                <p class="jp">書くことで研究が前に進む。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+        <h1>Lab Policy / ラボの方針</h1>
+        <div class="content center-all">
+            <div class="bilingual">
+                <span class="en" style="font-size: 1.2em;">We value <span class="emphasis">who you become</span> through research more than the results.</span>
+                <span class="jp">研究成果よりも、研究を通じてどう成長するかを重視します。</span>
+            </div>
+
+            <div class="arrow-flow" style="margin-top: 60px;">
+                <div class="box" style="opacity: 0.6;">Results / 成果</div>
+                <div class="arrow">→</div>
+                <div class="circle-growth">
+                    <span class="en">Human Growth<br><span style="font-size: 0.7em;">(人格形成)</span></span>
+                </div>
+            </div>
+            
+            <p class="highlight" style="margin-top: 40px;">Research is a device for character building.</p>
+            <p class="jp">研究は人格形成の装置。</p>
+        </div>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide">
+        <h1>Lab Values</h1>
+        <div class="content">
+            <div class="quadrant">
+                <div class="quad-item">
+                    <span class="en highlight">Self-management</span>
+                    <span class="jp">自己管理</span>
+                </div>
+                <div class="quad-item">
+                    <span class="en highlight">Integrity</span>
+                    <span class="jp">誠実さ</span>
+                </div>
+                <div class="quad-item">
+                    <span class="en highlight">Respect</span>
+                    <span class="jp">敬意</span>
+                </div>
+                <div class="quad-item">
+                    <span class="en highlight">Collective Inquiry</span>
+                    <span class="jp">共創的探究</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7 -->
+    <div class="slide">
+        <h1>Research is Culture / 研究は文化である</h1>
+        <div class="content">
+            <div class="bilingual">
+                <span class="en">Research is not just an individual ability.</span>
+                <span class="jp">研究は個人能力ではない。</span>
+            </div>
+
+            <div class="center-all" style="margin-top: 50px;">
+                <div style="display: flex; gap: 20px; align-items: flex-end;">
+                    <div style="width: 150px; height: 100px; background: #e2e8f0; display: flex; align-items: center; justify-content: center; font-weight: 700;">Structure</div>
+                    <div style="width: 150px; height: 180px; background: #cbd5e1; display: flex; align-items: center; justify-content: center; font-weight: 700;">Habit</div>
+                    <div style="width: 150px; height: 260px; background: var(--accent-blue); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700;">Culture</div>
+                </div>
+                <div class="jp" style="display: flex; gap: 110px; margin-top: 10px;">
+                    <span>構造</span><span>習慣</span><span>文化</span>
+                </div>
+            </div>
+
+            <div class="footer-msg">
+                <span class="en">Culture is not accidental. It is designed.</span><br>
+                <span class="jp" style="font-size: 0.6em; color: var(--sub-text); font-weight: 400;">文化は偶然ではない。設計する。</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

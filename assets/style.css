@@ -1,75 +1,86 @@
 /* =====================================================
-   DeSFE Lab — Education Portal 共通スタイル
-   デザイントークンは SLIDE.md（アイスブルー系）に準拠
+   DeSFE Lab — Education Portal 共通スタイル（ダークテーマ）
+   ベース: 濃グレー地 + 白カード / 強調: くすんだ青・くすんだ金
    ===================================================== */
 :root {
-  --primary:    #207A91;
-  --secondary:  #356F8C;
-  --accent:     #C6A44A;
-  --bg:         #E7F2F6;
-  --text:       #1F2937;
-  --muted:      #5D5D5D;
+  /* ページ（ダーク地） */
+  --bg:         #2E333A;   /* 濃グレー */
+  --ink:        #E6E9ED;   /* 地の上の基本文字（薄色） */
+  --ink-muted:  #9AA3AD;   /* 地の上の補助文字 */
+  --primary:    #207A91;   /* くすんだ青（塗り・バー・帯用） */
+  --primary-lt: #6FB9CC;   /* くすんだ青の明色（ダーク地の文字・リンク用） */
+  --accent:     #C6A44A;   /* くすんだ金 */
+  /* カード（白面） */
   --surface:    #FFFFFF;
+  --text:       #1F2937;   /* カード内の基本文字 */
+  --muted:      #5D5D5D;   /* カード内の補助文字 */
   --border:     #E5E7EB;
+  --panel:      #F1F3F5;   /* カード内の薄グレー面（音声帯など） */
 }
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 body {
   background: var(--bg);
   font-family: 'Noto Sans JP', system-ui, sans-serif;
-  color: var(--text);
+  color: var(--ink);
   padding: 24px 16px 60px;
   line-height: 1.85;
 }
 .wrap { max-width: 760px; margin: 0 auto; }
 
-/* ---- ヘッダー ---- */
+/* ---- ヘッダー（ダーク地の上） ---- */
 .lang-sw { text-align: right; font-size: 13px; font-weight: 700; margin-bottom: 14px; }
-.lang-sw a { color: var(--primary); text-decoration: none; }
-.lang-sw span { color: var(--muted); font-weight: 400; }
-.kicker { font-size: 11px; font-weight: 700; letter-spacing: .22em; color: var(--muted); margin-bottom: 10px; }
+.lang-sw a { color: var(--primary-lt); text-decoration: none; }
+.lang-sw span { color: var(--ink-muted); font-weight: 400; }
+.kicker { font-size: 11px; font-weight: 700; letter-spacing: .22em; color: var(--ink-muted); margin-bottom: 10px; }
 .title-row { display: flex; gap: 12px; align-items: stretch; margin-bottom: 6px; }
-.bar { width: 6px; border-radius: 3px; background: var(--primary); flex-shrink: 0; }
-h1 { font-size: 24px; font-weight: 900; line-height: 1.4; letter-spacing: -.01em; }
-.subtitle { font-size: 13.5px; color: var(--muted); margin-top: 4px; }
-.breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
-.breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 700; }
+.bar { width: 6px; border-radius: 3px; background: var(--primary-lt); flex-shrink: 0; }
+h1 { font-size: 24px; font-weight: 900; line-height: 1.4; letter-spacing: -.01em; color: #FFFFFF; }
+.subtitle { font-size: 13.5px; color: var(--ink-muted); margin-top: 4px; }
+.breadcrumb { font-size: 12px; color: var(--ink-muted); margin-bottom: 12px; }
+.breadcrumb a { color: var(--primary-lt); text-decoration: none; font-weight: 700; }
 
-/* ---- カード・ノート ---- */
+/* ---- カード（白面・文字は濃色） ---- */
 .card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08); padding: 18px 18px; margin: 16px 0;
+  background: var(--surface); border: 1px solid rgba(0,0,0,.35); border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.35); padding: 18px 18px; margin: 16px 0;
+  color: var(--text);
 }
-.card h2 { font-size: 16px; font-weight: 900; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.card h2 { font-size: 16px; font-weight: 900; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; color: var(--text); }
 .card h2::before { content: ""; width: 5px; height: 20px; border-radius: 2.5px; background: var(--primary); }
 .card p, .card li { font-size: 14px; }
 .card ol, .card ul { padding-left: 1.4em; }
+.card a { color: var(--primary); }
 .note {
   background: #FBF7EC; border: 1px solid #EADFC2; border-left: 5px solid var(--accent);
   border-radius: 10px; padding: 13px 15px; font-size: 13px; margin: 14px 0;
+  color: var(--text);
 }
 blockquote.lead-quote {
-  border-left: 5px solid var(--primary); border-radius: 3px;
+  border-left: 5px solid var(--primary-lt); border-radius: 3px;
   padding: 6px 0 6px 16px; margin: 18px 0;
-  font-size: 16.5px; font-weight: 700; line-height: 1.7;
+  font-size: 16.5px; font-weight: 700; line-height: 1.7; color: #FFFFFF;
 }
-blockquote.lead-quote .src { display: block; font-size: 12px; font-weight: 400; color: var(--muted); margin-top: 4px; }
+blockquote.lead-quote .src { display: block; font-size: 12px; font-weight: 400; color: var(--ink-muted); margin-top: 4px; }
+.card blockquote.lead-quote { color: var(--text); border-left-color: var(--primary); }
+.card blockquote.lead-quote .src { color: var(--muted); }
 
 /* ---- ポータル：シリーズタイル ---- */
 .series { margin: 26px 0 8px; }
 .series-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
-.series-head h2 { font-size: 18px; font-weight: 900; }
-.series-head .en { font-size: 12px; color: var(--muted); font-weight: 700; }
-.series-desc { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+.series-head h2 { font-size: 18px; font-weight: 900; color: #FFFFFF; }
+.series-head .en { font-size: 12px; color: var(--ink-muted); font-weight: 700; }
+.series-desc { font-size: 13px; color: var(--ink-muted); margin-bottom: 12px; }
+.series-desc a { color: var(--primary-lt); }
 .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 @media (max-width: 560px) { .tiles { grid-template-columns: 1fr; } }
 a.tile, div.tile {
-  display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08); padding: 14px 16px;
+  display: block; background: var(--surface); border: 1px solid rgba(0,0,0,.35); border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.35); padding: 14px 16px;
   text-decoration: none; color: var(--text); position: relative;
 }
-a.tile:hover { border-color: var(--primary); }
+a.tile:hover { outline: 2px solid var(--primary-lt); outline-offset: -1px; }
 .tile .t-num { font-size: 11px; font-weight: 900; color: var(--primary); letter-spacing: .1em; }
-.tile .t-title { font-size: 14.5px; font-weight: 900; line-height: 1.45; margin: 2px 0; }
+.tile .t-title { font-size: 14.5px; font-weight: 900; line-height: 1.45; margin: 2px 0; color: var(--text); }
 .tile .t-sub { font-size: 12px; color: var(--muted); line-height: 1.55; }
 .badge {
   display: inline-block; font-size: 10px; font-weight: 700; padding: 1px 9px;
@@ -77,7 +88,16 @@ a.tile:hover { border-color: var(--primary); }
 }
 .badge.live { background: rgba(32,122,145,.12); color: var(--primary); }
 .badge.soon { background: #EEE; color: #999; }
-div.tile.soon { opacity: .62; }
+div.tile.soon { opacity: .55; }
+
+/* ---- Lab Values：クリック要素と区別する「銘板」スタイル ---- */
+.value {
+  border-left: 3px solid var(--accent);
+  padding: 4px 0 4px 14px;
+}
+.value .t-num { font-size: 11px; font-weight: 900; color: var(--accent); letter-spacing: .1em; }
+.value .t-title { font-size: 14.5px; font-weight: 900; line-height: 1.45; margin: 2px 0; color: #FFFFFF; }
+.value .t-sub { font-size: 12px; color: var(--ink-muted); line-height: 1.65; }
 
 /* ---- コンテンツページ用：タグ・CTA・目次 ---- */
 .tag { display: inline-block; font-size: 10.5px; font-weight: 700; padding: 1px 9px;
@@ -86,17 +106,17 @@ div.tile.soon { opacity: .62; }
 .tag.o { background: rgba(198,164,74,.16); color: #8a6d1f; }
 .cta { display: block; text-align: center; background: var(--primary); color: #fff; font-weight: 700;
   font-size: 15px; padding: 13px 20px; border-radius: 999px; text-decoration: none; margin: 10px 0;
-  box-shadow: 0 4px 14px rgba(32,122,145,.3); }
+  box-shadow: 0 4px 14px rgba(0,0,0,.4); }
 .cta.alt { background: var(--surface); color: var(--primary); border: 2px solid var(--primary); box-shadow: none; }
 .toc a { display: flex; gap: 9px; align-items: baseline; padding: 7px 4px; font-size: 14.5px; font-weight: 700;
   color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
 .toc a:last-child { border-bottom: none; }
 .toc .n { color: var(--primary); font-weight: 900; flex-shrink: 0; }
 
-/* ---- 表 ---- */
+/* ---- 表（カード内） ---- */
 table.wk { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 10px; }
 table.wk th, table.wk td { border: 1px solid var(--border); padding: 7px 9px; text-align: left; vertical-align: top; }
 table.wk th { background: var(--primary); color: #fff; font-weight: 700; }
 
-footer { margin-top: 36px; text-align: center; font-size: 12px; color: var(--muted); }
-footer a { color: var(--primary); font-weight: 700; text-decoration: none; }
+footer { margin-top: 36px; text-align: center; font-size: 12px; color: var(--ink-muted); }
+footer a { color: var(--primary-lt); font-weight: 700; text-decoration: none; }

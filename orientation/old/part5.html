@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 5: Academic Responsibility & Grade-Specific Goals</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1f2937; /* 濃グレー */
+            --accent-blue: #356f8c; /* くすみ寄りブルー */
+            --accent-mustard: #c6a54a; /* 落ち着いたマスタード */
+            --border-color: #e5e7eb;
+            --font-main: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f3f4f6;
+            font-family: var(--font-main);
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+        .slide {
+            width: 100%;
+            max-width: 1200px;
+            min-height: 675px;
+            aspect-ratio: 16 / 9;
+            background: var(--bg-color);
+            margin: 40px auto;
+            padding: 50px 80px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 30px;
+            border-left: 10px solid var(--accent-mustard);
+            padding-left: 20px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .content {
+            font-size: 24px; /* Minimum font size approx 20pt */
+            flex-grow: 1;
+        }
+
+        .bilingual {
+            margin-bottom: 25px;
+        }
+
+        .en {
+            display: block;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .jp {
+            display: block;
+            font-size: 0.85em;
+            color: #4b5563;
+            margin-top: 5px;
+        }
+
+        .emphasis-box {
+            background: rgba(53, 111, 140, 0.05);
+            border-left: 4px solid var(--accent-blue);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .highlight {
+            color: var(--accent-mustard);
+            font-weight: 700;
+        }
+
+        /* Layout helpers */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* Visual: 2-Axis Model (Slide 1) */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            border-left: 2px solid var(--text-color);
+            border-bottom: 2px solid var(--text-color);
+            margin: 20px 0 40px 40px;
+        }
+        .axis-label-y {
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            transform: rotate(-90deg) translateY(-50%);
+            white-space: nowrap;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .axis-label-x {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .dot {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+        }
+        .dot-label {
+            position: absolute;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        /* Visual: Arc (Slide 8 etc) */
+        .arc-svg {
+            width: 100%;
+            height: auto;
+            max-height: 250px;
+        }
+
+        /* Timeline (Slide 12) */
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .timeline-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            align-items: center;
+            height: 45px;
+        }
+        .timeline-label {
+            font-size: 16px;
+            font-weight: 700;
+            background: #f3f4f6;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        .timeline-bar {
+            height: 25px;
+            background: var(--accent-blue);
+            opacity: 0.6;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        /* Steps (Slide 7) */
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 250px;
+            padding: 0 50px;
+        }
+        .step {
+            width: 25%;
+            background: var(--accent-blue);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 25px;
+            right: 80px;
+            font-size: 14px;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: 2-Axis Model -->
+    <div class="slide">
+        <h1>Dual-Axis Model of Responsibility<br><span style="font-size: 0.6em;">二軸モデル</span></h1>
+        <div class="grid-2 content">
+            <div>
+                <div class="bilingual">
+                    <span class="en">Horizontal Axis: Research Responsibility</span>
+                    <span class="jp">横軸：研究責任</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">Vertical Axis: Community Responsibility</span>
+                    <span class="jp">縦軸：共同体責任</span>
+                </div>
+                <div class="emphasis-box">
+                    <span class="en">More responsibility brings more freedom.</span>
+                    <span class="jp highlight">右上に行くほど自由も増える。</span>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div class="axis-label-y">Community Responsibility</div>
+                <div class="axis-label-x">Research Responsibility</div>
+                <!-- B4 -->
+                <div class="dot" style="bottom: 15%; left: 15%;"></div>
+                <div class="dot-label" style="bottom: 12%; left: 18%;">B4</div>
+                <!-- Master -->
+                <div class="dot" style="bottom: 50%; left: 50%;"></div>
+                <div class="dot-label" style="bottom: 47%; left: 53%;">M</div>
+                <!-- PhD -->
+                <div class="dot" style="bottom: 85%; left: 85%; background: var(--accent-mustard);"></div>
+                <div class="dot-label" style="bottom: 82%; left: 88%; color: var(--accent-mustard);">PhD</div>
+                <!-- Arrow -->
+                <svg style="position:absolute; width:100%; height:100%; top:0; left:0; pointer-events:none;">
+                    <line x1="20%" y1="80%" x2="80%" y2="20%" stroke="#c6a54a" stroke-width="2" stroke-dasharray="5,5" />
+                </svg>
+            </div>
+        </div>
+        <div class="footer">Part 5 | Slide 1</div>
+    </div>
+
+    <!-- Slide 2: B4 Responsibility -->
+    <div class="slide">
+        <h1>B4: Experience and Honesty<br><span style="font-size: 0.6em;">B4の責任</span></h1>
+        <div class="grid-2 content">
+            <div>
+                <div class="bilingual">
+                    <span class="en">Experience one full research cycle.</span>
+                    <span class="jp">研究を1周回す。</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">Share results and struggles honestly.</span>
+                    <span class="jp">誠実に共有する。</span>
+                </div>
+                <div class="emphasis-box">
+                    <span class="en">Completion over perfection.</span>
+                    <span class="jp highlight">完璧はいらない。回すことが責任。</span>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <svg viewBox="0 0 100 100" style="width: 250px;">
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" stroke-width="4"/>
+                    <path d="M 50 10 A 40 40 0 1 1 49.9 10" fill="none" stroke="#356f8c" stroke-width="8" stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="0">
+                        <animate attributeName="stroke-dashoffset" from="251" to="0" dur="3s" repeatCount="indefinite" />
+                    </path>
+                    <text x="50" y="55" text-anchor="middle" font-size="8" font-weight="bold">Inquiry Cycle</text>
+                </svg>
+                <p style="margin-top: 20px;"><i data-lucide="megaphone" style="color:var(--accent-mustard)"></i> Share Honestly</p>
+            </div>
+        </div>
+        <div class="footer">Part 5 | Slide 2</div>
+    </div>
+
+    <!-- Slide 3: Master's Responsibility -->
+    <div class="slide">
+        <h1>Master: Completion and Mentorship<br><span style="font-size: 0.6em;">修士の責任</span></h1>
+        <div class="grid-2 content">
+            <div>
+                <div class="bilingual">
+                    <span class="en">Submit one Original Article.</span>
+                    <span class="jp">Original 1本投稿。</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">Support and guide juniors (B4).</span>
+                    <span class="jp">B4を支える。</span>
+                </div>
+                <div class="emphasis-box">
+                    <span class="en">The responsibility to finish the race.</span>
+                    <span class="jp highlight">完走する責任。</span>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 30px;">
+                <div style="padding: 20px; border: 3px solid var(--accent-blue); border-radius: 8px; text-align: center;">
+                    <i data-lucide="file-text" style="width: 60px; height: 60px; color: var(--accent-blue);"></i>
+                    <p style="font-weight: 700;">Original Article</p>
+                </div>
+                <div style="text-align: center;">
+                    <i data-lucide="arrow-down" style="width: 40px; height: 40px; color: var(--accent-mustard);"></i>
+                    <p style="font-weight: 700; color: var(--accent-mustard);">Support B4</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer">Part 5 | Slide 3</div>
+    </div>
+
+    <!-- Slide 4: PhD Responsibility -->
+    <div class="slide">
+        <h1>PhD: Definition and Culture<br><span style="font-size: 0.6em;">博士の責任</span></h1>
+        <div class="grid-2 content">
+            <div>
+                <div class="bilingual">
+                    <span class="en">Define a unique research axis.</span>
+                    <span class="jp">研究軸を定義する。</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">Protect and evolve the lab culture.</span>
+                    <span class="jp">文化を守る。</span>
+                </div>
+                <div class="emphasis-box">
+                    <span class="en">A Review paper is one way to establish an axis.</span>
+                    <span class="jp highlight">軸確立の一つの形がReview。</span>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <div style="margin-bottom: 20px; font-weight: 700; color: var(--accent-mustard); font-size: 32px; border: 2px solid var(--accent-mustard); padding: 5px;">RESEARCH AXIS</div>
+                <div style="display: flex; gap: 10px; justify-content: center;">
+                    <div style="background: #e5e7eb; padding: 10px; font-size: 14px;">Review</div>
+                    <div style="background: var(--accent-blue); color: white; padding: 10px; font-size: 14px;">Original 1</div>
+                    <div style="background: var(--accent-blue); color: white; padding: 10px; font-size: 14px;">Original 2</div>
+                </div>
+                <p style="font-size: 16px; color: #6b7280; margin-top: 20px;">Detailed in Quarter Plan</p>
+            </div>
+        </div>
+        <div class="footer">Part 5 | Slide 4</div>
+    </div>
+
+    <!-- Slide 7: Clear Expectations -->
+    <div class="slide">
+        <h1>Clear Expectations<br><span style="font-size: 0.6em;">期待値は明示する</span></h1>
+        <div class="content">
+            <div class="steps">
+                <div class="step" style="height: 100px;">
+                    <span class="en">B4</span>
+                    <span class="jp">1周完走</span>
+                </div>
+                <div class="step" style="height: 180px;">
+                    <span class="en">Master</span>
+                    <span class="jp">Original 1本</span>
+                </div>
+                <div class="step" style="height: 250px; background: var(--accent-mustard);">
+                    <span class="en">PhD</span>
+                    <span class="jp">軸 ＋ 文化</span>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <p style="font-size: 36px; font-weight: 700; color: #e11d48;">This is NOT optional. This is the baseline.</p>
+            </div>
+        </div>
+        <div class="footer">Part 5 | Slide 7</div>
+    </div>
+
+    <!-- Slide 8-10 Combine: Quarter Plan & Arc -->
+    <div class="slide">
+        <h1>Quarter Plan: Structural Reflection<br><span style="font-size: 0.6em;">思考構造の可視化</span></h1>
+        <div class="grid-2 content">
+            <div>
+                <div class="bilingual">
+                    <span class="en">Strategy is quarterly (90 days).</span>
+                    <span class="jp">研究は長距離走だが、設計は短距離(90日)で行う。</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">Not a progress report, but structural visualization.</span>
+                    <span class="jp">進捗報告ではない。思考構造の可視化である。</span>
+                </div>
+                <div class="emphasis-box">
+                    <span class="en">B4 Goal: Completion, not perfection.</span>
+                    <span class="jp">B4は研究の1周を経験することが目的。</span>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <svg viewBox="0 0 400 200" class="arc-svg">
+                    <path d="M 50 150 Q 200 0 350 150" fill="none" stroke="#1f2937" stroke-width="4" stroke-dasharray="5,5"/>
+                    <circle cx="50" cy="150" r="10" fill="#356f8c"/>
+                    <circle cx="125" cy="80" r="10" fill="#356f8c"/>
+                    <circle cx="200" cy="40" r="10" fill="#c6a54a"/>
+                    <circle cx="275" cy="80" r="10" fill="#356f8c"/>
+                    <circle cx="350" cy="150" r="10" fill="#356f8c"/>
+                    <text x="200" y="180" text-anchor="middle" font-weight="700">Research Arc (1 Year)</text>
+                </svg>
+                <div style="display: flex; justify-content: space-around; font-size: 16px; font-weight: 700; margin-top: 10px;">
+                    <span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer">Part 5 | Slide 8-10</div>
+    </div>
+
+    <!-- Slide 11: Identity Snapshot -->
+    <div class="slide">
+        <h1>Identity Snapshot<br><span style="font-size: 0.6em;">現在地の特定</span></h1>
+        <div class="grid-2 content">
+            <div>
+                <div class="bilingual">
+                    <span class="en">Locate yourself before moving.</span>
+                    <span class="jp">動く前に、今どこにいるかを知る。</span>
+                </div>
+                <div class="emphasis-box" style="border-left-color: #e11d48;">
+                    <span class="en">Forward progress cannot be designed without a clear location.</span>
+                    <span class="jp highlight" style="color:#e11d48;">曖昧な現在地では、前進は設計できない。</span>
+                </div>
+            </div>
+            <div style="position: relative; padding: 50px;">
+                <svg viewBox="0 0 400 100">
+                   <line x1="0" y1="50" x2="400" y2="50" stroke="#e5e7eb" stroke-width="8" stroke-linecap="round" />
+                   <line x1="0" y1="50" x2="150" y2="50" stroke="#356f8c" stroke-width="8" stroke-linecap="round" />
+                   <circle cx="150" cy="50" r="15" fill="#c6a54a" />
+                   <text x="150" y="30" text-anchor="middle" font-weight="700" fill="#c6a54a">YOU ARE HERE</text>
+                </svg>
+            </div>
+        </div>
+        <div class="footer">Part 5 | Slide 11</div>
+    </div>
+
+    <!-- Slide 12-13: B4 One Year Timeline -->
+    <div class="slide">
+        <h1>B4 Year: Back-calculation<br><span style="font-size: 0.6em;">B4の1年：締切からの逆算</span></h1>
+        <div class="content">
+            <div class="timeline-container">
+                <div style="display: grid; grid-template-columns: 150px 1fr; margin-bottom: 10px;">
+                    <span></span>
+                    <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: 700;">
+                        <span>APR</span><span>JUN</span><span>AUG</span><span>OCT</span><span>DEC</span><span>FEB</span>
+                    </div>
+                </div>
+                <div class="timeline-row">
+                    <div class="timeline-label">Curriculum</div>
+                    <div class="timeline-bar" style="width: 100%;"></div>
+                </div>
+                <div class="timeline-row">
+                    <div class="timeline-label">Research Arc</div>
+                    <div class="timeline-bar" style="width: 70%; background: var(--accent-mustard); opacity: 1;">
+                         <span style="position:absolute; right:10px; top:2px; font-size:12px; color:white;">Thesis</span>
+                    </div>
+                </div>
+                <div class="timeline-row">
+                    <div class="timeline-label">Job/Exam</div>
+                    <div class="timeline-bar" style="width: 40%; background: #ef4444; opacity: 0.8;"></div>
+                </div>
+            </div>
+            <div class="emphasis-box">
+                <span class="jp">研究だけやっていればいい年ではない。外的イベントが研究を圧迫する。</span>
+            </div>
+            <div style="display: flex; gap: 20px; margin-top: 20px; font-size: 18px;">
+                <span class="highlight">Q1: テーマ固定</span> | <span>Q2: Framing</span> | <span>Q3: Figures</span> | <span>Q4: 卒論まとめ</span>
+            </div>
+        </div>
+        <div class="footer">Part 5 | Slide 12-13</div>
+    </div>
+
+    <!-- Slide 5: Common Failure Patterns -->
+    <div class="slide">
+        <h1>B4 Failure Patterns<br><span style="font-size: 0.6em;">B4の典型的崩れパターン</span></h1>
+        <div class="grid-2 content">
+            <ul style="list-style: none;">
+                <li class="bilingual"><span class="en">1. Stalled by Graduate Exams</span><span class="jp">院試で停止</span></li>
+                <li class="bilingual"><span class="en">2. Silence when stuck</span><span class="jp">詰まって沈黙</span></li>
+                <li class="bilingual"><span class="en">3. Waiting for "perfection" to share</span><span class="jp">完成待ちで共有しない</span></li>
+                <li class="bilingual"><span class="en">4. Total collapse from multi-tasking</span><span class="jp">全部同時進行で崩壊</span></li>
+            </ul>
+            <div style="text-align: center;">
+                <i data-lucide="shield-alert" style="width: 150px; height: 150px; color: #ef4444;"></i>
+                <p style="font-size: 32px; font-weight: 700; color: #ef4444; margin-top: 20px;">
+                    Quarter Plan prevents this.<br>
+                    <span style="font-size: 20px; color: var(--text-color);">クォータープランはこれを防ぐ。</span>
+                </p>
+            </div>
+        </div>
+        <div class="footer">Part 5 | Slide 5</div>
+    </div>
+
+    <!-- Slide 14: Evaluation and Arc -->
+    <div class="slide">
+        <h1>Evaluation Criteria<br><span style="font-size: 0.6em;">評価項目とArcの一致</span></h1>
+        <div class="grid-2 content">
+            <div>
+                <p style="font-weight: 700; margin-bottom: 10px;">What is evaluated:</p>
+                <ul style="font-size: 0.9em; margin-left: 20px;">
+                    <li>Understanding / 理解度</li>
+                    <li>Logical Presentation / 論理的発表力</li>
+                    <li>Q&A performance / 質疑応答</li>
+                    <li>Document structure / 資料構造</li>
+                </ul>
+                <div class="emphasis-box">
+                    <span class="jp">評価は結果ではない。構造的思考の副産物。</span>
+                </div>
+            </div>
+            <div style="text-align: center; background: #f9fafb; padding: 40px; border-radius: 12px;">
+                <div style="font-size: 24px; font-weight: 700; color: var(--accent-blue);">Complete the ARC</div>
+                <div style="font-size: 40px; margin: 20px 0;">↓</div>
+                <div style="font-size: 24px; font-weight: 700; color: var(--accent-mustard);">Skills will follow</div>
+            </div>
+        </div>
+        <div class="footer">Part 5 | Slide 14</div>
+    </div>
+
+    <!-- Slide 15-17: Master's Expansion & Timeline -->
+    <div class="slide">
+        <h1>Master's: The Extended Arc<br><span style="font-size: 0.6em;">修士2年間は「拡張されたArc」である</span></h1>
+        <div class="grid-2 content">
+            <div>
+                <div class="bilingual">
+                    <span class="en">M1: Exploration & Strategy (Design)</span>
+                    <span class="jp">M1 = 探索と設計（勝負はM1で決まる）</span>
+                </div>
+                <div class="bilingual">
+                    <span class="en">M2: Convergence & Completion</span>
+                    <span class="jp">M2 = 収束と完走（加速区間）</span>
+                </div>
+                <div class="emphasis-box">
+                   <span class="en">Focus on Framing in M1. Fix your Axis.</span>
+                   <span class="jp">M1中盤に「Axis fixed」。M2で焦る人はM1で設計していない。</span>
+                </div>
+            </div>
+            <div style="position: relative; height: 300px; border-bottom: 2px solid var(--text-color); margin-top: 50px;">
+                <div style="position: absolute; left: 0; bottom: 0; width: 50%; height: 100px; border: 2px dashed var(--accent-blue); display: flex; align-items: center; justify-content: center; font-weight: 700;">M1: Design</div>
+                <div style="position: absolute; right: 0; bottom: 0; width: 50%; height: 200px; background: var(--accent-blue); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700;">M2: Acceleration</div>
+                <div style="position: absolute; left: 45%; top: -20px; color: var(--accent-mustard); font-weight: 700;">AXIS FIXED! 🥊</div>
+            </div>
+        </div>
+        <div class="footer">Part 5 | Slide 15-17</div>
+    </div>
+
+    <!-- Slide 18: M2 Reality -->
+    <div class="slide">
+        <h1>Reality of M2<br><span style="font-size: 0.6em;">修士2年目の現実</span></h1>
+        <div class="content">
+            <div style="display: flex; justify-content: space-around; align-items: center; margin-top: 50px;">
+                <div style="text-align: center;">
+                    <div style="font-size: 16px;">SEP</div>
+                    <div style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid var(--accent-blue); display: flex; align-items: center; justify-content: center; font-weight: 700;">Draft</div>
+                </div>
+                <i data-lucide="arrow-right"></i>
+                <div style="text-align: center;">
+                    <div style="font-size: 16px;">NOV</div>
+                    <div style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid var(--accent-blue); display: flex; align-items: center; justify-content: center; font-weight: 700;">Mid-term</div>
+                </div>
+                <i data-lucide="arrow-right"></i>
+                <div style="text-align: center;">
+                    <div style="font-size: 16px;">JAN</div>
+                    <div style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid #ef4444; color: #ef4444; display: flex; align-items: center; justify-content: center; font-weight: 700;">Deadline</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 60px;">
+                <p style="font-size: 40px; font-weight: 700; color: #ef4444;">Time disappears suddenly.</p>
+                <p style="font-size: 24px;">時間は急に消える。</p>
+            </div>
+        </div>
+        <div class="footer">Part 5 | Slide 18</div>
+    </div>
+
+    <!-- Slide 19-23: PhD Structure -->
+    <div class="slide">
+        <h1>PhD: Axis Construction (3 Years)<br><span style="font-size: 0.6em;">博士3年間の構造</span></h1>
+        <div class="grid-2 content">
+            <div>
+                <p class="bilingual">
+                    <span class="en">D1: Axis Construction (Review Paper)</span>
+                    <span class="jp">D1：軸を作る（仮説の外部化）</span>
+                </p>
+                <p class="bilingual">
+                    <span class="en">D2: Original Expansion</span>
+                    <span class="jp">D2：拡張する（手法深化・独立性）</span>
+                </p>
+                <p class="bilingual">
+                    <span class="en">D3: Integration & Positioning</span>
+                    <span class="jp">D3：統合する（Thesis構造設計）</span>
+                </p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 10px; padding-top: 20px;">
+                <div style="background: var(--accent-blue); color: white; padding: 15px; margin-left: 60px;">D3: INTEGRATION</div>
+                <div style="background: var(--accent-blue); color: white; padding: 15px; margin-left: 30px; opacity: 0.8;">D2: EXPANSION</div>
+                <div style="background: var(--accent-mustard); color: white; padding: 15px; opacity: 1;">D1: AXIS CONSTRUCTION</div>
+                <p style="text-align: center; font-size: 14px; margin-top: 10px;">"Axis-less PhDs will drift."<br>軸がない博士は漂流する。</p>
+            </div>
+        </div>
+        <div class="footer">Part 5 | Slide 19-23</div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

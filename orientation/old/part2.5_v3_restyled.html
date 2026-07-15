@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Part 2.5: Paper Types and Responsibilities</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700;800;900&display=swap');
+
+    :root{
+      --bg:#ffffff;
+      --text:#1f2937;
+      --accent:#356f8c;
+      --sub:#c6a54a;
+    }
+
+    body{
+      font-family:'Inter','Noto Sans JP',sans-serif;
+      background:#0f172a; /* dark frame like Part 0 */
+      margin:0;
+      overflow:hidden;
+      word-break:keep-all;
+      overflow-wrap:break-word;
+      color:var(--text);
+    }
+
+    /* Design System (from Part 0) */
+    .text-accent{ color: var(--accent); }
+    .bg-accent{ background-color: var(--accent); }
+    .text-sub{ color: var(--sub); }
+    .bg-sub{ background-color: var(--sub); }
+    .bg-dark{ background-color: var(--text); }
+    .grid-bg{
+      background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+    .keep-together{ display:inline-block; white-space:nowrap; }
+
+    /* Fullscreen deck */
+    .slide-container{
+      width:100vw; height:100vh;
+      display:flex; align-items:center; justify-content:center;
+      position:relative;
+    }
+    .slide{
+      width:100%; height:100%;
+      padding:4rem;
+      display:none;
+      flex-direction:column;
+      justify-content:center;
+      background:var(--bg);
+      color:var(--text);
+      position:relative;
+    }
+    .slide.active{ display:flex; }
+
+    /* Progress + controls (from Part 0) */
+    .progress-bar{
+      position:absolute; bottom:0; left:0;
+      height:6px; background:var(--accent);
+      transition:width .3s ease;
+    }
+    .controls{
+      position:fixed;
+      bottom:2rem; right:2rem;
+      display:flex; gap:1rem;
+      z-index:100;
+    }
+    .btn{
+      padding:.6rem 1.2rem;
+      background:var(--text);
+      color:white;
+      border-radius:6px;
+      cursor:pointer;
+      font-weight:800;
+      transition:all .2s;
+      user-select:none;
+      letter-spacing:.02em;
+    }
+    .btn:hover{ background:#374151; transform:translateY(-1px); }
+  </style>
+</head>
+
+<body>
+  <div class="slide-container" id="container">
+
+    <!-- Slide 1 -->
+    <section class="slide active grid-bg">
+      <div class="max-w-6xl mx-auto w-full">
+        <div class="flex items-start justify-between gap-10">
+          <div class="flex-1">
+            <h1 class="text-[48px] font-black leading-tight border-l-8 border-[color:var(--accent)] pl-6">
+              <span class="keep-together">Multiple Forms of Belief</span><br />
+              <span class="text-[22px] text-slate-500 font-semibold">信念の形式は複数ある</span>
+            </h1>
+
+            <div class="mt-8 text-[26.6px] leading-relaxed">
+              <p>論文タイプは「格」ではない。<br/>信念のスコープが違うだけ。</p>
+              <p class="text-accent font-extrabold mt-4">Paper types differ in scope of belief.</p>
+            </div>
+
+            <div class="mt-10 grid grid-cols-4 gap-5">
+              <div class="rounded-2xl border-2 border-slate-200 bg-white/70 shadow-sm p-6 text-center">
+                <div class="text-[20px] font-extrabold">Original</div>
+              </div>
+              <div class="rounded-2xl border-2 border-slate-200 bg-white/70 shadow-sm p-6 text-center">
+                <div class="text-[20px] font-extrabold">Review</div>
+              </div>
+              <div class="rounded-2xl border-2 border-slate-200 bg-white/70 shadow-sm p-6 text-center">
+                <div class="text-[20px] font-extrabold">Technical</div>
+              </div>
+              <div class="rounded-2xl border-2 border-slate-200 bg-white/70 shadow-sm p-6 text-center">
+                <div class="text-[20px] font-extrabold">Short</div>
+              </div>
+            </div>
+
+            <p class="mt-6 text-center text-[22px] text-slate-500 font-semibold">
+              横並び・上下関係なし / <span class="keep-together">Equal standing, different scopes.</span>
+            </p>
+          </div>
+
+          <!-- Visual analogy: "scope lens" (added, no text changes) -->
+          <div class="w-[420px] shrink-0">
+            <div class="rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+              <div class="text-[36px] font-extrabold text-accent leading-tight">
+                <span class="keep-together">Scope</span><br/>
+                <span class="text-[22px] text-slate-500 font-semibold">スコープ</span>
+              </div>
+              <p class="mt-3 text-[22px] text-slate-600 leading-relaxed">
+                Same “belief,” different zoom levels.
+              </p>
+
+              <svg class="mt-6 w-full" viewBox="0 0 420 220" aria-hidden="true">
+                <!-- grid -->
+                <defs>
+                  <pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse">
+                    <circle cx="1.5" cy="1.5" r="1.5" fill="#e5e7eb"/>
+                  </pattern>
+                </defs>
+                <rect x="0" y="0" width="420" height="220" fill="url(#dots)"/>
+                <!-- lens -->
+                <circle cx="150" cy="120" r="70" fill="rgba(53,111,140,0.12)" stroke="#356f8c" stroke-width="4"/>
+                <circle cx="150" cy="120" r="30" fill="rgba(198,165,74,0.18)" stroke="#c6a54a" stroke-width="4"/>
+                <line x1="220" y1="70" x2="400" y2="30" stroke="#1f2937" stroke-width="3" opacity="0.35"/>
+                <line x1="220" y1="170" x2="400" y2="210" stroke="#1f2937" stroke-width="3" opacity="0.35"/>
+                <rect x="285" y="78" width="110" height="64" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+                <text x="340" y="108" text-anchor="middle" font-size="16" font-weight="800" fill="#356f8c">Different</text>
+                <text x="340" y="128" text-anchor="middle" font-size="16" font-weight="800" fill="#356f8c">Scope</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 2 -->
+    <section class="slide">
+      <div class="max-w-6xl mx-auto w-full">
+        <h1 class="text-[48px] font-black leading-tight border-l-8 border-[color:var(--accent)] pl-6">
+          <span class="keep-together">Four Basic Formats</span><br />
+          <span class="text-[22px] text-slate-500 font-semibold">4つの基本形式</span>
+        </h1>
+
+        <div class="mt-10 grid grid-cols-4 gap-6">
+          <div class="rounded-2xl border-2 border-slate-200 bg-slate-50 shadow-sm p-8 flex flex-col justify-center text-center min-h-[340px]">
+            <div class="text-accent font-extrabold text-[26.6px]">Original</div>
+            <div class="text-[22px] text-slate-500 mt-3 font-semibold leading-snug">
+              新しい主張<br/>New Claim
+            </div>
+          </div>
+
+          <div class="rounded-2xl border-2 border-slate-200 bg-slate-50 shadow-sm p-8 flex flex-col justify-center text-center min-h-[340px]">
+            <div class="text-accent font-extrabold text-[26.6px]">Review</div>
+            <div class="text-[22px] text-slate-500 mt-3 font-semibold leading-snug">
+              問いの再設計<br/>Reframing Questions
+            </div>
+          </div>
+
+          <div class="rounded-2xl border-2 border-slate-200 bg-slate-50 shadow-sm p-8 flex flex-col justify-center text-center min-h-[340px]">
+            <div class="text-accent font-extrabold text-[26.6px]">Technical</div>
+            <div class="text-[22px] text-slate-500 mt-3 font-semibold leading-snug">
+              方法の提示<br/>Methodological
+            </div>
+          </div>
+
+          <div class="rounded-2xl border-2 border-slate-200 bg-slate-50 shadow-sm p-8 flex flex-col justify-center text-center min-h-[340px]">
+            <div class="text-accent font-extrabold text-[26.6px]">Short</div>
+            <div class="text-[22px] text-slate-500 mt-3 font-semibold leading-snug">
+              限定的主張<br/>Limited Claim
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual: "format cards" ribbon -->
+        <div class="mt-10 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="flex items-center justify-between gap-4">
+            <div class="text-[22px] text-slate-600 font-semibold">
+              Formats are tools, not status. / 形式は道具であって序列ではない。
+            </div>
+            <svg class="w-[220px] h-[40px]" viewBox="0 0 220 40" aria-hidden="true">
+              <rect x="4" y="8" width="52" height="24" rx="10" fill="rgba(53,111,140,0.18)" stroke="#356f8c" stroke-width="2"/>
+              <rect x="58" y="8" width="52" height="24" rx="10" fill="rgba(198,165,74,0.18)" stroke="#c6a54a" stroke-width="2"/>
+              <rect x="112" y="8" width="52" height="24" rx="10" fill="rgba(53,111,140,0.12)" stroke="#356f8c" stroke-width="2"/>
+              <rect x="166" y="8" width="52" height="24" rx="10" fill="rgba(198,165,74,0.12)" stroke="#c6a54a" stroke-width="2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 3 -->
+    <section class="slide grid-bg">
+      <div class="max-w-6xl mx-auto w-full">
+        <h1 class="text-[48px] font-black leading-tight border-l-8 border-[color:var(--accent)] pl-6">
+          <span class="keep-together">Venues of Publication</span><br />
+          <span class="text-[22px] text-slate-500 font-semibold">発表の場の違い</span>
+        </h1>
+
+        <div class="mt-8 grid grid-cols-2 gap-10 items-start">
+          <div class="text-[26.6px] leading-relaxed">
+            <ul class="space-y-5">
+              <li class="flex items-start gap-3">
+                <span class="mt-2 w-3 h-3 rounded-full bg-sub shrink-0"></span>
+                <span><span class="text-accent font-extrabold">Conference:</span> <br/> 議論を始める / Start a discussion</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-2 w-3 h-3 rounded-full bg-sub shrink-0"></span>
+                <span><span class="text-accent font-extrabold">Journal:</span> <br/>厳密に検証する / Rigorous verification</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-2 w-3 h-3 rounded-full bg-sub shrink-0"></span>
+                <span><span class="text-accent font-extrabold">Thesis:</span> <br/>統合された説明責任 / Integrated accountability</span>
+              </li>
+            </ul>
+
+            <div class="mt-10 rounded-2xl border border-slate-200 bg-white shadow-sm p-6">
+              <div class="text-[22px] text-slate-600 font-semibold">
+                One axis is “speed,” one axis is “verification.” <br/> 片方がスピード、片方が厳密さ。
+              </div>
+            </div>
+          </div>
+
+          <!-- Rebuilt axis chart (same labels & points) -->
+          <div class="rounded-2xl border border-slate-200 bg-white shadow-sm p-8">
+            <div class="relative w-full h-[360px]">
+              <!-- axes -->
+              <div class="absolute left-10 top-6 bottom-10 w-[3px] bg-slate-800"></div>
+              <div class="absolute left-10 right-6 bottom-10 h-[3px] bg-slate-800"></div>
+
+              <div class="absolute left-0 top-0 text-[22px] font-extrabold text-slate-800">
+                Verification 厳密さ
+              </div>
+              <div class="absolute right-0 bottom-0 text-right text-[22px] font-extrabold text-slate-800">
+                Speed スピード
+              </div>
+
+              <!-- points -->
+              <div class="absolute left-[72%] bottom-[18%] px-4 py-2 rounded-full text-white font-extrabold text-[20px] bg-sub shadow">
+                Conference
+              </div>
+              <div class="absolute left-[32%] bottom-[62%] px-4 py-2 rounded-full text-white font-extrabold text-[20px] bg-accent shadow">
+                Journal
+              </div>
+              <div class="absolute left-[10%] bottom-[70%] px-4 py-2 rounded-full font-extrabold text-[20px] bg-white border-2 border-slate-800 shadow">
+                Thesis
+              </div>
+
+              <!-- subtle guide -->
+              <svg class="absolute inset-0 w-full h-full" viewBox="0 0 600 360" preserveAspectRatio="none" aria-hidden="true">
+                <line x1="80" y1="40" x2="560" y2="310" stroke="#1f2937" stroke-width="2" opacity="0.08"/>
+                <line x1="80" y1="140" x2="560" y2="140" stroke="#1f2937" stroke-width="2" opacity="0.06"/>
+                <line x1="250" y1="40" x2="250" y2="310" stroke="#1f2937" stroke-width="2" opacity="0.06"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 4 -->
+    <section class="slide">
+      <div class="max-w-6xl mx-auto w-full">
+        <h1 class="text-[48px] font-black leading-tight border-l-8 border-[color:var(--accent)] pl-6">
+          <span class="keep-together">Why a Journal is Necessary</span><br />
+          <span class="text-[22px] text-slate-500 font-semibold">なぜJournalが必要か</span>
+        </h1>
+
+        <div class="mt-8 text-[26.6px] leading-relaxed">
+          <p class="text-accent font-extrabold mt-4">A thesis is internal accountability.<br/>A journal article is external verification.</p>
+          <p class="mt-4 text-[20px]">Thesisは内部責任。Journalは外部検証。</p>
+          <p class="mt-4 text-[20px]">Inquiryは公共空間で完結する。</p>
+        </div>
+
+        <div class="mt-12 flex items-center justify-center gap-8">
+          <div class="w-[180px] h-[180px] rounded-full border-4 border-slate-200 bg-slate-50 flex items-center justify-center font-extrabold text-[26.6px]">
+            Lab
+          </div>
+          <div class="text-[56px] text-accent font-black">→</div>
+          <div class="w-[320px] h-[320px] rounded-full border-4 border-dashed border-[color:var(--accent)] bg-white flex items-center justify-center text-center font-extrabold text-[26.6px] px-6">
+            Scientific Community
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Slide 5 -->
+    <section class="slide grid-bg">
+      <div class="max-w-6xl mx-auto w-full">
+        <h1 class="text-[48px] font-black leading-tight border-l-8 border-[color:var(--accent)] pl-6">
+          <span class="keep-together">Research Phase and Paper Type</span><br />
+          <span class="text-[22px] text-slate-500 font-semibold">研究フェーズと論文タイプ</span>
+        </h1>
+
+        <div class="mt-14 grid grid-cols-3 gap-10">
+          <div class="text-center rounded-2xl border border-slate-200 bg-white shadow-sm p-10">
+            <div class="text-sub font-black text-[36px] leading-tight">Exploration<br/><span class="text-[22px] font-semibold text-slate-500">探索</span></div>
+            <div class="mt-6 text-[26.6px] font-extrabold">Short / Technical</div>
+          </div>
+
+          <div class="text-center rounded-2xl border border-slate-200 bg-white shadow-sm p-10">
+            <div class="text-accent font-black text-[36px] leading-tight">Stability<br/><span class="text-[22px] font-semibold text-slate-500">安定</span></div>
+            <div class="mt-6 text-[26.6px] font-extrabold">Original</div>
+          </div>
+
+          <div class="text-center rounded-2xl border border-slate-200 bg-white shadow-sm p-10">
+            <div class="text-accent font-black text-[36px] leading-tight">Establishment<br/><span class="text-[22px] font-semibold text-slate-500">軸確立</span></div>
+            <div class="mt-6 text-[26.6px] font-extrabold">Review</div>
+          </div>
+        </div>
+
+        <!-- Time / Phase bar (same text) -->
+        <div class="mt-12 relative w-full h-[8px] bg-accent rounded-full">
+          <div class="absolute right-[-2px] top-1/2 -translate-y-1/2 w-0 h-0 border-y-[12px] border-y-transparent border-l-[18px] border-l-[color:var(--accent)]"></div>
+          <span class="absolute right-0 top-6 text-[22px] font-extrabold">Time / Phase</span>
+        </div>
+
+        <p class="mt-4 text-[20px] text-slate-500">
+          博士は軸を持つ。その一つの形がReview。
+        </p>
+      </div>
+    </section>
+
+    <!-- Slide 6 -->
+    <section class="slide">
+      <div class="max-w-6xl mx-auto w-full">
+        <h1 class="text-[48px] font-black leading-tight border-l-8 border-[color:var(--accent)] pl-6">
+          <span class="keep-together">What is a Thesis?</span><br />
+          <span class="text-[22px] text-slate-500 font-semibold">Thesisとは何か</span>
+        </h1>
+
+        <div >
+          <p class="text-accent font-black text-[36px] mt-4">A thesis is a coherent belief system.</p>
+          <p class="mt-8 text-[20px]">Thesisは枚数ではない。<br/>一貫した信念体系である。</p>
+          
+        </div>
+
+        <!-- Research Arc visual (same labels) -->
+        <div class="mt-10 rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-inner">
+          <div class="relative w-[720px] max-w-full mx-auto h-[260px]">
+            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 720 260" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M 80,220 Q 360,20 640,220" stroke="#c6a54a" stroke-width="8" fill="none" />
+              <text x="360" y="60" text-anchor="middle" font-size="32" font-weight="900" fill="#c6a54a">Research Arc</text>
+            </svg>
+            <div class="absolute bottom-6 left-10 w-[92px] h-[120px] bg-white border border-slate-200 rounded-xl flex items-start justify-center pt-3 text-[16px] font-extrabold text-slate-600">Paper 1</div>
+            <div class="absolute bottom-6 left-[45%] -translate-x-1/2 w-[92px] h-[140px] bg-white border border-slate-200 rounded-xl flex items-start justify-center pt-3 text-[16px] font-extrabold text-slate-600">Paper 2</div>
+            <div class="absolute bottom-6 right-10 w-[92px] h-[110px] bg-white border border-slate-200 rounded-xl flex items-start justify-center pt-3 text-[16px] font-extrabold text-slate-600">Paper 3</div>
+
+            
+          </div>
+
+          <p class="mt-6 text-center text-[22px] text-slate-500 font-semibold">
+            これをResearch Arcと呼ぶ。詳細はQuarter Planで説明。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 7 -->
+    <section class="slide bg-dark text-accent">
+      <div class="max-w-6xl mx-auto w-full">
+        <h1 class="text-[48px] font-black leading-tight border-l-8 border-[color:var(--accent)] pl-6">
+          <span class="keep-together　text-accent">Don’t Choose by Format</span><br/>
+          <span class="text-[22px] text-slate-300 font-semibold">形式から選ぶな</span>
+        </h1>
+
+        <div class="mt-14">
+          <p class="text-center text-[40px] font-black leading-tight">
+            問いから選べ。<br/>
+            <span class="text-sub">Choose from your Question.</span>
+          </p>
+
+          <div class="mt-14 flex items-center justify-center gap-8 flex-wrap">
+            <div class="px-10 py-6 rounded-2xl border-2 border-[color:var(--accent)] bg-white/5 font-extrabold text-[26.6px]">Question</div>
+            <div class="text-[56px] text-accent font-black">→</div>
+            <div class="px-10 py-6 rounded-2xl border-2 border-[color:var(--accent)] bg-white/5 font-extrabold text-[26.6px]">Format</div>
+            <div class="text-[56px] text-accent font-black">→</div>
+            <div class="px-10 py-6 rounded-2xl border-2 border-[color:var(--accent)] bg-white/5 font-extrabold text-[26.6px]">Venue</div>
+          </div>
+
+          <!-- Visual analogy: map vs forest (no new text) -->
+          <div class="mt-12 grid grid-cols-2 gap-6">
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-6">
+              <svg class="w-full h-[140px]" viewBox="0 0 520 140" aria-hidden="true">
+                <rect x="10" y="12" width="230" height="116" rx="18" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
+                <path d="M40 102 C 70 50, 120 120, 170 64" stroke="#c6a54a" stroke-width="6" fill="none" stroke-linecap="round"/>
+                <circle cx="48" cy="98" r="8" fill="#c6a54a"/>
+                <circle cx="168" cy="66" r="8" fill="#c6a54a"/>
+                <text x="125" y="40" text-anchor="middle" font-size="18" font-weight="800" fill="rgba(255,255,255,0.75)">MAP</text>
+
+                <rect x="280" y="12" width="230" height="116" rx="18" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
+                <path d="M305 112 L 330 70 L 355 112 Z" fill="rgba(53,111,140,0.55)"/>
+                <path d="M360 112 L 392 52 L 424 112 Z" fill="rgba(53,111,140,0.65)"/>
+                <path d="M420 112 L 452 70 L 484 112 Z" fill="rgba(53,111,140,0.55)"/>
+                <text x="395" y="40" text-anchor="middle" font-size="18" font-weight="800" fill="rgba(255,255,255,0.75)">FOREST</text>
+              </svg>
+            </div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-6 flex items-center">
+              <div class="text-[22px] text-accent text-slate-200 font-semibold leading-relaxed">
+                (Question → Format → Venue) is the map-like order.<br/>
+                <span class="text-slate-400">順番が逆だと、だいたい迷う。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 8 -->
+    <section class="slide grid-bg">
+      <div class="max-w-6xl mx-auto w-full">
+        <h1 class="text-[48px] font-black leading-tight border-l-8 border-[color:var(--accent)] pl-6">
+          <span class="keep-together">What is Research Ethics?</span><br />
+          <span class="text-[22px] text-slate-500 font-semibold">研究倫理とは何か</span>
+        </h1>
+
+        <div class="mt-8 text-[26.6px] leading-relaxed">
+          <p>倫理とは、<br/>信念を出す資格の条件である。</p>
+        </div>
+
+        <div class="mt-14 flex flex-col items-center">
+          <div class="w-[520px] max-w-full rounded-2xl bg-accent text-white text-center font-black text-[26.6px] py-5 shadow-lg">
+            Belief / Claim
+          </div>
+          <div class="w-[580px] max-w-full rounded-2xl bg-sub text-white text-center font-black text-[22px] py-4 mt-2 shadow-lg">
+            Data Integrity / Reproducibility<br/>
+            Attribution / Transparency
+          </div>
+
+          <div class="mt-8 rounded-2xl border border-slate-200 bg-white shadow-sm p-6 w-[720px] max-w-full">
+            <div class="flex items-center justify-between gap-6">
+              <div class="text-[22px] text-slate-600 font-semibold">Ethics as the Foundation of Belief</div>
+              <svg class="w-[220px] h-[52px]" viewBox="0 0 220 52" aria-hidden="true">
+                <rect x="10" y="10" width="200" height="32" rx="16" fill="rgba(53,111,140,0.14)" stroke="#356f8c" stroke-width="2"/>
+                <rect x="26" y="16" width="62" height="20" rx="10" fill="rgba(198,165,74,0.35)"/>
+                <rect x="94" y="16" width="62" height="20" rx="10" fill="rgba(198,165,74,0.25)"/>
+                <rect x="162" y="16" width="32" height="20" rx="10" fill="rgba(198,165,74,0.18)"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 9 -->
+    <section class="slide bg-accent text-accent">
+      <div class="max-w-6xl mx-auto w-full flex flex-col justify-center flex-1">
+        <h1 class="text-[48px] font-black leading-tight border-l-8 border-white/40 pl-6">
+          <span class="keep-together">The Paper as Responsibility</span><br />
+          <span class="text-[22px] text-white/80 font-semibold">責任としての論文</span>
+        </h1>
+
+        <div class="mt-14 flex flex-col items-center justify-center text-center">
+          <p class="text-[36px] font-black leading-tight">
+            論文は<br/>
+            <span class="font-black text-accent">検証可能な信念</span>を<br/>
+            <span class="text-sub">倫理的に提出する行為</span>である。
+          </p>
+
+          <div class="mt-14 p-10 rounded-2xl border-4 border-white/70 bg-white/10 shadow-2xl max-w-[920px]">
+            <p class="text-[40px] text-sub font-black leading-tight">
+              A paper is an ethically submitted,<br/>verifiable belief.
+            </p>
+          </div>
+
+          <!-- Minimal “responsibility loop” visual -->
+          <div class="mt-14 rounded-2xl bg-white/10 border border-white/20 p-6 w-[920px] max-w-full">
+            <svg class="w-full h-[120px]" viewBox="0 0 920 120" aria-hidden="true">
+              <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+                  <path d="M0,0 L10,5 L0,10 Z" fill="rgba(255,255,255,0.75)"/>
+                </marker>
+              </defs>
+              <circle cx="140" cy="60" r="36" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.65)" stroke-width="3"/>
+              <circle cx="460" cy="60" r="36" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.65)" stroke-width="3"/>
+              <circle cx="780" cy="60" r="36" fill="rgba(255,255,255,0.10)" stroke="rgba(255,255,255,0.65)" stroke-width="3"/>
+              <line x1="176" y1="60" x2="424" y2="60" stroke="rgba(255,255,255,0.65)" stroke-width="4" marker-end="url(#arrow)"/>
+              <line x1="496" y1="60" x2="744" y2="60" stroke="rgba(255,255,255,0.65)" stroke-width="4" marker-end="url(#arrow)"/>
+              <text x="140" y="66" text-anchor="middle" font-size="18" font-weight="900" fill="rgba(255,255,255,0.9)">Claim</text>
+              <text x="460" y="66" text-anchor="middle" font-size="18" font-weight="900" fill="rgba(255,255,255,0.9)">Ethics</text>
+              <text x="780" y="66" text-anchor="middle" font-size="18" font-weight="900" fill="rgba(255,255,255,0.9)">Verify</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <div class="controls">
+    <div class="btn" onclick="prevSlide()">BACK</div>
+    <div id="slideNum" class="btn bg-white !text-[#1f2937] font-black border-2 border-[#1f2937] shadow-md">1 / 9</div>
+    <div class="btn" onclick="nextSlide()">NEXT</div>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const progressBar = document.getElementById('progressBar');
+    const slideNumDisp = document.getElementById('slideNum');
+
+    function updateSlide() {
+      slides.forEach((slide, index) => slide.classList.toggle('active', index === currentSlide));
+      const progress = ((currentSlide + 1) / slides.length) * 100;
+      progressBar.style.width = `${progress}%`;
+      slideNumDisp.innerText = `${currentSlide + 1} / ${slides.length}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < slides.length - 1) { currentSlide++; updateSlide(); }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) { currentSlide--; updateSlide(); }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+    });
+
+    updateSlide();
+  </script>
+</body>
+</html>

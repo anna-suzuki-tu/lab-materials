@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quarter Plan & Individual Meeting｜Lab Forum 2026 Q1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter','Noto Sans JP',sans-serif;background:#f3f4f6;overflow:hidden;}
+.slide-container{width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;}
+.slide{width:100%;height:100%;padding:3rem 4rem;display:none;flex-direction:column;justify-content:center;background:#fff;color:#1f2937;position:relative;overflow:hidden;}
+.slide.active{display:flex;}
+.slide-dark{background:#1f2937;}
+.slide-accent{background:#356f8c;}
+.progress-bar{position:absolute;bottom:0;left:0;height:5px;background:#356f8c;transition:width 0.3s ease;}
+.slide-dark .progress-bar,.slide-accent .progress-bar{background:#c6a54a;}
+.controls{position:fixed;bottom:1.5rem;right:2rem;display:flex;gap:0.75rem;z-index:100;}
+.btn{padding:0.5rem 1.1rem;background:#1f2937;color:#fff;border-radius:6px;cursor:pointer;font-weight:600;font-size:25px;font-family:'Inter',sans-serif;transition:all 0.2s;user-select:none;border:none;}
+.btn:hover{background:#374151;}
+.btn-count{background:#fff;color:#1f2937;border:2px solid #1f2937;pointer-events:none;}
+.slide-num{position:absolute;bottom:1.1rem;left:2rem;font-size:11px;color:#9ca3af;font-family:'Inter',sans-serif;letter-spacing:1px;}
+.slide-dark .slide-num,.slide-accent .slide-num{color:rgba(255,255,255,0.4);}
+
+/* bilingual typography */
+.en{font-family:'Inter',sans-serif;}
+.ja{font-family:'Noto Sans JP',sans-serif;}
+.bilingual{display:flex;flex-direction:column;gap:0.1rem;}
+.bi-en{font-size:2em;font-weight:700;color:inherit;}
+.bi-ja{font-size:1.2em;font-weight:400;color:#9ca3af;line-height:1.3;}
+.slide-dark .bi-ja,.slide-accent .bi-ja{color:rgba(255,255,255,0.5);}
+
+/* label */
+.label{font-size:20px;font-weight:700;letter-spacing:3px;color:#356f8c;text-transform:uppercase;margin-bottom:0.7rem;}
+.label-white{color:rgba(255,255,255,0.6);}
+
+/* section head */
+.sh{border-left:5px solid #356f8c;padding-left:0.8rem;margin-bottom:0.3rem;}
+.sh-en{font-size:2rem;font-weight:700;color:#1f2937;line-height:1.1;}
+.sh-ja{font-size:1.5rem;color:#6b7280;margin-top:0.15rem;}
+.sh-white .sh-en{color:#fff;}
+.sh-white .sh-ja{color:rgba(255,255,255,0.55);}
+.sh-white{border-color:#c6a54a;}
+.sub{font-size:1.5rem;color:#9ca3af;padding-left:1rem;margin-bottom:1.3rem;line-height:1.5;}
+.sub-white{color:rgba(255,255,255,0.5);}
+
+/* cards */
+.grid{display:grid;gap:0.9rem;}
+.g2{grid-template-columns:1fr 1fr;}
+.g3{grid-template-columns:1fr 1fr 1fr;}
+.g4{grid-template-columns:1fr 1fr 1fr 1fr;}
+.card{border-radius:10px;padding:1rem 1.1rem;}
+.card-light{background:#f9fafb;border:1.5px solid #e5e7eb;}
+.card-outline{background:#fff;border:2px solid #356f8c;}
+.card-outline-gold{background:#fff;border:2px solid #c6a54a;}
+.card-dk{background:#374151;border:1.5px solid #4b5563;}
+.card-teal{background:#356f8c;border:1.5px solid #356f8c;}
+
+.ct{font-size:1.5rem;font-weight:700;color:#356f8c;margin-bottom:0.25rem;}
+.ct-gold{color:#c6a54a;}
+.ct-white{color:#fff;}
+.cb-en{font-size:1.5rem;color:#374151;line-height:1.4;}
+.cb-ja{font-size:1.5rem;color:#9ca3af;line-height:1.4;margin-top:0.15rem;}
+.cb-white-en{font-size:1.5rem;color:#e5e7eb;line-height:1.4;}
+.cb-white-ja{font-size:1.5rem;color:rgba(255,255,255,0.45);line-height:1.4;margin-top:0.15rem;}
+
+/* tags / badges */
+.tag{display:inline-block;font-size:20px;font-weight:700;letter-spacing:1px;padding:2px 8px;border-radius:4px;text-transform:uppercase;}
+.tag-t{background:#e0eef4;color:#356f8c;}
+.tag-g{background:#faf0dd;color:#a07a20;}
+.tag-dk{background:#374151;color:#d1d5db;}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:24px;font-weight:700;padding:3px 10px;border-radius:20px;}
+.badge-t{background:#e0eef4;color:#356f8c;}
+.badge-g{background:#faf0dd;color:#a07a20;}
+.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.dot-t{background:#356f8c;}
+.dot-g{background:#c6a54a;}
+
+/* divider */
+.div{width:44px;height:4px;background:#356f8c;border-radius:2px;margin:0.8rem 0;}
+
+/* quote */
+.quote{border-left:4px solid #c6a54a;padding:0.6rem 1rem;background:#fffbf0;border-radius:0 6px 6px 0;margin-top:1.2rem;}
+.quote-dk{background:#374151;border-color:#c6a54a;}
+.q-en{font-size:1.7rem;color:#4b5563;font-style:italic;}
+.q-ja{font-size:1.5rem;color:#9ca3af;margin-top:0.2rem;}
+.quote-dk .q-en{color:#d1d5db;}
+.quote-dk .q-ja{color:rgba(255,255,255,0.4);}
+
+/* icon circle */
+.ic{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ic-t{background:#e0eef4;}
+.ic-g{background:#faf0dd;}
+
+/* row */
+.row{display:flex;align-items:flex-start;gap:1rem;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;}
+
+/* table */
+.tbl{width:100%;border-collapse:collapse;font-size:1.5rem;}
+.tbl th{background:#f3f4f6;padding:0.45rem 0.75rem;text-align:left;font-weight:700;color:#6b7280;font-size:1.5rem;text-transform:uppercase;letter-spacing:1px;border-bottom:1.5px solid #e5e7eb;}
+.tbl td{padding:0.5rem 0.75rem;border-bottom:1px solid #f3f4f6;color:#374151;vertical-align:top;line-height:1.4;}
+.tbl tr:last-child td{border-bottom:none;}
+.td-en{font-weight:600;color:#1f2937;}
+.td-ja{font-size:1.5rem;color:#9ca3af;margin-top:0.1rem;}
+
+/* wfull */
+.tbl-wrap{border:1.5px solid #e5e7eb;border-radius:10px;overflow:hidden;}
+</style>
+</head>
+<body>
+<div class="slide-container">
+
+<!-- ── SLIDE 0 : Title ── -->
+<div class="slide active">
+  <div class="label">Lab Forum 2026 Q1 ｜ DeSFELab</div>
+  <div style="font-size:4rem;font-weight:700;color:#1f2937;line-height:1.1;">
+    Quarter Plan<br>
+    <span style="color:#356f8c;">&amp; Individual Meeting</span>
+  </div>
+  <div style="font-size:2rem;color:#9ca3af;margin-top:0.3rem;">
+    クォータープランと個別面談について
+  </div>
+  <div class="div"></div>
+  <div style="display:flex;gap:0.7rem;flex-wrap:wrap;">
+    <span class="badge badge-t"><span class="dot dot-t"></span>Lab OS v20260403</span>
+    <span class="badge badge-g"><span class="dot dot-g"></span>全学年対象 ｜ All grades</span>
+  </div>
+  <div class="progress-bar"></div>
+  <div class="slide-num"></div>
+</div>
+
+<!-- ── SLIDE 1 : Agenda ── -->
+<div class="slide">
+  <div class="label">Today's agenda ｜ 今日の内容</div>
+  <div class="sh">
+    <div class="sh-en">Two topics today</div>
+    <div class="sh-ja">今日共有する2つのテーマ</div>
+  </div>
+  <div class="sub" style="margin-bottom:1.4rem;">This Lab Forum covers the two core operating tools of Suzuki Lab OS.<br>このLabForumでは、Lab OSの2つの中核ツールを説明します。</div>
+  <div class="grid g2" style="gap:1.4rem;">
+    <div class="card card-outline" style="padding:1.4rem;">
+      <div class="tag tag-t" style="margin-bottom:0.7rem;">01</div>
+      <div style="font-size:2rem;font-weight:700;color:#356f8c;">Quarter Plan</div>
+      <div style="font-size:1.5rem;color:#9ca3af;margin-bottom:0.7rem;">クォータープラン</div>
+      <div class="cb-en">A document to verbalize your question, goal, and backward-designed schedule every 3 months.</div>
+      <div class="cb-ja">3ヶ月ごとに「問い・目標・逆算設計」を言語化するドキュメント。自律と構造的思考のための習慣。</div>
+    </div>
+    <div class="card card-outline-gold" style="padding:1.4rem;">
+      <div class="tag tag-g" style="margin-bottom:0.7rem;">02</div>
+      <div style="font-size:2rem;font-weight:700;color:#c6a54a;">Individual Meeting</div>
+      <div style="font-size:1.5rem;color:#9ca3af;margin-bottom:0.7rem;">個別面談</div>
+      <div class="cb-en">A quarterly meeting to clarify research identity and growth direction. Not a progress report — a space for questions.</div>
+      <div class="cb-ja">研究軸と成長の方向性を確認する四半期面談。進捗報告ではなく、問いの場。</div>
+    </div>
+  </div>
+  <div class="progress-bar"></div>
+  <div class="slide-num"></div>
+</div>
+
+<!-- ── SLIDE 2 : Research moves in individual work ── -->
+<div class="slide slide-dark">
+  <div class="label label-white">First, a reminder ｜ まず確認</div>
+  <div class="sh sh-white">
+    <div class="sh-en">Research does not move in meetings</div>
+    <div class="sh-ja">研究はミーティングでは進まない</div>
+  </div>
+  <div class="sub sub-white" style="margin-bottom:1.6rem;">It moves in individual work. Meetings are for decisions, not motion.<br>研究が前に進むのは個人作業の中。ミーティングは判断の場であって、推進力ではない。</div>
+  <div class="grid g3" style="gap:0.9rem;">
+    <div class="card card-dk">
+      <div style="font-size:1.5rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#c6a54a;margin-bottom:0.4rem;">Team Meeting</div>
+      <div class="cb-white-en">Tactical decisions<br>進む・戻るの判断</div>
+      <div class="cb-white-ja">戦術的判断の場</div>
+    </div>
+    <div class="card card-dk">
+      <div style="font-size:1.5rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#c6a54a;margin-bottom:0.4rem;">Lab Forum</div>
+      <div class="cb-white-en">Refine value (Why)<br>研究の価値を磨く</div>
+      <div class="cb-white-ja">価値を磨く場</div>
+    </div>
+    <div class="card card-teal">
+      <div style="font-size:1.5rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:0.4rem;">Individual Meeting</div>
+      <div class="cb-white-en">Align research identity<br>研究軸と方向性を整える</div>
+      <div class="cb-white-ja">研究軸を整える場</div>
+    </div>
+  </div>
+  <div class="quote quote-dk">
+    <div class="q-en">If you only move before meetings, autonomy is weak.</div>
+    <div class="q-ja">ミーティング前だけ動くのは、自律が弱いサイン。</div>
+  </div>
+  <div class="progress-bar"></div>
+  <div class="slide-num"></div>
+</div>
+
+<!-- ── SLIDE 3 : What is Quarter Plan ── -->
+<div class="slide">
+  <div class="label">Quarter Plan ｜ クォータープラン</div>
+  <div class="sh">
+    <div class="sh-en">What is it?</div>
+    <div class="sh-ja">これは何か</div>
+  </div>
+  <div class="sub" style="margin-bottom:1.2rem;">
+    NOT a progress report. A structural reflection of your thinking.<br>
+    進捗報告ではない。「自分の思考構造」を可視化するための文書。
+  </div>
+  <div class="grid g2" style="gap:0.8rem;">
+    <div>
+      <div class="card card-light" style="margin-bottom:0.7rem;">
+        <div class="ct">Section 0 ｜ 前Quarter振り返り</div>
+        <div class="cb-en">Reflection on last quarter</div>
+        <div class="cb-ja">達成・未達・持ち越し・新たな違和感</div>
+      </div>
+      <div class="card card-light" style="margin-bottom:0.7rem;">
+        <div class="ct">Section 1 ｜ 問いと位置づけ</div>
+        <div class="cb-en">Question &amp; positioning</div>
+        <div class="cb-ja">Core Question・Phase・ロードマップ上の位置</div>
+      </div>
+      <div class="card card-light">
+        <div class="ct">Section 2 ｜ Quarter Goal</div>
+        <div class="cb-en">Goal in one English sentence + rationale + success definition</div>
+        <div class="cb-ja">英語1文・理由・成功の定義</div>
+      </div>
+    </div>
+    <div>
+      <div class="card card-light" style="margin-bottom:0.7rem;">
+        <div class="ct">Section 3 ｜ Monthly Milestones</div>
+        <div class="cb-en">Backward-designed table for each of the 3 months</div>
+        <div class="cb-ja">月ごとの逆算テーブル（3ヶ月分）</div>
+      </div>
+      <div class="card card-light" style="margin-bottom:0.7rem;">
+        <div class="ct">Section 4 ｜ 習慣ログ</div>
+        <div class="cb-en">Habit log status</div>
+        <div class="cb-ja">Research Log / Thinking Log / Paper Card / Core Question</div>
+      </div>
+      <div class="card card-light">
+        <div class="ct">Section 5 ｜ 研究室へのフィードバック</div>
+        <div class="cb-en">Feedback on lab operations &amp; meetings</div>
+        <div class="cb-ja">ミーティング体制・環境への意見</div>
+      </div>
+    </div>
+  </div>
+  <div class="progress-bar"></div>
+  <div class="slide-num"></div>
+</div>
+
+<!-- ── SLIDE 4 : Four Quarters ── -->
+<div class="slide">
+  <div class="label">Quarter Plan ｜ サイクル</div>
+  <div class="sh">
+    <div class="sh-en">The four quarters</div>
+    <div class="sh-ja">4つのQuarter</div>
+  </div>
+  <div class="sub" style="margin-bottom:1.3rem;">
+    The year is divided into four 90-day windows. Design research by working backward from fixed events.<br>
+    1年を4つの90日に分け、固定イベントから逆算して研究を設計する。
+  </div>
+  <div class="grid g4" style="gap:0.8rem;">
+    <div style="text-align:center;">
+      <div style="font-size:3rem;margin-bottom:0.3rem;">🌸</div>
+      <div style="font-weight:700;color:#356f8c;font-size:0.88rem;margin-bottom:0.1rem;">Q1 ｜ 4–6月</div>
+      <div style="font-size:1.5rem;color:#9ca3af;margin-bottom:0.5rem;">April – June</div>
+      <div style="font-size:1.5rem;color:#4b5563;line-height:1.5;background:#f0f9ff;padding:0.6rem;border-radius:8px;">
+        Annual design<br>年間設計・逆算ロードマップ
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:3rem;margin-bottom:0.3rem;">🏖️</div>
+      <div style="font-weight:700;color:#356f8c;font-size:0.88rem;margin-bottom:0.1rem;">Q2 ｜ 7–9月</div>
+      <div style="font-size:1.5rem;color:#9ca3af;margin-bottom:0.5rem;">July – September</div>
+      <div style="font-size:1.5rem;color:#4b5563;line-height:1.5;background:#f0f9ff;padding:0.6rem;border-radius:8px;">
+        Hypothesis testing<br>仮説検証・院試（B4）
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:3rem;margin-bottom:0.3rem;">🍂</div>
+      <div style="font-weight:700;color:#356f8c;font-size:0.88rem;margin-bottom:0.1rem;">Q3 ｜ 10–12月</div>
+      <div style="font-size:1.5rem;color:#9ca3af;margin-bottom:0.5rem;">October – December</div>
+      <div style="font-size:1.5rem;color:#4b5563;line-height:1.5;background:#f0f9ff;padding:0.6rem;border-radius:8px;">
+        Figures &amp; Draft<br>図・Draft・学会審査
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:3rem;margin-bottom:0.3rem;">❄️</div>
+      <div style="font-weight:700;color:#356f8c;font-size:0.88rem;margin-bottom:0.1rem;">Q4 ｜ 1–3月</div>
+      <div style="font-size:1.5rem;color:#9ca3af;margin-bottom:0.5rem;">January – March</div>
+      <div style="font-size:1.5rem;color:#4b5563;line-height:1.5;background:#f0f9ff;padding:0.6rem;border-radius:8px;">
+        Submit &amp; defend<br>提出・発表・次年度設計
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:1.2rem;display:flex;align-items:center;gap:0.7rem;background:#f9fafb;padding:0.8rem 1.1rem;border-radius:10px;border:1.5px solid #e5e7eb;">
+    <div style="font-size:1.5rem;color:#6b7280;font-weight:700;">Notion →</div>
+    <div style="font-size:1.5rem;color:#4b5563;">Templates is in DB. "</span> to register. ｜ テンプレートはDBにある。</div>
+  </div>
+  <div class="progress-bar"></div>
+  <div class="slide-num"></div>
+</div>
+
+<!-- ── SLIDE 5 : How to use ── -->
+<div class="slide">
+  <div class="label">Quarter Plan ｜ 使い方</div>
+  <div class="sh">
+    <div class="sh-en">How it connects to meetings</div>
+    <div class="sh-ja">面談との連動</div>
+  </div>
+  <div class="sub" style="margin-bottom:1.3rem;">
+    The Quarter Plan is the fuel for the meeting. Never arrive empty-handed.<br>
+    Quarter Planは面談の「燃料」である。空で来ない。
+  </div>
+  <div style="display:flex;flex-direction:column;gap:1rem;">
+    <div class="row">
+      <div class="ic ic-t"><span style="font-size:1.7rem;font-weight:700;color:#356f8c;">1</span></div>
+      <div>
+        <div style="font-weight:700;font-size:1.7rem;color:#1f2937;">Submit by the day before the meeting ｜ 面談前日までに記入・提出</div>
+        <div style="font-size:1.5rem;color:#6b7280;margin-top:0.2rem;">Fill in Sections 0–5 yourself. The goal is to verbalize your current position without waiting for advisor input.<br>自分で記入する。教員を待たずに「自分の現在地」を言語化する練習が目的。</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="ic ic-t"><span style="font-size:1.7rem;font-weight:700;color:#356f8c;">2</span></div>
+      <div>
+        <div style="font-weight:700;font-size:1.7rem;color:#1f2937;">During the meeting: focus on Sections 2 &amp; 3 ｜ 面談中はSection 2・3を中心に議論</div>
+        <div style="font-size:1.5rem;color:#6b7280;margin-top:0.2rem;">Jointly verify and revise the Quarter Goal and backward milestones. This is a decision space, not a reporting space.<br>Quarter Goalの妥当性と逆算ミルストーンを一緒に確認・修正する。報告ではなく、判断の場。</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="ic ic-g"><span style="font-size:1.5rem;font-weight:700;color:#c6a54a;">3</span></div>
+      <div>
+        <div style="font-weight:700;font-size:1.5rem;color:#1f2937;">At quarter end: fill in Section 0 (reflection) ｜ Quarter末にSection 0を記入</div>
+        <div style="font-size:1.5rem;color:#6b7280;margin-top:0.2rem;">Honestly record what was achieved, what wasn't, carry-overs, and new discomfort. This becomes the bridge to the next quarter. (Skip in Q1.)<br>達成・未達・持ち越し・違和感を正直に書く。次Quarterへの橋渡し。Q1のみ記入不要。</div>
+      </div>
+    </div>
+  </div>
+  <div class="progress-bar"></div>
+  <div class="slide-num"></div>
+</div>
+
+<!-- ── SLIDE 6 : Individual Meeting - What ── -->
+<div class="slide slide-accent">
+  <div class="label label-white">Individual Meeting ｜ 個別面談</div>
+  <div class="sh sh-white">
+    <div class="sh-en">What is this meeting for?</div>
+    <div class="sh-ja">この面談は何をする場か</div>
+  </div>
+  <div class="sub sub-white" style="margin-bottom:1.6rem;">
+    Purpose: clarify research identity and growth direction.<br>
+    目的：研究軸と成長の方向性を確認すること。
+  </div>
+  <div class="grid g2" style="gap:1.2rem;">
+    <div>
+      <div style="font-size:1.5rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:0.7rem;">What it IS ｜ この面談でやること</div>
+      <div style="display:flex;flex-direction:column;gap:0.55rem;">
+        <div class="row" style="gap:0.6rem;align-items:flex-start;">
+          <span style="color:#c6a54a;font-weight:700;font-size:1rem;line-height:1;">→</span>
+          <div>
+            <div style="font-size:1.5rem;color:#fff;">Confirm the research axis</div>
+            <div style="font-size:1.5rem;color:rgba(255,255,255,0.5);">研究軸の確認</div>
+          </div>
+        </div>
+        <div class="row" style="gap:0.6rem;align-items:flex-start;">
+          <span style="color:#c6a54a;font-weight:700;font-size:1rem;line-height:1;">→</span>
+          <div>
+            <div style="font-size:1.5rem;color:#fff;">Reflect on growth</div>
+            <div style="font-size:1.5rem;color:rgba(255,255,255,0.5);">成長の振り返り</div>
+          </div>
+        </div>
+        <div class="row" style="gap:0.6rem;align-items:flex-start;">
+          <span style="color:#c6a54a;font-weight:700;font-size:1rem;line-height:1;">→</span>
+          <div>
+            <div style="font-size:1.5rem;color:#fff;">Career design</div>
+            <div style="font-size:1.5rem;color:rgba(255,255,255,0.5);">キャリア設計</div>
+          </div>
+        </div>
+        <div class="row" style="gap:0.6rem;align-items:flex-start;">
+          <span style="color:#c6a54a;font-weight:700;font-size:1rem;line-height:1;">→</span>
+          <div>
+            <div style="font-size:1.5rem;color:#fff;">Check condition (confusion, workload)</div>
+            <div style="font-size:1.5rem;color:rgba(255,255,255,0.5);">状態確認（迷い・負荷）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:1.5rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:0.7rem;">What it is NOT ｜ この面談でやらないこと</div>
+      <div style="display:flex;flex-direction:column;gap:0.55rem;">
+        <div class="row" style="gap:0.6rem;align-items:flex-start;">
+          <span style="color:rgba(255,255,255,0.3);font-weight:700;font-size:1rem;line-height:1;">✕</span>
+          <div>
+            <div style="font-size:1.5rem;color:rgba(255,255,255,0.65);">Technical debate / method discussion</div>
+            <div style="font-size:1.5rem;color:rgba(255,255,255,0.4);">技術的判断・手法の議論</div>
+          </div>
+        </div>
+        <div class="row" style="gap:0.6rem;align-items:flex-start;">
+          <span style="color:rgba(255,255,255,0.3);font-weight:700;font-size:1rem;line-height:1;">✕</span>
+          <div>
+            <div style="font-size:1.5rem;color:rgba(255,255,255,0.65);">Line-by-line manuscript corrections</div>
+            <div style="font-size:1.5rem;color:rgba(255,255,255,0.4);">原稿の細部チェック</div>
+          </div>
+        </div>
+        <div class="row" style="gap:0.6rem;align-items:flex-start;">
+          <span style="color:rgba(255,255,255,0.3);font-weight:700;font-size:1rem;line-height:1;">✕</span>
+          <div>
+            <div style="font-size:1.5rem;color:rgba(255,255,255,0.65);">Routine progress reporting</div>
+            <div style="font-size:1.5rem;color:rgba(255,255,255,0.4);">日常的な進捗報告</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:1.3rem;background:rgba(255,255,255,0.12);border-radius:10px;padding:0.9rem 1.1rem;">
+    <div style="font-size:0.82rem;color:#fff;">The one question this meeting asks: <strong style="color:#c6a54a;">"Where are you heading?"</strong></div>
+    <div style="font-size:1.5rem;color:rgba(255,255,255,0.55);margin-top:0.2rem;">この面談が問う1つの問い：「あなたはどこへ向かっているか？」</div>
+  </div>
+  <div class="progress-bar"></div>
+  <div class="slide-num"></div>
+</div>
+
+<!-- ── SLIDE 7 : Frequency & Format ── -->
+<div class="slide">
+  <div class="label">Individual Meeting ｜ 頻度と形式</div>
+  <div class="sh">
+    <div class="sh-en">Once per quarter</div>
+    <div class="sh-ja">四半期ごと</div>
+  </div>
+  <div class="sub" style="margin-bottom:1.3rem;">
+    Held after submitting the Quarter Plan. The Plan is the starting point for the meeting.<br>
+    Quarter Planを提出した後に行う。Planが面談の起点になる。
+  </div>
+  <div class="two-col" style="gap:2.2rem;">
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <tr><th colspan="2" style="background:#f0f9ff;color:#356f8c;">Timing ｜ タイミング</th></tr>
+        <tr><td class="td-en">🌸 Q1</td><td><div class="td-en">Mid April – May</div><div class="td-ja">4月中旬〜5月</div></td></tr>
+        <tr><td class="td-en">🏖️ Q2</td><td><div class="td-en">July – August</div><div class="td-ja">7月〜8月</div></td></tr>
+        <tr><td class="td-en">🍂 Q3</td><td><div class="td-en">October – November</div><div class="td-ja">10月〜11月</div></td></tr>
+        <tr><td class="td-en">❄️ Q4</td><td><div class="td-en">January – February</div><div class="td-ja">1月〜2月</div></td></tr>
+      </table>
+    </div>
+    <div>
+      <div style="font-size:rem;font-weight:700;color:#9ca3af;margin-bottom:0.7rem;text-transform:uppercase;letter-spacing:1px;">Preparation ｜ 事前準備</div>
+      <div style="display:flex;flex-direction:column;gap:0.65rem;">
+        <div class="card card-light" style="padding:0.65rem 0.9rem;">
+          <div class="ct" style="margin-bottom:0.2rem;">Student (before) ｜ 学生（事前）</div>
+          <div class="cb-en">Fill in and submit Quarter Plan by the day before. Write Section 5 ("what judgment I need") specifically.</div>
+          <div class="cb-ja">前日までにQuarter Planを記入・提出。Section 5「教員に求める判断」を具体的に書く。</div>
+        </div>
+        <div class="card card-light" style="padding:0.65rem 0.9rem;">
+          <div class="ct" style="margin-bottom:0.2rem;">During the meeting ｜ 面談中</div>
+          <div class="cb-en">Dialogue on Quarter Goal, research axis, growth direction. Technical details go to Team Meeting.</div>
+          <div class="cb-ja">Quarter Goal・研究軸・成長方向を中心に対話。技術詳細はチームミーティングへ。</div>
+        </div>
+        <div class="card" style="background:#fffbf0;border:1.5px solid #fde68a;border-radius:10px;padding:0.65rem 0.9rem;">
+          <div class="ct ct-gold" style="margin-bottom:0.2rem;">After the meeting ｜ 面談後</div>
+          <div class="cb-en">Advisor leaves comments in Notion for handoff to the next quarter.</div>
+          <div class="cb-ja">教員がNotionにコメントを残す（次Quarterへの引継ぎ）。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="progress-bar"></div>
+  <div class="slide-num"></div>
+</div>
+
+<!-- ── SLIDE 8 : Grade-specific ── -->
+<div class="slide">
+  <div class="label">Individual Meeting ｜ 学年ごとの焦点</div>
+  <div class="sh">
+    <div class="sh-en">Each grade has a different focus</div>
+    <div class="sh-ja">学年によって「何を確認するか」が変わる</div>
+  </div>
+  <div class="sub" style="margin-bottom:1rem;">Read the roadmap for your grade before the meeting. ｜ 面談前に自分の学年のロードマップを読む。</div>
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <tr>
+        <th style="width:10%;">Grade</th>
+        <th style="width:24%;">Mission ｜ ミッション</th>
+        <th>Key question in Individual Meeting ｜ 面談で確認すること</th>
+      </tr>
+      <tr>
+        <td><span class="tag tag-t">B4</span></td>
+        <td><div class="td-en">Complete one cycle</div><div class="td-ja">1サイクルを経験する</div></td>
+        <td><div class="td-en">Can you explain the research in one sentence? Can you articulate where you are stuck?</div><div class="td-ja">研究を1文で説明できるか。詰まりを言語化できるか。</div></td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-t">M1</span></td>
+        <td><div class="td-en">Design the research</div><div class="td-ja">研究を設計する</div></td>
+        <td><div class="td-en">Is Framing progressing? Are you working backward from the February seminar? Is Core Question stable?</div><div class="td-ja">Framingは進んでいるか。2月セミナーから逆算できているか。Core Questionが動かない状態か。</div></td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-t">M2</span></td>
+        <td><div class="td-en">Complete the paper</div><div class="td-ja">研究を完走する</div></td>
+        <td><div class="td-en">Is the backward timeline from January submission realistic? Can figures be frozen? What are you avoiding?</div><div class="td-ja">1月提出への逆算タイムラインは現実的か。図は凍結できるか。何から逃げているか。</div></td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-dk">D1</span></td>
+        <td><div class="td-en">Define the axis</div><div class="td-ja">軸を定義する</div></td>
+        <td><div class="td-en">Can you write the research axis in 1–2 sentences? Have you declared topics you will NOT pursue?</div><div class="td-ja">研究軸を1〜2文で書けるか。追わないトピックを宣言できているか。</div></td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-dk">D2</span></td>
+        <td><div class="td-en">Prove the axis</div><div class="td-ja">軸を証明する</div></td>
+        <td><div class="td-en">Is the paper portfolio coherent? Have noise papers been cut? Is a submission plan in place?</div><div class="td-ja">論文群は一貫しているか。ノイズ論文を切れているか。投稿計画は立っているか。</div></td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-dk">D3</span></td>
+        <td><div class="td-en">Articulate &amp; submit</div><div class="td-ja">言語化して出す</div></td>
+        <td><div class="td-en">Can you write the 3-sentence thesis spine? Is the annual timeline realistic? Can you declare what to cut?</div><div class="td-ja">博論背骨3文は書けるか。年間タイムラインは現実的か。削る対象を宣言できるか。</div></td>
+      </tr>
+    </table>
+  </div>
+  <div class="progress-bar"></div>
+  <div class="slide-num"></div>
+</div>
+
+<!-- ── SLIDE 9 : Summary ── -->
+<div class="slide slide-dark">
+  <div class="label label-white">Summary ｜ まとめ</div>
+  <div class="sh sh-white">
+    <div class="sh-en">The role of the two tools</div>
+    <div class="sh-ja">2つのツールの役割</div>
+  </div>
+  <div class="sub sub-white" style="margin-bottom:1.6rem;">
+    Together, they form the operating rhythm of Suzuki Lab OS.<br>
+    この2つが組み合わさることで、Lab OSの運営リズムが生まれる。
+  </div>
+  <div class="grid g2" style="gap:1.3rem;">
+    <div style="background:#374151;border-radius:12px;padding:1.4rem;border-top:4px solid #356f8c;">
+      <div style="font-size:1.5rem;font-weight:700;letter-spacing:2px;color:#356f8c;text-transform:uppercase;margin-bottom:0.5rem;">Quarter Plan</div>
+      <div style="font-size:2rem;font-weight:700;color:#fff;margin-bottom:0.2rem;">A habit supporting autonomy</div>
+      <div style="font-size:1.5rem;color:rgba(255,255,255,0.45);margin-bottom:0.7rem;">「自律」を支える習慣</div>
+      <div style="font-size:1.5rem;color:#9ca3af;line-height:1.6;">Visualize your thinking every 3 months.<br>Submit → Dialogue → Reflect — repeat.<br>Build the ability to advance research without the advisor.<br><span style="color:#6b7280;font-size:1.5rem;">3ヶ月ごとに思考を可視化。提出→対話→振り返り のサイクル。自律して研究を前に進める力をつける。</span></div>
+    </div>
+    <div style="background:#374151;border-radius:12px;padding:1.4rem;border-top:4px solid #c6a54a;">
+      <div style="font-size:1.5rem;font-weight:700;letter-spacing:2px;color:#c6a54a;text-transform:uppercase;margin-bottom:0.5rem;">Individual Meeting</div>
+      <div style="font-size:2rem;font-weight:700;color:#fff;margin-bottom:0.2rem;">A space for aligning direction</div>
+      <div style="font-size:1.5rem;color:rgba(255,255,255,0.45);margin-bottom:0.7rem;">「方向性」を整える場</div>
+      <div style="font-size:1.5rem;color:#9ca3af;line-height:1.6;">Once a quarter: confirm "where are you heading?"<br>Not technical detail — research axis and growth.<br>Deep dialogue is only possible when a Quarter Plan exists.<br><span style="color:#6b7280;font-size:1.5rem;">四半期に一度「どこへ向かっているか」を確認。技術ではなく軸と成長を問う。PlanがあってこそDialogueが深まる。</span></div>
+    </div>
+  </div>
+  <div style="margin-top:1.2rem;display:flex;align-items:center;gap:0.5rem;font-size:1.75rem;color:rgba(255,255,255,0.5);">
+    <span style="color:#c6a54a;font-weight:700;">→</span>
+    <span>Q1 starts today. Open the Q1 template in Notion and begin filling it in. ｜ 今日からQ1がスタートする。NotionのQ1テンプレートを開いて記入を始める。</span>
+  </div>
+  <div class="progress-bar"></div>
+  <div class="slide-num"></div>
+</div>
+
+<!-- ── SLIDE 10 : Next actions ── -->
+<div class="slide">
+  <div class="label">Next actions ｜ 今日からやること</div>
+  <div class="sh">
+    <div class="sh-en">Action items — starting today</div>
+    <div class="sh-ja">Q1が今日から始まる</div>
+  </div>
+  <div class="sub" style="margin-bottom:1.3rem;">Three concrete steps. Do them in order. ｜ 具体的な3ステップ。順番にやる。</div>
+  <div style="display:flex;flex-direction:column;gap:0.9rem;">
+    <div class="row" style="background:#f0f9ff;padding:1rem 1.1rem;border-radius:10px;border:1.5px solid #bfdbfe;">
+      <div style="font-size:2rem;font-weight:700;color:#356f8c;min-width:2rem;">01</div>
+      <div>
+        <div style="font-weight:700;font-size:0.88rem;color:#1f2937;">Open the Quarter Plan DB in Notion ｜ NotionのQuarter Plan DBを開く</div>
+        <div style="font-size:1.5rem;color:#6b7280;margin-top:0.2rem;">Select your grade × Q1 from the template picker. If it's not showing yet, contact your advisor to save it as a template.<br>テンプレートピッカーから自分の学年・Q1を選ぶ。表示されない場合は先生へ連絡。</div>
+      </div>
+    </div>
+    <div class="row" style="background:#f0f9ff;padding:1rem 1.1rem;border-radius:10px;border:1.5px solid #bfdbfe;">
+      <div style="font-size:2rem;font-weight:700;color:#356f8c;min-width:2rem;">02</div>
+      <div>
+        <div style="font-weight:700;font-size:1.5rem;color:#1f2937;">Fill in Sections 1–3 this week ｜ Section 1–3を今週中に記入</div>
+        <div style="font-size:1.5rem;color:#6b7280;margin-top:0.2rem;">Core Question (1 sentence) · Current Phase · Quarter Goal (1 English sentence) · Monthly milestones. Imperfect is fine — writing it is what matters.<br>Core Question（1文）・Phase・Quarter Goal（英語1文）・月別マイルストーン。完璧でなくてよい。書くことが最重要。</div>
+      </div>
+    </div>
+    <div class="row" style="background:#fffbf0;padding:1rem 1.1rem;border-radius:10px;border:1.5px solid #fde68a;">
+      <div style="font-size:2rem;font-weight:700;color:#c6a54a;min-width:2rem;">03</div>
+      <div>
+        <div style="font-weight:700;font-size:1.5rem;color:#1f2937;">Schedule Q1 Individual Meeting ｜ Q1の個別面談の日程を先生と決める</div>
+        <div style="font-size:1.5rem;color:#6b7280;margin-top:0.2rem;">Set the meeting after submitting your Quarter Plan Q1.<br>Quarter Plan Q1提出後に面談を設定。</div>
+      </div>
+    </div>
+  </div>
+  <div class="progress-bar"></div>
+  <div class="slide-num"></div>
+</div>
+
+</div><!-- /.slide-container -->
+
+<div class="controls">
+  <div class="btn" onclick="prev()">← BACK</div>
+  <div class="btn btn-count" id="cnt">1 / 10</div>
+  <div class="btn" onclick="next()">NEXT →</div>
+</div>
+
+<script>
+let c = 0;
+const sl = document.querySelectorAll('.slide');
+const n = sl.length;
+function upd() {
+  sl.forEach((s, i) => {
+    s.classList.toggle('active', i === c);
+    const pb = s.querySelector('.progress-bar');
+    const sn = s.querySelector('.slide-num');
+    if (pb) pb.style.width = (((c + 1) / n) * 100) + '%';
+    if (sn) sn.textContent = (c + 1) + ' / ' + n;
+  });
+  document.getElementById('cnt').textContent = (c + 1) + ' / ' + n;
+}
+function next() { if (c < n - 1) { c++; upd(); } }
+function prev() { if (c > 0) { c--; upd(); } }
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') next();
+  if (e.key === 'ArrowLeft') prev();
+});
+upd();
+</script>
+</body>
+</html>

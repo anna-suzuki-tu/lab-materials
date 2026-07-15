@@ -1,0 +1,453 @@
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Part 4: 5 Layer Structure Detailed Configuration</title><script src="https://cdn.tailwindcss.com"></script><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Noto+Sans+JP:wght@400;700;800&display=swap');
+
+:root{
+  --bg:#ffffff;
+  --text:#1f2937;
+  --accent:#356f8c;
+  --sub:#c6a54a;
+  --border:#e5e7eb;
+}
+
+body{
+  font-family:'Inter','Noto Sans JP',sans-serif;
+  background-color:#f3f4f6;
+  margin:0;
+  overflow:hidden;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  color:var(--text);
+}
+
+.slide-container{
+  width:100vw;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.slide{
+  width:100%;
+  height:100%;
+  padding:4rem;
+  display:none;
+  flex-direction:column;
+  justify-content:flex-start;
+  background-color:var(--bg);
+  color:var(--text);
+  position:relative;
+  overflow:hidden;
+}
+
+.slide.active{display:flex;}
+
+.text-accent{color:var(--accent);}
+.bg-accent{background-color:var(--accent);}
+.text-sub{color:var(--sub);}
+.bg-sub{background-color:var(--sub);}
+.bg-dark{background-color:var(--text);}
+.text-dark{color:var(--text);}
+.border-sub{border-color:var(--sub);}
+
+.progress-bar{
+  position:absolute;
+  bottom:0; left:0;
+  height:6px;
+  background-color:var(--accent);
+  transition:width 0.3s ease;
+}
+
+.controls{
+  position:fixed;
+  bottom:2rem;
+  right:2rem;
+  display:flex;
+  gap:1rem;
+  z-index:100;
+}
+
+.btn{
+  padding:0.6rem 1.2rem;
+  background:#1f2937;
+  color:white;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:800;
+  transition:all 0.2s;
+  user-select:none;
+}
+.btn:hover{background:#374151; transform:translateY(-1px);}
+
+.grid-bg{
+  background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.keep-together{
+  display:inline-block;
+  white-space:nowrap;
+}
+
+/* ===== Part 4 visuals (ported + aligned) ===== */
+.split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  align-items:center;
+}
+
+.concentric-container{
+  position:relative;
+  width:420px;
+  height:420px;
+  margin:0 auto;
+}
+
+.circle{
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  border-radius:9999px;
+  border:2px solid var(--accent);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  transition:all 0.3s ease;
+}
+
+.c5{width:420px;height:420px;background:rgba(53,111,140,0.05);}
+.c4{width:340px;height:340px;background:rgba(53,111,140,0.10);}
+.c3{width:260px;height:260px;background:rgba(53,111,140,0.15);}
+.c2{width:180px;height:180px;background:rgba(53,111,140,0.20);}
+.c1{
+  width:90px;height:90px;
+  background:var(--accent);
+  color:white;
+  font-weight:800;
+  font-size:14px;
+  border:none;
+}
+
+.analogy-box{
+  border:2px solid var(--border);
+  padding:2rem;
+  border-radius:1.25rem;
+  background:rgba(255,255,255,0.7);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  height:100%;
+  box-shadow:0 8px 20px rgba(0,0,0,0.06);
+}
+
+.analogy-icon{
+  width:120px;
+  height:120px;
+  color:var(--accent);
+  margin-bottom:1rem;
+}
+
+.not-for{
+  margin-top:1.5rem;
+  padding:1rem 1.25rem;
+  background:#fff1f2;
+  border-left:6px solid #e11d48;
+  border-radius:0.75rem;
+  font-size:22px;
+}
+
+.flow-vertical{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+}
+
+.node{
+  padding:10px 30px;
+  border:2px solid var(--text);
+  border-radius:10px;
+  min-width:280px;
+  text-align:center;
+  position:relative;
+  background:white;
+  font-size:24px;
+  font-weight:700;
+}
+
+.node.sparring::after{
+  content:"🥊 Sparring";
+  position:absolute;
+  right:-150px;
+  top:50%;
+  transform:translateY(-50%);
+  background:var(--sub);
+  color:white;
+  padding:6px 14px;
+  border-radius:9999px;
+  font-size:16px;
+  font-weight:800;
+}
+
+.arrow-v{
+  width:2px;
+  height:30px;
+  background:var(--text);
+  position:relative;
+}
+.arrow-v::after{
+  content:"▼";
+  position:absolute;
+  bottom:-12px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:12px;
+}
+
+.grid-4{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  gap:20px;
+  height:420px;
+}
+
+.q-box{
+  border:3px solid var(--border);
+  border-radius:1.25rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:22px;
+  background:rgba(255,255,255,0.7);
+  box-shadow:0 8px 20px rgba(0,0,0,0.05);
+}
+
+.q-blue{
+  background:var(--accent);
+  color:white;
+  border-color:var(--accent);
+}
+.q-blue .jp{color:#e5e7eb;}
+</style><script src="https://unpkg.com/lucide@latest"></script></head><body><div class="slide-container" id="container"><div class="slide grid-bg active">
+<h1 class="text-[48px] font-extrabold mb-10 leading-tight text-accent border-b-4 border-sub inline-block pb-2">5 Layer Structure</h1>
+<div class="split content text-[26.6px] leading-relaxed flex-grow">
+<div class="bilingual-block space-y-1">
+<span class="en font-bold text-dark">Strategic Organization of Lab Activities</span>
+<span class="jp block text-[22px] text-gray-600 mt-1">研究活動の戦略的5階層構造</span>
+</div>
+<div class="concentric-container">
+<div class="circle c5"><span style="margin-top:-350px; font-size: 18px">Lab Forum</span></div>
+<div class="circle c4"><span style="margin-top:-270px; font-size: 18px">Team Meeting</span></div>
+<div class="circle c3"><span style="margin-top:-190px; font-size: 18px">Student Interaction</span></div>
+<div class="circle c2"><span style="margin-top:-110px; font-size: 18px">Individual Meeting</span></div>
+<div class="circle c1">Indivisual Work</div>
+</div>
+</div>
+<div class="footer-note absolute bottom-8 right-16 text-[16px] text-gray-400 font-medium">Part 4 | Slide 1</div>
+</div><div class="slide grid-bg">
+<h1 class="text-[48px] font-extrabold mb-10 leading-tight text-accent border-b-4 border-sub inline-block pb-2">① Lab Forum</h1>
+<h2 class="text-[36px] font-bold mb-6 leading-snug flex items-center gap-4"><i data-lucide="coffee"></i> Value Refinement Space</h2>
+<div class="split content text-[26.6px] leading-relaxed flex-grow">
+<div>
+<div class="bilingual-block space-y-1">
+<span class="en font-bold text-dark">Refine value and positioning</span>
+<span class="jp block text-[22px] text-gray-600 mt-1">研究のWhyを磨く場</span>
+</div>
+<p style="font-size: 0.8em; color: #6b7280;">
+                    Constructive doubt and philosophical deep dives from diverse perspectives.
+                </p>
+</div>
+<div class="analogy-box">
+<div class="analogy-icon"><i data-lucide="messages-square" style="width:200%;height:200%"></i></div>
+</div>
+</div>
+<div class="footer-note absolute bottom-8 right-16 text-[16px] text-gray-400 font-medium">Part 4 | Slide 2</div>
+</div><div class="slide grid-bg">
+<h1 class="text-[48px] font-extrabold mb-10 leading-tight text-accent border-b-4 border-sub inline-block pb-2">② Team Meeting</h1>
+<h2 class="text-[36px] font-bold mb-6 leading-snug flex items-center gap-4"><i data-lucide="gavel"></i> Tactical Decision Space</h2>
+<div class="split content text-[26.6px] leading-relaxed flex-grow">
+<div>
+<div class="bilingual-block space-y-1">
+<span class="en font-bold text-dark">Decision-making to advance research</span>
+<span class="jp block text-[22px] text-gray-600 mt-1">研究を前に進める判断の場</span>
+</div>
+<div class="bilingual-block space-y-1">
+<span class="en font-bold text-dark">Paper Card → Decision → Next Step</span>
+<span class="jp block text-[22px] text-gray-600 mt-1">ペーパーカード → 判断 → 次のアクション</span>
+</div>
+</div>
+<div class="analogy-box">
+<div class="analogy-icon"><i data-lucide="presentation" style="width:200%;height:200%"></i></div>
+</div>
+</div>
+<div class="footer-note absolute bottom-8 right-16 text-[16px] text-gray-400 font-medium">Part 4 | Slide 3</div>
+</div><div class="slide grid-bg">
+<h1 class="text-[48px] font-extrabold mb-10 leading-tight text-accent border-b-4 border-sub inline-block pb-2">③ Student-only Interaction</h1>
+<h2 class="text-[36px] font-bold mb-6 leading-snug flex items-center gap-4"><i data-lucide="users"></i> Autonomy Training Space</h2>
+<div class="split content text-[26.6px] leading-relaxed flex-grow">
+<div>
+<div class="bilingual-block space-y-1">
+<span class="en font-bold text-dark">Technical Consultation</span>
+<span class="jp block text-[22px] text-gray-600 mt-1">技術相談</span>
+</div>
+<div class="bilingual-block space-y-1">
+<span class="en font-bold text-dark">Verbalization Training</span>
+<span class="jp block text-[22px] text-gray-600 mt-1">言語化トレーニング</span>
+</div>
+<div class="bilingual-block space-y-1">
+<span class="en font-bold text-dark">Pre-review</span>
+<span class="jp block text-[22px] text-gray-600 mt-1">プレレビュー</span>
+</div>
+</div>
+<div class="analogy-box">
+<div class="analogy-icon"><i data-lucide="graduation-cap" style="width:200%;height:200%"></i></div>
+</div>
+</div>
+<div class="footer-note absolute bottom-8 right-16 text-[16px] text-gray-400 font-medium">Part 4 | Slide 4</div>
+</div><div class="slide grid-bg">
+<h1 class="text-[48px] font-extrabold mb-10 leading-tight text-accent border-b-4 border-sub inline-block pb-2">④ Individual Meeting</h1>
+<h2 class="text-[36px] font-bold mb-6 leading-snug flex items-center gap-4"><i data-lucide="user-cog"></i> Identity Alignment Space</h2>
+<div class="split content text-[26.6px] leading-relaxed flex-grow">
+<div>
+<div class="bilingual-block space-y-1">
+<span class="en font-bold text-dark">Confirm research axis</span>
+<span class="jp block text-[22px] text-gray-600 mt-1">研究軸確認</span>
+</div>
+<div class="bilingual-block space-y-1">
+<span class="en font-bold text-dark">Growth direction &amp; Career design</span>
+<span class="jp block text-[22px] text-gray-600 mt-1">成長方向確認 / キャリア設計</span>
+</div>
+<div class="not-for">
+<strong>Not for:</strong> Technical details or minor manuscript edits.<br/>
+                    技術判断や原稿の細部修正には使わない。
+                </div>
+</div>
+<div class="analogy-box">
+<div class="analogy-icon"><i data-lucide="map-pinned" style="width:200%;height:200%"></i></div>
+</div>
+</div>
+<div class="footer-note absolute bottom-8 right-16 text-[16px] text-gray-400 font-medium">Part 4 | Slide 5</div>
+</div><div class="slide grid-bg">
+<h1 class="text-[48px] font-extrabold mb-10 leading-tight text-accent border-b-4 border-sub inline-block pb-2">Decisions vs Sparring</h1>
+<h2 class="text-[36px] font-bold mb-6 leading-snug flex items-center gap-4">判断の場と、壁打ちの場</h2>
+<div class="split content text-[26.6px] leading-relaxed flex-grow" style="grid-template-columns: 1.2fr 0.8fr;">
+<div class="flow-vertical">
+<div class="node">Idea (0→A)</div>
+<div class="arrow-v"></div>
+<div class="node sparring">Framing (A→B)</div>
+<div class="arrow-v"></div>
+<div class="node">Figures (A→B→C)</div>
+<div class="arrow-v"></div>
+<div class="node sparring">Draft (Writing)</div>
+<div class="arrow-v"></div>
+<div style="font-size: 32px;">Submission 🎉</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 40px;">
+<div class="bilingual-block space-y-1">
+<span class="en font-bold text-dark">Team Meeting = Decision (GO/NO-GO)</span>
+<span class="jp block text-[22px] text-gray-600 mt-1">判断：次のフェーズに進むか戻るかを決める。</span>
+</div>
+<div class="bilingual-block space-y-1">
+<span class="en font-bold text-dark">Lab Forum = Sparring</span>
+<span class="jp block text-[22px] text-gray-600 mt-1">壁打ち：問い・立場・表現を壊して磨く。</span>
+</div>
+</div>
+</div>
+<div class="footer-note absolute bottom-8 right-16 text-[16px] text-gray-400 font-medium">Part 4 | Slide 6</div>
+</div><div class="slide grid-bg">
+<h1 class="text-[48px] font-extrabold mb-10 leading-tight text-accent border-b-4 border-sub inline-block pb-2">⑤ Individual Work</h1>
+<h2 class="text-[36px] font-bold mb-6 leading-snug flex items-center gap-4"><i data-lucide="focus"></i> The Only Place Research Moves</h2>
+<div class="split content text-[26.6px] leading-relaxed flex-grow">
+<div>
+<div class="bilingual-block space-y-1">
+<span class="en font-bold text-dark">Research doesn't move in meetings. It moves in your desk.</span>
+<span class="jp block text-[22px] text-gray-600 mt-1">研究はミーティングで進まない。個人作業で進む。</span>
+</div>
+<div class="emphasize" style="margin-top: 20px; color: var(--accent-mustard); font-weight: 700;">
+<span class="en font-bold text-dark">Required Habits:</span>
+<ul style="margin-left: 40px; margin-top: 10px; font-size: 0.9em;">
+<li>Daily Research Log</li>
+<li>Weekly Paper Card</li>
+<li>Monthly Core Question</li>
+</ul>
+</div>
+</div>
+<div style="text-align: center;">
+<div style="font-size: 40px; font-weight: 700;">
+                    Meetings <i data-lucide="arrow-right" style="display:inline-block; vertical-align:middle;"></i> <span style="color:var(--accent-blue)">Work</span>
+</div>
+<div style="margin-top: 20px; font-size: 18px; color: #6b7280;">
+                    Meeting is for alignment.<br/>Work is for progress.
+                </div>
+</div>
+</div>
+<div class="footer-note absolute bottom-8 right-16 text-[16px] text-gray-400 font-medium">Part 4 | Slide 7</div>
+</div><div class="slide grid-bg">
+<h1 class="text-[48px] font-extrabold mb-10 leading-tight text-accent border-b-4 border-sub inline-block pb-2">Core Principle</h1>
+<div class="content text-[26.6px] leading-relaxed flex-grow">
+<div class="grid-4">
+<div class="q-box">
+<span class="en font-bold text-dark">Team Meeting</span>
+<span class="jp block text-[22px] text-gray-600 mt-1">戦術 / Tactical Decision</span>
+</div>
+<div class="q-box">
+<span class="en font-bold text-dark">Lab Forum</span>
+<span class="jp block text-[22px] text-gray-600 mt-1">価値 / Value Refinement</span>
+</div>
+<div class="q-box">
+<span class="en font-bold text-dark">Individual Meeting</span>
+<span class="jp block text-[22px] text-gray-600 mt-1">軸 / Identity Alignment</span>
+</div>
+<div class="q-box q-blue">
+<span class="en font-bold text-dark">Individual Work</span>
+<span class="jp block text-[22px] text-gray-600 mt-1">前進 / Progress</span>
+</div>
+</div>
+</div>
+<div class="footer-note absolute bottom-8 right-16 text-[16px] text-gray-400 font-medium">Part 4 | Slide 8</div>
+</div><div class="progress-bar" id="progressBar"></div></div><div class="controls"><div class="btn" onclick="prevSlide()">BACK</div><div class="btn bg-white !text-dark font-bold border-2 border-dark shadow-md" id="slideNum">1 / 8</div><div class="btn" onclick="nextSlide()">NEXT</div></div><script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const progressBar = document.getElementById('progressBar');
+const slideNumDisp = document.getElementById('slideNum');
+
+function updateSlide() {
+  slides.forEach((slide, index) => {
+    slide.classList.toggle('active', index === currentSlide);
+  });
+  const progress = ((currentSlide + 1) / slides.length) * 100;
+  progressBar.style.width = `${progress}%`;
+  slideNumDisp.innerText = `${currentSlide + 1} / ${slides.length}`;
+}
+
+function nextSlide() {
+  if (currentSlide < slides.length - 1) {
+    currentSlide++;
+    updateSlide();
+  }
+}
+
+function prevSlide() {
+  if (currentSlide > 0) {
+    currentSlide--;
+    updateSlide();
+  }
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+  if (e.key === 'ArrowLeft') prevSlide();
+});
+
+if (window.lucide) {
+  lucide.createIcons();
+}
+updateSlide();
+</script></body></html>

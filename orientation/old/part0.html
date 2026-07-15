@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suzuki-A. Lab Orientation: Part 0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            overflow: hidden;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            padding: 4rem;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #ffffff;
+            color: #1f2937;
+            position: relative;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        .text-accent { color: #356f8c; }
+        .bg-accent { background-color: #356f8c; }
+        .text-sub { color: #c6a54a; }
+        .bg-sub { background-color: #c6a54a; }
+        .bg-dark { background-color: #1f2937; }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 6px;
+            background-color: #356f8c;
+            transition: width 0.3s ease;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            background: #1f2937;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .btn:hover { background: #374151; transform: translateY(-1px); }
+
+        .grid-bg {
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* 改行制御用クラス */
+        .keep-together {
+            display: inline-block;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slide-container" id="container">
+    <!-- Slide 1: Welcome -->
+    <div class="slide active">
+        <div class="max-w-5xl mx-auto text-center">
+            <p class="text-xl font-bold text-accent mb-6 tracking-[0.2em]">ORIENTATION DAY 1</p>
+            <h1 class="text-6xl font-extrabold mb-6 leading-tight">
+                <span class="block">Welcome to Suzuki-A. Lab:</span>
+                <span class="text-accent">Installing the Research OS</span>
+            </h1>
+            <p class="text-2xl mb-12 text-gray-500 font-medium">
+                <span class="keep-together">鈴木研へようこそ：</span><span class="keep-together">研究用OSのインストール</span>
+            </p>
+            <div class="inline-block px-10 py-5 bg-accent text-white font-bold rounded-lg shadow-xl text-xl">
+                UPDATE STARTING NOW / アップデートを開始します
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: Luck vs Design -->
+    <div class="slide grid-bg">
+        <h2 class="text-3xl font-bold mb-2 border-l-8 border-accent pl-6">Luck or Design?</h2>
+        <p class="text-xl text-gray-500 mb-12 pl-6">研究は「運」か？「設計」か？</p>
+        <div class="grid grid-cols-2 gap-12 items-stretch max-w-6xl mx-auto">
+            <div class="p-10 border-2 border-dashed border-sub rounded-2xl text-center bg-white/50">
+                <h3 class="text-4xl font-bold mb-2 text-sub">Luck / 運</h3>
+                <p class="text-sm text-gray-400 mb-8 tracking-widest uppercase">Passive Research</p>
+                <ul class="text-left text-xl space-y-6">
+                    <li class="flex items-start">
+                        <span class="text-sub mr-3">•</span>
+                        <span>Waiting for data / <span class="keep-together">ひらめき待ち</span></span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-sub mr-3">•</span>
+                        <span>Trial and error only / <span class="keep-together">当てずっぽう</span></span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-sub mr-3">•</span>
+                        <span>Results are random / <span class="keep-together">成果は運次第</span></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="p-10 bg-accent text-white rounded-2xl text-center shadow-2xl">
+                <h3 class="text-4xl font-bold mb-2">Design / 設計</h3>
+                <p class="text-sm text-blue-200 mb-8 tracking-widest uppercase">Intentional Research</p>
+                <ul class="text-left text-xl space-y-6">
+                    <li class="flex items-start">
+                        <span class="text-blue-300 mr-3">•</span>
+                        <span>Intentional Inquiry / <span class="keep-together">意図的な問い</span></span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-300 mr-3">•</span>
+                        <span>Structured Process / <span class="keep-together">構造化された工程</span></span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-300 mr-3">•</span>
+                        <span>Reproducible results / <span class="keep-together">再現性のある成果</span></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-center mt-12 text-2xl font-bold text-dark">
+            <span class="keep-together">Luck-based research ends today.</span> / <span class="keep-together">成果を運のせいにするのを禁止する。</span>
+        </p>
+    </div>
+
+    <!-- Slide 3: Gap -->
+    <div class="slide">
+        <h2 class="text-3xl font-bold mb-2 border-l-8 border-accent pl-6">Why is there a gap?</h2>
+        <p class="text-xl text-gray-500 mb-8 pl-6">なぜ、同じ時間を使っているのに差が出るのか？</p>
+        <div class="flex flex-col items-center justify-center flex-grow">
+            <div class="w-full max-w-5xl grid grid-cols-2 gap-12">
+                <!-- Left Chart -->
+                <div class="flex flex-col">
+                    <h4 class="text-2xl font-bold mb-4 flex items-center">
+                        <span class="w-3 h-3 bg-sub rounded-full mr-3"></span>The Lost / 迷走
+                    </h4>
+                    <div class="h-60 bg-gray-50 rounded-xl relative border border-gray-200 overflow-hidden shadow-inner">
+                        <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+                            <path d="M0 200 Q 50 160 100 190 T 200 170 T 300 195 T 400 180 T 500 200" stroke="#c6a54a" stroke-width="4" fill="none" />
+                        </svg>
+                        <div class="absolute bottom-4 left-0 right-0 text-center px-4">
+                            <span class="px-3 py-1 bg-white/90 rounded-full border border-sub/30 text-sm text-sub font-bold shadow-sm whitespace-nowrap">
+                                Low Contribution / データはあるが主張がない
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Chart -->
+                <div class="flex flex-col">
+                    <h4 class="text-2xl font-bold mb-4 flex items-center">
+                        <span class="w-3 h-3 bg-accent rounded-full mr-3"></span>The Focused / 突破
+                    </h4>
+                    <div class="h-60 bg-gray-50 rounded-xl relative border border-gray-200 overflow-hidden shadow-inner">
+                        <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+                            <path d="M0 210 L 100 200 L 250 140 L 400 60 L 500 10" stroke="#356f8c" stroke-width="6" fill="none" stroke-linecap="round" />
+                        </svg>
+                        <div class="absolute bottom-4 left-0 right-0 text-center px-4">
+                            <span class="px-3 py-1 bg-white/90 rounded-full border border-accent/30 text-sm text-accent font-bold shadow-sm whitespace-nowrap">
+                                High Impact / 問いの設計に命をかけている
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-12 text-3xl font-bold text-dark text-center leading-relaxed">
+                <span class="keep-together">It's not about Talent.</span> <span class="keep-together">It's the OS.</span><br>
+                <span class="text-accent">才能ではなく「型」の差。</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 4: Data-First Trap -->
+    <div class="slide">
+        <div class="text-center max-w-5xl mx-auto">
+            <h2 class="text-5xl font-bold text-sub mb-4">The "Data-First" Trap</h2>
+            <p class="text-2xl mb-16 text-gray-600">
+                <span class="keep-together">「データ先行」の罠：</span><span class="keep-together">とりあえず実験、</span><span class="keep-together">とりあえず計算</span>
+            </p>
+            
+            <div class="flex justify-center items-center gap-6 mb-16">
+                <div class="flex flex-col items-center">
+                    <div class="w-44 h-44 rounded-full border-4 border-gray-200 flex items-center justify-center text-2xl font-bold bg-gray-50">Data</div>
+                    <span class="text-base mt-4 text-gray-400 font-bold">データ取得</span>
+                </div>
+                <div class="text-5xl text-gray-200">→</div>
+                <div class="flex flex-col items-center">
+                    <div class="w-44 h-44 rounded-full border-4 border-gray-200 flex items-center justify-center text-2xl font-bold bg-gray-50">Exp / Sim</div>
+                    <span class="text-base mt-4 text-gray-400 font-bold">とりあえず実験</span>
+                </div>
+                <div class="text-5xl text-gray-200">→</div>
+                <div class="flex flex-col items-center">
+                    <div class="w-44 h-44 rounded-full border-4 border-sub flex items-center justify-center text-6xl font-bold text-sub bg-sub/5 shadow-lg">?</div>
+                    <span class="text-base mt-4 text-sub font-bold">迷走 / Lost</span>
+                </div>
+            </div>
+            
+            <div class="bg-dark text-white py-8 px-12 rounded-2xl inline-block shadow-2xl">
+                <p class="text-3xl font-bold mb-2 italic">Don't enter the forest without a map.</p>
+                <p class="text-xl text-gray-400">地図を持たずに森に入るような研究は、今日で終わり。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Suzuki-A. Lab OS -->
+    <div class="slide bg-dark text-white">
+        <h2 class="text-3xl font-bold mb-2 border-l-8 border-accent pl-6">New Standard: Suzuki-A. Lab OS</h2>
+        <p class="text-xl text-gray-400 mb-12 pl-6">新基準：鈴木研OS</p>
+        <div class="grid grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="p-8 bg-gray-800/50 rounded-2xl border-t-4 border-accent shadow-xl">
+                <h4 class="text-xl font-bold text-accent mb-6">Systematization / <span class="keep-together">体系化</span></h4>
+                <p class="text-lg leading-relaxed text-gray-300">
+                    <span class="keep-together">From talent-based</span> <span class="keep-together">to system-based.</span><br>
+                    <span class="text-sm mt-3 block text-gray-400">個人のセンスをシステムに置き換える。</span>
+                </p>
+            </div>
+            <div class="p-8 bg-gray-800/50 rounded-2xl border-t-4 border-accent shadow-xl">
+                <h4 class="text-xl font-bold text-accent mb-6">Common Language / <span class="keep-together">共通言語</span></h4>
+                <p class="text-lg leading-relaxed text-gray-300">
+                    <span class="keep-together">Paper Card, Inquiry Cycle.</span><br>
+                    <span class="text-sm mt-3 block text-gray-400">ラボメンバー全員の共通言語を持つ。</span>
+                </p>
+            </div>
+            <div class="p-8 bg-gray-800/50 rounded-2xl border-t-4 border-accent shadow-xl">
+                <h4 class="text-xl font-bold text-accent mb-6">Reproducibility / <span class="keep-together">再現性</span></h4>
+                <p class="text-lg leading-relaxed text-gray-300">
+                    <span class="keep-together">Anyone can achieve quality.</span><br>
+                    <span class="text-sm mt-3 block text-gray-400">誰でも高い品質の成果を再現できる。</span>
+                </p>
+            </div>
+        </div>
+        <div class="mt-20 text-center">
+            <div class="text-5xl font-black text-accent tracking-[0.3em] opacity-80 uppercase">Reproducibility</div>
+            <p class="text-2xl text-gray-500 mt-4 font-bold">「圧倒的な再現性」を目指して</p>
+        </div>
+    </div>
+
+    <!-- Slide 6: Goal (Modified) -->
+    <div class="slide">
+        <h2 class="text-3xl font-bold mb-2 border-l-8 border-sub pl-6">Goal of Day 1: Shake Your Attitude</h2>
+        <p class="text-xl text-gray-500 mb-12 pl-6">Day 1のゴール：研究への姿勢を揺らす</p>
+        <div class="flex flex-col items-center justify-center space-y-12 max-w-5xl mx-auto">
+            <h3 class="text-7xl font-black text-dark text-center leading-[1.3]">
+                <span class="keep-together">論文は成果ではない。</span><br>
+                <span class="text-sub keep-together">「誤差」を受け取るための</span><span class="text-sub keep-together">媒体である。</span>
+            </h3>
+            <div class="text-center space-y-2">
+                <p class="text-3xl text-gray-400 italic font-serif">A paper is not the end result.</p>
+                <p class="text-3xl text-gray-400 italic font-serif">It is a medium to receive "Feedback & Error".</p>
+            </div>
+            <div class="h-2 w-48 bg-sub/30 rounded-full"></div>
+            <p class="text-2xl font-bold text-gray-700">Accepting the Gap / <span class="keep-together">「ズレ」を許容し、更新し続ける責任</span></p>
+        </div>
+    </div>
+
+    <!-- Slide 7: Closing -->
+    <div class="slide bg-accent text-white">
+        <div class="text-center max-w-5xl mx-auto">
+            <h2 class="text-6xl font-extrabold mb-16 tracking-tight">Are you ready to update?</h2>
+            
+            <div class="grid grid-cols-2 gap-8 mb-16">
+                <div class="text-left bg-white/10 p-10 rounded-2xl border border-white/20">
+                    <h4 class="text-3xl font-bold border-b border-white/30 pb-4 mb-6">DAY 1: Soul / <span class="keep-together">思想</span></h4>
+                    <p class="text-xl text-blue-50">
+                        <span class="keep-together">Philosophy,</span> <span class="keep-together">Expectations,</span> <span class="keep-together">Responsibility</span><br>
+                        <span class="text-lg mt-2 block opacity-80">思想・期待値・覚悟</span>
+                    </p>
+                </div>
+                <div class="text-left bg-black/10 p-10 rounded-2xl border border-white/5 opacity-50">
+                    <h4 class="text-3xl font-bold border-b border-white/10 pb-4 mb-6">DAY 2: Action / <span class="keep-together">実践</span></h4>
+                    <p class="text-xl text-blue-100">
+                        <span class="keep-together">Implementation,</span> <span class="keep-together">Tools,</span> <span class="keep-together">Practice</span><br>
+                        <span class="text-lg mt-2 block opacity-60">実装・行動・再現性</span>
+                    </p>
+                </div>
+            </div>
+
+            <p class="text-4xl italic font-serif text-blue-100">"Mixing dilutes. Today, we start with the soul."</p>
+            <p class="mt-6 text-2xl text-blue-200/70 font-medium">（混ぜると薄まる。今日はまず、思想から入る。）</p>
+        </div>
+    </div>
+
+<!-- Slide 1 -->
+<div class="slide active">
+    <div class="center-all">
+        <h1 style="font-size: 64px; border: none;">Part 1: What is research?</h1>
+        <p style="font-size: 40px; color: var(--accent-color);">研究とは何か</p>
+    </div>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide">
+    <h1>Research is Inquiry</h1>
+    <h2>研究とは「探究」だ</h2>
+    <div class="flex-container">
+        <div class="content-left">
+            <p>Inquiry is <span class="highlight">continuous updating</span>.</p>
+            <p>探究は「完了」しない。<br>探究は「更新」され続ける。</p>
+        </div>
+        <div class="visual-right">
+            <div style="display: flex; flex-direction: column; gap: 80px; align-items: center;">
+                <div>
+                    <div class="cross-line"></div>
+                    <div class="label-box">Start → Goal</div>
+                </div>
+                <div>
+                    <div class="circle-loop"><span style="font-size: 40px; font-weight: bold; color: var(--primary-color);">Update</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide">
+    <h1>The Essence of Research</h1>
+    <h2>研究の本質</h2>
+    <div class="flex-container">
+        <div class="content-left">
+            <p>Research is not about collecting answers.</p>
+            <p>研究は答え集めではない。</p>
+            <p class="highlight">Research refines questions.</p>
+            <p>問いの精緻化である。</p>
+        </div>
+        <div class="visual-right">
+            <svg width="400" height="300" viewBox="0 0 400 300">
+                <path d="M50,250 L100,150 L150,250 Z" fill="#e5e7eb" stroke="#9ca3af" stroke-width="2"/>
+                <line x1="40" y1="160" x2="160" y2="240" stroke="#ef4444" stroke-width="4"/>
+                <text x="50" y="280" font-size="20">Answer Pile</text>
+                <text x="250" y="180" font-size="120" font-weight="bold" fill="var(--primary-color)">?</text>
+                <circle cx="285" cy="140" r="60" fill="none" stroke="var(--accent-color)" stroke-width="8" opacity="0.6"/>
+                <line x1="330" y1="180" x2="370" y2="220" stroke="var(--accent-color)" stroke-width="12" stroke-linecap="round"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4 -->
+<div class="slide">
+    <h1>Inquiry: From Doubt to Belief</h1>
+    <h2>「疑念」を「信念」に変えるプロセス</h2>
+    <div class="flex-container">
+        <div class="three-cols">
+            <div>
+                <div class="vague-cloud" style="margin: 0 auto;"></div>
+                <p>Doubt<br><span class="bilingual">疑念（違和感）</span></p>
+            </div>
+            <div>
+                <div style="font-size: 100px; color: var(--primary-color);">↺</div>
+                <p class="highlight">Inquiry Cycle</p>
+            </div>
+            <div>
+                <div class="belief-block" style="margin: 0 auto;">Belief</div>
+                <div style="font-size: 18px; text-align: left; margin-top: 15px; display: inline-block;">
+                    • Probabilistic (確率的)<br>
+                    • Provisional (暫定的)<br>
+                    • Updatable (更新可能)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5 -->
+<div class="slide">
+    <h1>Inquiry Cycle</h1>
+    <h2>更新こそ本質</h2>
+    <div class="flex-container">
+        <div class="three-cols">
+            <div>
+                <div class="vague-cloud" style="margin: 0 auto;"></div>
+                <p>misalignment<br><span class="bilingual">ズレ / 違和感</span></p>
+            </div>
+            <div style="position: relative; height: 300px;">
+                <svg width="300" height="300" viewBox="0 0 300 300">
+                    <circle cx="150" cy="150" r="100" fill="none" stroke="#ddd" stroke-width="2" stroke-dasharray="5,5"/>
+                    <text x="150" y="260" text-anchor="middle" font-weight="bold" fill="var(--primary-color)">Question</text>
+                    <text x="240" y="120" text-anchor="middle" font-weight="bold">Hypothesis</text>
+                    <text x="60" y="120" text-anchor="middle" font-weight="bold">Test ⚗️</text>
+                    <path d="M150,230 A80,80 0 0,0 220,130" fill="none" stroke="var(--primary-color)" stroke-width="3" />
+                    <path d="M210,100 A80,80 0 0,0 90,100" fill="none" stroke="var(--primary-color)" stroke-width="3" />
+                    <path d="M80,130 A80,80 0 0,0 140,230" fill="none" stroke="var(--primary-color)" stroke-width="3" />
+                </svg>
+                <div style="position: absolute; top: 50%; left: -40px; font-size: 40px;">→</div>
+                <div style="position: absolute; top: 50%; right: -40px; font-size: 40px;">→</div>
+            </div>
+            <div>
+                <div class="belief-block" style="margin: 0 auto;">Belief</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6 -->
+<div class="slide">
+    <h1>Mismatch as a Beginning</h1>
+    <h2>ズレが始まり</h2>
+    <div class="flex-container">
+        <div class="content-left">
+            <p>A <span class="highlight">misalignment</span> generates inquiry.</p>
+            <p>観測と理解のズレが問いを生む。<br>理想と現実のズレが問いを生む。</p>
+        </div>
+        <div class="visual-right">
+            <svg width="400" height="300" viewBox="0 0 400 300">
+                <line x1="50" y1="250" x2="350" y2="250" stroke="black" stroke-width="2"/>
+                <line x1="50" y1="250" x2="50" y2="50" stroke="black" stroke-width="2"/>
+                <line x1="50" y1="200" x2="350" y2="80" stroke="var(--primary-color)" stroke-width="3" stroke-dasharray="8,4"/>
+                <text x="300" y="70" font-size="18" fill="var(--primary-color)">Theory</text>
+                <circle cx="250" cy="180" r="8" fill="var(--accent-color)"/>
+                <text x="265" y="185" font-size="20">Observation</text>
+                <line x1="250" y1="120" x2="250" y2="170" stroke="#ef4444" stroke-width="3" />
+                <text x="220" y="150" font-size="30" font-weight="bold" fill="#ef4444">?</text>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 7 -->
+<div class="slide">
+    <h1>Cognition and Inquiry</h1>
+    <h2>認知も同じ構造</h2>
+    <div class="flex-container">
+        <div class="content-left">
+            <p>The brain predicts, finds errors, and updates itself.</p>
+            <p>脳も予測し、誤差を元に、自分を更新する。</p>
+            <p class="highlight" style="font-size: 32px; margin-top: 20px;">Prediction → Error → Update</p>
+        </div>
+        <div class="visual-right">
+            <div style="text-align: center;">
+                <div style="font-size: 150px; color: var(--accent-color);">🧠</div>
+                <div style="font-size: 60px; color: var(--primary-color); margin-top: -40px;">↺</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8 -->
+<div class="slide">
+    <h1>Free Energy Principle</h1>
+    <h2>自由エネルギー原理（直感版）</h2>
+    <div class="flex-container">
+        <div class="content-left">
+            <p>The brain strives to <span class="highlight">minimize</span> prediction error (mismatch).</p>
+            <p>脳は予測誤差（ズレ）を最小化しようとする。</p>
+        </div>
+        <div class="visual-right">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                <div style="background: var(--gray-light); padding: 20px; border-radius: 10px; border: 2px solid var(--primary-color);">
+                    Prediction vs Observation
+                </div>
+                <div style="color: #ef4444; font-size: 40px; font-weight: bold;">Gap ↓</div>
+                <div style="font-weight: bold; color: var(--primary-color);">Minimize</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 9 -->
+<div class="slide">
+    <h1>What is a Belief?</h1>
+    <h2>Beliefとは何か</h2>
+    <div class="flex-container">
+        <div class="content-left">
+            <p>Belief is not "Truth". It is <span class="highlight">Probability</span>.</p>
+            <p>信念は「正しさ」ではない。確率である。</p>
+            <p>Always provisional, always updatable.</p>
+            <p>常に暫定的で、更新可能。</p>
+        </div>
+        <div class="visual-right">
+            <svg width="400" height="250" viewBox="0 0 400 250">
+                <path d="M50,200 Q200,50 350,200" fill="none" stroke="var(--primary-color)" stroke-width="4"/>
+                <line x1="30" y1="200" x2="370" y2="200" stroke="black" stroke-width="2"/>
+                <text x="160" y="240" font-weight="bold">Probability</text>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 10 -->
+<div class="slide">
+    <h1>What is a Research Paper?</h1>
+    <h2>論文とは何か</h2>
+    <div class="flex-container">
+        <div class="content-left">
+            <p>A paper is a medium that <span class="highlight">fixes</span> questions and beliefs.</p>
+            <p>論文は問いと信念を固定する媒体である。</p>
+        </div>
+        <div class="visual-right">
+            <div style="display: flex; align-items: center; gap: 40px;">
+                <div class="vague-cloud"></div>
+                <div style="font-size: 40px;">→</div>
+                <div class="belief-block">Paper</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 11 -->
+<div class="slide">
+    <h1>Consequences of Fixing</h1>
+    <h2>固定すると何が起こるか</h2>
+    <div class="flex-container">
+        <div class="three-cols">
+            <div>
+                <div class="belief-block" style="margin: 0 auto; width: 100px; height: 130px;">Paper</div>
+                <p style="font-size: 20px;">Fixing Belief</p>
+            </div>
+            <div>
+                <div style="font-size: 60px;">⚡</div>
+                <p>Critique<br><span class="bilingual">批判可能になる</span></p>
+            </div>
+            <div>
+                <div style="font-size: 80px; color: var(--primary-color);">?</div>
+                <p>Next Question<br><span class="bilingual">次の探究へ</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 12 -->
+<div class="slide">
+    <h1>Inquiry as Responsibility</h1>
+    <h2>探究としての責任</h2>
+    <div class="flex-container">
+        <div class="content-left">
+            <p>Inquiry is submitting provisional belief for <span class="highlight">public update</span>.</p>
+            <p>論文とは、確率的信念を公共空間に提出すること。</p>
+            <p>Research never ends. It keeps updating.</p>
+            <p>研究は終わらない。更新し続ける。</p>
+        </div>
+        <div class="visual-right">
+            <svg width="400" height="400" viewBox="0 0 400 400">
+                <circle cx="200" cy="200" r="150" fill="none" stroke="var(--gray-light)" stroke-width="20"/>
+                <text x="200" y="210" text-anchor="middle" font-weight="bold">Human Knowledge</text>
+                <circle cx="200" cy="50" r="30" fill="var(--primary-color)"/>
+                <circle cx="350" cy="200" r="30" fill="var(--accent-color)"/>
+                <circle cx="200" cy="350" r="30" fill="var(--primary-color)"/>
+                <circle cx="50" cy="200" r="30" fill="var(--accent-color)"/>
+                <path d="M200,50 A150,150 0 0,1 350,200" fill="none" stroke="var(--primary-color)" stroke-width="4"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
+
+
+    
+
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div class="controls">
+    <div class="btn" onclick="prevSlide()">BACK</div>
+    <div id="slideNum" class="btn bg-white !text-dark font-bold border-2 border-dark shadow-md">1 / 7</div>
+    <div class="btn" onclick="nextSlide()">NEXT</div>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const progressBar = document.getElementById('progressBar');
+    const slideNumDisp = document.getElementById('slideNum');
+
+    function updateSlide() {
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === currentSlide);
+        });
+        const progress = ((currentSlide + 1) / slides.length) * 100;
+        progressBar.style.width = `${progress}%`;
+        slideNumDisp.innerText = `${currentSlide + 1} / ${slides.length}`;
+    }
+
+    function nextSlide() {
+        if (currentSlide < slides.length - 1) {
+            currentSlide++;
+            updateSlide();
+        }
+    }
+
+    function prevSlide() {
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateSlide();
+        }
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    updateSlide();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Part 2 | Research as Design</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Inter', 'Noto Sans JP', sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      overflow: hidden;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    /* ── slide shell ── */
+    .slide-container {
+      width: 100vw; height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .slide {
+      width: 100%; height: 100%;
+      padding: 3.5rem 4rem;
+      display: none; flex-direction: column; justify-content: center;
+      background: #ffffff; color: #1f2937;
+      position: relative; overflow: hidden; box-sizing: border-box;
+    }
+    .slide.active { display: flex; }
+
+    /* ── colour tokens ── */
+    .text-accent  { color: #356f8c; }
+    .text-sub     { color: #c6a54a; }
+    .border-accent{ border-color: #356f8c; }
+    .border-sub   { border-color: #c6a54a; }
+
+    /* ── backgrounds ── */
+    .grid-bg {
+      background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+    .bg-dark-slide  { background: #1f2937 !important; color: #f9fafb; }
+    .bg-accent-slide{ background: #356f8c !important; color: #ffffff; }
+
+    /* ── progress bar ── */
+    .progress-bar {
+      position: absolute; bottom: 0; left: 0;
+      height: 6px; background: #356f8c;
+      transition: width .3s ease; z-index: 20;
+    }
+    /* light bar for dark slides */
+    .bar-light { background: rgba(255,255,255,.45) !important; }
+
+    /* ── nav controls ── */
+    .controls {
+      position: fixed; bottom: 1.8rem; right: 2rem;
+      display: flex; gap: 1rem; z-index: 100;
+    }
+    .btn {
+      padding: .55rem 1.3rem; background: #1f2937; color: #fff;
+      border-radius: 6px; cursor: pointer; font-weight: 700;
+      font-family: inherit; font-size: 14px;
+      transition: all .2s; user-select: none; border: none;
+    }
+    .btn:hover { background: #374151; transform: translateY(-1px); }
+    #slideNum { background: #fff !important; color: #1f2937 !important; border: 2px solid #1f2937; }
+
+    /* ── section title stripe ── */
+    .slide-title {
+      font-size: 2.75rem; font-weight: 900; line-height: 1.15;
+      border-left: 8px solid #356f8c; padding-left: 1.25rem;
+      margin-bottom: .25rem;
+    }
+    .slide-title-sub { /* for dark/accent bg */
+      border-color: rgba(255,255,255,.4) !important;
+    }
+    .slide-subtitle {
+      font-size: 1.15rem; color: #6b7280;
+      padding-left: 1.5rem; margin-bottom: 2rem;
+    }
+
+    /* ── footer message strip ── */
+    .footer-msg {
+      margin-top: auto;
+      border-top: 4px solid #c6a54a;
+      padding-top: .75rem;
+      font-size: 1.1rem; font-weight: 700; color: #c6a54a;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+<div class="slide-container" id="container">
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 1 — Title
+═══════════════════════════════════════════ -->
+<div class="slide active">
+  <div class="max-w-4xl mx-auto text-center">
+    <p class="text-accent font-bold mb-5 tracking-[.22em] text-lg">ORIENTATION DAY 1 — PART 2</p>
+    <h1 style="font-size:3.75rem;font-weight:900;line-height:1.1;" class="mb-4">
+      Research as <span class="text-accent">Design</span>
+    </h1>
+    <p style="font-size:1.75rem;" class="text-gray-500 font-medium mb-12">研究は設計で進める</p>
+
+    <div class="p-8 bg-gray-50 border-l-8 border-accent rounded-r-2xl text-left max-w-2xl mx-auto">
+      <p class="text-sm font-bold text-gray-400 tracking-widest uppercase mb-3">Purpose / 目的</p>
+      <p style="font-size:1.35rem;" class="text-gray-700 leading-relaxed">
+        Research stops not because of <span class="text-sub font-bold">lack of ability</span>,<br>
+        but because of lack of <span class="text-accent font-bold">order and structure</span>.
+      </p>
+      <p style="font-size:1rem;" class="text-gray-400 mt-3">研究が止まる理由は能力ではない。順番と構造の欠如である。</p>
+    </div>
+  </div>
+  <div class="progress-bar" id="bar1"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 2 — Research Stagnation
+═══════════════════════════════════════════ -->
+<div class="slide grid-bg">
+  <h2 class="slide-title">Research Stagnation</h2>
+  <p class="slide-subtitle">研究が止まる瞬間</p>
+
+  <div class="grid grid-cols-2 gap-14 items-center max-w-6xl mx-auto w-full flex-1">
+    <!-- text -->
+    <div class="space-y-5">
+      <p style="font-size:1.45rem;" class="leading-relaxed font-bold">
+        Data increases. Analysis proceeds.<br>
+        But the goal remains <span class="text-sub">vague</span>.
+      </p>
+      <p style="font-size:1.1rem;" class="text-gray-500">データは増える。解析も進む。<br>でも、何を示したいのか曖昧なまま。</p>
+      <div class="mt-3 p-5 bg-white rounded-2xl border border-gray-200 shadow-sm">
+        <p style="font-size:1.15rem;" class="text-gray-700">
+          The problem is not <span class="font-bold">quantity of data</span>.<br>
+          The problem is <span class="text-accent font-bold">missing direction</span>.
+        </p>
+        <p style="font-size:.9rem;" class="text-gray-400 mt-2">データ量ではなく、方向性の欠如が問題</p>
+      </div>
+    </div>
+
+    <!-- SVG: endless loop without centre -->
+    <div class="flex items-center justify-center">
+      <svg width="300" height="300" viewBox="0 0 260 260" font-family="Inter,sans-serif">
+        <!-- dashed circle -->
+        <circle cx="130" cy="130" r="100" fill="none" stroke="#e5e7eb" stroke-width="2" stroke-dasharray="6 4"/>
+        <!-- 4 arcs + arrowheads -->
+        <path d="M130,30 A100,100 0 0,1 230,130" fill="none" stroke="#356f8c" stroke-width="3.5"/>
+        <polygon points="231,117 244,132 230,138" fill="#356f8c"/>
+        <path d="M230,130 A100,100 0 0,1 130,230" fill="none" stroke="#356f8c" stroke-width="3.5"/>
+        <polygon points="117,232 132,244 138,230" fill="#356f8c"/>
+        <path d="M130,230 A100,100 0 0,1 30,130" fill="none" stroke="#356f8c" stroke-width="3.5"/>
+        <polygon points="28,143 16,128 30,122" fill="#356f8c"/>
+        <path d="M30,130 A100,100 0 0,1 130,30" fill="none" stroke="#356f8c" stroke-width="3.5"/>
+        <polygon points="143,28 128,16 122,30" fill="#356f8c"/>
+        <!-- 4 labels -->
+        <text x="130" y="18" text-anchor="middle" font-size="13" font-weight="700" fill="#356f8c">More Data</text>
+        <text x="257" y="134" text-anchor="start" font-size="12" font-weight="700" fill="#356f8c">Discussion</text>
+        <text x="130" y="256" text-anchor="middle" font-size="13" font-weight="700" fill="#356f8c">Analysis</text>
+        <text x="2"   y="134" text-anchor="end"   font-size="13" font-weight="700" fill="#356f8c">Data</text>
+        <!-- centre red ? -->
+        <text x="130" y="155" text-anchor="middle" font-size="72" font-weight="900" fill="#c6a54a" opacity=".1">?</text>
+        <text x="130" y="155" text-anchor="middle" font-size="72" font-weight="900" fill="none" stroke="#c6a54a" stroke-width="2.5" opacity=".45">?</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="footer-msg">
+    Cause is NOT a lack of data.&ensp;／&ensp;止まる原因はデータ不足ではない。
+  </div>
+  <div class="progress-bar" id="bar2"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 3 — Failure Pattern: Data-First
+═══════════════════════════════════════════ -->
+<div class="slide">
+  <h2 class="slide-title">Failure Pattern: Data-First</h2>
+  <p class="slide-subtitle">失敗パターン：データ先行</p>
+
+  <div class="grid grid-cols-2 gap-14 items-center max-w-6xl mx-auto w-full flex-1">
+    <!-- text -->
+    <div class="space-y-5">
+      <p style="font-size:1.45rem;" class="leading-relaxed font-bold">
+        <span class="text-accent">Start with data.</span><br>
+        Hope meaning emerges later.
+      </p>
+      <p style="font-size:1.1rem;" class="text-gray-500">
+        とりあえず実験する。<br>
+        とりあえず解析する。<br>
+        あとで意味を考える。
+      </p>
+      <div class="p-5 bg-blue-50 rounded-2xl border-l-4 border-blue">
+        <p style="font-size:1.15rem;" class="font-bold text-accent">Exploration without direction</p>
+        <p style="font-size:.9rem;" class="text-gray-500 mt-1">方向なき探索 — 迷走のループ</p>
+      </div>
+    </div>
+
+    <!-- SVG: data → ? -->
+    <div class="flex items-center justify-center">
+      <svg width="340" height="265" viewBox="0 0 355 270" font-family="Inter,sans-serif">
+        <circle cx="55" cy="65"  r="34" fill="#f9fafb" stroke="#e5e7eb" stroke-width="2"/>
+        <text   x="55" y="73"  text-anchor="middle" font-size="24">🧪</text>
+        <circle cx="55" cy="148" r="34" fill="#f9fafb" stroke="#e5e7eb" stroke-width="2"/>
+        <text   x="55" y="156" text-anchor="middle" font-size="24">📊</text>
+        <circle cx="55" cy="231" r="34" fill="#f9fafb" stroke="#e5e7eb" stroke-width="2"/>
+        <text   x="55" y="239" text-anchor="middle" font-size="24">📉</text>
+        <!-- dashed arrows to ? -->
+        <line x1="90"  y1="65"  x2="208" y2="142" stroke="#d1d5db" stroke-width="2.5" stroke-dasharray="6 3"/>
+        <line x1="90"  y1="148" x2="212" y2="148" stroke="#d1d5db" stroke-width="2.5" stroke-dasharray="6 3"/>
+        <line x1="90"  y1="231" x2="208" y2="154" stroke="#d1d5db" stroke-width="2.5" stroke-dasharray="6 3"/>
+        <!-- giant ? -->
+        <text x="238" y="180" text-anchor="middle" font-size="105" font-weight="900" fill="#c6a54a" opacity=".09">?</text>
+        <text x="250" y="180" text-anchor="middle" font-size="105" font-weight="900" fill="none" stroke="#c6a54a" stroke-width="3" opacity=".5">?</text>
+        <text x="238" y="256" text-anchor="middle" font-size="20" fill="#9ca3af">No direction / 方向なし</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="footer-msg">
+    This is not design. This is wandering.&ensp;／&ensp;これは設計ではない。探索の迷走。
+  </div>
+  <div class="progress-bar" id="bar3"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 4 — The Correct Order
+═══════════════════════════════════════════ -->
+<div class="slide grid-bg">
+  <h2 class="slide-title">The Correct Order</h2>
+  <p class="slide-subtitle">正しい順番 — Framing is the blueprint</p>
+
+  <div class="max-w-5xl mx-auto w-full flex-1 flex flex-col justify-center gap-10">
+    <!-- flow diagram -->
+    <div class="flex items-end justify-center gap-3">
+      <!-- Idea -->
+      <div class="flex flex-col items-center gap-2">
+        <div class="w-36 h-20 border-2 border-gray-200 rounded-xl bg-white flex flex-col items-center justify-center shadow-sm">
+          <p style="font-size:1.25rem;" class="font-bold text-gray-600">Idea</p>
+          <p style="font-size:.8rem;" class="text-gray-400">アイデア</p>
+        </div>
+      </div>
+      <div class="text-sub font-black mb-5" style="font-size:2rem;">→</div>
+      <!-- FRAMING — highlighted -->
+      <div class="flex flex-col items-center gap-1">
+        <div class="w-44 h-24 rounded-xl flex flex-col items-center justify-center shadow-xl" style="background:#356f8c;">
+          <p style="font-size:1.5rem;" class="font-bold text-white">Framing</p>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.72);">構造化 ★</p>
+        </div>
+        <span style="font-size:.75rem;" class="font-bold text-accent tracking-wide">KEY STEP</span>
+      </div>
+      <div class="text-sub font-black mb-5" style="font-size:2rem;">→</div>
+      <!-- Figures -->
+      <div class="flex flex-col items-center gap-2">
+        <div class="w-36 h-20 border-2 border-gray-200 rounded-xl bg-white flex flex-col items-center justify-center shadow-sm">
+          <p style="font-size:1.25rem;" class="font-bold text-gray-600">Figures</p>
+          <p style="font-size:.8rem;" class="text-gray-400">図の設計</p>
+        </div>
+      </div>
+      <div class="text-sub font-black mb-5" style="font-size:2rem;">→</div>
+      <!-- Draft -->
+      <div class="flex flex-col items-center gap-2">
+        <div class="w-36 h-20 border-2 border-gray-200 rounded-xl bg-white flex flex-col items-center justify-center shadow-sm">
+          <p style="font-size:1.25rem;" class="font-bold text-gray-600">Draft</p>
+          <p style="font-size:.8rem;" class="text-gray-400">執筆</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- explanatory card -->
+    <div class="p-6 bg-white border-l-4 border-accent rounded-r-2xl shadow-sm max-w-3xl mx-auto">
+      <p style="font-size:1.15rem;" class="text-gray-700">
+        <span class="text-accent font-bold">Framing</span> = the blueprint of your research.
+        Everything downstream depends on it.
+      </p>
+      <p style="font-size:.9rem;" class="text-gray-400 mt-2">Framingが研究全体の設計図。すべてはここから決まる。</p>
+    </div>
+  </div>
+
+  <div class="footer-msg" style="border-color:#356f8c;color:#356f8c;">
+    Order is everything.&ensp;／&ensp;順番がすべて。
+  </div>
+  <div class="progress-bar" id="bar4"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 5 — What is Framing?
+═══════════════════════════════════════════ -->
+<div class="slide">
+  <h2 class="slide-title">What is Framing?</h2>
+  <p class="slide-subtitle">Framing とは何か</p>
+
+  <div class="grid grid-cols-2 gap-14 items-center max-w-6xl mx-auto w-full flex-1">
+    <!-- checklist -->
+    <div class="space-y-4">
+      <div class="flex items-start gap-4 p-5 bg-gray-50 rounded-xl border border-gray-200">
+        <span class="text-accent font-black flex-shrink-0" style="font-size:1.4rem;">✓</span>
+        <div>
+          <p style="font-size:1.15rem;" class="font-bold"><span class="text-accent">Core Question</span> in 1 sentence</p>
+          <p style="font-size:.9rem;" class="text-gray-500">問いを1文で書く</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 p-5 bg-gray-50 rounded-xl border border-gray-200">
+        <span class="text-accent font-black flex-shrink-0" style="font-size:1.4rem;">✓</span>
+        <div>
+          <p style="font-size:1.15rem;" class="font-bold">"Compared to X, we Y."</p>
+          <p style="font-size:.9rem;" class="text-gray-500">先行研究との差分を明示する</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 p-5 bg-gray-50 rounded-xl border border-gray-200">
+        <span class="text-accent font-black flex-shrink-0" style="font-size:1.4rem;">✓</span>
+        <div>
+          <p style="font-size:1.15rem;" class="font-bold">Key contributions (3 max)</p>
+          <p style="font-size:.9rem;" class="text-gray-500">貢献を最大3点に絞る</p>
+        </div>
+      </div>
+        <div class="w-full p-6 border-4 border-accent rounded-xl bg-blue-50 shadow-md">
+        <p style="font-size:1.1rem;" class="font-bold text-accent">Don't write results. Don't write methods.</p>
+        <p style="font-size:.9rem;" class="text-gray-500 mt-1">結果を書くな。手法を書くな。</p>
+      </div>
+    </div>
+
+    <!-- vague → structured -->
+    <div class="flex flex-col gap-5">
+      <div class="w-full p-6 border-2 border-dashed border-blue-300 rounded-xl opacity-55">
+        <p style="font-size:1.1rem;" class="font-bold text-accent mb-2">Vague ✕</p>
+        <p style="font-size:1rem;" class="text-gray-400 italic">"We studied X and found something interesting..."</p>
+      </div>
+      <div class="text-sub font-black text-center" style="font-size:2rem;">↓</div>
+      <div class="col-span-2 rounded-xl p-5 text-center shadow-xl" style="background:#c6a54a;">
+        <p style="font-size:1.1rem;" class="font-bold text-white mb-2">Structured Question ○</p>
+        <p style="font-size:1rem;" class="text-white italic">
+          "Compared to prior method X,<br>
+          our approach Y achieves Z under condition C."
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-msg">
+    Weak framing = Total collapse.&ensp;／&ensp;Framingが弱いと、全て崩れる。
+  </div>
+  <div class="progress-bar" id="bar5"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 6 — Question Archetypes
+═══════════════════════════════════════════ -->
+<div class="slide grid-bg">
+  <h2 class="slide-title">Question Archetypes</h2>
+  <p class="slide-subtitle">問いの型 — Every good research question fits a type</p>
+
+  <div class="max-w-5xl mx-auto w-full flex-1 flex flex-col justify-center">
+    <div class="grid grid-cols-4 gap-4">
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-5 text-center shadow-sm">
+        <p style="font-size:1.5rem;" class="font-bold text-accent">Estimation</p>
+        <p style="font-size:1rem;" class="text-gray-500 mt-1">推定型</p>
+        <p style="font-size:1rem;" class="text-gray-400 mt-2">"How much / many?"</p>
+      </div>
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-5 text-center shadow-sm">
+        <p style="font-size:1.5rem;" class="font-bold text-accent">Mechanism</p>
+        <p style="font-size:1rem;" class="text-gray-500 mt-1">機構型</p>
+        <p style="font-size:1rem;" class="text-gray-400 mt-2">"How / why does it work?"</p>
+      </div>
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-5 text-center shadow-sm">
+        <p style="font-size:1.5rem;" class="font-bold text-accent">Validity</p>
+        <p style="font-size:1rem;" class="text-gray-500 mt-1">妥当性型</p>
+        <p style="font-size:1rem;" class="text-gray-400 mt-2">"Does method X work?"</p>
+      </div>
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-5 text-center shadow-sm">
+        <p style="font-size:1.5rem;" class="font-bold text-accent">Uncertainty</p>
+        <p style="font-size:1rem;" class="text-gray-500 mt-1">不確実型</p>
+        <p style="font-size:1rem;" class="text-gray-400 mt-2">"What are the limits?"</p>
+      </div>
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-5 text-center shadow-sm">
+        <p style="font-size:1.5rem;" class="font-bold text-accent">Scale</p>
+        <p style="font-size:1rem;" class="text-gray-500 mt-1">スケール型</p>
+        <p style="font-size:1rem;" class="text-gray-400 mt-2">"Does it scale?"</p>
+      </div>
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-5 text-center shadow-sm">
+        <p style="font-size:1.5rem;" class="font-bold text-accent">Dynamics</p>
+        <p style="font-size:1rem;" class="text-gray-500 mt-1">動態型</p>
+        <p style="font-size:1rem;" class="text-gray-400 mt-2">"How does it change?"</p>
+      </div>
+      <div class="bg-white border-2 border-gray-200 rounded-xl p-5 text-center shadow-sm">
+        <p style="font-size:1.5rem;" class="font-bold text-accent">Design</p>
+        <p style="font-size:1rem;" class="text-gray-500 mt-1">設計型</p>
+        <p style="font-size:1rem;" class="text-gray-400 mt-2">"How should we build X?"</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-msg">
+    Vague questions lack an archetype.&ensp;／&ensp;型を選べない問いは曖昧。
+  </div>
+  <div class="progress-bar" id="bar6"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 7 — Research as Design
+═══════════════════════════════════════════ -->
+<div class="slide">
+  <h2 class="slide-title">Research as Design</h2>
+  <p class="slide-subtitle">設計としての研究 — Question determines everything</p>
+
+  <div class="grid grid-cols-2 gap-14 items-center max-w-6xl mx-auto w-full flex-1">
+    <!-- text -->
+    <div class="space-y-5">
+      <p style="font-size:1.45rem;" class="leading-relaxed font-bold">
+        Question determines data needs.
+      </p>
+      <p style="font-size:1.1rem;" class="text-gray-500">問いが決まると、必要なデータが決まる。</p>
+      <div class="p-6 bg-gray-50 rounded-2xl border border-gray-200">
+        <p style="font-size:1.35rem;" class="font-bold text-accent">Data follows structure.</p>
+        <p style="font-size:1rem;" class="text-gray-500 mt-2">
+          構造がデータを呼び込む。<br>データから始めると構造が作れない。
+        </p>
+      </div>
+      <div class="p-5 bg-blue-50 border-l-4 border-blue-300 rounded-r-xl">
+        <p style="font-size:1.1rem;" class="font-bold text-accent">✕ &nbsp;Data → Hope for meaning</p>
+        <p style="font-size:1.1rem;" class="font-bold text-sub mt-1">○ &nbsp;Question → Required Data</p>
+      </div>
+    </div>
+
+    <!-- cascade diagram -->
+    <div class="flex items-center justify-center">
+      <div class="flex flex-col items-center gap-3">
+        <div class="w-60 px-6 py-5 border-4 border-accent rounded-xl bg-white text-center shadow-md">
+          <p style="font-size:1.35rem;" class="font-bold text-accent">Question</p>
+          <p style="font-size:.85rem;" class="text-gray-500 mt-1">問い（確定）</p>
+        </div>
+        <div class="text-accent font-black" style="font-size:2.5rem;">↓</div>
+        <div class="w-60 px-6 py-4 bg-gray-100 border-2 border-gray-300 rounded-xl text-center">
+          <p style="font-size:1.15rem;" class="font-bold text-gray-600">Required Data</p>
+          <p style="font-size:.85rem;" class="text-gray-400 mt-1">必要なデータ</p>
+        </div>
+        <div class="text-accent font-black" style="font-size:2.5rem;">↓</div>
+        <div class="w-60 px-6 py-4 bg-gray-100 border-2 border-gray-300 rounded-xl text-center">
+          <p style="font-size:1.15rem;" class="font-bold text-gray-600">Method / Experiment</p>
+          <p style="font-size:.85rem;" class="text-gray-400 mt-1">手法・実験</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-msg" style="border-color:#356f8c;color:#356f8c;">
+    Data comes later.&ensp;／&ensp;データは後。
+  </div>
+  <div class="progress-bar" id="bar7"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 8 — 1 Figure = 1 Claim
+═══════════════════════════════════════════ -->
+<div class="slide grid-bg">
+  <h2 class="slide-title">1 Figure = 1 Claim</h2>
+  <p class="slide-subtitle">1図＝1主張 — Figures are arguments, not illustrations</p>
+
+  <div class="grid grid-cols-2 gap-14 items-center max-w-6xl mx-auto w-full flex-1">
+    <!-- text -->
+    <div class="space-y-5">
+      <p style="font-size:1.45rem;" class="leading-relaxed font-bold">
+        Figures are not explanations.<br>
+        They are the <span class="text-accent">claim itself</span>.
+      </p>
+      <p style="font-size:1.1rem;" class="text-gray-500">図は説明ではない。主張そのものである。</p>
+      <div class="p-6 bg-white rounded-2xl border border-gray-200 shadow-sm">
+        <p style="font-size:1.3rem;" class="font-bold text-sub">One figure = one claim.</p>
+        <p style="font-size:1rem;" class="text-gray-500 mt-2">1つの図に2つの主張を詰め込まない。</p>
+      </div>
+      <div class="p-5 bg-gray-50 rounded-xl border border-gray-200">
+        <p style="font-size:1.1rem;" class="text-gray-700">
+          Read papers <span class="text-accent font-bold">via figures first</span>.&ensp;論文は図で読む。
+        </p>
+      </div>
+    </div>
+
+    <!-- bad / good diagram -->
+    <div class="flex flex-col gap-5">
+      <!-- bad -->
+      <div class="border-2 border-dashed border-blue-300 rounded-xl p-5 opacity-60">
+        <p style="font-size:.95rem;" class="font-bold text-accent mb-3">BAD ✕ — 2 claims in 1 figure</p>
+        <div class="w-full h-16 bg-blue-50 border border-blue-200 rounded flex items-center justify-center gap-6">
+          <div class="px-4 py-2 bg-blue-200 rounded font-bold text-accent" style="font-size:.9rem;">Claim A</div>
+          <span class="text-red-300 font-black" style="font-size:1.2rem;">+</span>
+          <div class="px-4 py-2 bg-blue-200 rounded font-bold text-sub" style="font-size:.9rem;">Claim B</div>
+        </div>
+      </div>
+      <!-- good -->
+      <div class="border-4 border-accent rounded-xl p-5 bg-blue-50 shadow-md">
+        <p style="font-size:.95rem;" class="font-bold text-accent mb-3">GOOD ○ — 1 figure, 1 claim</p>
+        <div class="flex gap-4">
+          <div class="flex-1 h-16 bg-white border-2 border-accent rounded flex items-center justify-center font-bold text-accent" style="font-size:.95rem;">
+            Claim A
+          </div>
+          <div class="flex-1 h-16 bg-white border-2 border-gray-200 rounded flex flex-col items-center justify-center text-center" style="font-size:.85rem;color:#9ca3af;">
+            <span class="font-bold">Claim B</span>
+            <span style="font-size:.85rem;">→ next figure</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-msg" style="border-color:#356f8c;color:#356f8c;">
+    Read papers via figures.&ensp;／&ensp;論文は図で読む。
+  </div>
+  <div class="progress-bar" id="bar8"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 9 — Structure Defines Productivity
+═══════════════════════════════════════════ -->
+<div class="slide">
+  <h2 class="slide-title">Structure Defines Productivity</h2>
+  <p class="slide-subtitle">構造が生産性を決める — It's architecture, not ability</p>
+
+  <div class="grid grid-cols-2 gap-14 items-center max-w-6xl mx-auto w-full flex-1">
+    <!-- text -->
+    <div class="space-y-5">
+      <p style="font-size:1.45rem;" class="leading-relaxed font-bold">
+        Not a gap in <span style="text-decoration:line-through;color:#9ca3af;">ability</span>,<br>
+        but a gap in <span class="text-accent">structure</span>.
+      </p>
+      <p style="font-size:1.1rem;" class="text-gray-500">能力差ではない。構造差である。</p>
+      <div class="p-6 bg-gray-50 rounded-2xl border border-gray-200">
+        <p style="font-size:1.35rem;" class="font-bold text-accent">Productivity is structural.</p>
+        <p style="font-size:1rem;" class="text-gray-500 mt-2">生産性は才能ではなく、設計の質で決まる。</p>
+      </div>
+    </div>
+
+    <!-- bar chart -->
+    <div class="flex flex-col gap-6 p-8 bg-gray-50 rounded-2xl border border-gray-200">
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <span style="font-size:.9rem;width:7.5rem;flex-shrink:0;" class="font-bold text-accent">High Structure</span>
+          <div class="flex-1 h-10 rounded-r-full shadow-md" style="background:#356f8c;"></div>
+        </div>
+        <p style="font-size:.8rem;" class="text-gray-400 pl-32">Framing → Figures → Draft → Submit</p>
+      </div>
+      <div>
+        <div class="flex items-center gap-3 mb-2">
+          <span style="font-size:.9rem;width:7.5rem;flex-shrink:0;" class="font-bold text-gray-400">Low Structure</span>
+          <div class="h-10 rounded-r-full bg-gray-300" style="width:32%;"></div>
+        </div>
+        <p style="font-size:.8rem;" class="text-gray-400 pl-32">Data → ??? → Repeat</p>
+      </div>
+      <div class="pt-4 border-t border-gray-200 text-center">
+        <p style="font-size:.95rem;" class="text-gray-600">Same time investment → Different output</p>
+        <p style="font-size:.8rem;" class="text-gray-400 mt-1">同じ時間でも、構造が違えば成果が変わる</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-msg" style="border-color:#356f8c;color:#356f8c;">
+    Back to the need for an OS.&ensp;／&ensp;OSの必要性に回帰。
+  </div>
+  <div class="progress-bar" id="bar9"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SLIDE 10 — Paper Card (bg-accent)
+═══════════════════════════════════════════ -->
+<div class="slide bg-accent-slide">
+  <div class="max-w-6xl mx-auto w-full">
+    <h2 class="slide-title slide-title-sub" style="font-size:2.75rem;font-weight:900;border-left:8px solid rgba(255,255,255,.4);padding-left:1.25rem;margin-bottom:.25rem;">
+      Paper Card: Fix the Structure
+    </h2>
+    <p style="font-size:1.1rem;color:rgba(255,255,255,.7);padding-left:1.5rem;" class="mb-10">構造を固定する：Paper Card</p>
+
+    <div class="flex items-center justify-center gap-8 flex-wrap">
+
+      <!-- Doubt -->
+      <div class="flex flex-col items-center gap-3 text-center">
+        <div class="relative w-28 h-24 flex items-center justify-center">
+          <div class="absolute inset-0 rounded-full" style="background:rgba(255,255,255,.08);filter:blur(18px);"></div>
+          <span class="relative" style="font-size:3rem;">☁️</span>
+        </div>
+        <p style="font-size:1.15rem;" class="font-bold">Doubt</p>
+        <p style="font-size:.85rem;color:rgba(255,255,255,.65);">不確かなアイデア</p>
+      </div>
+
+      <div style="font-size:2rem;color:rgba(255,255,255,.4);" class="font-black">→</div>
+
+      <!-- Paper Card widget -->
+      <div class="bg-white rounded-2xl shadow-2xl p-7 w-72" style="color:#1f2937;">
+        <p style="font-size:1.1rem;border-bottom:4px solid #c6a54a;padding-bottom:.75rem;margin-bottom:1rem;" class="font-black">Paper Card</p>
+        <div class="space-y-3">
+          <div style="border-bottom:1px solid #f3f4f6;" class="pb-2">
+            <p style="font-size:.95rem;" class="font-bold">Core Question</p>
+            <p style="font-size:.8rem;" class="text-gray-400">1 sentence</p>
+          </div>
+          <div style="border-bottom:1px solid #f3f4f6;" class="pb-2">
+            <p style="font-size:.95rem;" class="font-bold">Compared to X, we Y</p>
+            <p style="font-size:.8rem;" class="text-gray-400">差分の明示</p>
+          </div>
+          <div style="border-bottom:1px solid #f3f4f6;" class="pb-2">
+            <p style="font-size:.95rem;" class="font-bold">Key Contributions</p>
+            <p style="font-size:.8rem;" class="text-gray-400">3点以内</p>
+          </div>
+          <div style="border-bottom:1px solid #f3f4f6;" class="pb-2">
+            <p style="font-size:.95rem;" class="font-bold">Main Figures (sketch)</p>
+            <p style="font-size:.8rem;" class="text-gray-400">図の配置</p>
+          </div>
+          <div>
+            <p style="font-size:.95rem;" class="font-bold">Contribution Statement</p>
+            <p style="font-size:.8rem;" class="text-gray-400">貢献の要約</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-size:2rem;color:rgba(255,255,255,.4);" class="font-black">→</div>
+
+      <!-- Belief block -->
+      <div class="flex flex-col items-center gap-3 text-center">
+        <div class="w-28 h-28 rounded-xl flex flex-col items-center justify-center gap-1"
+             style="background:rgba(255,255,255,.18);border:4px solid rgba(255,255,255,.55);box-shadow:6px 6px 0 rgba(0,0,0,.22);">
+          <span style="font-size:2rem;">🧱</span>
+          <span style="font-size:.9rem;" class="font-black">Belief</span>
+        </div>
+        <p style="font-size:1.15rem;" class="font-bold">Fixed Belief</p>
+        <p style="font-size:.85rem;color:rgba(255,255,255,.65);">Belief (Provisional)</p>
+      </div>
+    </div>
+
+    <div class="mt-10 text-center">
+      <p style="font-size:1.3rem;color:rgba(255,255,255,.9);" class="font-bold">
+        Structure before data.&ensp;／&ensp;Paper Card = 構造を固定する装置
+      </p>
+    </div>
+  </div>
+  <div class="progress-bar bar-light" id="bar10"></div>
+</div>
+
+</div><!-- .slide-container -->
+
+<!-- nav -->
+<div class="controls">
+  <div class="btn" onclick="prevSlide()">BACK</div>
+  <div id="slideNum" class="btn">1 / 10</div>
+  <div class="btn" onclick="nextSlide()">NEXT</div>
+</div>
+
+<script>
+  let cur = 0;
+  const slides = document.querySelectorAll('.slide');
+  const sn = document.getElementById('slideNum');
+
+  function update() {
+    slides.forEach((s, i) => {
+      s.classList.toggle('active', i === cur);
+      const bar = s.querySelector('[id^="bar"]');
+      if (bar) bar.style.width = ((cur + 1) / slides.length * 100) + '%';
+    });
+    sn.textContent = (cur + 1) + ' / ' + slides.length;
+  }
+
+  function nextSlide() { if (cur < slides.length - 1) { cur++; update(); } }
+  function prevSlide() { if (cur > 0) { cur--; update(); } }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+  });
+  update();
+</script>
+</body>
+</html>

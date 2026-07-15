@@ -1,0 +1,366 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.wrap{padding:1.5rem 0}
+.tabs{display:flex;gap:8px;margin-bottom:1.5rem;flex-wrap:wrap}
+.tab{padding:8px 16px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);cursor:pointer;font-size:14px;color:var(--color-text-secondary);transition:all 0.15s}
+.tab.active{background:var(--color-background-secondary);color:var(--color-text-primary);border-color:var(--color-border-primary);font-weight:500}
+.tab:hover:not(.active){background:var(--color-background-secondary)}
+.panel{display:none}
+.panel.active{display:block}
+.prog-wrap{margin-bottom:1.5rem;background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px 16px}
+.prog-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.prog-label{font-size:13px;color:var(--color-text-secondary)}
+.prog-num{font-size:18px;font-weight:500;color:var(--color-text-primary)}
+.bar-bg{height:6px;background:var(--color-border-tertiary);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;background:#1D9E75;border-radius:3px;transition:width 0.3s ease}
+.section{margin-bottom:1.25rem}
+.section-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-bottom:6px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.section-label{font-size:11px;font-weight:500;color:var(--color-text-secondary);letter-spacing:0.06em;text-transform:uppercase}
+.priority{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:500}
+.p1{background:#E1F5EE;color:#085041}
+.p2{background:#F1EFE8;color:#444441}
+.item{display:flex;align-items:flex-start;gap:10px;padding:7px 2px;border-bottom:0.5px solid var(--color-border-tertiary);cursor:pointer;border-radius:4px;transition:background 0.1s}
+.item:last-child{border-bottom:none}
+.item:hover{background:var(--color-background-secondary);padding-left:8px;padding-right:8px}
+.cb{width:18px;height:18px;border:1.5px solid var(--color-border-secondary);border-radius:4px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all 0.15s}
+.cb.checked{background:#1D9E75;border-color:#1D9E75}
+.cb.checked::after{content:'✓';color:#fff;font-size:11px;font-weight:700}
+.text-wrap{flex:1}
+.jp{font-size:14px;color:var(--color-text-primary);line-height:1.5}
+.en{font-size:12px;color:var(--color-text-secondary);margin-top:2px;line-height:1.4}
+.divider{height:0.5px;background:var(--color-border-tertiary);margin:1.5rem 0}
+.section-meta{font-size:12px;color:var(--color-text-tertiary);margin-bottom:1rem;font-style:italic}
+.feedback-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem;margin-top:1.5rem}
+.feedback-label{font-size:12px;font-weight:500;color:var(--color-text-secondary);margin-bottom:8px}
+.feedback-box textarea{width:100%;font-size:13px;color:var(--color-text-primary);background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:8px 10px;resize:vertical;min-height:72px;font-family:var(--font-sans);line-height:1.5}
+.actions{display:flex;gap:8px;margin-top:1rem;flex-wrap:wrap}
+.btn{padding:7px 14px;font-size:13px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;color:var(--color-text-secondary);display:flex;align-items:center;gap:6px}
+.btn:hover{background:var(--color-background-secondary)}
+.btn-copy{margin-left:auto}
+</style>
+
+<h2 style="position:absolute;left:-9999px">デザイン道場チェックリスト v3</h2>
+
+<div class="wrap">
+  <div class="tabs">
+    <button class="tab active" data-tab="slide">スライド / Slides</button>
+    <button class="tab" data-tab="poster">ポスター / Poster</button>
+    <button class="tab" data-tab="figure">論文Figure / Figures</button>
+  </div>
+
+  <div class="prog-wrap">
+    <div class="prog-top">
+      <span class="prog-label" id="prog-label">0 / 0 チェック済み</span>
+      <span class="prog-num" id="prog-num">0%</span>
+    </div>
+    <div class="bar-bg"><div class="bar-fill" id="bar" style="width:0%"></div></div>
+  </div>
+
+  <div class="panel active" id="panel-slide">
+    <div class="section-meta">一人で確認 / Self-check before posting</div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-label">フォント / Font</span>
+        <span class="priority p1">まずここ</span>
+      </div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">サンセリフ体のみか（游ゴシック・Hiragino・Avenir推奨。MS明朝・MSゴシック禁止）</div><div class="en">Sans-serif only? (Yugothic / Hiragino / Avenir recommended. No MS Mincho / Gothic)</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">本文は24pt以上か、キャプションは18pt以上か</div><div class="en">Body ≥ 24pt? Captions ≥ 18pt?</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">フォントの種類は2種類以内か（多すぎると散漫に見える）</div><div class="en">2 font families max? (More looks scattered)</div></div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-label">余白 / Whitespace</span>
+        <span class="priority p1">まずここ</span>
+      </div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">スライドの端から文字・図まで十分な余白があるか（端ギリギリに詰めていないか）</div><div class="en">Enough margin from slide edges? (Not cramming to the edge)</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">要素と要素の間に十分な間隔があるか（詰め込みすぎていないか）</div><div class="en">Enough space between elements? (Not overcrowded)</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">情報を削れないか検討したか（余白が足りないのはコンテンツが多すぎるサイン）</div><div class="en">Tried cutting content? (Lack of whitespace = too much content)</div></div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-label">アライメント / Alignment</span>
+        <span class="priority p1">まずここ</span>
+      </div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">テキストボックス・図の左端（または中央）が揃っているか</div><div class="en">Left edges (or centers) of text boxes and figures aligned?</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">複数の要素が「なんとなく」ではなく何かに揃えて配置されているか</div><div class="en">Are elements aligned to something — not just placed by feel?</div></div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-label">カラー / Color</span>
+        <span class="priority p2">次に確認</span>
+      </div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">背景色と文字色のコントラストが十分か（薄い色同士になっていないか）</div><div class="en">Sufficient contrast between background and text? (No light-on-light)</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">色は3色以内に絞っているか（多いほど強調が薄れる）</div><div class="en">3 colors max? (More = weaker emphasis)</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">赤と緑を同じ図に使っていないか</div><div class="en">No red + green in the same diagram?</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">色だけで区別していないか（形・ラベルも併用）</div><div class="en">Not distinguishing by color alone? (Pair with shape or labels)</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">プロジェクターで実際に映して確認したか（画面と投影では見え方が変わる）</div><div class="en">Checked on a projector? (Screen ≠ projected appearance)</div></div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-label">その他 / Other</span>
+        <span class="priority p2">次に確認</span>
+      </div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">図形は塗りか枠線のどちらか一方のみか（両方使うと重くなる）</div><div class="en">Shapes use EITHER fill OR border — not both?</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">アニメーション・トランジションは最小限か（動きに注意が向くと内容が飛ぶ）</div><div class="en">Animations / transitions minimal? (Motion distracts from content)</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">折れ線グラフは色に加えて線種（実線/破線/点線）も使い分けているか</div><div class="en">Line graphs vary line style (solid / dashed / dotted) as well as color?</div></div></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="feedback-box">
+      <div class="feedback-label">道場に投稿するときに書く / Write when posting to #デザイン道場</div>
+      <textarea placeholder="ここが自信ない / ここを見てほしい&#10;e.g. 「配色がしっくりこない」「図の配置バランスが気になる」"></textarea>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-poster">
+    <div class="section-meta">一人で確認 / Self-check before posting</div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-label">フォント・文字サイズ / Font & size</span>
+        <span class="priority p1">まずここ</span>
+      </div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">サンセリフ体のみか</div><div class="en">Sans-serif only?</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">タイトルは80〜120ptか（3m先から読めるか）</div><div class="en">Title 80–120pt? (Readable from 3 meters?)</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">セクション見出しは36〜48pt、本文は24〜36ptか</div><div class="en">Section headings 36–48pt? Body 24–36pt?</div></div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-label">余白 / Whitespace</span>
+        <span class="priority p1">まずここ</span>
+      </div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">各セクションのテキストが50語以下か（詰め込みすぎていないか）</div><div class="en">Each section ≤ 50 words? (Not overcrowded?)</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">セクション間・図の周りに十分な余白があるか</div><div class="en">Enough whitespace between sections and around figures?</div></div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-label">アライメント / Alignment</span>
+        <span class="priority p1">まずここ</span>
+      </div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">セクション・図・テキストが格子状に整列しているか（目視ではなく数値で揃える）</div><div class="en">Sections, figures, and text on a grid? (Use numbers, not eye-balling)</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">読み順が左上→右下になっているか（Z型またはN型）</div><div class="en">Reading flow top-left → bottom-right (Z or N pattern)?</div></div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-label">カラー / Color</span>
+        <span class="priority p2">次に確認</span>
+      </div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">背景色と文字色のコントラストが十分か</div><div class="en">Sufficient contrast between background and text?</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">色は3色以内に絞っているか</div><div class="en">3 colors max?</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">赤と緑を同じ図に使っていないか</div><div class="en">No red + green combination?</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">色だけで区別していないか（形・ラベルも併用）</div><div class="en">Not color-only distinction?</div></div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-label">その他 / Other</span>
+        <span class="priority p2">次に確認</span>
+      </div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">図形は塗りか枠線のどちらか一方のみか</div><div class="en">Shapes use EITHER fill OR border — not both?</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">QRコード・連絡先が入っているか</div><div class="en">QR code and contact info included?</div></div></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="feedback-box">
+      <div class="feedback-label">道場に投稿するときに書く / Write when posting to #デザイン道場</div>
+      <textarea placeholder="ここが自信ない / ここを見てほしい&#10;e.g. 「全体のバランスが気になる」「読み順がわかりにくいかも」"></textarea>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-figure">
+    <div class="section-meta">一人で確認 / Self-check before posting</div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-label">フォント・線 / Font & line weight</span>
+        <span class="priority p1">まずここ</span>
+      </div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">サンセリフ体のみか（Arial / Hiragino推奨）、フォントが全体で統一されているか</div><div class="en">Sans-serif only (Arial / Hiragino)? Font consistent throughout?</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">実際の掲載サイズで印刷して文字と線が読めるか（シングル8〜9cm / ダブル16〜18cm）</div><div class="en">Printed at actual publication size — font and lines readable? (Single 8–9cm / Double 16–18cm)</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">軸ラベルは8〜10pt、目盛り数字は7〜9pt、主要な線は約2ptか</div><div class="en">Axis labels 8–10pt? Tick numbers 7–9pt? Main lines ~2pt?</div></div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-label">余白・アライメント / Whitespace & alignment</span>
+        <span class="priority p1">まずここ</span>
+      </div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">全パネルがグリッド整列されているか（目視ではなく数値で揃える）</div><div class="en">All panels grid-aligned? (Use numbers, not eye-balling)</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">パネル間の余白が均等か</div><div class="en">Equal spacing between panels?</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">比較するパネルの軸範囲が揃っているか</div><div class="en">Axis ranges consistent across comparable panels?</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">目盛りは2〜4本に絞り、不要な外枠・補助線を除去したか</div><div class="en">Tick marks limited to 2–4? Outer frame and redundant gridlines removed?</div></div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-label">カラー / Color</span>
+        <span class="priority p2">次に確認</span>
+      </div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">背景と文字・線のコントラストが十分か</div><div class="en">Sufficient contrast between background and text / lines?</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">色盲対応パレット（Viridis / Cividis / ColorBrewer）を使っているか</div><div class="en">Colorblind-safe palette? (Viridis / Cividis / ColorBrewer)</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">グレースケール印刷でもコントラストが保たれるか</div><div class="en">Contrast survives greyscale print?</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">スマートフォンの色覚シミュレーターで確認したか</div><div class="en">Checked with a smartphone color-blind simulator?</div></div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <span class="section-label">技術仕様 / Technical specs</span>
+        <span class="priority p2">次に確認</span>
+      </div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">写真・顕微鏡画像は300dpi以上か（TIFF推奨）</div><div class="en">Photos / microscopy ≥ 300 dpi? (TIFF recommended)</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">グラフ・線画は600〜1200dpiか（EPS / PDF推奨）</div><div class="en">Line art / graphs 600–1200 dpi? (EPS or PDF recommended)</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">3D・影・グラデーションを使っていないか</div><div class="en">No 3D effects, drop shadows, or gradients?</div></div></div>
+      <div class="item" onclick="toggle(this)"><div class="cb"></div><div class="text-wrap"><div class="jp">パネルは4枚以内か、ラベルは(a)(b)(c)で左上固定か</div><div class="en">Max 4 panels? Labels (a)(b)(c) fixed at top-left?</div></div></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="feedback-box">
+      <div class="feedback-label">道場に投稿するときに書く / Write when posting to #デザイン道場</div>
+      <textarea placeholder="ここが自信ない / ここを見てほしい&#10;e.g. 「このパネル配置で伝わるか」「色の使い方がジャーナルのスタイルに合っているか」"></textarea>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn" onclick="resetCurrent()"><i class="ti ti-refresh" aria-hidden="true"></i>リセット</button>
+    <button class="btn btn-copy" onclick="copySlack()"><i class="ti ti-copy" aria-hidden="true"></i>Slack用テキストをコピー</button>
+  </div>
+</div>
+
+<script>
+let currentTab='slide';
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    currentTab=t.dataset.tab;
+    document.getElementById('panel-'+currentTab).classList.add('active');
+    updateProgress();
+  });
+});
+function toggle(el){el.querySelector('.cb').classList.toggle('checked');updateProgress()}
+function updateProgress(){
+  const panel=document.getElementById('panel-'+currentTab);
+  const total=panel.querySelectorAll('.item').length;
+  const checked=panel.querySelectorAll('.cb.checked').length;
+  const pct=total?Math.round(checked/total*100):0;
+  document.getElementById('prog-label').textContent=checked+' / '+total+' チェック済み';
+  document.getElementById('prog-num').textContent=pct+'%';
+  document.getElementById('bar').style.width=pct+'%';
+}
+function resetCurrent(){
+  const panel=document.getElementById('panel-'+currentTab);
+  panel.querySelectorAll('.cb.checked').forEach(c=>c.classList.remove('checked'));
+  const ta=panel.querySelector('textarea');
+  if(ta)ta.value='';
+  updateProgress();
+}
+const slackTexts={
+slide:`*🎤 スライドチェックリスト / Slide Checklist*
+_一人で確認してから投稿 / Self-check before posting_
+
+*フォント（まずここ）/ Font*
+- [ ] サンセリフ体のみ（游ゴシック・Hiragino・Avenir推奨）/ Sans-serif only?
+- [ ] 本文24pt以上、キャプション18pt以上 / Body ≥24pt, captions ≥18pt?
+- [ ] フォントは2種類以内 / 2 font families max?
+
+*余白（まずここ）/ Whitespace*
+- [ ] スライドの端から十分な余白がある / Enough margin from slide edges?
+- [ ] 要素と要素の間に十分な間隔がある / Enough space between elements?
+- [ ] 情報を削れないか検討した / Tried cutting content?
+
+*アライメント（まずここ）/ Alignment*
+- [ ] テキストボックス・図の端が揃っている / Edges of text boxes and figures aligned?
+- [ ] 「なんとなく」ではなく何かに揃えて配置している / Elements aligned to something — not placed by feel?
+
+*カラー / Color*
+- [ ] 背景と文字のコントラストが十分か / Sufficient contrast between background and text?
+- [ ] 色は3色以内 / 3 colors max?
+- [ ] 赤と緑を同じ図に使っていない / No red + green in same diagram?
+- [ ] 色だけで区別していない（形・ラベルも併用）/ Not color-only distinction?
+- [ ] プロジェクターで実際に映して確認した / Checked on a projector?
+
+*その他 / Other*
+- [ ] 図形は塗りか枠線のどちらか一方のみ / Fill OR border — not both?
+- [ ] アニメーション・トランジションは最小限 / Animations minimal?
+- [ ] 折れ線グラフは線種も使い分けている / Line graphs vary line style too?
+
+*見てほしいポイント / Feedback request*`,
+poster:`*📋 ポスターチェックリスト / Poster Checklist*
+_一人で確認してから投稿 / Self-check before posting_
+
+*フォント・文字サイズ（まずここ）/ Font & size*
+- [ ] サンセリフ体のみ / Sans-serif only?
+- [ ] タイトル80〜120pt（3m先から読める）/ Title 80–120pt?
+- [ ] セクション見出し36〜48pt、本文24〜36pt / Headings 36–48pt, body 24–36pt?
+
+*余白（まずここ）/ Whitespace*
+- [ ] 各セクション50語以下 / Each section ≤50 words?
+- [ ] セクション間・図の周りに十分な余白がある / Enough whitespace between sections and figures?
+
+*アライメント（まずここ）/ Alignment*
+- [ ] セクション・図・テキストが格子状に整列している / Sections, figures, text on a grid?
+- [ ] 読み順が左上→右下（Z型またはN型）/ Reading flow top-left → bottom-right?
+
+*カラー / Color*
+- [ ] 背景と文字のコントラストが十分か / Sufficient contrast?
+- [ ] 色は3色以内 / 3 colors max?
+- [ ] 赤と緑を同じ図に使っていない / No red + green?
+- [ ] 色だけで区別していない / Not color-only distinction?
+
+*その他 / Other*
+- [ ] 図形は塗りか枠線のどちらか一方のみ / Fill OR border — not both?
+- [ ] QRコード・連絡先あり / QR code and contact included?
+
+*見てほしいポイント / Feedback request*`,
+figure:`*📊 論文Figureチェックリスト / Paper Figure Checklist*
+_一人で確認してから投稿 / Self-check before posting_
+
+*フォント・線（まずここ）/ Font & line weight*
+- [ ] サンセリフ体のみ・全体で統一 / Sans-serif only, consistent throughout?
+- [ ] 実際の掲載サイズで印刷して文字と線が読める / Readable at actual publication size?
+- [ ] 軸ラベル8〜10pt、目盛り数字7〜9pt、主要な線~2pt / Axis 8–10pt, ticks 7–9pt, lines ~2pt?
+
+*余白・アライメント（まずここ）/ Whitespace & alignment*
+- [ ] 全パネルがグリッド整列（数値で揃える）/ All panels grid-aligned?
+- [ ] パネル間の余白が均等 / Equal spacing between panels?
+- [ ] 比較パネルの軸範囲が揃っている / Axis ranges consistent?
+- [ ] 目盛りは2〜4本、外枠・補助線を除去 / Tick marks 2–4, outer frame removed?
+
+*カラー / Color*
+- [ ] 背景と文字・線のコントラストが十分 / Sufficient contrast?
+- [ ] 色盲対応パレット（Viridis / Cividis / ColorBrewer）/ Colorblind-safe palette?
+- [ ] グレースケールでもコントラストが保たれる / Greyscale contrast OK?
+- [ ] スマホ色覚シミュレーターで確認 / Checked with color-blind simulator?
+
+*技術仕様 / Technical specs*
+- [ ] 写真≥300dpi（TIFF）、グラフ600〜1200dpi（EPS/PDF）/ Photos ≥300dpi, line art 600–1200dpi?
+- [ ] 3D・影・グラデーションなし / No 3D, shadows, or gradients?
+- [ ] パネルは4枚以内、ラベルは(a)(b)(c)で左上固定 / Max 4 panels, labels (a)(b)(c) top-left?
+
+*見てほしいポイント / Feedback request*`
+};
+function copySlack(){
+  const panel=document.getElementById('panel-'+currentTab);
+  const ta=panel.querySelector('textarea');
+  const note=ta&&ta.value.trim()?'\n'+ta.value.trim():'\n（記入なし / Not specified）';
+  const text=slackTexts[currentTab]+note;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn=document.querySelector('.btn-copy');
+    const orig=btn.innerHTML;
+    btn.innerHTML='<i class="ti ti-check" aria-hidden="true"></i> コピーしました！';
+    setTimeout(()=>btn.innerHTML=orig,2000);
+  });
+}
+updateProgress();
+</script>
