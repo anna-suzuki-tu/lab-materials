@@ -66,3 +66,6 @@ career-design/ (+en/)      ← 【完成・公開済み】
   push してよいが `__pycache__/`・`~$*.pptx` は除外（.gitignore 済みか確認）
 - Notionテンプレへのリンク: lab-tools 各ページは「なぜ使うか→どう使うか→テンプレリンク」の3部構成。
   テンプレの公開リンクは先生に確認して取得する
+- **lab-tools 完成時の宿題**: orientation/research-as-design（Paper Card節）と
+  orientation/grade-goals（Quarter Plan節）の末尾にある
+  「Lab Tools「◯◯」で詳しく解説します（準備中）」の文を、実リンクに変換すること
