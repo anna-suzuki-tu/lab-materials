@@ -4,18 +4,18 @@
    ===================================================== */
 :root {
   /* ページ（ダーク地） */
-  --bg:         #2E333A;   /* 濃グレー */
-  --ink:        #E6E9ED;   /* 地の上の基本文字（薄色） */
-  --ink-muted:  #9AA3AD;   /* 地の上の補助文字 */
-  --primary:    #207A91;   /* くすんだ青（塗り・バー・帯用） */
-  --primary-lt: #6FB9CC;   /* くすんだ青の明色（ダーク地の文字・リンク用） */
-  --accent:     #C6A44A;   /* くすんだ金 */
+  --bg:         #3c3c3c;   /* 濃グレー */
+  --ink:        #9fa1a1;   /* 地の上の基本文字（薄色） */
+  --ink-muted:  #FFFFFF;   /* 地の上の補助文字 */
+  --primary:    #cbbf34;   /* くすんだ青（塗り・バー・帯用） */
+  --primary-lt: #c9c495;   /* くすんだ金の明色（ダーク地の文字・リンク用） */
+  --accent:     #90c2cf;   /* くすんだ金 */
   /* カード（白面） */
   --surface:    #FFFFFF;
-  --text:       #1F2937;   /* カード内の基本文字 */
+  --text:       #3c3c3c;   /* カード内の基本文字 */
   --muted:      #5D5D5D;   /* カード内の補助文字 */
-  --border:     #E5E7EB;
-  --panel:      #F1F3F5;   /* カード内の薄グレー面（音声帯など） */
+  --border:     #c5c6c6;
+  --panel:      #e4e5e5;   /* カード内の薄グレー面（音声帯など） */
 }
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 body {
@@ -51,7 +51,7 @@ h1 { font-size: 24px; font-weight: 900; line-height: 1.4; letter-spacing: -.01em
 .card ol, .card ul { padding-left: 1.4em; }
 .card a { color: var(--primary); }
 .note {
-  background: #FBF7EC; border: 1px solid #EADFC2; border-left: 5px solid var(--accent);
+  background: #d6e9f1; border: 1px solid #b9d9e3; border-left: 5px solid var(--accent);
   border-radius: 10px; padding: 13px 15px; font-size: 13px; margin: 14px 0;
   color: var(--text);
 }
@@ -86,9 +86,9 @@ a.tile:hover { outline: 2px solid var(--primary-lt); outline-offset: -1px; }
   display: inline-block; font-size: 10px; font-weight: 700; padding: 1px 9px;
   border-radius: 999px; margin-left: 6px; vertical-align: 2px; white-space: nowrap;
 }
-.badge.live { background: rgba(32,122,145,.12); color: var(--primary); }
-.badge.soon { background: #EEE; color: #999; }
-div.tile.soon { opacity: .55; }
+.badge.live { background: rgba(32,122,145,.12); color: #4b7caa; }
+.badge.soon { background: #EEE; color: #232323; }
+div.tile.soon { opacity: .50; }
 
 /* ---- Lab Values：クリック要素と区別する「銘板」スタイル ---- */
 .value {
@@ -104,7 +104,7 @@ div.tile.soon { opacity: .55; }
   border-radius: 999px; margin-right: 7px; position: relative; top: -1px; white-space: nowrap; }
 .tag.f { background: rgba(32,122,145,.12); color: var(--primary); }
 .tag.o { background: rgba(198,164,74,.16); color: #8a6d1f; }
-.cta { display: block; text-align: center; background: var(--primary); color: #fff; font-weight: 700;
+a.cta { display: block; text-align: center; background: var(--primary); color: var(--bg); font-weight: 700;
   font-size: 15px; padding: 13px 20px; border-radius: 999px; text-decoration: none; margin: 10px 0;
   box-shadow: 0 4px 14px rgba(0,0,0,.4); }
 .cta.alt { background: var(--surface); color: var(--primary); border: 2px solid var(--primary); box-shadow: none; }

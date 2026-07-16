@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Papers — 論文は、書き上げて初めて研究になる｜Lab Forum｜DeSFE Lab</title>
+<meta name="description" content="執筆から査読対応まで、論文投稿の全工程を4幕で解説。Draft Mindset・著者資格・カバーレター・査読対応のすべてを、鈴木研の実務に即して伝えます。東北大学 DeSFE Lab。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+/* ---- 幕ヘッダー（ダーク地の上） ---- */
+.part-head {
+  display: flex; align-items: center; gap: 14px;
+  margin: 36px 0 4px; padding: 14px 16px;
+  background: rgba(255,255,255,.05); border-radius: 10px;
+  border-left: 5px solid var(--accent);
+}
+.part-num {
+  font-size: 11px; font-weight: 900; letter-spacing: .15em;
+  color: var(--accent); white-space: nowrap;
+}
+.part-main { flex: 1; }
+.part-title { font-size: 17px; font-weight: 900; color: #fff; line-height: 1.4; }
+.part-en { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+
+/* ---- 二列レイアウト（カード内） ---- */
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;
+}
+@media (max-width: 520px) { .two-col { grid-template-columns: 1fr; } }
+.col-block { background: var(--panel); border-radius: 8px; padding: 12px; }
+.col-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 6px; }
+.col-block ul { padding-left: 1.3em; }
+.col-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- Before / After ---- */
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ba-grid { grid-template-columns: 1fr; } }
+.ba-block { border-radius: 8px; padding: 12px; }
+.ba-before { background: #fdecea; border-left: 4px solid #e57373; }
+.ba-after  { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ba-label { font-size: 11px; font-weight: 900; letter-spacing: .12em; margin-bottom: 6px; }
+.ba-before .ba-label { color: #c62828; }
+.ba-after  .ba-label { color: #2e7d32; }
+.ba-block ul { padding-left: 1.3em; }
+.ba-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- ステップ（横並び） ---- */
+.steps-h { display: grid; gap: 0; margin: 10px 0; counter-reset: step; }
+.step-h {
+  display: flex; align-items: flex-start; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid var(--border); counter-increment: step;
+}
+.step-h:last-child { border-bottom: none; }
+.step-num {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.step-body { flex: 1; }
+.step-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- ステップ（縦タイムライン） ---- */
+.steps-v { margin: 10px 0; }
+.step-v { display: flex; gap: 14px; padding: 8px 0; position: relative; }
+.step-v:not(:last-child)::after {
+  content: ""; position: absolute; left: 11px; top: 32px; bottom: -8px;
+  width: 2px; background: var(--border);
+}
+.step-v-dot {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--accent);
+  color: #fff; font-size: 11px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+}
+.step-v-body { flex: 1; }
+.step-v-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-v-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- 2x2 カードグリッド ---- */
+.grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .grid-2x2 { grid-template-columns: 1fr; } }
+.g-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g-card-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g-card-sub { font-size: 12.5px; color: var(--muted); }
+
+/* ---- テイクアウェイ ---- */
+.takeaway {
+  background: rgba(32,122,145,.08); border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0; padding: 8px 12px; margin-top: 12px;
+  font-size: 13px; font-weight: 700; color: var(--text);
+}
+.takeaway::before { content: "→ "; color: var(--accent); }
+
+/* ---- 目次 ---- */
+.toc-row { display: flex; gap: 10px; align-items: baseline; padding: 8px 4px;
+  font-size: 14px; font-weight: 700; color: var(--text); text-decoration: none;
+  border-bottom: 1px solid var(--border); }
+.toc-row:last-child { border-bottom: none; }
+a.toc-row:hover { color: var(--primary); }
+.toc-n { color: var(--primary); font-weight: 900; flex-shrink: 0; font-size: 12px; }
+.toc-sub { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: auto; }
+
+/* ---- 3カードグリッド ---- */
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
+.g3-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g3-who { font-size: 11px; font-weight: 900; letter-spacing: .1em; color: var(--accent); margin-bottom: 4px; }
+.g3-action { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g3-desc { font-size: 12px; color: var(--muted); }
+
+/* ---- 問題/解決 ---- */
+.ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ps-grid { grid-template-columns: 1fr; } }
+.ps-block { border-radius: 8px; padding: 12px; }
+.ps-risk { background: #fdecea; border-left: 4px solid #e57373; }
+.ps-rule { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ps-label { font-size: 11px; font-weight: 900; letter-spacing: .1em; margin-bottom: 6px; }
+.ps-risk .ps-label { color: #c62828; }
+.ps-rule .ps-label { color: #2e7d32; }
+.ps-block ul { padding-left: 1.3em; }
+.ps-block li { font-size: 13px; color: var(--text); margin-bottom: 3px; }
+
+/* ---- 番号付きカード ---- */
+.num-cards { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
+.num-card { display: flex; gap: 12px; align-items: flex-start; }
+.nc-num {
+  width: 26px; height: 26px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.nc-body { flex: 1; background: var(--panel); border-radius: 8px; padding: 10px 12px; }
+.nc-head { font-size: 13px; font-weight: 900; color: var(--text); }
+.nc-sub { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="lang-sw"><span>日本語</span> ｜ <a href="en/">English</a></div>
+<div class="breadcrumb"><a href="../">🏠 教育ポータル</a> › Writing Papers</div>
+
+<header>
+  <div class="kicker">LAB FORUM — WRITING PAPERS</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>論文は、書き上げて初めて研究になる</h1>
+      <div class="subtitle">Writing Papers — From Draft to the World</div>
+    </div>
+  </div>
+</header>
+
+<blockquote class="lead-quote">
+  書かれなかった発見は、存在しないのと同じ。
+  <span class="src">研究成果は「再現可能な形で共有」されて初めて科学になる — 論文は探究サイクルの最終フェーズ</span>
+</blockquote>
+
+<!-- ============ 概要 ============ -->
+
+<div class="card">
+  <h2>この資料で学べること</h2>
+  <p>このページは、鈴木研 Lab Forum「Writing Papers」（2026年7月9日）の講義内容を読み物として再構成したものです。B4から博士・ポスドクまで、それぞれが必要な地図を持って論文投稿の全工程を歩けるようになることをゴールとします。</p>
+  <div class="num-cards" style="margin-top:12px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">第1幕 書く</div><div class="nc-sub">Draft Mindset — 完璧主義を手放し、生成と編集を分ける</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">第2幕 整える</div><div class="nc-sub">Beyond the manuscript — 著者資格・謝辞・データ・再利用・AI利用</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">第3幕 出す</div><div class="nc-sub">Cover letter — エディターへの90秒プレゼンを書く</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">第4幕 対話する</div><div class="nc-sub">Review process — 査読は無料のコンサルティング</div></div></div>
+  </div>
+  <p style="margin-top:12px;"><b>B4</b>：全体像をつかみ、12月までのロードマップを自分のものにする。<b>M・D</b>：自分の現在地を確認し、次のボトルネックを特定する。<b>ポスドク</b>：抜けをチェックし、実務の型を更新する。</p>
+</div>
+
+<!-- ============================================================
+     第1幕：書く — Draft Mindset
+     ============================================================ -->
+
+<div class="part-head" id="part1">
+  <div class="part-num">第1幕</div>
+  <div class="part-main">
+    <div class="part-title">最大の敵は、完璧主義</div>
+    <div class="part-en">Draft Mindset — 苦しさの正体を知り、生成と編集を分ける</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>書けないのは正常</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">スラスラ書けるなら、それは新しくない</p>
+  <p><b>Struggling is a marker of novelty</b> — 書くのに苦しむのは、未知に挑んでいる証拠です。不確実性は科学的新規性のマーカーです。アイデアが「なんとなく言えそう」な段階では、まだ本当の問いに達していない。</p>
+  <p style="margin-top:8px;">逆説的ですが、「醜い初稿」こそ独創への入口です。スラスラ書ける文章は、自分がすでに知っていることの再生産です。苦しみは排除すべき障害ではなく、「ここに新しさがある」というシグナルです。</p>
+  <div class="takeaway">苦しいのは能力の問題ではなく、未知への挑戦の証拠。</div>
+</div>
+
+<div class="card">
+  <h2>生成と編集を分けよ</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">書く脳と直す脳は、同時に動かない</p>
+  <p><b>Multi-stage drafting</b> — 最初から完璧な文章を書こうとする「Perfect Draft Syndrome」は、書くスピードを10分の1にします。書く工程と直す工程を、別々の時間枠に分けるのが解決策です。</p>
+  <div class="two-col" style="margin-top:12px;">
+    <div class="col-block">
+      <div class="col-head">初稿（生成）</div>
+      <ul>
+        <li>自分だけが見る吐き出し</li>
+        <li>精度は問わない・止まらない</li>
+        <li>話し言葉のままでいい</li>
+      </ul>
+    </div>
+    <div class="col-block">
+      <div class="col-head">推敲（編集）</div>
+      <ul>
+        <li>後から別工程で行う</li>
+        <li>エレガンスはここで付与する</li>
+        <li>査読者の目で読み直す</li>
+      </ul>
+    </div>
+  </div>
+  <div class="takeaway">カレンダーに「書く時間」と「直す時間」を別の枠で入れる。</div>
+</div>
+
+<div class="card">
+  <h2>止まったときの処方箋</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">根性ではなく、症状に合った介入を</p>
+  <p><b>Tactical fixes for writer's block</b> — 書き詰まりには3種類の症状があり、それぞれに異なる介入が効きます。</p>
+  <div class="num-cards" style="margin-top:12px;">
+    <div class="num-card">
+      <div class="nc-num">1</div>
+      <div class="nc-body">
+        <div class="nc-head">白紙の不安</div>
+        <div class="nc-sub">フリーライティング10分 — 精度を問わず吐き出す。書いた内容は捨ててもいい</div>
+      </div>
+    </div>
+    <div class="num-card">
+      <div class="nc-num">2</div>
+      <div class="nc-body">
+        <div class="nc-head">勢いの低下</div>
+        <div class="nc-sub">WIRMI法 —「本当に言いたいのは…」と話し言葉で書き直す。声に出すと詰まりが解ける</div>
+      </div>
+    </div>
+    <div class="num-card">
+      <div class="nc-num">3</div>
+      <div class="nc-body">
+        <div class="nc-head">圧倒される</div>
+        <div class="nc-sub">「Figure 1 のキャプションを書く」まで作業を分解する。完成ではなく次の一歩だけを決める</div>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway">処方箋を仕組みにしたのが、鈴木研の Writing Paper Skills。</div>
+</div>
+
+<div class="card">
+  <h2>ワークフロー：初稿は「展開作業」</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">FramingとFiguresが終われば、Draftは展開作業になる</p>
+  <p><b>From weekly habit to submission</b> — 白紙から書き始める必要はありません。材料が揃っていれば、初稿は展開作業です。</p>
+  <div class="steps-h" style="margin-top:12px;">
+    <div class="step-h"><div class="step-num">1</div><div class="step-body"><div class="step-label">Framing / Figures</div><div class="step-sub">図の構造と論文の枠組みを先に固める（<a href="../orientation/research-as-design/">Lab OS 02</a> 参照）</div></div></div>
+    <div class="step-h"><div class="step-num">2</div><div class="step-body"><div class="step-label">Paper card（毎週更新）</div><div class="step-sub">主張1文「Compared to X, we Y」を更新し続ける週次の習慣</div></div></div>
+    <div class="step-h"><div class="step-num">3</div><div class="step-body"><div class="step-label">主張1文が揃う</div><div class="step-sub">言い切れる主張があれば、初稿の骨格はできている</div></div></div>
+    <div class="step-h"><div class="step-num">4</div><div class="step-body"><div class="step-label">Draft = 展開</div><div class="step-sub">揃った材料を文章に展開するだけ。白紙からではなく材料から書く</div></div></div>
+  </div>
+  <div class="takeaway">12月に慌てないための、今週の習慣がここにある。</div>
+</div>
+
+<div class="card">
+  <h2>Writing Paper Skills — 主張を強くする「型」</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">主張を強くする「型」を、鈴木研は言語化した</p>
+  <p>論文の強さは、主張の強さで決まります。「Xを観察した」と書いてしまう原稿と、「Xを<strong>初めて可能にした</strong>」と言い切る原稿では、査読者の反応がまったく異なります。この「言い切る型」をAIと一緒に回すプロセスとして明文化したのが <b>Writing Paper Skills</b> です。</p>
+  <div class="ba-grid" style="margin-top:12px;">
+    <div class="ba-block ba-before">
+      <div class="ba-label">BEFORE</div>
+      <ul>
+        <li>「Xを観察した」と書いてしまう</li>
+        <li>主張が弱く、新規性が伝わらない</li>
+      </ul>
+    </div>
+    <div class="ba-block ba-after">
+      <div class="ba-label">AFTER</div>
+      <ul>
+        <li>「Xを<strong>初めて可能にした</strong>」と言い切る</li>
+        <li>査読者の突っ込みに事前に答えてある</li>
+      </ul>
+    </div>
+  </div>
+  <div class="takeaway">AIと一緒に回すプロセスが Writing Paper Skills（次で中身を見る）。</div>
+</div>
+
+<div class="card">
+  <h2>Writing Paper Skills — 5つの点検項目</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">想定査読者3〜4名の目で、一文ずつ点検する</p>
+  <p><b>Five checks, sentence by sentence</b> — 一文ずつ、以下の5項目で点検します。</p>
+  <div class="num-cards" style="margin-top:12px;">
+    <div class="num-card"><div class="nc-num">①</div><div class="nc-body"><div class="nc-head">Claim-strength</div><div class="nc-sub">主張の強さの段階は適切か — observed / indicates / suggests を使い分けているか</div></div></div>
+    <div class="num-card"><div class="nc-num">②</div><div class="nc-body"><div class="nc-head">Reviewer objection</div><div class="nc-sub">査読者はどこに突っ込むか — 想定される反論を先取りしているか</div></div></div>
+    <div class="num-card"><div class="nc-num">③</div><div class="nc-body"><div class="nc-head">Evidence alignment</div><div class="nc-sub">根拠と主張は釣り合っているか — データが支持できる強さの主張か</div></div></div>
+    <div class="num-card"><div class="nc-num">④</div><div class="nc-body"><div class="nc-head">Comparison validity</div><div class="nc-sub">比較は妥当か — 同じ物理量・同じ条件で比べているか</div></div></div>
+    <div class="num-card"><div class="nc-num">⑤</div><div class="nc-body"><div class="nc-head">Safer rewrite</div><div class="nc-sub">AI臭のない安全な書き換えか — ダッシュ・定型句・誇張の数値化を確認</div></div></div>
+  </div>
+  <div class="takeaway">使い方は2つのモードに分かれる。</div>
+</div>
+
+<div class="card">
+  <h2>Writing Paper Skills — 2つの使い方</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">草案診断モードと、先生モードは別物</p>
+  <p><b>Two modes, one purpose: sharpen the claim</b> — どちらのモードも「主張を強くする」という中核原理は同じです。</p>
+  <div class="two-col" style="margin-top:12px;">
+    <div class="col-block">
+      <div class="col-head">学生モード：草案診断</div>
+      <ul>
+        <li>言えていること vs 言うべきことを確認する</li>
+        <li>before / after で「型」を持ち帰る</li>
+        <li>清書はしない — 次は自分でやる</li>
+      </ul>
+    </div>
+    <div class="col-block">
+      <div class="col-head">先生モード：叩き台</div>
+      <ul>
+        <li>叩き台 → 違和感の表明</li>
+        <li>違和感を主張に翻訳する</li>
+        <li>最終文責は著者が持つ</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note" style="margin-top:12px;">
+    <b>共通原則</b>：AIは下書き器であって、書き手ではない。一文ずつ「なぜそこにあるか」言えることが著者の最終責任です。
+  </div>
+  <div class="takeaway">AIは道具。責任を負えるのは人間だけ。</div>
+</div>
+
+<!-- ============================================================
+     第2幕：整える — Beyond the manuscript
+     ============================================================ -->
+
+<div class="part-head" id="part2">
+  <div class="part-num">第2幕</div>
+  <div class="part-main">
+    <div class="part-title">論文は本文だけでは完成しない</div>
+    <div class="part-en">Beyond the manuscript — 著者・謝辞・データ・再利用・AI</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Authorship — 著者資格の4条件</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">著者資格には、4つの条件すべてが要る</p>
+  <p><b>ICMJE（国際医学雑誌編集者委員会）</b>の基準では、著者には以下の4条件すべてが必要です。1つでも欠けていれば、著者ではありません。</p>
+  <div class="num-cards" style="margin-top:12px;">
+    <div class="num-card"><div class="nc-num">①</div><div class="nc-body"><div class="nc-head">実質的貢献</div><div class="nc-sub">構想・データ収集・解析・解釈への実質的な貢献</div></div></div>
+    <div class="num-card"><div class="nc-num">②</div><div class="nc-body"><div class="nc-head">執筆・推敲</div><div class="nc-sub">草稿の執筆、または重要な知的内容の批判的改訂</div></div></div>
+    <div class="num-card"><div class="nc-num">③</div><div class="nc-body"><div class="nc-head">最終承認</div><div class="nc-sub">出版される版そのものへの最終承認</div></div></div>
+    <div class="num-card"><div class="nc-num">④</div><div class="nc-body"><div class="nc-head">説明責任</div><div class="nc-sub">研究のあらゆる部分への説明責任 — <b>4つすべて満たして著者</b></div></div></div>
+  </div>
+  <div class="takeaway">「データ収集だけ」「資金だけ」は著者ではなく謝辞へ。</div>
+</div>
+
+<div class="card">
+  <h2>Authorship — 話し合うタイミング</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">著者の順番と責任は、書き始める前に話し合う</p>
+  <p><b>Talk early, not at submission</b> — 著者トラブルで最も消耗するのは、投稿直前の揉め事です。著者順・筆頭著者・責任著者・共著者の役割は、プロジェクトの <b>Framing 期</b> に合意しておきます。</p>
+  <div class="note">
+    迷ったら鈴木に相談してください。最終判断は指導教員と相談しながら行います。謝辞も同様で、記載前に必ず本人の了承を取ること。
+  </div>
+  <div class="takeaway">話し合うタイミングは Framing 期 — 提出直前では手遅れ。</div>
+</div>
+
+<div class="card">
+  <h2>Data Repository — データは論文の一部</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">データも論文の一部として審査される時代</p>
+  <p><b>Open science is the default</b> — Geothermics を含む多くの学術誌がデータ公開ポリシーを持っています。<b>FAIR 原則</b>（Findable・Accessible・Interoperable・Reusable）に従い、DOI 付きリポジトリ（Zenodo 等）に公開します。</p>
+  <div class="note" style="margin-top:10px;">
+    <b>README の必須項目</b>：ファイル命名規則・変数定義・ソフトウェア要件・ORCID。<b>日付は ISO 8601（YYYY-MM-DD）</b>。ライセンスは CC0 または CC-BY を明示。助成金番号は正確に（LOTUS 等、交付条件の確認を忘れずに）。
+  </div>
+  <div class="takeaway">データは、未来の見知らぬ誰かへの梱包物。README とライセンスで渡す。</div>
+</div>
+
+<div class="card">
+  <h2>Self-plagiarism — 自己盗用</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">自分の文章でも、コピペは自己盗用になる</p>
+  <p><b>Text recycling</b> はセクションによって許容度が異なります。特に修士論文をジャーナル論文化するときは注意が必要です。</p>
+  <table class="wk" style="margin-top:10px;">
+    <tr><th>セクション</th><th>再利用</th><th>条件・注意</th></tr>
+    <tr><td><b>Methods</b></td><td style="color:#2e7d32; font-weight:700;">○</td><td>出典を引用すれば一般的に認められる</td></tr>
+    <tr><td><b>Introduction</b></td><td style="color:#f57c00; font-weight:700;">△</td><td>丸ごとコピーは不可。大幅な書き直しが必要</td></tr>
+    <tr><td><b>Results / Discussion</b></td><td style="color:#c62828; font-weight:700;">✕</td><td>再利用は二重出版にあたる。必ず新規に書く</td></tr>
+  </table>
+  <div class="takeaway">修論 → ジャーナル化のときが最も危ない。</div>
+</div>
+
+<div class="card">
+  <h2>AI 利用 — 著者になれない理由と鈴木研のルール</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">AIは著者になれない ― 責任を負えないから</p>
+  <p><b>Deficit of accountability &amp; confidentiality</b> — AI は著作権契約に署名できず、倫理的責任を負えません。</p>
+  <div class="ps-grid" style="margin-top:12px;">
+    <div class="ps-block ps-risk">
+      <div class="ps-label">リスク</div>
+      <ul>
+        <li>ハルシネーション（偽引用）の責任はすべて著者</li>
+        <li>査読中の論文のアップロードは<b>守秘義務・著作権侵害</b></li>
+        <li>出版社ポリシーの違反（Springer Nature：生成AI図は原則禁止 等）</li>
+      </ul>
+    </div>
+    <div class="ps-block ps-rule">
+      <div class="ps-label">鈴木研のルール</div>
+      <ul>
+        <li>使用したら Methods / 謝辞でツール名・バージョン・用途を開示</li>
+        <li>未公開原稿は入れない — 絶対に</li>
+        <li>使用記録を残し、投稿前に開示文を確認する</li>
+      </ul>
+    </div>
+  </div>
+  <div class="takeaway">責任を負えるのは人間だけ — だから記録と開示。</div>
+</div>
+
+<!-- ============================================================
+     第3幕：出す — Cover letter
+     ============================================================ -->
+
+<div class="part-head" id="part3">
+  <div class="part-num">第3幕</div>
+  <div class="part-main">
+    <div class="part-title">エディターが最初に読むのは、論文ではない</div>
+    <div class="part-en">The cover letter — デスクリジェクトの多くはここで決まる</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>カバーレターの役割</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">カバーレターは、エディターへの90秒プレゼン</p>
+  <p><b>Your first (and maybe only) pitch</b> — デスクリジェクト（査読なし却下）の多くは、カバーレターを読んだ段階で決まります。要旨のコピペは即見破られます。</p>
+  <p style="margin-top:8px;">「なぜこの雑誌か・なぜ今か・何が新しいか」の3点を、<b>自分の言葉</b>で書くことが求められます。エディターは毎日数十通の投稿を処理する多忙な研究者です。この3点が明快に伝わらなければ、査読者のもとへ届く前に旅が終わります。</p>
+  <div class="takeaway">要旨のコピペは即見破られる。自分の言葉で3点を語れ。</div>
+</div>
+
+<div class="card">
+  <h2>4つの説得軸</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">信頼・論理・好奇心・時宜の4軸で語る</p>
+  <p><b>Ethos, Logos, Pathos, Kairos</b> — 古代ギリシャの修辞学が整理した説得の4軸は、カバーレターにもそのまま適用できます。</p>
+  <div class="grid-2x2" style="margin-top:12px;">
+    <div class="g-card">
+      <div class="g-card-head">Ethos（信頼）</div>
+      <div class="g-card-sub">倫理遵守・二重投稿なしの宣言。著者がこの雑誌のルールを理解していることを示す</div>
+    </div>
+    <div class="g-card">
+      <div class="g-card-head">Logos（論理）</div>
+      <div class="g-card-sub">先行研究との差異を平易な言葉で。専門用語に頼らず「何が違うか」を明快に</div>
+    </div>
+    <div class="g-card">
+      <div class="g-card-head">Pathos（好奇心）</div>
+      <div class="g-card-sub">長年の課題へのエレガントな解を予感させる。読者が読みたくなる問いを提示する</div>
+    </div>
+    <div class="g-card">
+      <div class="g-card-head">Kairos（時宜）</div>
+      <div class="g-card-sub">なぜ今、このジャーナルなのか。タイムリーな理由と雑誌との適合性を示す</div>
+    </div>
+  </div>
+  <div class="takeaway">4軸が埋まらないなら、まだ投稿の物語が固まっていない。</div>
+</div>
+
+<div class="card">
+  <h2>鈴木研の実務</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">チェックリスト＋Geothermics補足シートを使う</p>
+  <div class="num-cards" style="margin-top:10px;">
+    <div class="num-card">
+      <div class="nc-num">1</div>
+      <div class="nc-body">
+        <div class="nc-head">研究室チェックリスト（Notion）</div>
+        <div class="nc-sub">投稿チェックリストにカバーレター項目あり。チェックリストを通過してから投稿ボタンを押す</div>
+      </div>
+    </div>
+    <div class="num-card">
+      <div class="nc-num">2</div>
+      <div class="nc-body">
+        <div class="nc-head">査読者の推薦・除外</div>
+        <div class="nc-sub">利益相反に注意。必ず指導教員と相談してから記入する</div>
+      </div>
+    </div>
+    <div class="num-card">
+      <div class="nc-num">3</div>
+      <div class="nc-body">
+        <div class="nc-head">Editorial Manager との重複確認</div>
+        <div class="nc-sub">投稿システムの入力欄とレター内容の重複ルールは誌ごとに異なる。事前に確認する</div>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway">次：投稿ボタンを押した後、何が起きるか。</div>
+</div>
+
+<!-- ============================================================
+     第4幕：対話する — Review process
+     ============================================================ -->
+
+<div class="part-head" id="part4">
+  <div class="part-num">第4幕</div>
+  <div class="part-main">
+    <div class="part-title">査読は批判ではなく、無料のコンサルティング</div>
+    <div class="part-en">The review process — 投稿から掲載まで、対話が始まる</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>プロセス全体像</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">投稿から掲載まで、平均して数ヶ月の対話</p>
+  <p><b>What actually happens after you click submit</b></p>
+  <div class="steps-h" style="margin-top:12px;">
+    <div class="step-h"><div class="step-num">1</div><div class="step-body"><div class="step-label">投稿</div><div class="step-sub">エディターが受理確認し、スコープ・フォーマットを確認。合わなければデスクリジェクト</div></div></div>
+    <div class="step-h"><div class="step-num">2</div><div class="step-body"><div class="step-label">査読（1〜3ヶ月）</div><div class="step-sub">2〜4名の査読者が匿名で評価。エディターが査読者を招聘・督促する</div></div></div>
+    <div class="step-h"><div class="step-num">3</div><div class="step-body"><div class="step-label">判定が来る</div><div class="step-sub">Accept / Minor revision / Major revision / Reject の4種。Majorは「脈あり」のサイン</div></div></div>
+    <div class="step-h"><div class="step-num">4</div><div class="step-body"><div class="step-label">改訂 → 再査読</div><div class="step-sub">回答書（Response letter）と修正原稿を提出。再査読→判定のループが1〜2回続くことも</div></div></div>
+  </div>
+  <div class="note" style="margin-top:12px;">
+    <b>Major revision は「脈あり」</b>のサインです。Reject ではない。エディターが「直せば掲載できる」と判断した証拠です。丁寧に対応すれば採択される可能性が十分あります。
+  </div>
+  <div class="takeaway">判定が来たら — まず感情のマネジメント。</div>
+</div>
+
+<div class="card">
+  <h2>感情のマネジメント</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">厳しいコメントには、72時間の冷却期間</p>
+  <p><b>Never reply in anger</b> — 査読コメントを初読したときの感情的反応は、回答書には絶対に書きません。</p>
+  <div class="num-cards" style="margin-top:12px;">
+    <div class="num-card">
+      <div class="nc-num">1</div>
+      <div class="nc-body">
+        <div class="nc-head">初読で反論を書かない</div>
+        <div class="nc-sub">24〜72時間置いてから回答を設計する。怒りはメモに吐き出し、回答書には載せない</div>
+      </div>
+    </div>
+    <div class="num-card">
+      <div class="nc-num">2</div>
+      <div class="nc-body">
+        <div class="nc-head">査読者の誤解 ＝ 自分の説明不足</div>
+        <div class="nc-sub">「ご指摘の通り説明が不足していました」から始める。査読者を責めない</div>
+      </div>
+    </div>
+    <div class="num-card">
+      <div class="nc-num">3</div>
+      <div class="nc-body">
+        <div class="nc-head">感情と回答を分離する</div>
+        <div class="nc-sub">怒りを感じるのは正常。ただしその感情を回答書に持ち込むと採択率が下がる</div>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway">冷えたら — 回答書の技術へ。</div>
+</div>
+
+<div class="card">
+  <h2>回答書の技術</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">回答書だけで完結させ、結論から書く</p>
+  <p><b>Self-contained, answer-first responses</b> — 良い回答書は、査読者が修正原稿を開かなくても理解できます。</p>
+  <div class="ba-grid" style="margin-top:12px;">
+    <div class="ba-block ba-before">
+      <div class="ba-label">悪い回答書</div>
+      <ul>
+        <li>反論の長文から始まる</li>
+        <li>査読者に原稿を開かせて探させる</li>
+        <li>結論が最後に来る</li>
+      </ul>
+    </div>
+    <div class="ba-block ba-after">
+      <div class="ba-label">良い回答書</div>
+      <ul>
+        <li>冒頭に <b>Yes / No / 修正済み</b> を明示</li>
+        <li>修正した本文をそのまま回答書に引用する</li>
+        <li>コメント・回答・修正文を色・インデントで区別</li>
+      </ul>
+    </div>
+  </div>
+  <div class="takeaway">査読者の手間を減らすことが、採択への最短路。</div>
+</div>
+
+<div class="card">
+  <h2>不当な査読への対処</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">戦う相手は査読者ではなく、エディターへの手紙で</p>
+  <p>競合による不当な攻撃が疑われる場合、回答書で直接戦ってはいけません。</p>
+  <div class="two-col" style="margin-top:12px;">
+    <div class="col-block">
+      <div class="col-head">回答書（公開）</div>
+      <ul>
+        <li>冷静な事実ベースの回答に徹する</li>
+        <li>査読者と直接対立しない</li>
+        <li>コメントへの対応を丁寧に示す</li>
+      </ul>
+    </div>
+    <div class="col-block">
+      <div class="col-head">エディターへの手紙（非公開）</div>
+      <ul>
+        <li>競合による不当な攻撃の懸念を私信で伝える</li>
+        <li>感情ではなく事実を並べる</li>
+        <li>エディターの判断を求める</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note" style="margin-top:12px;">
+    <b>Peer ではなく Work を査読する</b>文化を、自分たちも守りましょう。査読のプロセスは、人物ではなく研究内容を評価するためのものです。
+  </div>
+  <div class="takeaway">不当な査読への対抗手段はある。ただし冷静に、事実ベースで。</div>
+</div>
+
+<!-- ============================================================
+     クロージング
+     ============================================================ -->
+
+<div class="part-head" id="closing">
+  <div class="part-num">クロージング</div>
+  <div class="part-main">
+    <div class="part-title">12月の投稿ボタンは、今日の一歩から</div>
+    <div class="part-en">Count backwards — from December to today</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>12月への逆算</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">12月投稿なら、10月にFigures確定</p>
+  <p>遠い目標ではなく、毎週の習慣に落とします。</p>
+  <div class="steps-v" style="margin-top:12px;">
+    <div class="step-v">
+      <div class="step-v-dot" style="background:var(--accent); font-size:10px;">今</div>
+      <div class="step-v-body">
+        <div class="step-v-label">今（7月）：Paper card の主張1文を磨く</div>
+        <div class="step-v-sub">「Compared to X, we Y」の型で言い切る文章を、今週中に書く</div>
+      </div>
+    </div>
+    <div class="step-v">
+      <div class="step-v-dot" style="font-size:10px;">10月</div>
+      <div class="step-v-body">
+        <div class="step-v-label">10月：Figures 確定 ＋ 著者順の合意</div>
+        <div class="step-v-sub">主張を支える最小の図セットを固め、著者順・役割を共著者と合意する</div>
+      </div>
+    </div>
+    <div class="step-v">
+      <div class="step-v-dot" style="font-size:10px;">11月</div>
+      <div class="step-v-body">
+        <div class="step-v-label">11月：Draft 完成 → 共著者回覧 → カバーレター作成</div>
+        <div class="step-v-sub">原稿を仕上げ、共著者のフィードバックを経てレターを書く</div>
+      </div>
+    </div>
+    <div class="step-v">
+      <div class="step-v-dot" style="background:var(--primary); font-size:10px;">12月</div>
+      <div class="step-v-body">
+        <div class="step-v-label">12月：投稿 — 探究サイクル Phase 6 完了</div>
+        <div class="step-v-sub">投稿ボタンを押す。そして次の Discomfort（Phase 0）が始まる</div>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway">遠い目標ではなく、毎週の習慣に落とす。</div>
+</div>
+
+<div class="card">
+  <h2>立場別・今日の持ち帰り</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">あなたの次の一歩は、これ</p>
+  <div class="grid-3" style="margin-top:12px;">
+    <div class="g3-card">
+      <div class="g3-who">B4</div>
+      <div class="g3-action">主張を1文で書く</div>
+      <div class="g3-desc">Paper card に「Compared to X, we Y」の型で書いてみる</div>
+    </div>
+    <div class="g3-card">
+      <div class="g3-who">M・D</div>
+      <div class="g3-action">自己診断する</div>
+      <div class="g3-desc">投稿チェックリストで自分の原稿の現在地を確認する</div>
+    </div>
+    <div class="g3-card">
+      <div class="g3-who">ポスドク</div>
+      <div class="g3-action">型を更新する</div>
+      <div class="g3-desc">回答書テンプレを自分の流儀にアップデートする</div>
+    </div>
+  </div>
+  <div class="takeaway">12月の投稿ボタンは、今日の一歩から。</div>
+</div>
+
+<div class="card">
+  <h2>さあ、書き始めよう</h2>
+  <blockquote class="lead-quote">
+    論文は、書き上げて初めて研究になる。
+    <span class="src">投稿までの映像は、もう見えている</span>
+  </blockquote>
+  <p>探究サイクルは Expression（Phase 6）で閉じ、次の Discomfort（Phase 0）へとつながります。論文を出すことは終わりではなく、次の問いの始まりです。</p>
+  <p style="margin-top:8px;">質問・相談はいつでも：Lab Forum / Team Meeting / 個別相談</p>
+</div>
+
+<!-- ============ 発表スライドと関連リンク ============ -->
+
+<div class="card">
+  <h2>関連リンク</h2>
+  <ul>
+    <li><a href="old/writing_papers_en.pdf">発表スライド（英語版 PDF）↓</a></li>
+    <li><a href="../lab-tools/paper-card/">Lab Tools: Paper Card</a> — 毎週の主張1文はここから</li>
+    <li><a href="../orientation/research-as-design/">Lab OS 02: 研究は、問いの設計で進める</a></li>
+    <li><a href="../orientation/what-is-research/">Lab OS 01: 研究とは何か</a></li>
+  </ul>
+</div>
+
+<footer>
+  &copy; DeSFE Lab (Anna Suzuki Lab), Tohoku University ｜
+  <a href="../">教育ポータル</a>
+</footer>
+
+</div>
+</body>
+</html>

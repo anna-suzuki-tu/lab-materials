@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design for Research — Principles of Slides and Figures | Lab Forum | DeSFE Lab</title>
+<meta name="description" content="Design is not aesthetics — it is the strategic design of information. Strategic structure, three core principles, fonts, color, diagram techniques, PowerPoint tips, presentation and poster. DeSFE Lab, Tohoku University.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+.part-head {
+  border-left: 5px solid var(--accent); padding: 10px 0 10px 16px; margin: 28px 0 6px;
+}
+.part-num { font-size: 11px; font-weight: 900; letter-spacing: .18em; color: var(--accent); }
+.part-title { font-size: 20px; font-weight: 900; color: #FFFFFF; line-height: 1.3; }
+.part-en { font-size: 13px; color: var(--ink-muted); margin-top: 2px; }
+.takeaway {
+  border-left: 5px solid var(--accent); background: rgba(144,194,207,.09);
+  border-radius: 0 8px 8px 0; padding: 10px 14px; margin-top: 14px;
+  font-size: 13.5px; font-weight: 700; color: var(--text);
+}
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+@media (max-width: 560px) { .two-col { grid-template-columns: 1fr; } }
+.col-block { background: var(--panel); border-radius: 8px; padding: 13px 14px; font-size: 13.5px; line-height: 1.75; color: var(--text); }
+.col-block b { display: block; font-size: 13px; font-weight: 900; color: var(--primary); margin-bottom: 4px; }
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
+@media (max-width: 560px) { .three-col { grid-template-columns: 1fr; } }
+.t3-card { background: var(--panel); border-radius: 8px; padding: 12px 13px; font-size: 13px; color: var(--text); }
+.t3-card b { display: block; font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 5px; }
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+@media (max-width: 500px) { .ba-grid { grid-template-columns: 1fr; } }
+.ba-before { background: #fef2f2; border: 1px solid #f5c6c6; border-radius: 8px; padding: 11px 13px; font-size: 13px; color: var(--text); }
+.ba-after  { background: #f0faf4; border: 1px solid #b5dfc7; border-radius: 8px; padding: 11px 13px; font-size: 13px; color: var(--text); }
+.ba-before b, .ba-after b { display: block; font-size: 12px; font-weight: 900; margin-bottom: 5px; letter-spacing: .06em; }
+.ba-before b { color: #c0392b; }
+.ba-after b  { color: #1e8449; }
+.checklist { list-style: none; padding: 0; margin: 10px 0; }
+.checklist li { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; color: var(--text); }
+.checklist li:last-child { border-bottom: none; }
+.ck-box { width: 18px; height: 18px; border: 2px solid var(--primary); border-radius: 3px; flex-shrink: 0; margin-top: 2px; }
+table.sc { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
+table.sc th, table.sc td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; vertical-align: top; }
+table.sc th { background: var(--primary); color: #fff; font-weight: 700; }
+table.sc code { background: var(--panel); padding: 1px 5px; border-radius: 3px; font-family: monospace; font-size: 12px; }
+.num-cards { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.nc-item { display: flex; gap: 12px; align-items: flex-start; background: var(--panel); border-radius: 8px; padding: 12px 14px; }
+.nc-num { font-size: 22px; font-weight: 900; color: var(--primary); flex-shrink: 0; line-height: 1; margin-top: 2px; min-width: 28px; }
+.nc-body { font-size: 13.5px; color: var(--text); }
+.nc-body b { font-weight: 900; }
+.nc-body small { display: block; font-size: 12px; color: var(--muted); margin-top: 3px; }
+.steps-v { display: flex; flex-direction: column; gap: 0; margin: 12px 0; }
+.sv-item { display: flex; gap: 12px; align-items: stretch; }
+.sv-left { display: flex; flex-direction: column; align-items: center; width: 28px; flex-shrink: 0; }
+.sv-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); margin-top: 5px; flex-shrink: 0; }
+.sv-line { width: 2px; background: var(--border); flex: 1; margin: 4px auto 0; }
+.sv-item:last-child .sv-line { display: none; }
+.sv-body { padding-bottom: 14px; }
+.sv-label { font-size: 13.5px; font-weight: 900; color: var(--text); }
+.sv-desc { font-size: 13px; color: var(--muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="lang-sw"><span>English</span> ｜ <a href="../">日本語</a></div>
+<div class="breadcrumb"><a href="../../en/">🏠 Education Portal</a> › Lab Forum › Design for Research</div>
+
+<header>
+  <div class="kicker">LAB FORUM — DESIGN FOR RESEARCH</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>Design for Research</h1>
+      <div class="subtitle">A complete guide to slide and poster design for researchers</div>
+    </div>
+  </div>
+</header>
+
+<blockquote class="lead-quote">
+  Design is a fundamental literacy for every researcher.
+  <span class="src">— Design for Research, Suzuki Lab Forum 2026</span>
+</blockquote>
+
+<div class="card">
+  <p>Slide design is not aesthetics. It is the <b>strategic design of information</b>: extracting the essence from vast information and rebuilding logical structure visually. The question is not "how does it look?" but "what does it convey?" The ultimate goal: reduce the cognitive load on your audience.</p>
+  <div class="three-col" style="margin-top:14px;">
+    <div class="t3-card"><b>Deeper Discussion</b>Structured slides give the audience space to think about underlying meaning and generate sharp, productive questions</div>
+    <div class="t3-card"><b>Communication Efficiency</b>Diagram techniques convey logic instantly — eliminate repetitive explanations and maximize time for core discussion</div>
+    <div class="t3-card"><b>More Time for Research</b>Once design principles are internalized, material preparation time shrinks — freeing time for experiments and writing</div>
+  </div>
+  <div class="takeaway">Learning design is an investment in your research itself.</div>
+</div>
+
+<div class="card">
+  <h2>Today's Agenda</h2>
+  <div class="num-cards">
+    <div class="nc-item"><div class="nc-num">0</div><div class="nc-body"><b>Introduction</b><small>Why design determines the quality of your research</small></div></div>
+    <div class="nc-item"><div class="nc-num">1</div><div class="nc-body"><b>Strategic Structure</b><small>Building a logical storyline before opening your slides</small></div></div>
+    <div class="nc-item"><div class="nc-num">2</div><div class="nc-body"><b>Three Core Principles</b><small>Clarify 3 elements · Focus · Visualise</small></div></div>
+    <div class="nc-item"><div class="nc-num">3</div><div class="nc-body"><b>Fonts and Color Strategy</b><small>Maximising legibility through typography and color choices</small></div></div>
+    <div class="nc-item"><div class="nc-num">4</div><div class="nc-body"><b>Advanced Diagram Techniques</b><small>Object design and graphic optimisation</small></div></div>
+    <div class="nc-item"><div class="nc-num">5</div><div class="nc-body"><b>PowerPoint Tips</b><small>Keyboard shortcuts and Slide Master — cut production time in half</small></div></div>
+    <div class="nc-item"><div class="nc-num">6</div><div class="nc-body"><b>Presentation Preparation and Q&amp;A</b><small>Finishing the slides is only half the work</small></div></div>
+    <div class="nc-item"><div class="nc-num">B</div><div class="nc-body"><b>Bonus: Poster Presentations</b><small>Different medium, different design priorities</small></div></div>
+  </div>
+</div>
+
+<!-- ============ Part 1 ============ -->
+
+<div class="part-head">
+  <div class="part-num">PART 1</div>
+  <div class="part-title">Complete the Logic Before You Open Your Slides</div>
+  <div class="part-en">Strategic Structure</div>
+</div>
+
+<div class="card">
+  <h2>The First Rule: Do Not Open PowerPoint Yet</h2>
+  <p>Opening PowerPoint and writing straight away is the worst approach. You miss logical gaps and face major revisions later. The correct order:</p>
+  <div class="steps-v">
+    <div class="sv-item"><div class="sv-left"><div class="sv-dot"></div><div class="sv-line"></div></div><div class="sv-body"><div class="sv-label">① Design the story</div><div class="sv-desc">Write the flow of your talk in Word or plain text</div></div></div>
+    <div class="sv-item"><div class="sv-left"><div class="sv-dot"></div><div class="sv-line"></div></div><div class="sv-body"><div class="sv-label">② Outline</div><div class="sv-desc">Enter titles only in Outline view — no content yet</div></div></div>
+    <div class="sv-item"><div class="sv-left"><div class="sv-dot"></div><div class="sv-line"></div></div><div class="sv-body"><div class="sv-label">③ Build slides</div><div class="sv-desc">Move to PowerPoint only when "what the next slide should say" is crystal clear</div></div></div>
+  </div>
+  <div class="takeaway">30 minutes of planning saves 2 hours of production.</div>
+</div>
+
+<div class="card">
+  <h2>Standard Research Talk Structure: 6 Key Questions</h2>
+  <div class="num-cards">
+    <div class="nc-item"><div class="nc-num">1</div><div class="nc-body"><b>Background</b><small>What is known, and what remains unknown?</small></div></div>
+    <div class="nc-item"><div class="nc-num">2</div><div class="nc-body"><b>Purpose</b><small>What is the academic and social significance of this research?</small></div></div>
+    <div class="nc-item"><div class="nc-num">3</div><div class="nc-body"><b>Methods</b><small>What original procedures were used to investigate?</small></div></div>
+    <div class="nc-item"><div class="nc-num">4</div><div class="nc-body"><b>Results</b><small>What data and findings were obtained?</small></div></div>
+    <div class="nc-item"><div class="nc-num">5</div><div class="nc-body"><b>Interpretation</b><small>How well do the results fulfill the purpose, and what is their value?</small></div></div>
+    <div class="nc-item"><div class="nc-num">6</div><div class="nc-body"><b>Conclusion</b><small>What is the final claim, and what are the remaining limitations?</small></div></div>
+  </div>
+  <p style="margin-top:10px;">Build the background in a funnel structure: broad context → what is known → what is not known → why this gap matters. Acknowledgements and group introductions are unnecessary — they distract.</p>
+</div>
+
+<div class="card">
+  <h2>Audience Analysis: Adjust Your Level of Detail</h2>
+  <div class="three-col">
+    <div class="t3-card"><b>Specialists (Conference)</b>Focus on method details and statistical validity · Use technical jargon · Background can be brief · Encourage critical scrutiny</div>
+    <div class="t3-card"><b>Non-specialist Researchers</b>Explain background, problem statement, and historical context fully · Avoid jargon · For symposia</div>
+    <div class="t3-card"><b>General Audience / Students</b>Emphasize practical utility and social impact · Simplify or omit equations and procedures · For seminars and lectures</div>
+  </div>
+  <div class="takeaway">Analyze your audience before deciding your structure. The same research requires different framing for different audiences.</div>
+</div>
+
+<div class="card">
+  <h2>Storyline Design and Time Allocation</h2>
+  <p>Design logic as a chain of questions and answers. Each slide is a Q→A pair: Q1: "Why solve this?" → A: "Because ○○." Read it aloud from start to finish — does the logic hold?</p>
+  <table class="wk" style="margin-top:12px;">
+    <tr><th>Talk Length</th><th>Recommended Slides</th></tr>
+    <tr><td>10 min</td><td>8–10 slides</td></tr>
+    <tr><td>15 min</td><td>12–15 slides</td></tr>
+    <tr><td>30 min</td><td>25–35 slides</td></tr>
+    <tr><td>60 min</td><td>50–65 slides (including backup)</td></tr>
+  </table>
+  <div class="takeaway">Never exceed your time limit — not by a single second.</div>
+</div>
+
+<!-- ============ Part 2 ============ -->
+
+<div class="part-head">
+  <div class="part-num">PART 2</div>
+  <div class="part-title">Three Core Principles of Slide Design</div>
+  <div class="part-en">Clarify · Focus · Visualise</div>
+</div>
+
+<div class="card">
+  <h2>Three Core Principles</h2>
+  <div class="three-col">
+    <div class="t3-card">
+      <b>Principle 1 — Clarify 3 Elements</b>
+      Topic (Question) · Key message (Answer) · Supporting info (Evidence)<br>Write each layer distinctly
+    </div>
+    <div class="t3-card">
+      <b>Principle 2 — Focus</b>
+      One slide, one message. Mercilessly cut everything not directly needed to support the message. Deleted content goes to backup slides.
+    </div>
+    <div class="t3-card">
+      <b>Principle 3 — Visualise</b>
+      Minimise prose text. Express importance and relationships visually. Convert words to diagrams.
+    </div>
+  </div>
+  <div class="takeaway">Following these three principles alone transforms your presentations.</div>
+</div>
+
+<div class="card">
+  <h2>Principle 1: Clarify 3 Elements</h2>
+  <p>Every slide has three layers:</p>
+  <ul style="font-size:14px; padding-left:1.3em; margin-top:8px;">
+    <li><b>Topic (Question)</b> — The point the audience wants an answer to</li>
+    <li><b>Key message (Answer)</b> — A concise answer in ~25 characters at the top of the slide</li>
+    <li><b>Supporting info (Evidence)</b> — Data, diagrams, and facts that strengthen the message</li>
+  </ul>
+  <p style="margin-top:8px;">When the key message is grasped instantly, the brain shifts from "decoding" to "thinking." This is the core of cognitive load theory — and the source of high-quality discussion.</p>
+  <div class="ba-grid">
+    <div class="ba-before">
+      <b>BAD: No message or vague</b>
+      "About experimental results"<br>(topic label, not an answer)<br><br>"In this study, we examined…"<br>(describes action, gives no answer)
+    </div>
+    <div class="ba-after">
+      <b>GOOD: Clear and declarative</b>
+      "Proposed method doubles accuracy vs. baseline"<br>(concise · declarative · immediately understood)<br><br>"Temperature rise is largest in Arctic regions"<br>(specific value · clear location)
+    </div>
+  </div>
+  <div class="takeaway">The moment the audience sees the slide, they must know what you are claiming.</div>
+</div>
+
+<div class="card">
+  <h2>Principle 2: Focus</h2>
+  <p>Remove everything not directly needed to support the key message. Resisting the urge to add "this is also important" is the mark of a professional. Deleted content goes to backup slides — move it, don't discard it.</p>
+  <div class="takeaway">The decision to cut, not the urge to add, raises presentation quality.</div>
+</div>
+
+<div class="card">
+  <h2>Principle 3: Visualise</h2>
+  <p>The human brain processes figures, graphs, and diagrams far faster than text:</p>
+  <ul style="font-size:14px; padding-left:1.3em; margin-top:8px;">
+    <li>"A influences B" → convert to a diagram with an arrow</li>
+    <li>"There are three elements" → convert to side-by-side cards or a triangle</li>
+    <li>Numerical data → present as a graph; a table of numbers is a last resort</li>
+    <li>Too much prose in text boxes → a sign that visualisation is insufficient</li>
+  </ul>
+  <div class="takeaway">Aim for fewer than 100 characters of text on a single slide.</div>
+</div>
+
+<div class="card">
+  <h2>Three-Principles Checklist</h2>
+  <ul class="checklist">
+    <li><span class="ck-box"></span>Does every slide have a key message in plain language (&lt;25 chars)?</li>
+    <li><span class="ck-box"></span>Does each slide contain exactly one thing you want to convey?</li>
+    <li><span class="ck-box"></span>Have you converted text into diagrams, graphs, or visuals?</li>
+    <li><span class="ck-box"></span>Can the viewer understand the answer just by reading the title?</li>
+    <li><span class="ck-box"></span>Has every non-essential piece of information been moved to backup?</li>
+    <li><span class="ck-box"></span>Can the audience think rather than decode?</li>
+  </ul>
+</div>
+
+<!-- ============ Part 3 ============ -->
+
+<div class="part-head">
+  <div class="part-num">PART 3</div>
+  <div class="part-title">Fonts and Colors Are Strategic Weapons</div>
+  <div class="part-en">Maximising Legibility</div>
+</div>
+
+<div class="card">
+  <h2>The Font Rule: Always Use a Sans-serif</h2>
+  <p>Always use a sans-serif (gothic) typeface for slides. Serif typefaces work for print but detail gets crushed when projected. "Any font is fine as long as it's readable" is an unprofessional attitude.</p>
+  <div class="two-col">
+    <div class="col-block">
+      <b>Japanese fonts</b>
+      [Best] Hiragino Kaku Gothic (Mac) — most elegant, excellent legibility<br>
+      Yu Gothic Medium or heavier (Win) — never use Light weight<br>
+      Meiryo (Win/Web) — robust on projectors<br>
+      BIZ UD (Win) — misread-resistant
+    </div>
+    <div class="col-block">
+      <b>Latin fonts</b>
+      Avenir (Mac) — geometric, clean, timeless<br>
+      Segoe UI (Win) — Office default, high legibility<br>
+      Helvetica (Mac) — the design classic<br><br>
+      Latin characters in Japanese fonts look unbalanced — always pair with a Latin font
+    </div>
+  </div>
+  <div class="takeaway">Use one font throughout — mixing typefaces signals amateur work. A single font choice changes the perceived credibility of your talk.</div>
+</div>
+
+<div class="card">
+  <h2>Font Size Guidelines</h2>
+  <div class="three-col">
+    <div class="t3-card">
+      <b>Slide font sizes</b>
+      Headings: 32 pt or larger<br>Body text: 24 pt or larger<br>Captions / refs: 14 pt<br><br>If text is too small, it means you need to cut content
+    </div>
+    <div class="t3-card">
+      <b>Poster font sizes</b>
+      Title: 72–100 pt<br>Section headings: 36–50 pt<br>Body text: 24–32 pt<br><br>Must be readable from a distance
+    </div>
+    <div class="t3-card">
+      <b>Common mistake</b>
+      Slides nobody in the back row can read → sign of too much content<br>Do not shrink font to squeeze more information in
+    </div>
+  </div>
+  <div class="takeaway">"Can someone in the back row read this?" is the final legibility test.</div>
+</div>
+
+<div class="card">
+  <h2>Color: CUD and the 70 : 25 : 5 Rule</h2>
+  <p>Approximately 5% of Japanese men have red-green color vision differences. Never combine red and green in the same diagram. Do not distinguish information by color alone — pair with shape, contrast, or labels.</p>
+  <div class="three-col" style="margin-top:12px;">
+    <div class="t3-card">
+      <b>70% — Base</b>
+      Background: white as default<br>Text: near-black deep tone<br>Minimises noise and makes the main color stand out
+    </div>
+    <div class="t3-card">
+      <b>25% — Main</b>
+      Brand or theme color<br>Headings, emphasis frames, primary graph lines<br>Suzuki Lab: teal blue #356f8c
+    </div>
+    <div class="t3-card">
+      <b>5% — Accent</b>
+      Reserved for the most critical points only<br>Suzuki Lab: gold #c6a54a<br>Overuse destroys the emphasis effect
+    </div>
+  </div>
+  <div class="takeaway">Fewer colors = stronger emphasis effect. The more colors you add, the harder it becomes to know what is important.</div>
+</div>
+
+<!-- ============ Part 4 ============ -->
+
+<div class="part-head">
+  <div class="part-num">PART 4</div>
+  <div class="part-title">The Purpose of Diagrams: Show Relationships at a Glance</div>
+  <div class="part-en">Advanced Diagram Techniques</div>
+</div>
+
+<div class="card">
+  <h2>Converting Explanations into Visuals</h2>
+  <ul style="font-size:14px; padding-left:1.3em; margin-top:8px;">
+    <li>Cause → Effect relationship: express with an arrow</li>
+    <li>A is contained within B: express with nested shapes</li>
+    <li>A and B are equivalent: express with side-by-side cards</li>
+    <li>A is larger than B: express with a bar chart or area</li>
+  </ul>
+  <p style="margin-top:8px;">"Cannot diagram this explanation" = "Have not yet clarified the relationship."</p>
+  <div class="takeaway">If you can't diagram an explanation, it hasn't been fully organised yet.</div>
+</div>
+
+<div class="card">
+  <h2>Object Design Rule: Fill or Border — Never Both</h2>
+  <div class="ba-grid">
+    <div class="ba-before">
+      <b>BAD: Fill + Border Together</b>
+      Boundaries are over-emphasised → becomes visual noise → unclear which element matters more → gives an amateur impression
+    </div>
+    <div class="ba-after">
+      <b>GOOD: Fill or Border Only</b>
+      Fill only: use background color to categorise → clean, uncluttered look<br>Border only: use lines to define sections → content stands out
+    </div>
+  </div>
+  <div class="takeaway">"A distorted rounded rectangle is a symbol of distorted logic" — be precise in the details. Choosing one reduces visual noise dramatically.</div>
+</div>
+
+<div class="card">
+  <h2>Consistency: Corners, Margins, Arrows</h2>
+  <ul style="font-size:14px; padding-left:1.3em; margin-top:8px;">
+    <li><b>Corner radius (R value)</b> — Unify across all objects → variation looks unprofessional</li>
+    <li><b>Even margins</b> — Consistent spacing between text and frame edges, and between objects</li>
+    <li><b>Arrow consistency</b> — Same arrowhead size and stroke weight on every slide</li>
+    <li><b>No SmartArt</b> — Built-in SmartArt, shadows, and gradients break visual unity</li>
+    <li><b>Custom callouts</b> — Built-in callouts deform badly → make your own from a triangle + rectangle</li>
+  </ul>
+  <div class="takeaway">Consistent details create the impression that your research is meticulous. One hour building a custom diagram communicates ten times better than five minutes with SmartArt.</div>
+</div>
+
+<div class="card">
+  <h2>Diagram Quality Checklist</h2>
+  <div class="three-col">
+    <div class="t3-card">
+      <b>Structural Integrity</b>
+      <ul class="checklist" style="margin:6px 0 0;">
+        <li><span class="ck-box"></span>Fill or border — only one</li>
+        <li><span class="ck-box"></span>Corner radius (R) unified</li>
+        <li><span class="ck-box"></span>Custom callouts</li>
+        <li><span class="ck-box"></span>No SmartArt / shadows / gradients</li>
+        <li><span class="ck-box"></span>Arrow weight and heads unified</li>
+      </ul>
+    </div>
+    <div class="t3-card">
+      <b>Margin &amp; Alignment</b>
+      <ul class="checklist" style="margin:6px 0 0;">
+        <li><span class="ck-box"></span>Consistent text-to-frame spacing</li>
+        <li><span class="ck-box"></span>Consistent object spacing</li>
+        <li><span class="ck-box"></span>Elements aligned</li>
+        <li><span class="ck-box"></span>White space groups information</li>
+        <li><span class="ck-box"></span>Borders don't blur categories</li>
+      </ul>
+    </div>
+    <div class="t3-card">
+      <b>Degree of Visualisation</b>
+      <ul class="checklist" style="margin:6px 0 0;">
+        <li><span class="ck-box"></span>Relationships shown with arrows</li>
+        <li><span class="ck-box"></span>Diagrams dominate over prose</li>
+        <li><span class="ck-box"></span>Text is supplementary only</li>
+        <li><span class="ck-box"></span>Importance shown by size/color/position</li>
+        <li><span class="ck-box"></span>Slide readable without text</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Part 5 ============ -->
+
+<div class="part-head">
+  <div class="part-num">PART 5</div>
+  <div class="part-title">Proficiency with PowerPoint Directly Translates to More Research Time</div>
+  <div class="part-en">PowerPoint Tips: Work at Full Speed</div>
+</div>
+
+<div class="card">
+  <h2>Essential Shortcut Reference</h2>
+  <p>Fumbling with PowerPoint breaks the concentration needed to think about your talk's flow. Memorise these and your speed doubles.</p>
+  <table class="sc">
+    <tr><th>Action</th><th>Windows</th><th>Mac</th></tr>
+    <tr><td>Enter / exit text box</td><td><code>F2</code> / <code>Esc</code></td><td><code>F2</code> / <code>Esc</code></td></tr>
+    <tr><td>Centre align</td><td><code>Ctrl + E</code></td><td><code>⌘ + E</code></td></tr>
+    <tr><td>Superscript</td><td><code>Ctrl + Shift + ;</code></td><td><code>⌘ + Shift + ;</code></td></tr>
+    <tr><td>Subscript</td><td><code>Ctrl + ;</code></td><td><code>⌘ + ;</code></td></tr>
+    <tr><td>Select range</td><td><code>Shift + Arrow</code></td><td><code>Shift + Arrow</code></td></tr>
+    <tr><td>Copy format</td><td><code>Ctrl + Shift + C/V</code></td><td><code>⌘ + Shift + C/V</code></td></tr>
+    <tr><td>Group</td><td><code>Ctrl + G</code></td><td><code>⌘ + G</code></td></tr>
+    <tr><td>Distribute evenly</td><td>Format → Arrange</td><td>Format → Arrange</td></tr>
+  </table>
+  <div class="takeaway">Spend the first week consciously practising shortcuts until they are automatic.</div>
+</div>
+
+<div class="card">
+  <h2>Locking Structure with Slide Master</h2>
+  <p>Set in Slide Master: title position, font, and size. Also define bullet indent, font, and line spacing. This makes the title not move by even one pixel across all slides — minimising eye movement when switching between slides.</p>
+  <p style="margin-top:8px;">Procedure: <b>View → Slide Master → Edit layouts</b>. Save as a template and never start from zero again.</p>
+  <div class="takeaway">30 minutes setting up Slide Master saves countless hours of production.</div>
+</div>
+
+<div class="card">
+  <h2>PowerPoint Tips — Checklist</h2>
+  <ul class="checklist">
+    <li><span class="ck-box"></span>Unify all slide design using Slide Master</li>
+    <li><span class="ck-box"></span>Minimise mouse use with keyboard shortcuts</li>
+    <li><span class="ck-box"></span>Enter and exit text boxes fluidly (F2 / Esc)</li>
+    <li><span class="ck-box"></span>Place only titles first using Outline view</li>
+    <li><span class="ck-box"></span>Use format copy (Ctrl/⌘ + Shift + C/V) to maintain consistency</li>
+    <li><span class="ck-box"></span>Use Align and Distribute functions actively</li>
+  </ul>
+</div>
+
+<!-- ============ Part 6 ============ -->
+
+<div class="part-head">
+  <div class="part-num">PART 6</div>
+  <div class="part-title">Finishing the Slides Is Only Half the Work</div>
+  <div class="part-en">Presentation Preparation and Q&amp;A</div>
+</div>
+
+<div class="card">
+  <h2>Final Check: Time Allocation and Slide Count</h2>
+  <p>Never exceed your time limit — not by a single second. It disrespects the audience and the next speaker. For a 30-minute talk, 45–60 slides (including backup) is appropriate. If using video or demos, measure playback time and adjust your slide count.</p>
+  <div class="takeaway">Overrunning is the greatest discourtesy. Practise relentlessly with a timer.</div>
+</div>
+
+<div class="card">
+  <h2>Q&amp;A Is Exchange, Not Attack</h2>
+  <div class="ba-grid">
+    <div class="ba-before">
+      <b>Wrong mindset</b>
+      Questions = criticism → respond defensively → relationship worsens → discussion goes nowhere
+    </div>
+    <div class="ba-after">
+      <b>Right mindset</b>
+      Questions = contributions from a different perspective → blind spots surface → research becomes stronger → may lead to collaboration
+    </div>
+  </div>
+  <div class="takeaway">Questioners are not your adversaries — they are your first collaborators.</div>
+</div>
+
+<div class="card">
+  <h2>10 Essentials for Q&amp;A</h2>
+  <div class="three-col">
+    <div class="t3-card">
+      <b>Response Techniques</b>
+      1. Answer with the conclusion first<br>2. Paraphrase the question (buys thinking time, prevents misunderstanding)<br>3. Treat every question as an opportunity ("that is an extremely important point")<br>4. Prepare backup slides for anticipated questions
+    </div>
+    <div class="t3-card">
+      <b>Honesty &amp; Brevity</b>
+      5. Handle unexpected Q honestly — grasp the questioner's intent<br>6. Don't fear "I don't know" — acknowledge unknowns honestly<br>7. Be concise — don't spend too long on one answer<br>8. Structure your answer: "there are two reasons"
+    </div>
+    <div class="t3-card">
+      <b>Confirm &amp; Continue</b>
+      9. Check after answering: "Does that answer your question?"<br>10. Propose to continue if time runs out — "can we talk after the session?"
+    </div>
+  </div>
+  <div class="takeaway">The quality of Q&amp;A defines the memory of your talk. Practising these 10 repeatedly will make them second nature.</div>
+</div>
+
+<div class="card">
+  <h2>Three Steps for Final Rehearsal</h2>
+  <div class="num-cards">
+    <div class="nc-item"><div class="nc-num">1</div><div class="nc-body"><b>Record and review objectively</b><small>Check your speech habits and timing with slides. Self-review catches what you can't notice while presenting.</small></div></div>
+    <div class="nc-item"><div class="nc-num">2</div><div class="nc-body"><b>Refine your script</b><small>Slides carry visual info; supplementary details go in verbal notes. Write out the transitions between slides explicitly.</small></div></div>
+    <div class="nc-item"><div class="nc-num">3</div><div class="nc-body"><b>Test on venue equipment</b><small>Verify font rendering and video playback before the day. Embed fonts when saving. Avoiding technical failures on the day is the presenter's responsibility.</small></div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Final Presentation Checklist</h2>
+  <ul class="checklist">
+    <li><span class="ck-box"></span>Does your slide count match your allotted time?</li>
+    <li><span class="ck-box"></span>Does every slide have a key message in plain language (&lt;25 chars)?</li>
+    <li><span class="ck-box"></span>Have you prepared 10 or more backup slides?</li>
+    <li><span class="ck-box"></span>Have you recorded and objectively reviewed your rehearsal?</li>
+    <li><span class="ck-box"></span>Have you confirmed font rendering and video playback on the venue PC?</li>
+    <li><span class="ck-box"></span>Have you prepared answers to 10 anticipated questions?</li>
+  </ul>
+</div>
+
+<!-- ============ Bonus ============ -->
+
+<div class="part-head">
+  <div class="part-num">BONUS</div>
+  <div class="part-title">A Poster Is Seen, and Then You Are Drawn In</div>
+  <div class="part-en">Poster Presentations</div>
+</div>
+
+<div class="card">
+  <h2>Slides vs. Posters: Design Differences</h2>
+  <div class="ba-grid">
+    <div class="ba-before">
+      <b>Slide Presentation</b>
+      Presenter advances in order → audience listens passively. One message per slide is the rule. Keeping to the time limit is essential. Animations and video are possible.
+    </div>
+    <div class="ba-after">
+      <b>Poster Presentation</b>
+      Visitors browse freely → presenter actively draws them in. Design the entire flow on one sheet. "First minute" determines everything. Static design shows the whole at once.
+    </div>
+  </div>
+  <div class="takeaway">A poster is a medium where you have to bring people to you. The three core principles still apply — but legibility standards are higher.</div>
+</div>
+
+<div class="card">
+  <h2>Poster Design: Legibility Standards</h2>
+  <div class="three-col">
+    <div class="t3-card"><b>Font sizes</b>Title: 72–100 pt<br>Section headings: 36–50 pt<br>Body text: 24–32 pt<br><br>Readable from a distance is the prerequisite</div>
+    <div class="t3-card"><b>Font choice</b>Always sans-serif<br>Japanese: BIZ UD, Meiryo<br>Latin: Segoe UI, Helvetica, Avenir<br><br>Same standard as slides</div>
+    <div class="t3-card"><b>Color principles</b>Background: white as default<br>Text: near-black<br>Accent: 1–2 colors only<br><br>Red-green combination forbidden<br>CUD is mandatory</div>
+  </div>
+  <p style="margin-top:10px;">Minimise explanatory text; use white space actively. If details cannot fit, include a QR code linking to a detailed PDF. Over-cramming information is the single biggest reason posters go unread.</p>
+  <div class="takeaway">"Key points visible from a short distance away" is the legibility pass mark.</div>
+</div>
+
+<div class="card">
+  <h2>Poster Presentation in Practice: 3 Keys</h2>
+  <div class="three-col">
+    <div class="t3-card">
+      <b>The First Minute Is Everything</b>
+      Prepare a hook: "In one sentence, this is a study about ○○." Getting someone to stop is the first goal.
+    </div>
+    <div class="t3-card">
+      <b>Centre on Dialogue</b>
+      Watch the visitor's reactions and adjust detail level. "How familiar are you with this topic?" is a powerful opener.
+    </div>
+    <div class="t3-card">
+      <b>Prepare for Q&amp;A</b>
+      Anticipate likely questions. Q&amp;A shapes your next research direction. Have business cards ready to connect with other researchers.
+    </div>
+  </div>
+  <div class="takeaway">A poster session is your biggest opportunity to build a researcher network.</div>
+</div>
+
+<!-- ============ Summary ============ -->
+
+<div class="part-head">
+  <div class="part-num">SUMMARY</div>
+  <div class="part-title">Design Is a Researcher's Literacy — and It Can Change from Today</div>
+  <div class="part-en">Design for Research — Full Review</div>
+</div>
+
+<div class="card">
+  <div class="num-cards">
+    <div class="nc-item"><div class="nc-num">0</div><div class="nc-body"><b>Design is the strategic design of information</b> — it determines research quality</div></div>
+    <div class="nc-item"><div class="nc-num">1</div><div class="nc-body"><b>Complete your storyline before opening your slides</b></div></div>
+    <div class="nc-item"><div class="nc-num">2</div><div class="nc-body"><b>Apply three core principles (Clarify / Focus / Visualise) to every slide</b></div></div>
+    <div class="nc-item"><div class="nc-num">3</div><div class="nc-body"><b>Maximise legibility with fonts and colors</b> — observe CUD</div></div>
+    <div class="nc-item"><div class="nc-num">4</div><div class="nc-body"><b>Visualise relationships</b> — fill or border, consistent margins, no SmartArt</div></div>
+    <div class="nc-item"><div class="nc-num">5</div><div class="nc-body"><b>Cut production time in half with PowerPoint Tips</b></div></div>
+    <div class="nc-item"><div class="nc-num">6</div><div class="nc-body"><b>Complete your research value</b> with thorough preparation and Q&amp;A skills</div></div>
+    <div class="nc-item"><div class="nc-num">B</div><div class="nc-body"><b>Poster = dialogue medium</b> — legibility and the first minute are everything</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Three Actions to Start Today</h2>
+  <div class="num-cards">
+    <div class="nc-item"><div class="nc-num">1</div><div class="nc-body"><b>Before your next set of slides, always write the storyline in Word first</b></div></div>
+    <div class="nc-item"><div class="nc-num">2</div><div class="nc-body"><b>Review every finished slide against the three-core-principles checklist</b></div></div>
+    <div class="nc-item"><div class="nc-num">3</div><div class="nc-body"><b>Give feedback on a colleague's slides</b> — articulating it out loud cements your own understanding</div></div>
+  </div>
+  <div class="takeaway">Try applying this in the very first slides you make after today's session. Knowing the design principles is meaningless on its own — repeated practice is what brings you to the level of "doing it without thinking."</div>
+</div>
+
+<footer>
+  Related: <a href="../">日本語版</a> ｜ <a href="../../writing-paper/en/">Writing Papers</a> ｜ <a href="../../lab-tools/paper-card/en/">Paper Card</a> ｜ <a href="../../en/">🏠 Education Portal</a><br>
+  DeSFE Lab — Institute of Fluid Science, Tohoku University
+</footer>
+
+</div>
+</body>
+</html>

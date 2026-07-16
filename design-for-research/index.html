@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design for Research — 研究のためのデザイン｜Lab Forum｜DeSFE Lab</title>
+<meta name="description" content="スライド作成・ポスター発表の完全ガイド。戦略的構成・3大原則・フォントとカラー・図解技術・PowerPoint Tips・質疑応答・ポスター発表を体系的に解説。東北大学 DeSFE Lab。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+/* ---- 部ヘッダー ---- */
+.part-head {
+  display: flex; align-items: center; gap: 14px;
+  margin: 36px 0 4px; padding: 14px 16px;
+  background: rgba(255,255,255,.05); border-radius: 10px;
+  border-left: 5px solid var(--accent);
+}
+.part-num { font-size: 11px; font-weight: 900; letter-spacing: .15em; color: var(--accent); white-space: nowrap; }
+.part-main { flex: 1; }
+.part-title { font-size: 17px; font-weight: 900; color: #fff; line-height: 1.4; }
+.part-en { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+
+/* ---- 二列 ---- */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .two-col { grid-template-columns: 1fr; } }
+.col-block { background: var(--panel); border-radius: 8px; padding: 12px; }
+.col-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 6px; }
+.col-block ul, .col-block ol { padding-left: 1.3em; }
+.col-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+.col-block p { font-size: 13px; color: var(--text); white-space: pre-line; }
+
+/* ---- OK/NG 二列 ---- */
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ba-grid { grid-template-columns: 1fr; } }
+.ba-block { border-radius: 8px; padding: 12px; }
+.ba-ng { background: #fdecea; border-left: 4px solid #e57373; }
+.ba-ok { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ba-label { font-size: 11px; font-weight: 900; letter-spacing: .12em; margin-bottom: 6px; }
+.ba-ng .ba-label { color: #c62828; }
+.ba-ok .ba-label { color: #2e7d32; }
+.ba-block p { font-size: 13px; color: var(--text); white-space: pre-line; }
+
+/* ---- 三列 ---- */
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 600px) { .three-col { grid-template-columns: 1fr; } }
+.c3-block { background: var(--panel); border-radius: 8px; padding: 12px; }
+.c3-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 6px; }
+.c3-block p { font-size: 12.5px; color: var(--text); white-space: pre-line; }
+.c3-block ul { padding-left: 1.3em; }
+.c3-block li { font-size: 12.5px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- テイクアウェイ ---- */
+.takeaway {
+  background: rgba(32,122,145,.08); border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0; padding: 8px 12px; margin-top: 12px;
+  font-size: 13px; font-weight: 700; color: var(--text);
+}
+.takeaway::before { content: "→ "; color: var(--accent); }
+
+/* ---- ステップ（横並び） ---- */
+.steps-h { display: grid; gap: 0; margin: 10px 0; }
+.step-h { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.step-h:last-child { border-bottom: none; }
+.step-num { width: 24px; height: 24px; border-radius: 50%; background: var(--primary); color: #fff; font-size: 12px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.step-body { flex: 1; }
+.step-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- チェックリスト ---- */
+.checklist { list-style: none; padding: 0; margin: 10px 0; }
+.checklist li { font-size: 13.5px; color: var(--text); padding: 6px 0; border-bottom: 1px solid var(--border); display: flex; gap: 8px; }
+.checklist li:last-child { border-bottom: none; }
+.ck-box { color: #2e7d32; font-size: 15px; flex-shrink: 0; }
+
+/* ---- ショートカットテーブル ---- */
+table.sc { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 10px; }
+table.sc th, table.sc td { border: 1px solid var(--border); padding: 7px 9px; text-align: left; vertical-align: top; }
+table.sc th { background: var(--primary); color: #fff; font-weight: 700; }
+table.sc td:first-child { font-weight: 700; color: var(--text); }
+table.sc td code { background: var(--panel); border-radius: 4px; padding: 1px 5px; font-family: monospace; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="lang-sw"><span>日本語</span> ｜ <a href="en/">English</a></div>
+<div class="breadcrumb"><a href="../">🏠 教育ポータル</a> › Design for Research</div>
+
+<header>
+  <div class="kicker">LAB FORUM — DESIGN FOR RESEARCH</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>研究のためのデザイン</h1>
+      <div class="subtitle">Design for Research — スライド・ポスター作成完全ガイド</div>
+    </div>
+  </div>
+</header>
+
+<blockquote class="lead-quote">
+  デザインは研究者の教養である。
+  <span class="src">聴衆の認知負荷を下げ、議論の質を上げる — それがデザインの唯一のゴール</span>
+</blockquote>
+
+<!-- ============ 概要 ============ -->
+
+<div class="card">
+  <h2>このページについて</h2>
+  <p>鈴木研 Lab Forum「Design for Research」（2026年5月6日）の講義内容を読み物として再構成したものです。学部生からポスドクまで、「発表後の質疑の質を1段階上げる」ことを共通ゴールとして、スライドデザインとポスター発表の原則を体系化します。</p>
+  <div class="steps-h" style="margin-top:12px;">
+    <div class="step-h"><div class="step-num">0</div><div class="step-body"><div class="step-label">はじめに</div><div class="step-sub">なぜデザインが研究の質を左右するか</div></div></div>
+    <div class="step-h"><div class="step-num">1</div><div class="step-body"><div class="step-label">戦略的構成</div><div class="step-sub">論理的ストーリーラインの構築術</div></div></div>
+    <div class="step-h"><div class="step-num">2</div><div class="step-body"><div class="step-label">スライド作成の3大原則</div><div class="step-sub">3要素明確化・絞り込み・視覚化</div></div></div>
+    <div class="step-h"><div class="step-num">3</div><div class="step-body"><div class="step-label">視認性を極める</div><div class="step-sub">フォント選択とカラー戦略</div></div></div>
+    <div class="step-h"><div class="step-num">4</div><div class="step-body"><div class="step-label">高度な図解技術</div><div class="step-sub">オブジェクト設計とグラフィック最適化</div></div></div>
+    <div class="step-h"><div class="step-num">5</div><div class="step-body"><div class="step-label">爆速で仕上げる</div><div class="step-sub">PowerPoint Tips</div></div></div>
+    <div class="step-h"><div class="step-num">6</div><div class="step-body"><div class="step-label">発表準備と質疑応答</div><div class="step-sub">研究の価値を完遂させる最終局面</div></div></div>
+    <div class="step-h"><div class="step-num">番</div><div class="step-body"><div class="step-label">番外編：ポスター発表</div><div class="step-sub">対話メディアとしての設計原則</div></div></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     はじめに
+     ============================================================ -->
+
+<div class="part-head" id="intro">
+  <div class="part-num">はじめに</div>
+  <div class="part-main">
+    <div class="part-title">デザインとは何か</div>
+    <div class="part-en">「見映え」ではなく「情報の戦略的設計」</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>スライドデザインとは何か</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">「見映え」ではなく「情報の戦略的設計」</p>
+  <p>スライドデザインは、膨大な情報の中から本質を抽出し、論理構造を視覚的に再構築する作業です。「どう見せるか」ではなく<b>「何を伝えるか」を設計する</b>こと——そして聴衆の認知的負荷を下げることが最大のゴールです。</p>
+  <div class="takeaway">デザインの質が、研究の信頼性と伝達精度を決定づける。</div>
+</div>
+
+<div class="card">
+  <h2>デザインの質が発表の結果を変える</h2>
+  <div class="ba-grid">
+    <div class="ba-block ba-ng">
+      <div class="ba-label">デザインが悪い発表</div>
+      <p>聴衆は「解読」に全エネルギーを消費
+→ 内容を理解する余裕がない
+→ 質問が浅くなる
+→ 研究の価値が正しく伝わらない</p>
+    </div>
+    <div class="ba-block ba-ok">
+      <div class="ba-label">デザインが良い発表</div>
+      <p>聴衆は「思考・議論」にエネルギーを使える
+→ 内容への深い理解が生まれる
+→ 本質的な質問が出る
+→ 研究の価値が正確に伝わる</p>
+    </div>
+  </div>
+  <div class="takeaway">デザインの改善 ＝ 議論の質の改善。</div>
+</div>
+
+<div class="card">
+  <h2>デザインがもたらす3つの本質的価値</h2>
+  <div class="three-col">
+    <div class="c3-block">
+      <div class="c3-head">議論の深化</div>
+      <p>構造化されたスライドは聴衆に「背景にある意義」を考える余裕を与え、鋭く発展的な質疑を引き出す</p>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">コミュニケーション効率化</div>
+      <p>図解技術で論理構造を一瞬で把握させる。説明の重複を省き、核心的議論に時間を最大化できる</p>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">研究時間の創出</div>
+      <p>デザイン原則を身体化すれば、資料作成の試行錯誤が激減。実験・論文執筆という研究の本質活動に時間を充てられる</p>
+    </div>
+  </div>
+  <div class="takeaway">デザインを学ぶことは、研究そのものへの投資。</div>
+</div>
+
+<div class="card">
+  <h2>この講義の対象者と目標</h2>
+  <ul style="padding-left:1.4em; margin-top:6px;">
+    <li style="font-size:14px; margin-bottom:4px;"><b>学部生・M1</b>：初めての発表で「何から始めるか」を知る</li>
+    <li style="font-size:14px; margin-bottom:4px;"><b>M2・D1</b>：自分のスライドの「改善ポイント」を具体的につかむ</li>
+    <li style="font-size:14px; margin-bottom:4px;"><b>D2・D3</b>：後輩に教えられるレベルで原則を体系化する</li>
+    <li style="font-size:14px; margin-bottom:4px;"><b>ポスドク</b>：発表指導のフレームワークとして活用する</li>
+    <li style="font-size:14px;"><b>共通ゴール</b>：発表後の質疑の質を1段階上げること</li>
+  </ul>
+  <div class="takeaway">レベルに関係なく、デザインの基礎は必ず効く。</div>
+</div>
+
+<!-- ============================================================
+     Part 1: 戦略的構成
+     ============================================================ -->
+
+<div class="part-head" id="part1">
+  <div class="part-num">Part 1</div>
+  <div class="part-main">
+    <div class="part-title">戦略的構成</div>
+    <div class="part-en">論理的ストーリーラインの構築術 — スライドを開く前に、論理を完結させる</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>最初の鉄則：スライドをいきなり開かない</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">手戻りを防ぐ「設計先行」の原則</p>
+  <p>PowerPoint を開いて書き始めるのは最悪の手法です。論理の飛躍に気づかないまま進み、後で大幅修正が必要になります。</p>
+  <div class="steps-h" style="margin-top:12px;">
+    <div class="step-h"><div class="step-num">1</div><div class="step-body"><div class="step-label">ストーリー設計</div><div class="step-sub">Word やメモで「話の流れ」を文章化する。「次のスライドは何を言うべきか」が明確になるまでここで完結させる</div></div></div>
+    <div class="step-h"><div class="step-num">2</div><div class="step-body"><div class="step-label">アウトライン</div><div class="step-sub">PowerPoint のアウトライン表示でタイトルのみを先に入力し、全体の流れを確認する</div></div></div>
+    <div class="step-h"><div class="step-num">3</div><div class="step-body"><div class="step-label">スライド作成</div><div class="step-sub">流れが固まったら、コンテンツを流し込む。この順番を守れば手戻りは激減する</div></div></div>
+  </div>
+  <div class="takeaway">設計に30分かけると、作成で2時間節約できる。</div>
+</div>
+
+<div class="card">
+  <h2>研究発表の標準構成：6つの問い</h2>
+  <p>各スライドは「問い」と「答え」のペアで設計します。以下の6問を順番に解決していくことが、論理的な研究発表の骨格です。</p>
+  <div class="steps-h" style="margin-top:12px;">
+    <div class="step-h"><div class="step-num">1</div><div class="step-body"><div class="step-label">背景</div><div class="step-sub">何が既に判明し、何が未解明か？（課題の文脈）</div></div></div>
+    <div class="step-h"><div class="step-num">2</div><div class="step-body"><div class="step-label">目的</div><div class="step-sub">この研究が持つ社会的・学術的な意義は何か？</div></div></div>
+    <div class="step-h"><div class="step-num">3</div><div class="step-body"><div class="step-label">手法</div><div class="step-sub">どのような独自の手順で調査・実験したか？</div></div></div>
+    <div class="step-h"><div class="step-num">4</div><div class="step-body"><div class="step-label">結果</div><div class="step-sub">どのようなデータ・知見が得られたか？</div></div></div>
+    <div class="step-h"><div class="step-num">5</div><div class="step-body"><div class="step-label">解釈</div><div class="step-sub">結果は目的をどの程度満たし、どんな価値があるか？</div></div></div>
+    <div class="step-h"><div class="step-num">6</div><div class="step-body"><div class="step-label">結論</div><div class="step-sub">最終的な主張と残された限界・今後の課題は？</div></div></div>
+  </div>
+  <div class="takeaway">論理の飛躍がないか、声に出して通して読む。</div>
+</div>
+
+<div class="card">
+  <h2>背景スライドの作り方</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">広い文脈から専門的課題へと絞り込む</p>
+  <ul style="padding-left:1.4em; margin-top:6px;">
+    <li style="font-size:14px; margin-bottom:5px;">社会・分野全体の文脈からスタートする（ファネル型）</li>
+    <li style="font-size:14px; margin-bottom:5px;">「何が分かっているか」を先に示す（Previous research）</li>
+    <li style="font-size:14px; margin-bottom:5px;">「何が分かっていないか」を明確に提示する（Research gap）</li>
+    <li style="font-size:14px; margin-bottom:5px;">そのギャップが「なぜ重要か」を聴衆に納得させる</li>
+    <li style="font-size:14px;">謝辞・研究グループ紹介は不要 — 聴衆の意識を逸らすノイズ</li>
+  </ul>
+  <div class="takeaway">背景は「なぜこの研究が必要か」を語る物語。</div>
+</div>
+
+<div class="card">
+  <h2>聴衆ニーズ分析：説明の粒度を調整する</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">同じ研究でも、聴衆によって「見せ方」は変わる</p>
+  <div class="three-col">
+    <div class="c3-block">
+      <div class="c3-head">専門家向け（学会）</div>
+      <p>手法の詳細・統計的妥当性に重点。専門用語をそのまま使用。背景は薄くて良い。批判的検討を意識</p>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">専門外の研究者</div>
+      <p>背景・問題の所在・歴史的流れを厚めに。独自表現を避け丁寧な解説を追加。シンポジウム等向け</p>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">一般聴衆・学生</div>
+      <p>実用性・社会的インパクトを強調する。数式・専門手順は割愛・簡略化する。セミナー・講義向け</p>
+    </div>
+  </div>
+  <div class="takeaway">聴衆を分析してから構成を決める。</div>
+</div>
+
+<div class="card">
+  <h2>時間配分と枚数の黄金比</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">1分＝1スライドを目安に</p>
+  <table class="wk">
+    <tr><th>発表時間</th><th>推奨枚数（補足含む）</th><th>補足</th></tr>
+    <tr><td>10分</td><td>8〜10枚</td><td>テンポよく絞り込む</td></tr>
+    <tr><td>15分</td><td>12〜15枚</td><td>1〜2枚のバッファを残す</td></tr>
+    <tr><td>30分</td><td>25〜35枚</td><td>動画含む場合は事前計測</td></tr>
+    <tr><td>60分</td><td>50〜65枚</td><td>補足スライドを充実させる</td></tr>
+  </table>
+  <div class="takeaway">時間を1秒も超過しない — プロのマナー。</div>
+</div>
+
+<div class="card">
+  <h2>ストーリーライン設計の実例</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">「問い」と「答え」の連鎖で論理を構築する</p>
+  <div class="steps-h" style="margin-top:10px;">
+    <div class="step-h"><div class="step-num">①</div><div class="step-body"><div class="step-label">なぜこの問題を解くべきか？</div><div class="step-sub">答え：○○な課題があるから（社会的・学術的背景）</div></div></div>
+    <div class="step-h"><div class="step-num">②</div><div class="step-body"><div class="step-label">従来手法では何が足りないか？</div><div class="step-sub">答え：△△の限界があるから（Research gap の明示）</div></div></div>
+    <div class="step-h"><div class="step-num">③</div><div class="step-body"><div class="step-label">我々はどうアプローチするか？</div><div class="step-sub">答え：□□という手法を用いる（独自性の提示）</div></div></div>
+    <div class="step-h"><div class="step-num">④</div><div class="step-body"><div class="step-label">結果として何が得られたか？</div><div class="step-sub">答え：◇◇が明らかになった（主要な知見）</div></div></div>
+    <div class="step-h"><div class="step-num">⑤</div><div class="step-body"><div class="step-label">それは何を意味するか？</div><div class="step-sub">答え：この分野に★★の貢献をする（意義・インパクト）</div></div></div>
+  </div>
+  <div class="takeaway">各スライドは「問い」と「答え」のペアで設計する。</div>
+</div>
+
+<!-- ============================================================
+     Part 2: 3大原則
+     ============================================================ -->
+
+<div class="part-head" id="part2">
+  <div class="part-num">Part 2</div>
+  <div class="part-main">
+    <div class="part-title">スライド作成の3大原則</div>
+    <div class="part-en">3要素明確化・絞り込み・視覚化 — 1枚のスライドの質を決める普遍のルール</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>3大原則の概要</h2>
+  <div class="three-col">
+    <div class="c3-block">
+      <div class="c3-head">原則 1：3要素明確化</div>
+      <p>話題（問い）・要点（答え）・補足（根拠）を明確に書き分ける</p>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">原則 2：絞り込み</div>
+      <p>1スライド1メッセージ。直接関係のない情報は徹底的に排除する。「削る勇気」を持つ</p>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">原則 3：視覚化</div>
+      <p>文章による説明を極力排除する。重要度・関係性を視覚的に表現する</p>
+    </div>
+  </div>
+  <div class="takeaway">この3原則を守るだけで、発表の質は劇的に変わる。</div>
+</div>
+
+<div class="card">
+  <h2>原則 1：3要素明確化</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">話題・要点・補足の3層構造を意識する</p>
+  <div class="three-col">
+    <div class="c3-block">
+      <div class="c3-head">話題（問い）</div>
+      <p>聴衆が答えを知りたがっている論点を提示する。「このスライドで何を解決するか」を示す</p>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">要点（答え）</div>
+      <p><b>25文字程度の一文で最上部に配置。</b>問いに対する端的な答えを断言する</p>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">補足（根拠）</div>
+      <p>要点の説得力を高めるデータ・図解・事実。要点が理解された後に読まれる</p>
+    </div>
+  </div>
+  <p style="margin-top:10px; font-size:13.5px;">要点が即座に理解されると、聴衆の脳が「解読」から「思考」に切り替わります。これが認知負荷理論の核心であり、質の高い議論はここから生まれます。</p>
+  <div class="takeaway">要点は25文字以内の平易な一文で最上部に書く。</div>
+</div>
+
+<div class="card">
+  <h2>要点の書き方：NG例 vs OK例</h2>
+  <div class="ba-grid">
+    <div class="ba-block ba-ng">
+      <div class="ba-label">NG：要点がない・曖昧</div>
+      <p>「実験結果について」
+（タイトルが話題の記述のみ）
+
+「本研究では〜を検討した」
+（動作の記述で答えがない）
+
+「結果を示す」
+（何を伝えたいか不明）</p>
+    </div>
+    <div class="ba-block ba-ok">
+      <div class="ba-label">OK：要点が明確・断言</div>
+      <p>「提案手法は従来比2倍の精度」
+（25文字・断言・即理解）
+
+「温度上昇は北極域で最大」
+（具体的数値・地域が明確）
+
+「コスト削減の鍵は○○工程」
+（主張が明確で検討可能）</p>
+    </div>
+  </div>
+  <div class="takeaway">聴衆がスライドを見た瞬間に「何が言いたいか」が分かる状態を作る。</div>
+</div>
+
+<div class="card">
+  <h2>原則 2：絞り込み</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">1スライド1メッセージ — 「削る勇気」が発表のクオリティを決める</p>
+  <ul style="padding-left:1.4em; margin-top:6px;">
+    <li style="font-size:14px; margin-bottom:5px;">「要点を納得させる上で直接関係のない情報」はすべて排除する</li>
+    <li style="font-size:14px; margin-bottom:5px;">無関係な情報の混入 → メッセージの鋭さが鈍り、説得力が激減する</li>
+    <li style="font-size:14px; margin-bottom:5px;">「これも大事」という気持ちを抑えることがプロの証</li>
+    <li style="font-size:14px; margin-bottom:5px;">削った情報は<b>バックアップスライドへ</b> — 捨てるのではなく移す</li>
+    <li style="font-size:14px;">1つの問いに1つの答えで1枚のスライドを完結させる</li>
+  </ul>
+  <div class="takeaway">追加したい衝動より、削る判断が発表の質を上げる。</div>
+</div>
+
+<div class="card">
+  <h2>原則 3：視覚化</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">「読ませる」スライドから「見せる」スライドへ</p>
+  <ul style="padding-left:1.4em; margin-top:6px;">
+    <li style="font-size:14px; margin-bottom:5px;">人間の脳は文字より図・グラフ・図解を圧倒的に速く処理する</li>
+    <li style="font-size:14px; margin-bottom:5px;">「AはBに影響する」→ 矢印でつないだ図に変換する</li>
+    <li style="font-size:14px; margin-bottom:5px;">「3つの要素がある」→ 横並びカードや三角形の図に変換する</li>
+    <li style="font-size:14px; margin-bottom:5px;">数値データはグラフで表現 — 表の羅列は最終手段</li>
+    <li style="font-size:14px;">テキストボックスの文章が多い → 視覚化が不十分のサイン</li>
+  </ul>
+  <div class="takeaway">1枚のスライドで伝えられる文字数は100文字以下が目安。</div>
+</div>
+
+<div class="card">
+  <h2>認知負荷理論：聴衆の脳で何が起きているか</h2>
+  <div class="ba-grid">
+    <div class="ba-block ba-ng">
+      <div class="ba-label">情報が整理されていない場合</div>
+      <p>脳のリソース → 情報の解読・整理
+
+「このスライドは何が言いたいのか」
+の解読に全力が使われる
+
+→ 内容を考える余裕がない
+→ 質問が「確認」レベルになる</p>
+    </div>
+    <div class="ba-block ba-ok">
+      <div class="ba-label">情報が整理されている場合</div>
+      <p>脳のリソース → 批判的検討・発想
+
+「なぜこの結果になったか」
+「他の解釈はないか」を考えられる
+
+→ 建設的な議論が生まれる
+→ 研究が深まる質問が出る</p>
+    </div>
+  </div>
+  <div class="takeaway">スライドのデザインは聴衆の「思考の質」を設計する行為。</div>
+</div>
+
+<div class="card">
+  <h2>「3ないスライド」vs 改善後スライド</h2>
+  <p>学生が陥りがちな失敗と、その改善ポイント。</p>
+  <div class="ba-grid" style="margin-top:10px;">
+    <div class="ba-block ba-ng">
+      <div class="ba-label">3ないスライド（避けるべき例）</div>
+      <ul>
+        <li>要点が明記されていない — タイトルが話題の記述だけで答えがない</li>
+        <li>話題が絞り込めていない — 1枚に複数のメッセージが混在</li>
+        <li>情報が視覚化されていない — 箇条書きのテキストで埋め尽くされている</li>
+      </ul>
+      <p style="margin-top:6px; font-size:12px; color:#c62828;"><b>聴衆の反応</b>：解読に全エネルギーを使い混乱する</p>
+    </div>
+    <div class="ba-block ba-ok">
+      <div class="ba-label">改善後スライド（目指すべき姿）</div>
+      <ul>
+        <li>要点が25文字以内で平易に明記 — 一目で「何が言いたいか」が分かる</li>
+        <li>1つの問いと答えに情報が凝縮 — メッセージがシャープで力強い</li>
+        <li>図解・枠・余白で構造が一目瞭然 — 見た瞬間に論理構造が理解できる</li>
+      </ul>
+      <p style="margin-top:6px; font-size:12px; color:#2e7d32;"><b>聴衆の反応</b>：深い思索ができ本質的な質問が出る</p>
+    </div>
+  </div>
+  <div class="takeaway">3ないスライドを卒業することが、発表者としての第一歩。</div>
+</div>
+
+<div class="card">
+  <h2>3大原則 実践チェックリスト</h2>
+  <ul class="checklist">
+    <li><span class="ck-box">☑</span>各スライドに「要点」が25文字以内で書かれているか</li>
+    <li><span class="ck-box">☑</span>1枚のスライドに伝えたいことが1つだけか</li>
+    <li><span class="ck-box">☑</span>文章を図・グラフ・図解に変換できているか</li>
+    <li><span class="ck-box">☑</span>タイトルを見ただけで「答え」が分かるか</li>
+    <li><span class="ck-box">☑</span>削れる情報はすべてバックアップに移したか</li>
+    <li><span class="ck-box">☑</span>聴衆が「解読」せずに「思考」できる状態か</li>
+  </ul>
+</div>
+
+<!-- ============================================================
+     Part 3: フォントとカラー戦略
+     ============================================================ -->
+
+<div class="part-head" id="part3">
+  <div class="part-num">Part 3</div>
+  <div class="part-main">
+    <div class="part-title">視認性を極める</div>
+    <div class="part-en">フォント選択とカラー戦略 — 情報ノイズを最小化する戦略的武器</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>フォント選択の鉄則</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">ゴシック体を使う理由 — 可読性・視認性・一貫性</p>
+  <ul style="padding-left:1.4em; margin-top:6px;">
+    <li style="font-size:14px; margin-bottom:5px;">スライドには必ず<b>ゴシック体（サンセリフ体）</b>を使う</li>
+    <li style="font-size:14px; margin-bottom:5px;">明朝体・セリフ体は印刷には向くが、投影では細部が潰れる</li>
+    <li style="font-size:14px; margin-bottom:5px;"><b>MSゴシックは太字対応が不十分・投影時にかすれやすい → 使用禁止</b></li>
+    <li style="font-size:14px; margin-bottom:5px;">游ゴシック「Light」は細すぎて視認性が低い → スライドには不向き</li>
+    <li style="font-size:14px;">フォントは全スライドで統一する — 混在は素人のサイン</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>推奨フォント一覧</h2>
+  <div class="two-col">
+    <div class="col-block">
+      <div class="col-head">和文推奨フォント</div>
+      <ul>
+        <li><b>【最優先】ヒラギノ角ゴシック（Mac）</b> — 最も美しく視認性に優れる</li>
+        <li><b>游ゴシック Medium 以上（Win）</b> — 細いウェイトは使用禁止</li>
+        <li><b>メイリオ（Win・Web）</b> — プロジェクターに強い</li>
+        <li><b>BIZ UD（Win）</b> — 誤読防止・推奨</li>
+      </ul>
+    </div>
+    <div class="col-block">
+      <div class="col-head">欧文推奨フォント</div>
+      <ul>
+        <li><b>Segoe UI（Win）</b> — Office標準・視認性◎</li>
+        <li><b>Helvetica（Mac）</b> — デザインの王道</li>
+      </ul>
+      <p style="margin-top:8px; font-size:12px; color:var(--muted);">⚠ 和文フォントに含まれる英数字はバランスが悪い。英数字には必ず欧文フォントを使い分けること</p>
+    </div>
+  </div>
+  <div class="takeaway">フォントの選択ひとつで発表の「信頼性」の印象が変わる。</div>
+</div>
+
+<div class="card">
+  <h2>フォントサイズの設定基準</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">会場後方からの視認性を必ず確保する</p>
+  <div class="two-col">
+    <div class="col-block">
+      <div class="col-head">スライド用サイズ</div>
+      <ul>
+        <li>見出し：<b>32 pt 以上</b></li>
+        <li>本文：<b>24 pt 以上</b></li>
+        <li>補足・参考文献：14 pt</li>
+      </ul>
+      <p style="margin-top:6px; font-size:12px; color:var(--muted);">小さいフォントは情報を削るサイン</p>
+    </div>
+    <div class="col-block">
+      <div class="col-head">ポスター用サイズ</div>
+      <ul>
+        <li>タイトル：<b>72〜100 pt</b></li>
+        <li>見出し：<b>36〜50 pt</b></li>
+        <li>本文：<b>24〜32 pt</b></li>
+      </ul>
+      <p style="margin-top:6px; font-size:12px; color:var(--muted);">離れた位置から読める必要がある</p>
+    </div>
+  </div>
+  <div class="takeaway">「後ろの席から読めるか」が視認性の最終テスト。</div>
+</div>
+
+<div class="card">
+  <h2>カラーユニバーサルデザイン（CUD）</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">日本人男性の約5%は赤緑色覚特性を持つ</p>
+  <ul style="padding-left:1.4em; margin-top:6px;">
+    <li style="font-size:14px; margin-bottom:5px;"><b>赤と緑の組み合わせは必ず避ける</b></li>
+    <li style="font-size:14px; margin-bottom:5px;">色だけで情報を区別しない → 形状・コントラスト・ラベルを併用する</li>
+    <li style="font-size:14px; margin-bottom:5px;">グラフの折れ線：色違いだけでなく、線種（実線・破線・点線）も変える</li>
+    <li style="font-size:14px; margin-bottom:5px;">彩度・明度100%の純色はプロジェクターでフリッカー（チカチカ）を起こす</li>
+    <li style="font-size:14px;">標準の「赤・緑・青」をそのまま使わず、落ち着いたテーマカラーを選ぶ</li>
+  </ul>
+  <div class="takeaway">CUDへの配慮は、すべての聴衆を尊重するデザインの基本。</div>
+</div>
+
+<div class="card">
+  <h2>配色比率の黄金律：70:25:5</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">色数は最大3色 — それ以上は混乱を生む</p>
+  <div class="three-col">
+    <div class="c3-block">
+      <div class="c3-head">70% ベースカラー</div>
+      <p>背景色（白が基本）。清潔・視認性最高。ノイズを最小化しメインカラーを際立たせる</p>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">25% メインカラー</div>
+      <p>見出し・装飾。ブランドカラー・テーマカラー。専門性・信頼感を演出する色を選ぶ</p>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">5% アクセントカラー</div>
+      <p>最重要箇所のみ。オレンジ・赤など目立つ色。使いすぎると強調の意味がなくなる</p>
+    </div>
+  </div>
+  <div class="note" style="margin-top:12px;">
+    <b>鈴木研スタイル</b>：ティールブルー（#356f8c）をメイン、ゴールド（#c6a54a）をアクセント。白ベース＋濃色文字で視認性の土台を作る。
+  </div>
+  <div class="takeaway">色の節約 ＝ 強調の効果を最大化する。</div>
+</div>
+
+<!-- ============================================================
+     Part 4: 高度な図解技術
+     ============================================================ -->
+
+<div class="part-head" id="part4">
+  <div class="part-num">Part 4</div>
+  <div class="part-main">
+    <div class="part-title">高度な図解技術</div>
+    <div class="part-en">オブジェクト設計とグラフィック最適化 — 関係性を一目で理解させる</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>図解の目的：関係性を一目で理解させる</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">文字で説明できることを図に変換する技術</p>
+  <ul style="padding-left:1.4em; margin-top:6px;">
+    <li style="font-size:14px; margin-bottom:5px;">事柄同士の「関係性」を視覚化するのが図解の本質</li>
+    <li style="font-size:14px; margin-bottom:5px;">原因 → 結果 の関係：<b>矢印</b>で表現</li>
+    <li style="font-size:14px; margin-bottom:5px;">AはBに含まれる 関係：<b>入れ子の図形</b>で表現</li>
+    <li style="font-size:14px; margin-bottom:5px;">AとBは同格 関係：<b>横並びカード</b>で表現</li>
+    <li style="font-size:14px;">AはBより大きい 関係：<b>棒グラフ・面積</b>で表現</li>
+  </ul>
+  <div class="takeaway">図解できない説明は、まだ整理しきれていない証拠。</div>
+</div>
+
+<div class="card">
+  <h2>オブジェクト設計の鉄則：塗りか枠か一方のみ</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">両方使うとノイズが増え、情報が濁る</p>
+  <div class="ba-grid">
+    <div class="ba-block ba-ng">
+      <div class="ba-label">NG：塗り＋枠の両方</div>
+      <p>塗りに色 ＋ 枠線に色
+→ 境界が過剰に強調される
+→ 情報のノイズとなる
+→ 「どちらが重要か」が不明確
+→ 素人っぽい印象を与える</p>
+    </div>
+    <div class="ba-block ba-ok">
+      <div class="ba-label">OK：塗りか枠のどちらか</div>
+      <p><b>塗りのみ</b>：背景色で分類を表現 → すっきりした印象
+
+<b>枠のみ</b>：線で区切りを表現 → 内容が際立つ
+
+一方に統一することで視覚的ノイズが激減する</p>
+    </div>
+  </div>
+  <div class="takeaway">「歪んだ角丸四角形は、歪んだ論理の象徴」— 細部に誠実であれ。</div>
+</div>
+
+<div class="card">
+  <h2>統一感の細部：角丸・余白・矢印</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">バラバラな細部が「信頼性の印象」を壊す</p>
+  <ul style="padding-left:1.4em; margin-top:6px;">
+    <li style="font-size:14px; margin-bottom:5px;"><b>角の丸み（R値）</b>：複数のオブジェクトで統一する → バラバラは不潔な印象</li>
+    <li style="font-size:14px; margin-bottom:5px;"><b>余白の均等配置</b>：枠内の文字と枠線の距離・オブジェクト間の距離を均一に</li>
+    <li style="font-size:14px; margin-bottom:5px;"><b>矢印の一貫性</b>：矢じりのサイズ・柄の太さを全スライドで統一する</li>
+    <li style="font-size:14px; margin-bottom:5px;"><b>SmartArtの禁止</b>：既製品SmartArt・影・グラデーションは統一感を壊す</li>
+    <li style="font-size:14px;"><b>吹き出しの自作</b>：既成の吹き出しは変形に弱い → 三角＋四角で自作する</li>
+  </ul>
+  <div class="takeaway">細部の統一が「研究の精緻さ」という印象をつくる。</div>
+</div>
+
+<div class="card">
+  <h2>SmartArtと既製テンプレートを避ける理由</h2>
+  <div class="ba-grid">
+    <div class="ba-block ba-ng">
+      <div class="ba-label">SmartArt・既製品の問題点</div>
+      <ul>
+        <li>デザインが他のスライドと統一できない</li>
+        <li>変形・色変更に制限がある</li>
+        <li>「使い回し感」が研究の独自性を薄める</li>
+        <li>影・グラデーションはプロジェクターで潰れる</li>
+      </ul>
+    </div>
+    <div class="ba-block ba-ok">
+      <div class="ba-label">自作図解のメリット</div>
+      <ul>
+        <li>全スライドで統一したデザインを維持できる</li>
+        <li>テキスト量・サイズに合わせて自由に調整できる</li>
+        <li>研究内容に合わせた固有のビジュアルを作れる</li>
+        <li>作る過程で論理が整理される</li>
+      </ul>
+    </div>
+  </div>
+  <div class="takeaway">1時間かけて自作した図は、5分のSmartArtより10倍伝わる。</div>
+</div>
+
+<div class="card">
+  <h2>図解クオリティ チェックリスト</h2>
+  <div class="three-col">
+    <div class="c3-block">
+      <div class="c3-head">構造の整合性</div>
+      <ul>
+        <li>塗りか枠のどちらか一方のみ</li>
+        <li>角の丸み（R値）が全オブジェクトで統一</li>
+        <li>自作の吹き出し（三角＋四角）</li>
+        <li>SmartArt・影・グラデーションなし</li>
+        <li>矢印の太さ・矢じりが全スライドで統一</li>
+      </ul>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">余白・配置の整合性</div>
+      <ul>
+        <li>枠内のテキストと枠線の距離が均一</li>
+        <li>オブジェクト間の距離が均一</li>
+        <li>要素が整列（揃え機能を使用）</li>
+        <li>余白が情報の「まとまり」を表現</li>
+        <li>枠の使いすぎで区分けが曖昧になっていない</li>
+      </ul>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">情報の視覚化度</div>
+      <ul>
+        <li>関係性が矢印・図形で表現されている</li>
+        <li>文章ではなく図解・グラフが中心</li>
+        <li>テキストは補足の役割のみ</li>
+        <li>重要度が「大きさ・色・位置」で表現</li>
+        <li>「文字を読まなくても分かる」状態か</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     Part 5: PowerPoint Tips
+     ============================================================ -->
+
+<div class="part-head" id="part5">
+  <div class="part-num">Part 5</div>
+  <div class="part-main">
+    <div class="part-title">爆速で仕上げる PowerPoint Tips</div>
+    <div class="part-en">ショートカット ＋ スライドマスター — スライド作成の高速化は「思考の連続性」を守るために必要</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>なぜ爆速で仕上げる必要があるか</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">マウス操作は「思考の中断」を引き起こす</p>
+  <ul style="padding-left:1.4em; margin-top:6px;">
+    <li style="font-size:14px; margin-bottom:5px;">スライド作成でまごつくと、話の流れを考える集中力が途切れる</li>
+    <li style="font-size:14px; margin-bottom:5px;">「ショートカットを探す時間」は純粋な損失</li>
+    <li style="font-size:14px; margin-bottom:5px;">テキストボックスへの入出をスムーズにすることが作成リズムの鍵</li>
+    <li style="font-size:14px; margin-bottom:5px;">1日3時間スライドを作るなら、効率化で30分は確実に短縮できる</li>
+    <li style="font-size:14px;">研究の本質（実験・論文・思考）に時間を充てるための投資</li>
+  </ul>
+  <div class="takeaway">PowerPoint の習熟度は、研究時間の確保に直結する。</div>
+</div>
+
+<div class="card">
+  <h2>必須ショートカット一覧</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">これだけ覚えれば作業スピードが倍になる</p>
+  <table class="sc">
+    <tr><th>操作</th><th>Windows</th><th>Mac</th></tr>
+    <tr><td>テキストボックス 入</td><td><code>F2</code></td><td><code>F2</code></td></tr>
+    <tr><td>テキストボックス 出</td><td><code>Esc</code></td><td><code>Esc</code></td></tr>
+    <tr><td>中央揃え</td><td><code>Ctrl + E</code></td><td><code>⌘ + E</code></td></tr>
+    <tr><td>上付き文字</td><td><code>Ctrl + Shift + ;</code></td><td><code>⌘ + Shift + ;</code></td></tr>
+    <tr><td>下付き文字</td><td><code>Ctrl + ;</code></td><td><code>⌘ + ;</code></td></tr>
+    <tr><td>書式コピー</td><td><code>Ctrl + Shift + C</code></td><td><code>⌘ + Shift + C</code></td></tr>
+    <tr><td>書式貼り付け</td><td><code>Ctrl + Shift + V</code></td><td><code>⌘ + Shift + V</code></td></tr>
+    <tr><td>グループ化</td><td><code>Ctrl + G</code></td><td><code>⌘ + G</code></td></tr>
+    <tr><td>等間隔配置</td><td colspan="2">図形の書式 → 配置</td></tr>
+  </table>
+  <div class="takeaway">最初の1週間はショートカットだけ意識して使い込む。</div>
+</div>
+
+<div class="card">
+  <h2>スライドマスターによる構造の固定</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">全ページでタイトルが1ピクセルも動かない状態を作る</p>
+  <ul style="padding-left:1.4em; margin-top:6px;">
+    <li style="font-size:14px; margin-bottom:5px;">スライドマスターで設定するもの：タイトルの位置・フォント・サイズ</li>
+    <li style="font-size:14px; margin-bottom:5px;">箇条書きのインデント・フォント・行間もマスターで統一する</li>
+    <li style="font-size:14px; margin-bottom:5px;">スライド切り替え時の視線の揺らぎを最小化できる</li>
+    <li style="font-size:14px; margin-bottom:5px;">手順：<b>表示 → スライドマスター → レイアウトを編集</b></li>
+    <li style="font-size:14px;">テンプレートとして保存 → 次回以降ゼロから作らなくてよい</li>
+  </ul>
+  <div class="takeaway">スライドマスターを設定する30分は、その後何時間もの作業を救う。</div>
+</div>
+
+<div class="card">
+  <h2>スライド作成の効率化ワークフロー</h2>
+  <div class="steps-h" style="margin-top:8px;">
+    <div class="step-h"><div class="step-num">1</div><div class="step-body"><div class="step-label">テンプレートを選択・スライドマスターを設定</div><div class="step-sub">アウトライン表示でタイトルのみ先に入力し、全体構成を固める</div></div></div>
+    <div class="step-h"><div class="step-num">2</div><div class="step-body"><div class="step-label">アウトラインモードで構成確定</div><div class="step-sub">タイトルのみ見てストーリーが通るか確認する。ここで論理の飛躍を潰す</div></div></div>
+    <div class="step-h"><div class="step-num">3</div><div class="step-body"><div class="step-label">コンテンツを流し込む</div><div class="step-sub">本文・箇条書きを入力。書式コピーで統一感を維持する</div></div></div>
+    <div class="step-h"><div class="step-num">4</div><div class="step-body"><div class="step-label">図解・グラフを最適化</div><div class="step-sub">テキストを図解に置き換え、整列・等間隔配置機能で整える</div></div></div>
+    <div class="step-h"><div class="step-num">5</div><div class="step-body"><div class="step-label">印刷・動作確認・バックアップスライド整理</div><div class="step-sub">発表PCで事前動作確認。フォント埋め込みを忘れずに</div></div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>PowerPoint Tips — まとめチェックリスト</h2>
+  <ul class="checklist">
+    <li><span class="ck-box">☑</span>スライドマスターで全スライドのデザインを統一する</li>
+    <li><span class="ck-box">☑</span>ショートカットを使いマウス操作を最小化する</li>
+    <li><span class="ck-box">☑</span>テキストボックスの入出（F2/Esc）をスムーズに行う</li>
+    <li><span class="ck-box">☑</span>アウトライン表示でタイトルのみ先に配置する</li>
+    <li><span class="ck-box">☑</span>書式コピー（Ctrl+Shift+C/V）で統一感を保つ</li>
+    <li><span class="ck-box">☑</span>図形の「整列・等間隔配置」機能を積極活用する</li>
+  </ul>
+</div>
+
+<!-- ============================================================
+     Part 6: 発表準備と質疑応答
+     ============================================================ -->
+
+<div class="part-head" id="part6">
+  <div class="part-num">Part 6</div>
+  <div class="part-main">
+    <div class="part-title">発表準備と質疑応答</div>
+    <div class="part-en">スライド完成は発表の半分 — 残り半分は「届ける技術」</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>時間配分と枚数の最終確認</h2>
+  <ul style="padding-left:1.4em; margin-top:6px;">
+    <li style="font-size:14px; margin-bottom:5px;"><b>時間は1秒たりとも超過してはいけない</b> — 聴衆と次の演者への敬意</li>
+    <li style="font-size:14px; margin-bottom:5px;">動画・デモを含む場合は事前に再生時間を計測して枚数を調整する</li>
+    <li style="font-size:14px; margin-bottom:5px;">リハーサルで計測した時間 ÷ 枚数 = 1枚あたりの平均時間を把握する</li>
+    <li style="font-size:14px;">「1分＝1スライド」は目安 — 内容の密度で実際の時間は変わる</li>
+  </ul>
+  <div class="takeaway">時間超過は最大の失礼 — タイマーを使って徹底的に練習する。</div>
+</div>
+
+<div class="card">
+  <h2>質疑応答は「攻撃」ではなく「交流」</h2>
+  <div class="ba-grid">
+    <div class="ba-block ba-ng">
+      <div class="ba-label">間違ったマインドセット</div>
+      <p>質問 ＝ 批判・欠点の指摘
+→ 防御的な回答になる
+→ 「それは違います」という反応
+→ 質問者との関係が悪化
+→ 議論が深まらない</p>
+    </div>
+    <div class="ba-block ba-ok">
+      <div class="ba-label">正しいマインドセット</div>
+      <p>質問 ＝ 異なる視点からの貢献
+→「鋭い指摘、ありがとうございます」
+→ 研究の盲点を発見できる
+→ 次の研究の方向性が定まる
+→ 共同研究のきっかけになる</p>
+    </div>
+  </div>
+  <div class="takeaway">質問者は研究の敵ではなく、最初の協力者。</div>
+</div>
+
+<div class="card">
+  <h2>質疑応答10の極意</h2>
+  <div class="two-col">
+    <div class="col-block">
+      <div class="col-head">受け答えの技術（1〜5）</div>
+      <ol>
+        <li style="font-size:13px; margin-bottom:6px;"><b>結論から回答</b> — 「はい / いいえ」や結論を最初に述べ、その後に理由を詳述する</li>
+        <li style="font-size:13px; margin-bottom:6px;"><b>質問を復唱する</b> — 聴衆全員に論点を共有し、認識ズレを防ぐ。「つまり○○というご質問ですね」</li>
+        <li style="font-size:13px; margin-bottom:6px;"><b>深化の機会と捉える</b> — 「大変重要な点をご指摘いただきました」が正しい第一反応</li>
+        <li style="font-size:13px; margin-bottom:6px;"><b>バックアップスライドを用意</b> — 削った詳細を補足として準備しておく</li>
+        <li style="font-size:13px;"><b>想定外の質問にも誠実に</b> — 相手の意図を汲み、正直に対応する</li>
+      </ol>
+    </div>
+    <div class="col-block">
+      <div class="col-head">実践的対処法（6〜10）</div>
+      <ol start="6">
+        <li style="font-size:13px; margin-bottom:6px;"><b>「わからない」を恐れない</b> — 未解明は正直に認める。それ自体が誠実さの証</li>
+        <li style="font-size:13px; margin-bottom:6px;"><b>簡潔さを保つ</b> — 1回答に時間をかけすぎない。多くの参加者と対話する</li>
+        <li style="font-size:13px; margin-bottom:6px;"><b>構造化して答える</b> — 「理由は2点あります」とナンバリングを使う</li>
+        <li style="font-size:13px; margin-bottom:6px;"><b>回答後に確認する</b> — 「回答になっていますか？」一言添えるだけで丁寧さが伝わる</li>
+        <li style="font-size:13px;"><b>議論の継続を提案</b> — 時間不足なら終了後に。次の共同作業につながる</li>
+      </ol>
+    </div>
+  </div>
+  <div class="takeaway">質疑の質が、発表の記憶を左右する。</div>
+</div>
+
+<div class="card">
+  <h2>バックアップスライドの準備術</h2>
+  <ul style="padding-left:1.4em; margin-top:6px;">
+    <li style="font-size:14px; margin-bottom:5px;">本編では絞り込んだ情報を、補足スライドとして最後に用意する</li>
+    <li style="font-size:14px; margin-bottom:5px;">想定される質問を10個リストアップし、対応するスライドを用意する</li>
+    <li style="font-size:14px; margin-bottom:5px;">「詳細はこちらをご覧ください」とスライドを瞬時に提示できる</li>
+    <li style="font-size:14px; margin-bottom:5px;">バックアップがあると精神的余裕が生まれ、本編の質も上がる</li>
+    <li style="font-size:14px;">質問対応でバックアップを使えた → 準備が報われた瞬間</li>
+  </ul>
+  <div class="takeaway">バックアップスライドは「備えある安心感」を作る。</div>
+</div>
+
+<div class="card">
+  <h2>リハーサルで確認すべき3つのこと</h2>
+  <div class="three-col">
+    <div class="c3-block">
+      <div class="c3-head">① 録画して客観的に確認</div>
+      <p>話し方の癖・スライドとのタイミングを客観的に見る。自分では気づかない「口癖」や「間の長さ」が分かる</p>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">② 原稿のブラッシュアップ</div>
+      <p>スライドは視覚情報に徹し、補足は口頭原稿に。読むだけになっていないか確認する</p>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">③ 動作環境の確認</div>
+      <p>会場PCでのフォント化け・動画再生の可否を事前確認。フォントの埋め込み設定でフォント化けを防ぐ</p>
+    </div>
+  </div>
+  <div class="takeaway">本番で技術的なトラブルを起こさないことも、発表者の責任。</div>
+</div>
+
+<div class="card">
+  <h2>発表準備 最終チェックリスト</h2>
+  <ul class="checklist">
+    <li><span class="ck-box">☑</span>スライド枚数と発表時間が合っているか</li>
+    <li><span class="ck-box">☑</span>各スライドに「要点」が25文字以内で書かれているか</li>
+    <li><span class="ck-box">☑</span>バックアップスライドを10枚以上用意したか</li>
+    <li><span class="ck-box">☑</span>リハーサルを録画して客観的に確認したか</li>
+    <li><span class="ck-box">☑</span>会場PCでフォント化け・動画再生を確認したか</li>
+    <li><span class="ck-box">☑</span>想定質問を10個考えて答えを準備したか</li>
+  </ul>
+</div>
+
+<!-- ============================================================
+     番外編：ポスター発表
+     ============================================================ -->
+
+<div class="part-head" id="poster">
+  <div class="part-num">番外編</div>
+  <div class="part-main">
+    <div class="part-title">ポスター発表</div>
+    <div class="part-en">スライドとポスターは別のメディア — 対話・視認性・最初の1分で惹きつける</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>ポスター発表とは何か</h2>
+  <ul style="padding-left:1.4em; margin-top:6px;">
+    <li style="font-size:14px; margin-bottom:5px;">1枚のポスターに研究の概要をまとめ、来場者と対話しながら進める形式</li>
+    <li style="font-size:14px; margin-bottom:5px;">聴衆との距離が近く、質疑応答が中心 — スライド発表より双方向性が高い</li>
+    <li style="font-size:14px; margin-bottom:5px;"><b>「最初の1分」が最大の勝負</b> — 来場者の足を止められるかが鍵</li>
+    <li style="font-size:14px; margin-bottom:5px;">スライドと同様に「3原則（3要素明確化・絞り込み・視覚化）」は適用される</li>
+    <li style="font-size:14px;">ただし視認性の基準が大きく異なる — 離れた位置からでも読める設計が必須</li>
+  </ul>
+  <div class="takeaway">ポスターは「読まれる」のではなく「見られて引き込まれる」もの。</div>
+</div>
+
+<div class="card">
+  <h2>スライド vs ポスター：設計の違い</h2>
+  <div class="ba-grid">
+    <div class="ba-block" style="background:var(--panel); border-left:4px solid var(--accent);">
+      <div class="ba-label" style="color:var(--muted);">スライド発表</div>
+      <ul>
+        <li style="font-size:13px; margin-bottom:3px;">発表者が順番通りに進める（聴衆は受動的）</li>
+        <li style="font-size:13px; margin-bottom:3px;">アニメーション・動画が使える</li>
+        <li style="font-size:13px; margin-bottom:3px;">フォントサイズ：24 pt 以上</li>
+        <li style="font-size:13px; margin-bottom:3px;">1枚1メッセージが鉄則</li>
+        <li style="font-size:13px;">発表時間を守ることが必須</li>
+      </ul>
+    </div>
+    <div class="ba-block" style="background:var(--panel); border-left:4px solid var(--primary);">
+      <div class="ba-label" style="color:var(--text);">ポスター発表</div>
+      <ul>
+        <li style="font-size:13px; margin-bottom:3px;">来場者が自由に見る（発表者が能動的に引き込む）</li>
+        <li style="font-size:13px; margin-bottom:3px;">静止したデザインで全体を見せる</li>
+        <li style="font-size:13px; margin-bottom:3px;">フォントサイズ：24〜100 pt</li>
+        <li style="font-size:13px; margin-bottom:3px;">全体の流れを1枚で設計</li>
+        <li style="font-size:13px;">「最初の1分」が全体の命運を握る</li>
+      </ul>
+    </div>
+  </div>
+  <div class="takeaway">ポスターは「自分から来てもらう」メディア。</div>
+</div>
+
+<div class="card">
+  <h2>ポスターデザインの視認性基準</h2>
+  <div class="three-col">
+    <div class="c3-block">
+      <div class="c3-head">フォントサイズ</div>
+      <p>タイトル：<b>72〜100 pt</b>
+見出し：<b>36〜50 pt</b>
+本文：<b>24〜32 pt</b>
+
+遠くから見ても読めることが大前提</p>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">フォント選択</div>
+      <p>ゴシック体（サンセリフ）を必ず使う
+日本語：BIZ UD・メイリオ
+欧文：Segoe UI・Helvetica
+
+スライドと同様の基準</p>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">配色の原則</div>
+      <p>背景：白を基本に
+本文：黒に近い濃色
+強調色：1〜2色に絞る
+
+赤・緑の組み合わせ禁止
+CUDへの配慮は必須</p>
+    </div>
+  </div>
+  <div class="takeaway">「少し離れた位置からでも要点が見える」が視認性の合格ライン。</div>
+</div>
+
+<div class="card">
+  <h2>ポスターのレイアウトと情報の絞り込み</h2>
+  <ul style="padding-left:1.4em; margin-top:6px;">
+    <li style="font-size:14px; margin-bottom:5px;">説明文は最小限にとどめ、一目で要点がわかるようにする</li>
+    <li style="font-size:14px; margin-bottom:5px;">「余白」を積極的に使って情報のまとまりを表現する</li>
+    <li style="font-size:14px; margin-bottom:5px;"><b>枠の使いすぎ → 重要な区分けが曖昧になる → 余白で解決する</b></li>
+    <li style="font-size:14px; margin-bottom:5px;">詳細を載せきれない場合は<b>QRコード</b>を配置して詳細PDFへ誘導する</li>
+    <li style="font-size:14px; margin-bottom:5px;">概念図・チャート・写真を積極活用して視覚的に理解を促す</li>
+    <li style="font-size:14px;">角丸四角形の角を丸めすぎると余白が不均一になる — 注意</li>
+  </ul>
+  <div class="takeaway">情報の詰め込みすぎは「読まれないポスター」の最大の原因。</div>
+</div>
+
+<div class="card">
+  <h2>ポスター発表の本番：3つの鍵</h2>
+  <div class="three-col">
+    <div class="c3-block">
+      <div class="c3-head">最初の1分が勝負</div>
+      <p>ポスター前で来場者を引き込む「つかみ」を準備する。「一言で言うと○○の研究です」が言えるか。足を止めさせることが最初のゴール</p>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">対話を中心に進める</div>
+      <p>一方的に説明するのではなく、来場者の反応を見ながら説明の粒度を調整する。「どこまでご存じですか？」で聴衆を把握する</p>
+    </div>
+    <div class="c3-block">
+      <div class="c3-head">質疑応答の準備</div>
+      <p>想定質問を準備しておく。質疑から次の研究の方向性が生まれる。他の研究者との交流を積極的にする。名刺・連絡先を用意する</p>
+    </div>
+  </div>
+  <div class="takeaway">ポスター発表は「研究者ネットワーク」を作る最大のチャンス。</div>
+</div>
+
+<!-- ============================================================
+     まとめ
+     ============================================================ -->
+
+<div class="part-head" id="summary">
+  <div class="part-num">まとめ</div>
+  <div class="part-main">
+    <div class="part-title">デザインは研究者の教養 — 今日から変えられる</div>
+    <div class="part-en">すべての原則は「聴衆の認知負荷を下げ、議論の質を上げる」という1つのゴールに向かっている</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>全体の振り返り</h2>
+  <div class="two-col">
+    <div class="col-block">
+      <div class="col-head">スライドの原則（Part 1〜5）</div>
+      <ul>
+        <li>戦略的構成 — ストーリー先行でスライドを作る</li>
+        <li>3大原則 — 明確化・絞り込み・視覚化を全スライドに適用</li>
+        <li>フォント・カラー — 視認性を極め、CUDに配慮する</li>
+        <li>図解技術 — 塗りか枠・余白・統一感で関係性を可視化</li>
+        <li>PowerPoint Tips — ショートカット・マスターで高速化</li>
+      </ul>
+    </div>
+    <div class="col-block">
+      <div class="col-head">発表・ポスターの原則（Part 6 + 番外編）</div>
+      <ul>
+        <li>時間管理と枚数の設計</li>
+        <li>質疑応答10の極意</li>
+        <li>バックアップスライドの準備</li>
+        <li>リハーサルの最終点検（録画・動作確認）</li>
+        <li>ポスターの視認性と対話の技術</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>今日から始める3つの行動</h2>
+  <div class="steps-h" style="margin-top:8px;">
+    <div class="step-h"><div class="step-num">1</div><div class="step-body"><div class="step-label">次のスライドを作る前に必ずWordでストーリーラインを書く</div><div class="step-sub">設計先行の習慣を身につける。30分の設計が2時間の手戻りを防ぐ</div></div></div>
+    <div class="step-h"><div class="step-num">2</div><div class="step-body"><div class="step-label">完成したスライドを「3大原則チェックリスト」で点検する</div><div class="step-sub">毎回チェックリストを通すことで、原則が身体化される</div></div></div>
+    <div class="step-h"><div class="step-num">3</div><div class="step-body"><div class="step-label">先輩・後輩のスライドを見てフィードバックする</div><div class="step-sub">言語化することで定着する。教えることが最速の学習</div></div></div>
+  </div>
+  <div class="takeaway">今日の発表後、最初に作るスライドで試してみてください。</div>
+</div>
+
+<!-- ============ 関連リンク ============ -->
+
+<div class="card">
+  <h2>関連リンク</h2>
+  <ul>
+    <li><a href="old/">発表スライド（旧版）</a></li>
+    <li><a href="../writing-paper/">Writing Papers — 論文執筆・査読対応のガイド</a></li>
+    <li><a href="../lab-tools/paper-card/">Lab Tools: Paper Card</a> — 主張を1枚に固定する</li>
+    <li><a href="../orientation/research-as-design/">Lab OS 02: 研究は、問いの設計で進める</a></li>
+  </ul>
+</div>
+
+<footer>
+  &copy; DeSFE Lab (Anna Suzuki Lab), Tohoku University ｜
+  <a href="../">教育ポータル</a>
+</footer>
+
+</div>
+</body>
+</html>
