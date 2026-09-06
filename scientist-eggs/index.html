@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>不確実な未来をどう設計するか｜科学者の卵養成講座 事前学習</title>
+<meta name="description" content="資源開発とAIから考える意思決定。科学者の卵養成講座 事前学習ページ（2026年9月12日 講義）。東北大学 流体科学研究所 鈴木杏奈。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:         #3c3c3c;   /* 濃グレー */
+  --ink:        #9fa1a1;   /* 地の上の基本文字（薄色） */
+  --ink-muted:  #FFFFFF;   /* 地の上の補助文字 */
+  --primary:    #cbbf34;   /* くすんだ金 */
+  --primary-lt: #978f48;   /* くすんだ金の明色 */
+  --accent:     #90c2cf;   /* くすんだ青 */
+  /* カード（白面） */
+  --surface:    #FFFFFF;
+  --text:       #3c3c3c;
+  --muted:      #5D5D5D;
+  --border:     #c5c6c6;
+  --panel:      #e4e5e5;
+}
+* { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+body { background:var(--bg); font-family:'Noto Sans JP',system-ui,sans-serif; color:var(--ink);
+  padding:24px 16px 60px; line-height:1.85; }
+.wrap { max-width:760px; margin:0 auto; }
+
+/* ---- ヘッダー ---- */
+.kicker { font-size:11px; font-weight:700; letter-spacing:.22em; color:var(--ink-muted); margin-bottom:10px; }
+.title-row { display:flex; gap:12px; align-items:stretch; margin-bottom:6px; }
+.bar { width:6px; border-radius:3px; background:var(--primary); flex-shrink:0; }
+h1 { font-size:24px; font-weight:900; line-height:1.4; letter-spacing:-.01em; color:#FFFFFF; }
+.subtitle { font-size:14px; color:var(--ink-muted); margin-top:4px; font-weight:700; }
+.byline { font-size:12.5px; color:var(--ink); margin-top:8px; line-height:1.7; }
+
+/* ---- カード ---- */
+.card { background:var(--surface); border:1px solid rgba(0,0,0,.35); border-radius:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,.35); padding:18px 18px; margin:16px 0; color:var(--text); }
+.card h2 { font-size:16px; font-weight:900; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.card h2::before { content:""; width:5px; height:20px; border-radius:2.5px; background:var(--primary); flex-shrink:0; }
+.card p, .card li { font-size:14px; }
+.card ol, .card ul { padding-left:1.4em; }
+.card ol li, .card ul li { margin-bottom:3px; }
+.card h3 { font-size:15px; font-weight:900; color:var(--text); margin:18px 0 6px; }
+.card p + p { margin-top:10px; }
+.note { background:#ecf6fb; border:1px solid #b9d6e8; border-left:5px solid var(--accent);
+  border-radius:10px; padding:13px 15px; font-size:13px; color:var(--text); margin:14px 0; }
+
+/* ---- 動画（YouTube埋め込み） ---- */
+.video-wrap { background:#000; border-radius:10px; overflow:hidden; margin:4px 0 0;
+  aspect-ratio:16/9; }
+.video-wrap iframe { width:100%; height:100%; display:block; border:0; }
+.video-note { font-size:12.5px; color:var(--muted); margin-top:8px; }
+.video-note a { color:var(--primary-lt); font-weight:700; }
+
+/* ---- 読み物トグル ---- */
+details.reading { margin:16px 0 0; }
+details.reading > summary { list-style:none; cursor:pointer; display:block; text-align:center;
+  background:var(--surface); color:var(--primary-lt); border:2px solid var(--primary);
+  font-weight:700; font-size:15px; padding:13px 20px; border-radius:999px; }
+details.reading > summary::-webkit-details-marker { display:none; }
+details.reading > summary:hover { background:#fbf8e6; }
+details.reading .rd-close { display:none; }
+details.reading[open] .rd-open { display:none; }
+details.reading[open] .rd-close { display:inline; }
+
+/* ---- 目次 ---- */
+.toc a { display:flex; gap:10px; align-items:baseline; padding:8px 4px; font-size:14.5px; font-weight:700;
+  color:var(--text); text-decoration:none; border-bottom:1px solid var(--border); }
+.toc a:last-child { border-bottom:none; }
+.toc .n { color:var(--primary); font-weight:900; flex-shrink:0; }
+
+/* ---- 章 ---- */
+.chapter { margin-top:34px; }
+.ch-num { display:inline-block; font-size:11px; font-weight:900; letter-spacing:.18em; color:var(--primary);
+  border:1px solid var(--primary); border-radius:999px; padding:2px 11px; margin-bottom:4px; }
+.chapter h2 { font-size:20px; font-weight:900; color:#FFFFFF; line-height:1.4; }
+
+/* ---- 問い（❶❷） ---- */
+.ask { background:#fbf8e6; border:1px solid #e3dba0; border-left:5px solid var(--primary);
+  border-radius:10px; padding:14px 16px; margin-top:18px; }
+.ask .lb { font-size:11.5px; font-weight:900; letter-spacing:.14em; color:#8a6d1f; margin-bottom:4px; }
+.ask p { font-size:14px; font-weight:700; color:var(--text); }
+
+/* ---- 5つの立場 ---- */
+.legend { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:8px; }
+@media (max-width:560px){ .legend { grid-template-columns:1fr; } }
+.legend > div { background:var(--panel); border:1px solid var(--border);
+  border-left:4px solid var(--primary); border-radius:10px; padding:12px 14px;
+  display:flex; align-items:center; gap:12px; }
+.legend .icon { font-size:30px; line-height:1; flex-shrink:0; }
+.legend .lg-txt { display:flex; flex-direction:column; }
+.legend .who { font-weight:700; font-size:14px; line-height:1.5; }
+.legend .from { color:var(--muted); font-size:12.5px; line-height:1.5; }
+
+/* ---- 5人の答え（開閉） ---- */
+.controls { display:flex; gap:10px; margin:18px 0 6px; }
+.controls button { font-family:inherit; font-size:12.5px; font-weight:700; padding:7px 16px;
+  border-radius:999px; border:1px solid rgba(0,0,0,.35); background:var(--surface); color:var(--primary-lt); cursor:pointer; }
+details.q { background:var(--surface); border:1px solid rgba(0,0,0,.35); border-radius:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,.35); margin:14px 0; overflow:hidden; color:var(--text); }
+details.q > summary { list-style:none; cursor:pointer; padding:16px 18px; display:flex; gap:12px;
+  align-items:flex-start; font-size:16px; font-weight:900; line-height:1.5; }
+details.q > summary::-webkit-details-marker { display:none; }
+.qnum { width:30px; height:30px; border-radius:50%; background:var(--primary); color:#fff;
+  font-size:14px; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+.chev { margin-left:auto; color:var(--muted); transition:transform .2s; flex-shrink:0; margin-top:4px; }
+details[open] .chev { transform:rotate(90deg); }
+.q-body { padding:0 18px 18px; }
+.persp { border-top:1px solid var(--border); padding:14px 0 4px; }
+.persp:first-child { border-top:none; padding-top:2px; }
+.persp h3 { font-size:15px; font-weight:900; color:var(--text); margin:0 0 6px; }
+.persp p { font-size:14px; margin-bottom:10px; }
+.tag { display:inline-block; font-size:10.5px; font-weight:700; padding:1px 9px; border-radius:999px;
+  margin-right:7px; position:relative; top:-1px; white-space:nowrap; }
+.tag.f { background:rgba(144,194,207,.30); color:#2b6a7c; }
+.tag.o { background:rgba(203,191,52,.22); color:#8a6d1f; }
+
+/* ---- 表 ---- */
+table.wk { width:100%; border-collapse:collapse; font-size:12.5px; margin-top:10px; }
+table.wk th, table.wk td { border:1px solid var(--border); padding:7px 9px; text-align:left; vertical-align:top; }
+table.wk th { background:var(--primary-lt); color:#fff; font-weight:700; }
+
+/* ---- CTA ---- */
+.cta { display:block; text-align:center; background:var(--primary-lt); color:#fff; font-weight:700;
+  font-size:15px; padding:13px 20px; border-radius:999px; text-decoration:none; margin:14px 0 4px;
+  box-shadow:0 4px 14px rgba(0,0,0,.4); }
+
+footer { margin-top:36px; text-align:center; font-size:12px; color:var(--ink-muted); }
+footer a { color:var(--primary); font-weight:700; text-decoration:none; }
+@media print {
+  body { background:#fff; color:#000; }
+  h1, .chapter h2 { color:#000; }
+  details.reading:not([open]) > *, details.q:not([open]) .q-body { display:block; }
+  details.q { break-inside:avoid; }
+  .controls, .video-wrap, details.reading > summary { display:none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">科学者の卵養成講座 — 事前学習</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>不確実な未来をどう設計するか</h1>
+      <div class="subtitle">— 資源開発とAIから考える意思決定 —</div>
+      <div class="byline">2026年9月12日 講義<br>東北大学 流体科学研究所　鈴木杏奈</div>
+    </div>
+  </div>
+</header>
+
+<div class="card">
+  <h2>このページの使い方</h2>
+  <p>講義当日は、皆さんが事前にこのページを読んで（見て）きたことを前提に進めます。所要時間は30〜40分です。</p>
+  <ol style="margin-top:8px;">
+    <li>動画を見る</li>
+    <li>事前課題を読む</li>
+    <li>事前課題に答える（講義前日までにフォームで送る（匿名、10分程度））</li>
+  </ol>
+  <p style="margin-top:10px;">当日は、皆さんの回答をもとにショート講義＋グループワークをします。</p>
+</div>
+
+
+<!-- ============ 講義動画 ============ -->
+<div class="card" id="video">
+  <h2>🎬 講義動画</h2>
+  <div class="video-wrap">
+    <iframe src="https://www.youtube-nocookie.com/embed/can2pI45Ud4"
+            title="不確実な未来をどう設計するか — 講義動画"
+            loading="lazy" allowfullscreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </div>
+  <p class="video-note">再生できない場合は <a href="https://youtu.be/can2pI45Ud4" target="_blank" rel="noopener">YouTubeで開く</a>。<br>
+  文字で読みたい場合は、下の「読み物として読む」を開いてください。動画と同じ内容です。</p>
+</div>
+
+
+<!-- ============ 読み物（第1章〜第3章） ============ -->
+<details class="reading" id="reading">
+<summary><span class="rd-open">📖 読み物として読む（第1章〜第3章）</span><span class="rd-close">📖 読み物を閉じる</span></summary>
+
+<div class="card toc" style="margin-top:16px;">
+  <h2>目次</h2>
+  <a href="#ch1"><span class="n">第1章</span>設計とは何か：設計とは探究であることを知る</a>
+  <a href="#ch2"><span class="n">第2章</span>地熱研究の課題：地下の探究と社会の探究</a>
+  <a href="#ch3"><span class="n">第3章</span>あなたの探究：AI時代のキャリアデザイン</a>
+</div>
+
+<!-- 第1章 -->
+<section class="chapter" id="ch1">
+  <span class="ch-num">CHAPTER 1</span>
+  <h2>設計とは何か</h2>
+
+  <div class="card">
+    <h3 style="margin-top:2px;">設計は、逆問題を解くプロセス</h3>
+    <p>まず、簡単なクイズから始めます。Q1「青と黄色を混ぜると何色？」——緑です。原因（青と黄）がわかっていて、結果（緑）を求める。法則どおりに進めれば（ここでは青と黄色を混ぜれば）、答えに必ずたどり着きます。これを「順問題」と呼びます。</p>
+    <p>ではQ2「緑色って、何色からできている？」——今度は結果から原因を探る問いです。青と赤かな？青と黄色かな？答えの候補は一つに決まりません。これを「逆問題」と呼びます。逆問題には、答えが一つに決まる保証も、そもそも答えが存在する保証もありません。</p>
+    <p>高校までは、多くは順問題を解く解き方を習います。方程式を解く、力のつり合いを求める、化学反応式の係数を合わせる。一方、大学へ、社会へと進むほど、逆問題が増えてきます。何かを設計するというのは、「こういう結果がほしい」「こういう目的を果たしたい」から出発して、それを生む原因や手段を探すこと。つまり、設計は逆問題を解くプロセスです。</p>
+
+    <h3>逆問題は、探究で解く</h3>
+    <p>答えの保証がない問題に、人はどう向き合うのか。哲学者のパースは、探究とは「疑念という落ち着かない状態から抜け出し、信念という落ち着いた状態にたどり着こうとする思考のプロセス」だと説明しました。</p>
+    <p>流れはこうです。私たちが自分の外の世界と関わりを持つ限り、必ず何か新しい情報がやってくる（観測）。そこでの観測と自分の頭での予想の間にギャップがあって、もやもやする（疑念）。そのもやもやを言葉にする（問い）。こうではないかと仮に決めてみる（仮説）。確かめてみる（テスト）。結果を見て、仮説を直す。一周で終わらなければ、仮説を換えて何周でも回しながら、もっともらしい仮説を導く（信念）。ここで大事なのは、<b>自分で仮説を置くこと、そして自分で確かめること</b>です。誰かが答えをくれるのを待つ構えでは、逆問題は一歩も進みません。</p>
+    <p>もう一つ。ここで言う信念は「正解」ではなく、「今のところ自分はこう考える、こう動く、と決めた状態」です。新しい観測・証拠が増えれば更新されます。更新されることは失敗ではなく、探究が一周進んだ印です。</p>
+
+    <h3>探究には、What?の探究とHow?の探究がある</h3>
+    <p>私の専門の地熱を例にすると、探究は二つの形で現れます。</p>
+    <p>一つ目は、火山や温泉という「結果」から、地下で何が起きているのかという「原因」をさかのぼる探究です。実験や数値計算で仮説を確かめながら、観測結果をうまく表す原因の仮説を導くことで、自然を理解する信念にたどり着く。問いの形は「What?（何が起きている？）」「Why?（なぜ？）」です。</p>
+    <p>二つ目は、「持続的にエネルギーを使いたい」という「目的」から出発して、それを実現する「手段」を探す探究です。これも実験や数値計算で複数の仮説を確かめながら、自分の目的に一番近い手段の仮説を探索することで、設計・計画という信念にたどり着く。問いの形は「How?（どうやって？）」です。</p>
+    <p>前者は理学部的な探究、後者は工学部的な探究と言えます。（ただし、前者もしなければ、後者もできないので、工学部は両方にかかっている感じです。）皆さんは、What?とHow?、どちらの問いにワクワクするでしょうか。進路を考えるときの一つの手がかりになります。そして大学の研究は、まさにこの探究をします。仮説を立てて検証することはもちろんのこと、そのための実験や計算の手法をつくること、より良い答えを探す方法を開発することを行います。ただし、この探究というのは、研究者だけがするのではなく、お仕事をする人、趣味をする人、みんなします。特に、大学での研究では、現時点での「信念」を論文という形で他の人の手に・後世に渡せる状態にして、今度は他の人の疑念、問いを生じさせていきます。</p>
+
+    <div class="ask">
+      <div class="lb">問い ❶</div>
+      <p>あなたがこれまで解いてきた問題のうち、「答えがあるとわかっている問題」と「答えがないかもしれない問題」は、どちらが多かったでしょうか。後者を一つ思い出せますか。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 第2章 -->
+<section class="chapter" id="ch2">
+  <span class="ch-num">CHAPTER 2</span>
+  <h2>地熱研究の課題：地下の探究と社会の探究</h2>
+
+  <div class="card">
+    <p>この章は、第1章の探究サイクルを、私自身がどう回しているかの一例です。皆さんがこの分野に進むかどうかは関係なく、「答えの保証がない問いにどう向き合っているか」の実例として読んでください。</p>
+
+    <h3>地熱は「見えない問題」</h3>
+    <p>地熱は、地下数kmにある熱水を取り出して発電や温泉に使う技術です。困るのは、地下が見えないことです。対象は広くて、狭い——調べたい地域は数kmスケールなのに、熱水が実際に流れる主要な通り道はミリからマイクロメートルの割れ目です。現象も複雑で、熱、流体の流れ、物質の移動、力学、化学反応、生物反応と、キリがありません。そして観測には制約があります。掘って確かめるには井戸1本で数億円、地表からの物理探査は解像度に限界があります。</p>
+
+    <h3>データが足りないから、本質を見極める</h3>
+    <p>見えない、複雑、データが足りない。この条件で全部を再現しようとすると、逆問題は解けなくなります。だから問いを換えます。「どこまで現実を再現できるか」ではなく、「何がわかれば設計するのに十分か」。地下の熱水にとって本当に重要なのは、割れ目の細かい形ではなく、割れ目同士がどのようにつながり、水が流れているかです。岩石の複雑な構造を、点と線のネットワーク（グラフ）に描き直すと、流れの本質だけが残ります。本質的な情報を見極めれば、少ないデータでも「地下のながれの理解」にたどり着けます。この理解が、設計のサイクルに境界条件として渡されます。数学、情報、物理、地学を総動員する探究です。</p>
+
+    <h3>科学的に地熱の設計ができた、その先</h3>
+    <p>ところが、話はここで終わりませんでした。例えば科学的知見に基づいて電力事業者が「電力を持続的に生産できます！」と示しても、温泉事業者や地域住民から「いやだ！」と言われることがあります。科学的な正しさと、納得は別物だったのです。このズレは、どこから来るのか。</p>
+
+    <h3>人は、異なるフレームで世界を見ている</h3>
+    <p>私は、人がそれぞれ違う「フレーム」を通して世界を見ているからだと考えています。フレームとは、カメラや絵画のフレームのようなもので、私たちは、何を大事だと思うか、何を心地よく感じるか、という価値観や感情の枠組みを持っています。しかし、対象について議論はするものの、一人一人のフレームについて議論することはほとんどありません。同じデータを見ても、フレームが違えば、正しさの感じ方が変わります。</p>
+    <p>地熱の探究で、本質的な情報を見極めたように、社会においても、意見だけではなく、フレームの構造を理解し、どんな順番で誰と誰が対話するとよいかをシミュレーションする。こうして「意志のながれの理解」にたどり着けば、それが設計のサイクルに目標として渡されます。こちらは、数学、情報、物理に加えて、哲学、認知科学、社会学を総動員する探究です。</p>
+    <p>地下の探究が設計の探究において、境界条件を渡し、社会の探究が目標を渡す。<b>地下と社会、2つの探究がそろって、初めて設計ができます。</b></p>
+
+    <div class="ask">
+      <div class="lb">問い ❷</div>
+      <p>『正しい』とわかっているのに、納得できなかった経験はありますか。そのとき、あなたの中の何が『いやだ』と言っていたのでしょうか。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 第3章 -->
+<section class="chapter" id="ch3">
+  <span class="ch-num">CHAPTER 3</span>
+  <h2>あなたの探究：AI時代のキャリアデザイン</h2>
+
+  <div class="card">
+    <h3 style="margin-top:2px;">進路も、逆問題</h3>
+    <p>「将来、自分はどうなるのか」。この問いには答えの保証がありません。なりたい自分はぼんやり見えるのに、そこへ至る道（何を学び、どこへ行き、誰と会うか）はわからない。しかもこの数年、AIによって環境がさらに大きく変わり始めています。典型的な逆問題です。だから、第1章のサイクルがそのまま使えます。</p>
+    <p>そして、キャリアの設計も、二つの探究の上に立ちます。第2章の地熱の設計が、地下の探究（環境・制約の理解）と社会の探究（目標の理解）の二つを必要としたのと、同じ形です。</p>
+    <p><b>一つ目は、未来社会の探究。</b>AIで社会はどうなっていくのか。これは、あなたの設計にとっての環境であり、制約条件です。地熱で言えば、地下の探究に当たります。未来社会の可能性を理解することが、設計の境界条件になります。</p>
+    <p><b>二つ目は、あなた自身の探究。</b>あなたは何を求めるのか。これが、設計の目標を決めます。地熱で言えば、社会の探究に当たります。実は、これは社会の探究の縮小版です。地下が見えないのと同じで、自分も自分には直接見えません。見えるのは、自分の反応の記録です。これまで何に夢中になり、何を続け、何を嫌がったか。それが観測データになり、そこから「自分は何を大切にしているのか」という仮説を立てます。</p>
+    <p>どちらの探究も、当たっている必要はありません。仮説は宣言ではなく、確かめるための仮の答えだからです。</p>
+
+    <h3>動けば新しい観測がやってきて、信念が更新される</h3>
+    <p>「自分が何者か完全にわかるまで、進路を決めない」。そう考えたくなりますが、探究の順序としては間違いです。推定は仮説のまま、設計に渡していい。むしろ、決めて動いてみた結果が新しい観測になり、そこから学びや気づきが生まれて、信念が更新されます。学部を選んで入ってみたら、思っていた自分と違った。それは失敗ではなく、自分についての仮説が一つ反証されて、次の仮説に進んだということです。</p>
+    <p>観測して、信念を更新して、行動する。行動すると、また新しい観測がやってくる。このループが回っているとき、人はワクワクします（私は、このワクワク自体の研究もしています）。自分の人生も、自分自身も、いつでも更新可能です。更新し続けることが大事です。わからないまま決めて、動いて、観測を増やす。それが探究の一番の近道です。</p>
+  </div>
+
+  <div class="ask">
+      <p>第3章には「問い❸」を置きません。この章の問いは、このすぐ下にある事前課題そのものだからです。あなたの探究を、ここから始めてください。</p>
+    </div>
+  
+</section>
+
+</details>
+
+
+<!-- ============ 事前課題 ============ -->
+<section class="chapter" id="assignment">
+  <span class="ch-num">ASSIGNMENT</span>
+  <h2>事前課題</h2>
+
+  <div class="card">
+    <p>この課題では、5つの立場の人が、同じ3つの問いに答えます。5人の話を読んで、あなたが「6人目」として問いに答えてください。</p>
+
+    <h3>5の立場</h3>
+    <div class="legend">
+      <div><span class="icon">🎓</span><div class="lg-txt"><span class="who">工学部の教育担当教授</span><span class="from">大学の現場から</span></div></div>
+      <div><span class="icon">🧑‍🔬</span><div class="lg-txt"><span class="who">AI研究者</span><span class="from">技術の最前線から</span></div></div>
+      <div><span class="icon">💰</span><div class="lg-txt"><span class="who">投資家</span><span class="from">損得と希少性から</span></div></div>
+      <div><span class="icon">🏛️</span><div class="lg-txt"><span class="who">日本政府の戦略参謀</span><span class="from">国の利害から</span></div></div>
+      <div><span class="icon">📜</span><div class="lg-txt"><span class="who">歴史学者</span><span class="from">過去のパターンから</span></div></div>
+    </div>
+
+
+    <h3>5人の話の使い方</h3>
+    <p>5人の話は二つの役割を持ちます。</p>
+    <p><b>1つは、あなたの反応を引き出す刺激です。</b>共感した箇所と違和感を感じた箇所を、読みながら意識してください。違和感は、あなたのフレームとのズレを感じ取った反応したサインです。</p>
+    <p><b>2つは、あなたの未来の推定についての仮説の素材です。</b>5人はそれぞれの立場から「これからどうなるか」「何をすべきか」を言っています。それを、あなたの未来の仮説として支持するか、反証するか、関係ないか、であなたの仮説をブラッシュアップしてください。</p>
+    <p>ただし、他人の話はどれだけ説得力があっても「伝聞」です。伝聞を根拠に仮説を採用するか棄却するかは、あなたの作業です。そのために、読むときも書くときも次の三つを分けてください。</p>
+
+    <table class="wk">
+      <tr><th>区分</th><th>意味</th><th>書き方の例</th></tr>
+      <tr><td><b>事実</b></td><td>自分で確かめられる・出典を示せること。自分の反応や経験の記録もここ</td><td>「私は〜のとき夢中になった」「〜という統計がある（出典）」</td></tr>
+      <tr><td><b>伝聞</b></td><td>誰かがそう言っていた・資料にそう書いてあった。正しいかは未確認</td><td>「投資家の項に〜とあった（未検証）」</td></tr>
+      <tr><td><b>意見</b></td><td>自分の解釈・予測・価値判断。<b>第一段・第二段の仮説はここに入る</b></td><td>「私はたぶん〜な人間だ」「なら〜ではないか」</td></tr>
+    </table>
+
+    <div class="note" style="margin-bottom:0;">
+      <b>💡 読む前の注意</b>：以下の5人の「事実」欄も、生成AI（Calude Fable 5）が作成した、その立場から見た要約です。切り取り方にはその立場のバイアスが入ります。そのまま自分の「事実」にせず、「伝聞」として扱ってください。「意見」欄は、その立場の人が言いそうなことの<b>思考実験</b>であり、実在の人物の見解ではありません。
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ 3つの問い × 5人の答え ============ -->
+<div class="controls">
+  <button type="button" onclick="document.querySelectorAll('details.q').forEach(d=>d.open=true)">すべて開く</button>
+  <button type="button" onclick="document.querySelectorAll('details.q').forEach(d=>d.open=false)">すべて閉じる</button>
+</div>
+
+<details class="q" id="qa">
+<summary><span class="qnum">A</span>AIで何が変わったか、5〜10年先はどうなるか<span class="chev">▶</span></summary>
+<div class="q-body">
+
+<div class="persp"><h3>🎓 工学部の教育担当教授</h3>
+<p><span class="tag f">事実</span>レポートや課題でAIを使う学生はほぼ全員になり、「持ち帰って書く課題」は評価として機能しなくなった。一方、実験室で手を動かす授業、設計して壊してみる授業では、AIがあってもやることは変わっていない。</p>
+<p><span class="tag o">意見</span>5年後、講義で知識を伝える部分はAIに置き換わっているだろう。残るのは、実物に触る、失敗する、同級生と揉める、という時間だ。私はそれが大学の本体だと思って授業を組み直している。10年先については、正直、教える側も探究の途中だ。</p></div>
+
+<div class="persp"><h3>🧑‍🔬 AI研究者</h3>
+<p><span class="tag f">事実</span>この5年でAIは、文章の続きを予測する道具から、コードを書き、数学の問題を解き、数時間かかる作業を自分で進める道具へ変わった。多くの試験問題では専門家並みの成績を出し、評価する側が追いつかなくなっている。</p>
+<p><span class="tag o">意見</span>次の5年で最も大きな変化は「AIが研究をする」ことだと考える。人間の研究者の役割は、問いを立てることと、何を確かめる価値があるか決めることに寄っていく。ただし、ロボットや実験装置のような物理的な部分は遅れる。これは予測であって保証ではない。</p></div>
+
+<div class="persp"><h3>💰 投資家</h3>
+<p><span class="tag f">事実</span>AIへの投資は史上最大規模で、データセンター、半導体、電力にお金が流れ込んでいる。一方で、AIを導入した企業の多くが、まだ投資に見合う利益を出せていないという調査も複数ある。</p>
+<p><span class="tag o">意見</span>バブルと本物の両方だ。過剰投資はいずれ淘汰されるが、残った土台の上で本当の産業が育つ。5年後に勝つのはAIを作る会社ではなく、AIを特定の仕事に深く組み込んだ側と、電力や土地のような物理的な制約を握る側だ。個人のキャリアも同じで、「AIそのもの」より「AIと現実世界の接点」に張るのが定石だ。</p></div>
+
+<div class="persp"><h3>🏛️ 日本政府の戦略参謀</h3>
+<p><span class="tag f">事実</span>日本の働く世代の人口は毎年数十万人ずつ減っていて、介護、物流、建設では人手不足がすでに起きている。政府はAI関連の法律を整え、半導体の国産化にも投資しているが、AI開発への投資規模は米中に大きく劣る。</p>
+<p><span class="tag o">意見</span>日本にとってAIは脅威ではなく、人口が減る中で生活水準を保つための唯一の手段だ。5年の勝負所は、製造業の現場データやロボットという日本の強みをAIとつなげられるか。10年後、AIを社会で使いこなせていれば「課題先進国の解決モデル」を輸出できる。できなければ静かに沈む。</p></div>
+
+<div class="persp"><h3>📜 歴史学者</h3>
+<p><span class="tag f">事実</span>印刷、蒸気機関、電気、インターネットといった大きな技術は、どれも社会に行き渡るまで数十年かかり、その間に職業と権力の構造を組み替えた。技術の恩恵が均等に分配された例は、歴史上ほとんどない。</p>
+<p><span class="tag o">意見</span>AIが過去と違うのは、速度と、力の集中だ。印刷機は誰でも持てたが、最先端のAIを作れるのは世界で数社しかない。私が心配しているのは「AIが人間を超えるか」ではなく、「少数の会社が考えるための道具を独占したとき、多様な考え方は生き残れるか」だ。10年後、争点はAIの性能ではなく、AIを誰が持っているか、になっている。</p></div>
+</div>
+</details>
+
+<details class="q" id="qb">
+<summary><span class="qnum">B</span>大学に行く意味はあるのか<span class="chev">▶</span></summary>
+<div class="q-body">
+
+<div class="persp"><h3>🎓 工学部の教育担当教授</h3>
+<p><span class="tag f">事実</span>知識を得るだけなら、AIの方が安く、速く、一人ひとりに合わせて教えてくれる。大学の卒業生に長期的に何が役立ったかを尋ねると、「学んだ内容」より「出会った人」と「自分がどういう人間かわかったこと」を挙げる人が多い。</p>
+<p><span class="tag o">意見</span>大学は、答えの保証がない問題に、時間をかけて取り組むことが許される、ほぼ唯一の場所だ。高校までの問題には答えがあるが、卒業研究には答えがない。そこで初めて、自分の頭がどう動くかを知る。それを経験するために来てほしいし、それを経験できない大学なら、行く意味は薄い。</p></div>
+
+<div class="persp"><h3>🧑‍🔬 AI研究者</h3>
+<p><span class="tag f">事実</span>AI研究の最前線は、この10年で大学から企業へ移った。計算資源も給料も企業の方が上だ。ただし、今のAIの土台になった基礎研究は、何十年も注目されなかった時期を含めて、大学から生まれた。</p>
+<p><span class="tag o">意見</span>大学の価値は、企業がやらないことをやる自由にある。10年かかる問い、儲からない問い、都合の悪い問い。もう一つ、AIが研究の実務を代わりにやるほど、「良い問いを見分ける目」を育てる場所として大学の役割は重くなる。その目は、本や動画からではなく、人から人へしか受け継がれないというのが私の経験だ。</p></div>
+
+<div class="persp"><h3>💰 投資家</h3>
+<p><span class="tag f">事実</span>大学の学位が就職を保証するという前提は揺らぎ始めている。特にIT系では、学歴より実績で採用する動きが広がった。一方で、入るのが難しい大学への出願者は減っていない。学位の価値の中心は、知識ではなく「選ばれた証明」と人脈にあることが、経済学で繰り返し示されてきた。</p>
+<p><span class="tag o">意見</span>投資として見ると、大学は「行くこと」が目的ならやめた方がいい。その4年間で作るもの、出会う人、解く問題を具体的に言えるなら買いだ。もう一つ冷徹に言えば、不確実な時代に最後まで効くのは学歴ではなく、換金できるスキルと、「あいつに任せたい」と思われる評判だ。大学はそれを作る容れ物にすぎない。</p></div>
+
+<div class="persp"><h3>🏛️ 日本政府の戦略参謀</h3>
+<p><span class="tag f">事実</span>日本の大学は、18歳人口の減少、博士課程に進む人の減少、研究力の国際的な地位低下という三つの課題を同時に抱えている。国は大学ファンドなどの対策を打ってきたが、構造は変わっていない。</p>
+<p><span class="tag o">意見</span>厳しい言い方をすれば、日本の大学の相当数は、AI以前に人口減少で持たない。それでも国として本当に恐れるのは、研究力の空洞化だ。AI時代の国力は「良い問いを立てられる人がどれだけいるか」で決まり、それを育てられるのは大学しかない。だから若い人には、大学を「就職のための切符」ではなく「問いを扱う訓練の場」として選んでほしい。</p></div>
+
+<div class="persp"><h3>📜 歴史学者</h3>
+<p><span class="tag f">事実</span>大学は約900年、印刷術、宗教改革、産業革命、インターネットを生き延びてきた。その間、役割は何度も変わった。歴史上、知の中心が大学だけだった時代の方がむしろ例外で、企業の研究所や国の研究所と分け合うのが普通だった。</p>
+<p><span class="tag o">意見</span>だから私は、AIで大学が終わるとは思わない。ただし条件がある。大学が、国や企業の下請けに落ちず、批判と異論の場であり続けることだ。歴史上、それを失った大学は、建物だけ残して死んだ。進路を考える皆さんへの助言は一つ。その大学が、教員に「都合の悪いこと」を言わせているか、見てみるといい。</p></div>
+</div>
+</details>
+
+<details class="q" id="qc">
+<summary><span class="qnum">C</span>これからの若者は、何を考えて進路を決めるべきか<span class="chev">▶</span></summary>
+<div class="q-body">
+
+<div class="persp"><h3>🎓 工学部の教育担当教授</h3>
+<p><span class="tag f">事実</span>特定の道具や言語のスキルは、陳腐化するまでの時間が明らかに短くなっている。一方で、AIを使いこなす人と使わない人の差は、どの分野でも広がっている。</p>
+<p><span class="tag o">意見</span>「将来なりたい職業」から逆算するのはやめた方がいい。その職業が10年後にある保証はない。代わりに、「解きたい問題」で考えてほしい。職業は消えても、問題は消えない。もう一つ、専門を一つ深く掘ってから広げること。順序が大事だ。広く浅くから始めた人は、どこにも足場ができない。</p></div>
+
+<div class="persp"><h3>🧑‍🔬 AI研究者</h3>
+<p><span class="tag f">事実</span>5年後の職業を予測して当たった例は、専門家でもほとんどない。一方、どの分野でも「その分野で一番AIをうまく使う人」が生産性で大きく差をつけていることは、複数の研究で示されている。</p>
+<p><span class="tag o">意見</span>三つ言う。第一に、予測に賭けるな。どの時代でも減らない資産——問いを立てる力、学び直す速さ、信頼される人柄——に積み立てろ。第二に、AIを最も深く使う側に回れ。第三に、AIに囲まれるほど、自分の好奇心の輪郭がはっきりする。誰にも頼まれていないのに知りたいこと。それが最後に残る。</p></div>
+
+<div class="persp"><h3>💰 投資家</h3>
+<p><span class="tag f">事実</span>働く期間は50年を超える見込みで、技術の入れ替わりは短くなっている。一つの仕事で職業人生を完走できる確率は、構造的に下がっている。</p>
+<p><span class="tag o">意見</span>キャリアを投資の組み合わせとして設計しろ。土台に安定した収入源、中間にAI×自分の専門という成長投資、上に当たれば人生が変わる挑戦。そして一番大事な資産は人だ。仕事はますます公募ではなく、信頼を通じて回ってくる。20代でやるべきは、資格でも貯金でもなく、「あいつに任せたい」と思われる実績を一つ作ることだ。</p></div>
+
+<div class="persp"><h3>🏛️ 日本政府の戦略参謀</h3>
+<p><span class="tag f">事実</span>日本の新卒一括採用と終身雇用は崩れつつあるが、完全には崩れていない。若い世代の転職率は上がっていて、最初の会社に定年までいる人はすでに多数派ではない。</p>
+<p><span class="tag o">意見</span>日本の若者は、古い制度の残骸と新しい時代の要求に挟まれた、難しい位置にいる。助言は三つ。日本型組織の作法は学びつつ、依存はするな。人手不足、AI実装の需要、アジアとのつながりという日本の追い風に立ち位置を合わせろ。英語とAIは、思想ではなく道具として淡々と装備しろ。この国の外にもう一つ選択肢を持つ人は、この国の中でも強い。</p></div>
+
+<div class="persp"><h3>📜 歴史学者</h3>
+<p><span class="tag f">事実</span>大きな技術転換期の記録を見ると、古い職業が消えるより、新旧が共存する期間の方が長い。そして転換期に富や地位を得たのは、技術を発明した人より、技術と古い社会の「あいだ」を翻訳した人たちだった。</p>
+<p><span class="tag o">意見</span>翻訳者になれ。AIと現場の間、専門と専門の間、世代の間。転換期の価値はいつも境界に生まれる。もう一つ、歴史を学べ。変化の渦中では皆が「今回は特別だ」と言う。過去のパターンを知る者だけが、熱狂と恐怖の両方から距離を取れる。最後に、効率の論理に人生を全部明け渡すな。効率だけを追った文明の記録は、どれも読んでいて悲しい。</p></div>
+</div>
+</details>
+
+
+<!-- ============ 答えを送る ============ -->
+<div class="card" id="submit">
+  <h2>答えを送る</h2>
+  <p>5人の話を読んだら、フォームに答えてください。</p>
+  <ol style="margin-top:10px;">
+    <li><b>3つの問いから1つを選び、あなたが「6人目」として答えてください。全て答えてもらっても構いません。</b> 5人の話を使った場合は「伝聞」として区別してください。</li>
+    <li><b>1)で考えたことに基づいて：あなたが30歳の時、社会はどんな状態だと思うか教えてください</b>（1〜3文）</li>
+    <li><b>1)で考えたことに基づいて：あなたは、今、そしてこれから何を大切にしたいと思っているか教えてください</b>（1〜3文）</li>
+  </ol>
+  <p style="margin-top:10px;">どれも正解がある問いではありません。仮の答えで十分です。書いたものは講義当日の材料にします（匿名で紹介することがあります）。</p>
+
+  <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSdJIl_4vw-i_yBGZkYNIPoOpU1MLtTnIsI4emZFKfjpZHU9Iw/viewform" target="_blank" rel="noopener">📮 フォームで答えを送る（講義前日まで・匿名・約10分）</a>
+
+  <div class="note" style="margin-bottom:0;">
+    講義当日は、グループでお互いの2)3)を共有し、「5人にどんな問いを投げたいか」「5人に加えて誰に聞きたいか」を考えます。答えが割れるところに、それぞれのフレームが現れます。講義後のレポート（A4 2枚）は、3つの問いすべてについて、同じ書式で答えを書き直す形です。<b>書き直しは失敗ではなく、探究が一周した印です。</b>
+  </div>
+</div>
+
+<footer>
+  DeSFE Lab — Institute of Fluid Science, Tohoku University<br>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJIl_4vw-i_yBGZkYNIPoOpU1MLtTnIsI4emZFKfjpZHU9Iw/viewform" target="_blank" rel="noopener">📮 提出フォーム</a>
+</footer>
+
+</div>
+
+<script>
+/* 読み物内の目次リンクを押したとき、読み物が閉じていれば開いてから移動する */
+document.querySelectorAll('.toc a').forEach(function (a) {
+  a.addEventListener('click', function () {
+    var r = document.getElementById('reading');
+    if (r) r.open = true;
+  });
+});
+</script>
+</body>
+</html>

@@ -10,6 +10,7 @@ GitHub Pages で配信し、Notion・授業スライド・QRコードから直�
 | Career Design — 7つの問い（日本語・全文＋音声） | `career-design/` | https://anna-suzuki-tu.github.io/lab-materials/career-design/ |
 | Career Design — 7 Questions（English） | `career-design/en/` | https://anna-suzuki-tu.github.io/lab-materials/career-design/en/ |
 | 音声だけまとめて聞くページ | `career-design/voice/` | https://anna-suzuki-tu.github.io/lab-materials/career-design/voice/ |
+| 科学者の卵養成講座 事前学習（高校生向け） | `scientist-eggs/` | https://anna-suzuki-tu.github.io/lab-materials/scientist-eggs/ |
 
 ## 追加のしかた
 
