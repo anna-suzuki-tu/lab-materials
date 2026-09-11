@@ -1,0 +1,90 @@
+<!--
+  Lab OS 章ページ共通テンプレート（3部10章版）
+  ※ ファイル名が "_" 始まりなので Jekyll がビルドから除外する＝Web には公開されない
+
+  【置換する箇所】{{ }} で囲った部分のみ。CSS・クラス名・見出し階層は変更しないこと
+  【使用できるクラス】assets/style.css にあるものだけ。ページ固有の <style> は足さない
+    .card / .card h2 / .note / table.wk / .breadcrumb / .kicker / .title-row / .bar / .subtitle
+    ※ h3 はサイト全体で未使用。節を分けたいときは .card を増やす
+
+  【章番号が表に出る4か所】番号変更時はここだけ直せばよい
+    1. <title> の先頭     2. .breadcrumb の末尾
+    3. .kicker の CHAPTER  4. <footer> の前後リンク
+
+  【バリアント】
+    ・第1章  … footer の前章リンクを <a href="../">← Lab OS 目次</a> にする（「｜目次｜」は置かない）
+    ・第10章 … footer の次章リンクを <a href="../../">🏠 教育ポータル</a> にする
+    ・付録   … breadcrumb 末尾と <title> を「03-A」形式に、.kicker を
+               「LAB OS — APPENDIX 03-A」にする。footer は
+               <a href="../{{親章slug}}/">← {{親NN}} {{親章タイトル}}</a> ｜ <a href="../">目次</a> の2項目
+
+  【まとめ枠】全章の末尾に <div class="note"><b>この章のまとめ</b>：…</div> を必ず1つ置く
+              区切りは全角スラッシュ「 ／ 」
+-->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{NN}} {{章タイトル}} — Lab OS｜DeSFE Lab</title>
+<meta name="description" content="{{1〜2文の要約。検索結果に出る文章}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<div class="breadcrumb"><a href="../../">🏠 教育ポータル</a> › <a href="../">Lab OS</a> › {{NN}}</div>
+
+<header>
+  <div class="kicker">LAB OS — CHAPTER {{NN}}</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>{{章タイトル}}</h1>
+      <div class="subtitle">{{English Title}} — {{サブタイトル}}</div>
+    </div>
+  </div>
+</header>
+
+<div class="card">
+  <h2>{{節見出し}}</h2>
+  <p>{{本文}}</p>
+  <p style="margin-top:8px;">{{2段落目以降は margin-top:8px を付ける}}</p>
+</div>
+
+<div class="card">
+  <h2>{{表を使う節}}</h2>
+  <table class="wk">
+    <tr><th>{{見出し1}}</th><th>{{見出し2}}</th></tr>
+    <tr><td><b>{{項目}}</b></td><td>{{説明}}</td></tr>
+  </table>
+  <p style="margin-top:8px;">{{表のあとの補足}}</p>
+</div>
+
+<div class="card">
+  <h2>{{リストを使う節}}</h2>
+  <ol>
+    <li><b>{{項目}}</b> — {{説明}}</li>
+  </ol>
+  <p style="margin-top:8px;">他章への参照は <a href="../{{slug}}/" style="color:var(--primary);font-weight:700;">第{{N}}章</a> の形で書く。</p>
+</div>
+
+<div class="note">
+  {{補足・注意・関連ページへの案内。1ページに0〜2個}}
+</div>
+
+<div class="note">
+  <b>この章のまとめ</b>：{{要点}} ／ {{要点}} ／ {{要点}} ／ {{要点}}
+</div>
+
+<footer>
+  <a href="../{{前章slug}}/">← {{前NN}} {{前章タイトル}}</a> ｜ <a href="../">目次</a> ｜ <a href="../{{次章slug}}/">次章：{{次NN}} {{次章タイトル}} →</a><br>
+  DeSFE Lab — Institute of Fluid Science, Tohoku University
+</footer>
+
+</div>
+</body>
+</html>
