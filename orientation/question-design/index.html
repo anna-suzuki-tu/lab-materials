@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>03 問いの設計 — Framing-A — Lab OS｜DeSFE Lab</title>
+<meta name="description" content="研究が止まる原因はデータ不足ではなく問いの不在。Framing-Aとして、分野の信念・問いの型・Core Questionを1文で固定する設計手順。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<div class="breadcrumb"><a href="../../">🏠 教育ポータル</a> › <a href="../">Lab OS</a> › 03</div>
+
+<header>
+  <div class="kicker">LAB OS — CHAPTER 03</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>問いの設計 — Framing-A</h1>
+      <div class="subtitle">Question Design — 分野の中で位置づいた問いを、1文で言い切る</div>
+    </div>
+  </div>
+</header>
+
+<div class="card">
+  <h2>止まる原因はデータ不足ではない。方向性の欠如である</h2>
+  <p>研究が停滞する瞬間を観察すると、共通点があります。データは増えている。解析も進んでいる。それでも、<b>何を示したいのかが曖昧なまま</b>——問いが不在なのです。止まる原因は能力でもデータ不足でもなく、方向性の欠如です。</p>
+</div>
+
+<div class="card">
+  <h2>失敗パターン：データ先行</h2>
+  <ol>
+    <li>🧪 <b>とりあえず実験</b> — まず手を動かす</li>
+    <li>📊 <b>とりあえず解析</b> — 出たデータを解析する</li>
+    <li>❓ <b>あとで意味を考える</b> — 方向なき探索、迷走のループへ</li>
+  </ol>
+  <p style="margin-top:8px;">意味が後から立ち上がることを祈るのは、設計ではありません。地図を持たずに森に入るような研究は、今日で終わりにしましょう。</p>
+</div>
+
+<div class="card">
+  <h2>正しい順番：Framing が研究全体の設計図</h2>
+  <p style="font-size:15px; font-weight:700; margin:4px 0;">Idea → <span style="color:var(--primary);">Framing</span> → Figures → Draft</p>
+  <p>Framing が鍵です。下流のすべて——どんな図を作るか、何を書くか——は Framing から決まります。Framing は2段階あります。この章は前半の <b>Framing-A：問いの設計</b>、次章が後半の <b>Framing-B：主張の設計</b> です。</p>
+</div>
+
+<div class="card">
+  <h2>Framing-A で書くのは3つ</h2>
+  <ol>
+    <li><b>分野が今、何を信じているか</b> — Field Belief</li>
+    <li><b>問いを1文で</b> — Core Question in 1 sentence</li>
+    <li><b>先行研究との差分</b> — "Compared to X, we Y."</li>
+  </ol>
+  <p style="margin-top:8px;">ここに結果を書いてはいけません。手法も書いてはいけません。Framing-A は「どこに立って、何を問うか」だけを固定する工程です。</p>
+</div>
+
+<div class="card">
+  <h2>Step 1｜分野の信念を知る</h2>
+  <p>問いは真空から生まれません。分野が現在、何を前提にしているか（Field Belief）を知って初めて、自分の問いがそれを更新するのか、範囲を広げるのか、反証するのかが言えます。</p>
+  <p style="margin-top:8px;">集めるのは網羅ではなく位置づけのための文献です。主要なレビュー論文で分野の信念を掴み、直近3〜5年の代表論文5本以上で問いの型と暗黙の前提を掴む。読んだ論文は Comparison Table（先行研究／その主張／隠れた前提／限界／自分の更新）に落とします。読んだ数ではなく、「どの前提を自分が更新するか」が言えるかどうかが基準です。文献の探し方と管理は<a href="../question-archetypes/" style="color:var(--primary);font-weight:700;">付録 03-A</a>の末尾にまとめました。</p>
+</div>
+
+<div class="card">
+  <h2>Step 2｜問いの型を選ぶ</h2>
+  <p>良い研究の問いは、必ず「型」に収まります。</p>
+  <table class="wk">
+    <tr><th>問いの型</th><th>問いの形</th></tr>
+    <tr><td>推定型 / Estimation</td><td>Y から X を推定できるか？</td></tr>
+    <tr><td>機構型 / Mechanism</td><td>何が X を支配するか？</td></tr>
+    <tr><td>妥当性型 / Validity</td><td>モデル・仮定はどの条件で妥当か？</td></tr>
+    <tr><td>不確実型 / Uncertainty</td><td>予測は不確実性にどれだけ敏感か？</td></tr>
+    <tr><td>スケール型 / Scale</td><td>ミクロはマクロにどう効くか？</td></tr>
+    <tr><td>動態型 / Dynamics</td><td>X は時間とともにどう変わるか？</td></tr>
+    <tr><td>設計型 / Design</td><td>X を達成するにはどう設計すべきか？</td></tr>
+  </table>
+  <p style="margin-top:8px;">自分の問いがどの型か選べないなら、その問いはまだ曖昧です。型が決まると、書くべきこと・必要なデータ・出す場所が決まります。各型で「最低限書くべきこと」と分野別の例は<a href="../question-archetypes/" style="color:var(--primary);font-weight:700;">付録 03-A</a>に。</p>
+  <p style="margin-top:8px;"><a href="../science-framework/" style="color:var(--primary);font-weight:700;">02章</a>の4軸との対応も確認してください。演繹なら妥当性型・不確実型に寄り、帰納なら推定型・機構型に寄ります。設計に着地するなら最終的に設計型に届く必要があります。</p>
+</div>
+
+<div class="card">
+  <h2>Step 3｜Core Question を1文で</h2>
+  <p><span class="tag o">✕ 曖昧な問い</span>"We studied X and found something interesting..." — 何が新しいのか、条件は何かが不明。</p>
+  <p><span class="tag f">○ 構造化された問い</span>"Compared to prior method X, our approach Y achieves <b>Z</b> under condition C." — 差分・成果・条件が1文で明確。</p>
+  <p style="margin-top:8px;">問いは「Compared to X, we Y」の型で言い切る。言い切れないなら、Framing-A がまだ弱いということです。</p>
+</div>
+
+<div class="card">
+  <h2>問いが決まると、必要なデータが決まる</h2>
+  <p>設計としての研究では順序が逆転します。</p>
+  <ol>
+    <li><b>Question</b> — 問いを確定する。構造がデータを呼び込む</li>
+    <li><b>Required Data</b> — 必要なデータが問いから逆算される</li>
+    <li><b>Method / Experiment</b> — 手法・実験。データは最後</li>
+  </ol>
+  <p style="margin-top:8px;"><span class="tag o">✕</span>Data → 意味が生まれることを祈る　<span class="tag f">○</span>Question → Required Data</p>
+</div>
+
+<div class="card">
+  <h2>Paper Card では</h2>
+  <p>Framing-A は Paper Card の2段目です。Field Belief、Question Archetype、Core Question、Comparison Table、Compared to X we Y を埋めると、次章の Framing-B に進めます。→ <a href="../../lab-tools/paper-card/" style="color:var(--primary);font-weight:700;">Lab Tools「Paper Card」</a></p>
+</div>
+
+<div class="note">
+  <b>この章のまとめ</b>：止まる原因は問いの不在 ／ 順番は Idea → Framing → Figures → Draft ／ Framing-A は「分野の信念・問いの型・Compared to X, we Y」の3つ ／ 問いがデータを決める（逆ではない）
+</div>
+
+<footer>
+  <a href="../science-framework/">← 02 探究のプロセスと科学の枠組み</a> ｜ <a href="../">目次</a> ｜ <a href="../claim-design/">次章：04 主張の設計 →</a><br>
+  DeSFE Lab — Institute of Fluid Science, Tohoku University
+</footer>
+
+</div>
+</body>
+</html>
