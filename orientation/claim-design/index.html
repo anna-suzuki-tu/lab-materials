@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>04 主張の設計 — Framing-B — Lab OS｜DeSFE Lab</title>
+<meta name="description" content="Framing-Bとして、Key Contributionsと証拠の図を結果より先に設計する。演繹・帰納のスタンスで主張と証拠の形がどう変わるかを解説。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<div class="breadcrumb"><a href="../../">🏠 教育ポータル</a> › <a href="../">Lab OS</a> › 04</div>
+
+<header>
+  <div class="kicker">LAB OS — CHAPTER 04</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>主張の設計 — Framing-B</h1>
+      <div class="subtitle">Claim Design — 何を示すか、何が証拠か。図で言えるまで固定する</div>
+    </div>
+  </div>
+</header>
+
+<div class="card">
+  <h2>問いが決まったら、次は「何を示したと言うか」</h2>
+  <p>Framing-A で問いは1文になりました。けれど問いに答えるだけでは論文になりません。論文は、あなたが「これを示した」と言い、他者がそれを問い返せる形にしたものです。Framing-B はその「これを示した」を、結果が出る前に設計する工程です。</p>
+</div>
+
+<div class="card">
+  <h2>Framing-B で書くのは3つ</h2>
+  <ol>
+    <li><b>貢献を最大3点に絞る</b> — Key Contributions: "We show that…"</li>
+    <li><b>何が証拠になるかを決める</b> — Evidence: どんな図が出れば主張が立つか</li>
+    <li><b>図の配置をスケッチする</b> — Main Figures (sketch)：1図＝1主張</li>
+  </ol>
+  <p style="margin-top:8px;">ここでも結果は書きません。「結果がこう出たら、こう主張する」という条件付きの設計です。</p>
+</div>
+
+<div class="card">
+  <h2>Key Contributions は "We show that…" で始める</h2>
+  <p>「We propose a new method」は貢献ではありません。提案しただけでは、何が変わったのかがわかりません。貢献は「We show that ○○ である」の形で、示す内容を先に言い切ります。3点を超えるなら、主張が絞れていないか、論文が2本分あるかのどちらかです。</p>
+</div>
+
+<div class="card">
+  <h2>スタンスで主張の形が変わる</h2>
+  <p><a href="../science-framework/" style="color:var(--primary);font-weight:700;">02章</a>の軸をここで使います。</p>
+  <table class="wk">
+    <tr><th>02章の軸</th><th>主張の形</th></tr>
+    <tr><td>演繹（モデル駆動）</td><td>We show that the proposed law <b>holds for</b> … / <b>breaks down at</b> …</td></tr>
+    <tr><td>帰納（データ駆動）</td><td>We show that the data <b>reveal</b> … / that the index <b>predicts</b> …</td></tr>
+    <tr><td>理学的（理解）</td><td>主張は「理解」で終わってよい</td></tr>
+    <tr><td>工学的（設計）</td><td>主張は「設計に使える」まで届く必要がある</td></tr>
+  </table>
+  <p style="margin-top:8px;">象限を跨いだ主張——帰納で見つけた指標を、演繹的に一般化したかのように書く——は査読で最も突かれます。修士で帰納、博士で演繹に移った人は、問い（どんな規則があるか → この法則はどこまで成り立つか）、証拠（データの偏りのなさ → 予測と観測の一致）、主張の形（reveal → holds / breaks down）の3つを切り替えてください。切り替えないと、帰納の証拠で演繹の主張をすることになり、論理が閉じません。</p>
+</div>
+
+<div class="card">
+  <h2>何が証拠になるか</h2>
+  <p>主張の形が決まると、証拠の形も決まります。</p>
+  <ul>
+    <li>演繹：予測 vs 観測の一致を示す図。適用範囲の境界を示す図</li>
+    <li>帰納：データの分布と偏りのなさを示す図。見つけた規則の再現性を示す図</li>
+    <li>工学的：設計に使ったときの効果（時間・コスト・精度）を示す図</li>
+  </ul>
+  <p style="margin-top:8px;">この時点で「この図が出れば主張が立つ」と言えないなら、主張がまだ設計されていません。実験やデータ取得は、この図を作るために行います。</p>
+</div>
+
+<div class="card">
+  <h2>1図＝1主張 — 図は説明ではない。主張そのものである</h2>
+  <p><span class="tag o">BAD</span>1つの図に主張Aと主張Bを詰め込む → 何を読み取ればいいのか分からない。</p>
+  <p><span class="tag f">GOOD</span>1つの図に主張は<b>1つ</b>。主張Bは次の図へ。</p>
+  <p style="margin-top:8px;">読者は論文を図で読みます。あなたも論文を読むとき、まず図から読んでください。Key Contributions が3点なら、主図もおおむね3枚です。</p>
+</div>
+
+<div class="card">
+  <h2>構造が生産性を決める — 能力差ではない。構造差である</h2>
+  <p><b>High Structure</b>：Framing → Figures → Draft → Submit。設計の質が成果を決める。<br>
+  <b>Low Structure</b>：Data → ??? → Repeat。同じ時間でも成果が出ない。</p>
+  <p style="margin-top:8px;">同じ時間投資でも、構造が違えば成果が変わる。だから研究室として共通の OS が必要なのです。</p>
+</div>
+
+<div class="card">
+  <h2>Paper Card：構造を固定する装置</h2>
+  <p>不確かなアイデア（Doubt）を確信ある設計（Belief）へ変えるために、鈴木研では Paper Card という1枚のカードを使います。Framing-A と Framing-B を埋めると、カードの上半分が完成します。</p>
+  <ul style="margin-top:8px;">
+    <li>Core Question — 問いを1文で（Framing-A）</li>
+    <li>Compared to X, we Y — 先行研究との差分（Framing-A）</li>
+    <li>Key Contributions — 貢献は3点以内（Framing-B）</li>
+    <li>Main Figures (sketch) — 図の配置スケッチ（Framing-B → Figures-A）</li>
+    <li>Contribution Statement — 貢献の要約</li>
+  </ul>
+  <p style="margin-top:8px;"><b>Structure before data — No Card → No Paper.</b> カードなしに論文は始まりません。→ <a href="../../lab-tools/paper-card/" style="color:var(--primary);font-weight:700;">Lab Tools「Paper Card」</a></p>
+</div>
+
+<div class="note">
+  <b>この章のまとめ</b>：Framing-B は「示したと言うこと」を結果の前に設計する ／ 貢献は "We show that…" で3点以内 ／ スタンス（演繹・帰納、理解・設計）で主張と証拠の形が変わる ／ 1図1主張 ／ Paper Card で構造を固定する
+</div>
+
+<footer>
+  <a href="../question-design/">← 03 問いの設計</a> ｜ <a href="../">目次</a> ｜ <a href="../paper-types/">次章：05 論文タイプ →</a><br>
+  DeSFE Lab — Institute of Fluid Science, Tohoku University
+</footer>
+
+</div>
+</body>
+</html>
