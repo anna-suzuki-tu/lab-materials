@@ -13,21 +13,39 @@
 ## サイト構造（計画）
 
 ```
-index.html / en/           ← ポータル表紙【完成】
-orientation/               ← Lab OS 導入＋6章目次【未】
-  what-is-research/ (+en/) ← 01 研究とは何か【未】
-  research-as-design/      ← 02 研究は設計で進める【未】
-  paper-types/             ← 03 論文タイプと責任【未】
-  five-layers/             ← 04 研究活動の5階層構造【未】
-  grade-goals/             ← 05 学年別の責任と計画【未】
-  habits-culture/          ← 06 必須習慣と文化【未】
+index.html / en/                ← ポータル表紙【完成】
+orientation/                    ← Lab OS 導入＋3部10章＋付録2本【完成・JAのみ。EN未対応（旧6章構成のまま）】
+
+  第Ⅰ部 探究の原理｜Principles
+  what-is-research/ (+en/)      ← 01 研究とは何か【完成】
+  science-framework/            ← 02 探究のプロセスと科学の枠組み【完成・EN未】
+
+  第Ⅱ部 研究の設計｜Design
+  question-design/               ← 03 問いの設計（旧 research-as-design を分割）【完成・EN未】
+    question-archetypes/         ← 付録03-A 問いの型【完成・EN未】
+  claim-design/                  ← 04 主張の設計（旧 research-as-design を分割）【完成・EN未】
+  paper-types/ (+en/)            ← 05 論文タイプ｜信念のスコープと形式（旧03を改訂）【完成】
+    paper-type-requirements/     ← 付録05-A 論文タイプ別の要件【完成・EN未】
+  responsibility/                ← 06 研究の責任【完成・EN未】
+
+  第Ⅲ部 研究室の運用｜Practice
+  mission/                       ← 07 私たちは何を、なぜ研究するか【完成・EN未】
+  five-layers/ (+en/)            ← 08 研究活動の5階層構造（旧04）【完成】
+  grade-goals/ (+en/)            ← 09 学年別のゴールと計画（旧05）【完成】
+  habits-culture/ (+en/)         ← 10 必須習慣と文化（旧06）【完成】
+
+  research-as-design/           ← 旧02。question-design/ への meta refresh リダイレクトのみ残置（外部リンクを切らないため）
 lab-tools/
-  paper-card/ (+en/)       ← 【未・新規創作。Fable推奨】
-  quarter-plan/ (+en/)     ← 【未。ソース: quarter-plan/old/0409*.html】
-writing-papers/ (+en/)     ← 【未。ソース: 20260709Labforum_writingpaper/build_slides*.py】
-design-for-research/ (+en/)← 【未。ソース: 同フォルダの build_slides*_design4research_backup.py（内容はそのまま移植）】
-career-design/ (+en/)      ← 【完成・公開済み】
+  paper-card/ (+en/)            ← 【完成】
+  quarter-plan/ (+en/)          ← 【完成】
+writing-paper/ (+en/)           ← 【完成】
+design-for-research/ (+en/)     ← 【完成】
+career-design/ (+en/)           ← 【完成・公開済み】
 ```
+
+Lab OS の EN版（`orientation/en/`）は旧6章構成のまま据え置き。JA側の3部10章化に伴う
+EN側の対応方針は別途決定（現状は英語話者向けに「日本語版が改訂された」旨の注記を
+各章に入れる案を検討中）。
 
 各ページ完成時は、ポータル（index.html / en/index.html）の該当タイルを
 `div.tile.soon` → `a.tile`（badge を `live` に）へ更新すること。
