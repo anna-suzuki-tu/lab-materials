@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>04 主張の設計 — Framing-B — Lab OS｜DeSFE Lab</title>
-<meta name="description" content="Framing-Bとして、Key Contributionsと証拠の図を結果より先に設計する。演繹・帰納のスタンスで主張と証拠の形がどう変わるかを解説。">
+<meta name="description" content="Paper Card の Framing-B に沿って、Key Contributions・Narrative Skeleton・Figure 0 を結果の前に設計する。入口とコミットメントで主張と証拠の形がどう変わるか。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
     <div class="bar"></div>
     <div>
       <h1>主張の設計 — Framing-B</h1>
-      <div class="subtitle">Claim Design — 何を示すか、何が証拠か。図で言えるまで固定する</div>
+      <div class="subtitle">Claim Design — 何を示すか、どう語るか、主張同士はどうつながるか。結果が出る前に固定する</div>
     </div>
   </div>
 </header>
@@ -29,76 +29,126 @@
 <div class="card">
   <h2>問いが決まったら、次は「何を示したと言うか」</h2>
   <p>Framing-A で問いは1文になりました。けれど問いに答えるだけでは論文になりません。論文は、あなたが「これを示した」と言い、他者がそれを問い返せる形にしたものです。Framing-B はその「これを示した」を、結果が出る前に設計する工程です。</p>
-</div>
-
-<div class="card">
-  <h2>Framing-B で書くのは3つ</h2>
-  <ol>
-    <li><b>貢献を最大3点に絞る</b> — Key Contributions: "We show that…"</li>
-    <li><b>何が証拠になるかを決める</b> — Evidence: どんな図が出れば主張が立つか</li>
-    <li><b>図の配置をスケッチする</b> — Main Figures (sketch)：1図＝1主張</li>
-  </ol>
   <p style="margin-top:8px;">ここでも結果は書きません。「結果がこう出たら、こう主張する」という条件付きの設計です。</p>
 </div>
 
 <div class="card">
-  <h2>Key Contributions は "We show that…" で始める</h2>
-  <p>「We propose a new method」は貢献ではありません。提案しただけでは、何が変わったのかがわかりません。貢献は「We show that ○○ である」の形で、示す内容を先に言い切ります。3点を超えるなら、主張が絞れていないか、論文が2本分あるかのどちらかです。</p>
-</div>
-
-<div class="card">
-  <h2>スタンスで主張の形が変わる</h2>
-  <p><a href="../science-framework/" style="color:var(--primary);font-weight:700;">02章</a>の軸をここで使います。</p>
-  <table class="wk">
-    <tr><th>02章の軸</th><th>主張の形</th></tr>
-    <tr><td>演繹（モデル駆動）</td><td>We show that the proposed law <b>holds for</b> … / <b>breaks down at</b> …</td></tr>
-    <tr><td>帰納（データ駆動）</td><td>We show that the data <b>reveal</b> … / that the index <b>predicts</b> …</td></tr>
-    <tr><td>理学的（理解）</td><td>主張は「理解」で終わってよい</td></tr>
-    <tr><td>工学的（設計）</td><td>主張は「設計に使える」まで届く必要がある</td></tr>
-  </table>
-  <p style="margin-top:8px;">象限を跨いだ主張——帰納で見つけた指標を、演繹的に一般化したかのように書く——は査読で最も突かれます。修士で帰納、博士で演繹に移った人は、問い（どんな規則があるか → この法則はどこまで成り立つか）、証拠（データの偏りのなさ → 予測と観測の一致）、主張の形（reveal → holds / breaks down）の3つを切り替えてください。切り替えないと、帰納の証拠で演繹の主張をすることになり、論理が閉じません。</p>
-</div>
-
-<div class="card">
-  <h2>何が証拠になるか</h2>
-  <p>主張の形が決まると、証拠の形も決まります。</p>
-  <ul>
-    <li>演繹：予測 vs 観測の一致を示す図。適用範囲の境界を示す図</li>
-    <li>帰納：データの分布と偏りのなさを示す図。見つけた規則の再現性を示す図</li>
-    <li>工学的：設計に使ったときの効果（時間・コスト・精度）を示す図</li>
-  </ul>
-  <p style="margin-top:8px;">この時点で「この図が出れば主張が立つ」と言えないなら、主張がまだ設計されていません。実験やデータ取得は、この図を作るために行います。</p>
-</div>
-
-<div class="card">
-  <h2>1図＝1主張 — 図は説明ではない。主張そのものである</h2>
-  <p><span class="tag o">BAD</span>1つの図に主張Aと主張Bを詰め込む → 何を読み取ればいいのか分からない。</p>
-  <p><span class="tag f">GOOD</span>1つの図に主張は<b>1つ</b>。主張Bは次の図へ。</p>
-  <p style="margin-top:8px;">読者は論文を図で読みます。あなたも論文を読むとき、まず図から読んでください。Key Contributions が3点なら、主図もおおむね3枚です。</p>
-</div>
-
-<div class="card">
-  <h2>構造が生産性を決める — 能力差ではない。構造差である</h2>
-  <p><b>High Structure</b>：Framing → Figures → Draft → Submit。設計の質が成果を決める。<br>
-  <b>Low Structure</b>：Data → ??? → Repeat。同じ時間でも成果が出ない。</p>
-  <p style="margin-top:8px;">同じ時間投資でも、構造が違えば成果が変わる。だから研究室として共通の OS が必要なのです。</p>
-</div>
-
-<div class="card">
-  <h2>Paper Card：構造を固定する装置</h2>
-  <p>不確かなアイデア（Doubt）を確信ある設計（Belief）へ変えるために、鈴木研では Paper Card という1枚のカードを使います。Framing-A と Framing-B を埋めると、カードの上半分が完成します。</p>
+  <h2>Framing-B の構造：主張を決める → 物語にする → 構造を描く</h2>
+  <p>Paper Card の Framing-B は、3つの Step からできています。</p>
   <ul style="margin-top:8px;">
-    <li>Core Question — 問いを1文で（Framing-A）</li>
-    <li>Compared to X, we Y — 先行研究との差分（Framing-A）</li>
-    <li>Key Contributions — 貢献は3点以内（Framing-B）</li>
-    <li>Main Figures (sketch) — 図の配置スケッチ（Framing-B → Figures-A）</li>
-    <li>Contribution Statement — 貢献の要約</li>
+    <li><b>Step 1｜Key Contributions</b> — 貢献を最大3つ、"We show that…" で</li>
+    <li><b>Step 2｜Narrative Skeleton</b> — 貢献を7つの文で物語にする</li>
+    <li><b>Step 3｜Figure 0（Story Map）</b> — 貢献同士の依存関係を図にする</li>
   </ul>
-  <p style="margin-top:8px;"><b>Structure before data — No Card → No Paper.</b> カードなしに論文は始まりません。→ <a href="../../lab-tools/paper-card/" style="color:var(--primary);font-weight:700;">Lab Tools「Paper Card」</a></p>
+  <p style="margin-top:8px;">順番が大事です。貢献が確定してから物語を書き、物語が書けてから構造を描く。逆に進むと、物語に合わせて貢献を膨らませることになります。</p>
+</div>
+
+<div class="card">
+  <h2>Step 1｜Key Contributions：貢献を最大3つ</h2>
+  <p><b>ルール</b>は4つ。</p>
+  <ul style="margin-top:8px;">
+    <li>最大3つ（2でも可）</li>
+    <li>すべて "We show that…" の形</li>
+    <li>曖昧な賛辞を使わない（important, significant, novel…）</li>
+    <li>図で支えられる内容だけ</li>
+  </ul>
+  <p style="margin-top:8px;"><b>"We show that…" で始める理由。</b> "We propose a new method" は貢献ではありません。提案しただけでは、何が変わったのかがわかりません。貢献は「We show that ○○である」の形で、示す内容を先に言い切ります。手法はその内容を示す手段であって、貢献そのものではありません。</p>
+  <p style="margin-top:8px;"><b>なぜ3つか。</b> 1つでは論文が薄く、4つ以上では読者が覚えられません。3つを超えるなら、主張が絞れていないか、論文が2本分あるかのどちらかです。多くの論文が3つの貢献を持つのは慣習ではなく、読者の記憶と論理構造の両方に理由があります（Notion「Why Do Many Papers Have Three Contributions?」）。</p>
+  <p style="margin-top:8px;"><b>強い貢献と弱い貢献。</b></p>
+  <p><span class="tag o">✕</span>"We propose a machine-learning framework for reservoir modeling." — 手法の説明。何を示したかがない</p>
+  <p><span class="tag o">✕</span>"We show that our method achieves significant improvement." — 曖昧語。何がどれだけ、がない</p>
+  <p><span class="tag f">○</span>"We show that permeability distributions can be recovered from tracer responses with less than 20% error in branching multi-path systems." — 何を、どの条件で、どこまで、が入っている</p>
+  <p style="margin-top:8px;"><b>Contribution Check</b>：</p>
+  <ul style="margin-top:6px;">
+    <li>各貢献は1文か</li>
+    <li>図で支えられるか</li>
+    <li>手法説明になっていないか</li>
+    <li>3つで足りているか</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>入口とコミットメントで、主張の形が変わる</h2>
+  <p>Key Contributions を書くとき、02章の区別がそのまま効きます。</p>
+  <p style="margin-top:8px;"><b>入口の戦略</b>（<a href="../science-framework/" style="color:var(--primary);font-weight:700;">02章</a> Ⅰ）</p>
+  <table class="wk">
+    <tr><th>入口</th><th>主張の形</th><th>証拠の形</th></tr>
+    <tr><td>仮説先行（モデル駆動）</td><td>We show that the proposed law <b>holds for</b> … / <b>breaks down at</b> …</td><td>予測 vs 観測の一致。適用範囲の境界</td></tr>
+    <tr><td>データ先行（データ駆動）</td><td>We show that the data <b>reveal</b> … / that the index <b>predicts</b> …</td><td>データの分布と偏りのなさ。見つけた規則の再現性</td></tr>
+  </table>
+  <p style="margin-top:8px;"><b>探究の種類</b>（<a href="../science-framework/" style="color:var(--primary);font-weight:700;">02章</a> Ⅱ）</p>
+  <table class="wk">
+    <tr><th>種類</th><th>主張の届く先</th></tr>
+    <tr><td>受動的探究（理解）</td><td>主張は「理解」で終わってよい</td></tr>
+    <tr><td>能動的探究（設計）</td><td>主張は「設計に使える」まで届く必要がある。証拠は設計に使ったときの効果</td></tr>
+  </table>
+  <p style="margin-top:8px;"><b>コミットメント</b>（<a href="../science-framework/" style="color:var(--primary);font-weight:700;">02章</a> Ⅱ）</p>
+  <table class="wk">
+    <tr><th>主張がコミットするもの</th><th>"We show that…" の中身</th></tr>
+    <tr><td>記述</td><td>…が観測された</td></tr>
+    <tr><td>説明</td><td>…が…を支配する（代替説明を潰した上で）</td></tr>
+    <tr><td>予測</td><td>…は未知の条件でも…を予測する</td></tr>
+    <tr><td>制御</td><td>…を操作すると…が変わる</td></tr>
+  </table>
+  <p style="margin-top:8px;">入口を跨いだ主張——データ先行で見つけた指標を、仮説先行で一般化したかのように書く——は査読で最も突かれます。修士でデータ先行、博士で仮説先行に移った人は、問い（どんな規則があるか → この法則はどこまで成り立つか）、証拠（データの偏りのなさ → 予測と観測の一致）、主張の形（reveal → holds / breaks down）の3つを切り替えてください。切り替えないと、データ先行の証拠で仮説先行の主張をすることになり、論理が閉じません。</p>
+  <p style="margin-top:8px;">同様に、コミットメントを超えた主張——相関しか示せていないのに「支配する」と書く——も突かれます。自分の証拠がどの種類かを見て、"We show that…" の動詞を選んでください。</p>
+</div>
+
+<div class="card">
+  <h2>Step 2｜Narrative Skeleton：7つの文で物語にする</h2>
+  <p>貢献が確定したら、論文の Introduction の骨格を7つの文で書きます。これは要旨の下書きであり、Introduction の設計図です。</p>
+  <ol style="margin-top:8px;">
+    <li><b>Broad Context</b>（1〜2文）— 一般読者向けの導入。なぜこの分野が重要か</li>
+    <li><b>Field Context</b>（2〜3文）— 関連研究者向け。分野が何をどこまで明らかにしてきたか（Framing-A の Field Belief）</li>
+    <li><b>Gap</b>（1文）— "What remains unclear is …"（Framing-A の Comparison Table から）</li>
+    <li><b>Core Question</b>（1文）— "This study asks:"（Framing-A の Core Question をそのまま）</li>
+    <li><b>Core Contribution</b>（1文）— "Here we show that …"（<b>Contribution 1 と一致させる</b>）</li>
+    <li><b>Field Meaning</b>（2〜3文）— "Compared to previous studies … / This challenges …"（Framing-A の Belief Update）</li>
+    <li><b>Broader Positioning</b>（1〜2文）— "This suggests that …"</li>
+  </ol>
+  <p style="margin-top:8px;">Framing-A の出力がそのまま 2・3・4・6 に入り、Step 1 の Contribution 1 が 5 に入ります。つまり Narrative Skeleton は、Framing-A と Framing-B を1本の物語に縫い合わせる工程です。ここで文がつながらないなら、Framing-A と Contributions のどこかがずれています。</p>
+  <p style="margin-top:8px;"><b>"Here we show" は Contribution 1 と一致させる。</b> 論文で最も読まれる1文は、Introduction 末尾の "Here we show that…" です。これが Contribution 1 と違うことを言っていると、読者は論文の主張がどれかわからなくなります。</p>
+</div>
+
+<div class="card">
+  <h2>Step 3｜Figure 0：主張の構造図</h2>
+  <p>貢献が2つ以上あるなら、それらは互いにどう依存しているかを図にします。これはワークフロー図ではありません。<b>主張の構造図</b>です。</p>
+  <p style="margin-top:8px;"><b>書き方</b>：箱と矢印で依存関係を描く。手書きで構いません。</p>
+  <pre style="margin-top:8px;">直列構造：
+[ C1：基礎的主張 ]
+    ↓
+[ C2：C1 に依存する拡張 ]
+    ↓
+[ C3：最終的含意 ]
+
+並列構造：
+[ C1 ]   [ C2 ]
+   \       /
+    ↓     ↓
+[ C3：統合的主張 ]</pre>
+  <p style="margin-top:8px;"><b>崩壊テスト</b>：どの箱を取り除くと論文が崩れるか。崩れる箱が根幹の主張で、それが Contribution 1 であるべきです。取り除いても崩れない箱は、貢献ではなく補足かもしれません。</p>
+  <p style="margin-top:8px;"><b>証明可能性チェック</b>：各箱は図で示せるか。示せない箱は、貢献ではなく願望です。</p>
+  <p style="margin-top:8px;">Figure 0 は論文には載りません。けれど、Figures-A（次の段階）で「どの図が必要か」を決めるときの設計図になります。1つの箱が、おおむね1枚の主図に対応します。</p>
+</div>
+
+<div class="card">
+  <h2>何が証拠になるか — Figures-A への橋</h2>
+  <p>Framing-B が終わると、「この図が出れば主張が立つ」と言える状態になっているはずです。Figure 0 の各箱について、それを支える図の形が言えるかを確認してください。</p>
+  <ul style="margin-top:8px;">
+    <li>仮説先行：予測 vs 観測の一致を示す図。適用範囲の境界を示す図</li>
+    <li>データ先行：データの分布と偏りのなさを示す図。見つけた規則の再現性を示す図</li>
+    <li>能動的探究：設計に使ったときの効果（時間・コスト・精度）を示す図</li>
+  </ul>
+  <p style="margin-top:8px;">言えないなら、主張がまだ設計されていません。実験やデータ取得は、この図を作るために行います。<b>1図＝1主張</b>、Contributions が3つなら主図もおおむね3枚。ここから先の空図の設計は Figures-A で扱います。</p>
+</div>
+
+<div class="card">
+  <h2>Paper Card では</h2>
+  <p>Framing-B は Paper Card の3段目です。Key Contributions（Contribution Check 付き）、Narrative Skeleton の7文、Figure 0 を埋め、Team Meeting で「Next Judge」を受けると、Figures-A に進めます。Framing-A と Framing-B が埋まった時点で、論文の主張構造は固定されています。<b>Structure before data — No Card → No Paper.</b> → <a href="../../lab-tools/paper-card/" style="color:var(--primary);font-weight:700;">Lab Tools「Paper Card」</a></p>
 </div>
 
 <div class="note">
-  <b>この章のまとめ</b>：Framing-B は「示したと言うこと」を結果の前に設計する ／ 貢献は "We show that…" で3点以内 ／ スタンス（演繹・帰納、理解・設計）で主張と証拠の形が変わる ／ 1図1主張 ／ Paper Card で構造を固定する
+  <b>この章のまとめ</b>：Framing-B は「示したと言うこと」を結果の前に設計する ／ 3 Step：Key Contributions → Narrative Skeleton → Figure 0 ／ 貢献は "We show that…" で最大3つ、曖昧語なし、図で支えられるもの ／ 入口とコミットメントで主張と証拠の形が変わる ／ Here we show は Contribution 1 と一致 ／ Figure 0 は主張の構造図、崩壊テストで根幹を特定
 </div>
 
 <footer>
