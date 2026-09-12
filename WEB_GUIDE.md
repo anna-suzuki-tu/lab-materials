@@ -14,7 +14,7 @@
 
 ```
 index.html / en/                ← ポータル表紙【完成】
-orientation/                    ← Lab OS 導入＋3部10章＋付録2本【完成・JAのみ。EN未対応（旧6章構成のまま）】
+orientation/                    ← Lab OS 導入＋3部10章＋付録1本【完成・JAのみ。EN未対応（旧6章構成のまま）】
 
   第Ⅰ部 探究の原理｜Principles
   what-is-research/ (+en/)      ← 01 研究とは何か【完成】
@@ -24,8 +24,7 @@ orientation/                    ← Lab OS 導入＋3部10章＋付録2本【完
   question-design/               ← 03 問いの設計（旧 research-as-design を分割）【完成・EN未】
     question-archetypes/         ← 付録03-A 問いの型【完成・EN未】
   claim-design/                  ← 04 主張の設計（旧 research-as-design を分割）【完成・EN未】
-  paper-types/ (+en/)            ← 05 論文タイプ｜信念のスコープと形式（旧03を改訂）【完成】
-    paper-type-requirements/     ← 付録05-A 論文タイプ別の要件【完成・EN未】
+  paper-types/ (+en/)            ← 05 論文タイプ｜信念のスコープと形式（旧03を改訂、旧付録05-Aを統合）【完成】
   responsibility/                ← 06 研究の責任【完成・EN未】
 
   第Ⅲ部 研究室の運用｜Practice
@@ -35,6 +34,7 @@ orientation/                    ← Lab OS 導入＋3部10章＋付録2本【完
   habits-culture/ (+en/)         ← 10 必須習慣と文化（旧06）【完成】
 
   research-as-design/           ← 旧02。question-design/ への meta refresh リダイレクトのみ残置（外部リンクを切らないため）
+  paper-type-requirements/      ← 旧付録05-A。paper-types/ への meta refresh リダイレクトのみ残置（外部リンクを切らないため）
 lab-tools/
   paper-card/ (+en/)            ← 【完成】
   quarter-plan/ (+en/)          ← 【完成】
