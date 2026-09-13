@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Papers — Figures | Building the Claim Through Figures | Lab Forum | DeSFE Lab</title>
+<meta name="description" content="Following Figures-A/B/C of the Paper Card: design, test, and freeze the figures. The correspondence between the form of the claim and the form of the figure, three levels of figure craft, and the daily panel collection.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../assets/style.css">
+<style>
+/* ---- 幕ヘッダー（ダーク地の上） ---- */
+.part-head {
+  display: flex; align-items: center; gap: 14px;
+  margin: 36px 0 4px; padding: 14px 16px;
+  background: rgba(255,255,255,.05); border-radius: 10px;
+  border-left: 5px solid var(--accent);
+}
+.part-num {
+  font-size: 11px; font-weight: 900; letter-spacing: .15em;
+  color: var(--accent); white-space: nowrap;
+}
+.part-main { flex: 1; }
+.part-title { font-size: 17px; font-weight: 900; color: #fff; line-height: 1.4; }
+.part-en { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+
+/* ---- 二列レイアウト（カード内） ---- */
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;
+}
+@media (max-width: 520px) { .two-col { grid-template-columns: 1fr; } }
+.col-block { background: var(--panel); border-radius: 8px; padding: 12px; }
+.col-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 6px; }
+.col-block ul { padding-left: 1.3em; }
+.col-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- Before / After ---- */
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ba-grid { grid-template-columns: 1fr; } }
+.ba-block { border-radius: 8px; padding: 12px; }
+.ba-before { background: #fdecea; border-left: 4px solid #e57373; }
+.ba-after  { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ba-label { font-size: 11px; font-weight: 900; letter-spacing: .12em; margin-bottom: 6px; }
+.ba-before .ba-label { color: #c62828; }
+.ba-after  .ba-label { color: #2e7d32; }
+.ba-block ul { padding-left: 1.3em; }
+.ba-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- ステップ（横並び） ---- */
+.steps-h { display: grid; gap: 0; margin: 10px 0; counter-reset: step; }
+.step-h {
+  display: flex; align-items: flex-start; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid var(--border); counter-increment: step;
+}
+.step-h:last-child { border-bottom: none; }
+.step-num {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.step-body { flex: 1; }
+.step-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- ステップ（縦タイムライン） ---- */
+.steps-v { margin: 10px 0; }
+.step-v { display: flex; gap: 14px; padding: 8px 0; position: relative; }
+.step-v:not(:last-child)::after {
+  content: ""; position: absolute; left: 11px; top: 32px; bottom: -8px;
+  width: 2px; background: var(--border);
+}
+.step-v-dot {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--accent);
+  color: #fff; font-size: 11px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+}
+.step-v-body { flex: 1; }
+.step-v-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-v-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- 2x2 カードグリッド ---- */
+.grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .grid-2x2 { grid-template-columns: 1fr; } }
+.g-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g-card-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g-card-sub { font-size: 12.5px; color: var(--muted); }
+
+/* ---- テイクアウェイ ---- */
+.takeaway {
+  background: rgba(32,122,145,.08); border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0; padding: 8px 12px; margin-top: 12px;
+  font-size: 13px; font-weight: 700; color: var(--text);
+}
+.takeaway::before { content: "→ "; color: var(--accent); }
+
+/* ---- 目次 ---- */
+.toc-row { display: flex; gap: 10px; align-items: baseline; padding: 8px 4px;
+  font-size: 14px; font-weight: 700; color: var(--text); text-decoration: none;
+  border-bottom: 1px solid var(--border); }
+.toc-row:last-child { border-bottom: none; }
+a.toc-row:hover { color: var(--primary); }
+.toc-n { color: var(--primary); font-weight: 900; flex-shrink: 0; font-size: 12px; }
+.toc-sub { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: auto; }
+
+/* ---- 3カードグリッド ---- */
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
+.g3-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g3-who { font-size: 11px; font-weight: 900; letter-spacing: .1em; color: var(--accent); margin-bottom: 4px; }
+.g3-action { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g3-desc { font-size: 12px; color: var(--muted); }
+
+/* ---- 問題/解決 ---- */
+.ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ps-grid { grid-template-columns: 1fr; } }
+.ps-block { border-radius: 8px; padding: 12px; }
+.ps-risk { background: #fdecea; border-left: 4px solid #e57373; }
+.ps-rule { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ps-label { font-size: 11px; font-weight: 900; letter-spacing: .1em; margin-bottom: 6px; }
+.ps-risk .ps-label { color: #c62828; }
+.ps-rule .ps-label { color: #2e7d32; }
+.ps-block ul { padding-left: 1.3em; }
+.ps-block li { font-size: 13px; color: var(--text); margin-bottom: 3px; }
+
+/* ---- 番号付きカード ---- */
+.num-cards { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
+.num-card { display: flex; gap: 12px; align-items: flex-start; }
+.nc-num {
+  width: 26px; height: 26px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.nc-body { flex: 1; background: var(--panel); border-radius: 8px; padding: 10px 12px; }
+.nc-head { font-size: 13px; font-weight: 900; color: var(--text); }
+.nc-sub { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="lang-sw"><span>English</span> ｜ <a href="../">日本語</a></div>
+<div class="breadcrumb"><a href="../../../en/">🏠 Portal</a> › <a href="../../en/">Writing Papers</a> › Figures</div>
+
+<header>
+  <div class="kicker">LAB FORUM — WRITING PAPERS ｜ FIGURES</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>Building the Claim Through Figures</h1>
+      <div class="subtitle">Figures — Until the figures are decided, do not write the text</div>
+    </div>
+  </div>
+</header>
+
+<blockquote class="lead-quote">
+  Before reading the text, experts look through the figures in order to grasp the whole study. A good paper is one where the figures alone carry "what was asked, how it was tested, and what was found."
+</blockquote>
+
+<!-- ============ Overview ============ -->
+
+<div class="card">
+  <h2>What this lecture covers</h2>
+  <p>The Lab Forum lecture "Writing Papers" covered the whole picture of submitting a paper (the mindset for writing, authorship, cover letters, responding to reviews). This page covers the stage before that: <b>designing, testing, and freezing the figures</b>. It corresponds to Figures-A → B → C of the Paper Card, and walks from the Figure 0 you drew in <a href="../../../orientation/en/claim-design/" style="color:var(--primary);font-weight:700;">Lab OS Chapter 04</a> (Framing-B) up to the moment just before Draft.</p>
+  <p style="margin-top:8px;">The principles of visual design (fonts, color, alignment, diagramming techniques) are systematized in the Lab Forum lecture "<a href="../../../design-for-research/en/" style="color:var(--primary);font-weight:700;">Design for Research</a>". Here we focus on what is specific to paper figures — how a figure carries a claim — and refer to design principles where needed.</p>
+  <div class="num-cards" style="margin-top:12px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Act 1 Figures are claims</div><div class="nc-sub">From "for myself" to "for the reader"</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Act 2 Figures-A Design the empty figures</div><div class="nc-sub">Decide the figures before the data</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Act 3 Figures-B Test provisionally</div><div class="nc-sub">Find where it breaks with minimal data</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Act 4 Figures-C Freeze</div><div class="nc-sub">Freeze and reduce</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">Act 5 Figure craft</div><div class="nc-sub">Three levels for not wasting the reader's brain</div></div></div>
+    <div class="num-card"><div class="nc-num">6</div><div class="nc-body"><div class="nc-head">Act 6 Daily habit</div><div class="nc-sub">The panel collection</div></div></div>
+  </div>
+  <p style="margin-top:12px;"><b>B4</b>: Learn that a figure is a "claim," not a "place to put data." <b>M &amp; D</b>: Check the correspondence between the Figure 0 and the main figures on your own Paper Card. <b>Postdocs</b>: Develop the eye to look at a junior's figure and ask "can the claim be read?"</p>
+</div>
+
+<!-- ============================================================
+     Act 1: Figures are claims
+     ============================================================ -->
+
+<div class="part-head" id="part1">
+  <div class="part-num">Act 1</div>
+  <div class="part-main">
+    <div class="part-title">Figures are claims</div>
+    <div class="part-en">Figures Are Claims — From "for myself" to "for the reader"</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>A figure "for yourself" does not exist</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Records are left for a future other</p>
+  <p>The first mistake many students make is to create figures "to organize my own data." In science, there is no such thing as information summarized for yourself. Records, including lab notebooks, are left for a future other (including yourself six months from now). Figures are always made for someone else.</p>
+  <p style="margin-top:8px;">Pave the road so that a third party can evaluate the value of the research without stress. That is the job of a figure. A messy figure raises doubts about the integrity of the research itself. Do not make the reader spend brain resources on decoding — this is the essence of technical writing.</p>
+  <div class="takeaway">A figure is not a memo for yourself; it is road-paving for the reader.</div>
+</div>
+
+<div class="card">
+  <h2>Hack the habit of "reading from the figures"</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Aim for a state where the story is complete in the figures alone</p>
+  <p>Before reading the text closely, experts try to grasp the whole study by looking through the figures in order. An excellent paper is a <b>visual narrative</b> in which "what was asked, how it was tested, and what was found" is complete just by following the figures. Abandon the indulgence of treating figures as supplements to the text, and pursue the completeness where the story stands on the figures alone.</p>
+  <p style="margin-top:8px;">That is why figures are decided before the text. As stated in <a href="../../../orientation/en/claim-design/" style="color:var(--primary);font-weight:700;">Lab OS Chapter 04</a>, the moment the Key Contributions are decided, you should be able to say "if this figure comes out, the claim stands." If you cannot say it, the claim has not yet been designed.</p>
+  <div class="takeaway">Decide the figures before the text. If you cannot say it, the claim has not been designed yet.</div>
+</div>
+
+<div class="card">
+  <h2>Correspondence between figures and claims: one figure, one claim</h2>
+  <p>One box in Figure 0 (the structure diagram of the claim) corresponds roughly to one main figure. If there are three Contributions, there are about three main figures. If you cram claim A and claim B into one figure, the reader no longer knows what to take from it. Claim B goes to the next figure.</p>
+  <p style="margin-top:8px;">When the set of figures works as a sequence of "mini-papers," the story of the whole paper crystallizes.</p>
+  <div class="takeaway">One figure, one claim. The set of figures becomes the story of the paper itself.</div>
+</div>
+
+<!-- ============================================================
+     Act 2: Figures-A Design the empty figures
+     ============================================================ -->
+
+<div class="part-head" id="part2">
+  <div class="part-num">Act 2</div>
+  <div class="part-main">
+    <div class="part-title">Decide the figures before the data</div>
+    <div class="part-en">Figures-A — Designing the empty figures</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>The purpose of Figures-A</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Start from empty figures showing only axes, comparisons, and elements</p>
+  <p>The purpose of Figures-A is to decide, for each figure, "what claim this figure makes." No data is needed yet. You create <b>empty figures</b> that show only the axes, the comparison, and the elements.</p>
+  <p style="margin-top:8px;"><b>Figure list (with roles)</b>: First, list the figures that will appear in the paper, each with its role (question / setup / validity / claim) and its location. Next, the <b>Contribution–Figure Mapping</b>: map only the claim figures to Contributions, as in C1 → Fig.4, C2 → Fig.5. If a Contribution has no corresponding figure, it is a claim not supported by a figure. If a claim figure has no corresponding Contribution, it is a figure without a claim. The roles are explained in detail in the next section.</p>
+  <p style="margin-top:8px;"><b>What to write for each figure</b></p>
+  <ul style="margin-top:6px;">
+    <li>Question: What does this figure answer?</li>
+    <li>Axes (x / y): What is shown against what?</li>
+    <li>Comparison dimension: What is compared with what (condition, method, time, scale)?</li>
+    <li>Panels: If there are multiple panels, the role of each</li>
+    <li>Claim (1 sentence caption): If this figure comes out, what can be said? In one sentence</li>
+  </ul>
+  <div class="takeaway">A figure whose Claim cannot be written has not yet been designed.</div>
+</div>
+
+<div class="card">
+  <h2>The four roles of figures: one figure, one job</h2>
+  <p>"One figure, one claim" is about the main figures. The figures in a paper are not only those. Some students prepare just three figures to match the Contributions and stop, but that confuses "figures that carry claims" with "figures that appear in the paper." Figures have four roles, and each role has a different design question.</p>
+  <table class="wk" style="margin-top:8px;">
+    <tr><th>Role</th><th>Location</th><th>Job of the figure</th><th>Design question</th></tr>
+    <tr><td>Question figure</td><td>Introduction or start of Methods (follow the journal's convention)</td><td>Show the Gap and the Core Question. Overview of the target, conceptual model</td><td>What "question" can the reader not understand without this figure?</td></tr>
+    <tr><td>Setup figure</td><td>Methods</td><td>Show the target, apparatus, model domain, and workflow at a reproducible granularity</td><td>What procedure cannot be reproduced without this figure?</td></tr>
+    <tr><td>Validity figure</td><td>Methods or start of Results, Appendix</td><td>Show that the method is trustworthy. Benchmarks, convergence, calibration</td><td>What is shown to be trustworthy (a claim about the method)?</td></tr>
+    <tr><td>Claim figure</td><td>Results</td><td>Carry a Contribution. One-to-one with the boxes of Figure 0</td><td>What is the Claim (one sentence)?</td></tr>
+  </table>
+  <p style="margin-top:8px;">Only the claim figures correspond to the boxes of Figure 0. For an Original paper, a rough guide is 2–3 claim figures and 2–3 question/setup/validity figures, 5–8 figures in total.</p>
+  <p style="margin-top:8px;">Whether a figure may be placed in the Introduction varies by field and journal. In the earth sciences it is common to place a map of the study area or a conceptual model as Fig.1 at the end of the Introduction or the start of Methods, while in engineering and Nature-family journals more papers place a conceptual figure in the Introduction that draws the problem setting and the overview of the method in one panel. There is one common rule: <b>a figure in the Introduction is a conceptual figure and does not show results</b>. When you collect papers from candidate journals in Step 1 of Framing-A, note what Fig.1 draws and in which section it appears, and the placement is settled.</p>
+  <p style="margin-top:8px;">Validity figures actually carry a claim: a claim about the method, "this method is trustworthy." The anticipated reviewer comments "Assumptions are unrealistic" and "Comparison is insufficient" come when the setup figures and validity figures are lacking.</p>
+  <div class="takeaway">Only claim figures correspond to the boxes of Figure 0. Aim for 5–8 figures in total.</div>
+</div>
+
+<div class="card">
+  <h2>The form of the claim and the form of the figure</h2>
+  <p>The distinctions in <a href="../../../orientation/en/science-framework/" style="color:var(--primary);font-weight:700;">Lab OS Chapter 02</a> and <a href="../../../orientation/en/claim-design/" style="color:var(--primary);font-weight:700;">Chapter 04</a> determine the form of the figure.</p>
+  <table class="wk" style="margin-top:8px;">
+    <tr><th>Form of the claim</th><th>Figure needed as evidence</th></tr>
+    <tr><td>Hypothesis-first: the law holds within the range of …</td><td>Agreement of prediction vs. observation. The boundary of the range of validity (where it fails)</td></tr>
+    <tr><td>Data-first: the data show …</td><td>The distribution of the data and its lack of bias. Reproducibility of the regularity found</td></tr>
+    <tr><td>Active inquiry: … can be used for design</td><td>The effect when used for design (comparison of time, cost, accuracy)</td></tr>
+    <tr><td>Committed to explanation: … governs …</td><td>Comparisons that eliminate alternative explanations (conditions with confounders separated)</td></tr>
+    <tr><td>Committed to prediction: … holds even under unknown conditions</td><td>Validation on data not used for training</td></tr>
+  </table>
+  <p style="margin-top:8px;">Look at the form of your claim and choose the form of the figure. If you try to show a regularity found data-first with a hypothesis-first figure (prediction vs. observation), something will always break.</p>
+  <div class="takeaway">When the form of the claim and the form of the figure diverge, something always breaks.</div>
+</div>
+
+<div class="card">
+  <h2>Write panel titles as "findings"</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Toward a state where the result can be foreseen the instant the title is read</p>
+  <p>Write panel titles not as "Analysis of X" but as the <b>finding obtained</b>, such as "X increases Y." The reader being able to foresee the result the moment they see the title maximizes the speed of understanding. At the empty-figure stage, write provisionally "X increases Y (expected)" and confirm in Figures-B.</p>
+  <p style="margin-top:8px;">This is the same principle as "the key point in 25 characters at the very top" in <a href="../../../design-for-research/en/" style="color:var(--primary);font-weight:700;">Design for Research</a>. The key point of a slide becomes the panel title in a paper.</p>
+  <div class="takeaway">Panel titles may be provisional. Confirm them in Figures-B.</div>
+</div>
+
+<div class="card">
+  <h2>Next Judge</h2>
+  <p>What to confirm at Team Meeting: does each Contribution have a corresponding figure / can the Claim of each figure be said in one sentence / does the form of the figure match the form of the claim. If it passes, on to Figures-B.</p>
+</div>
+
+<!-- ============================================================
+     Act 3: Figures-B Test provisionally
+     ============================================================ -->
+
+<div class="part-head" id="part3">
+  <div class="part-num">Act 3</div>
+  <div class="part-main">
+    <div class="part-title">Find where it breaks with minimal data</div>
+    <div class="part-en">Figures-B — Provisional testing</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>The purpose of Figures-B</h2>
+  <p>The purpose of Figures-B is to confirm with minimal data "whether the figure can support the claim." It is not about collecting all the production data first and then making figures. Fill the empty figures with a small amount of data, rough calculations, or reuse of existing data, and look for where the claim breaks.</p>
+  <p style="margin-top:8px;">This is the stage where the falsifiability of <a href="../../../orientation/en/science-framework/" style="color:var(--primary);font-weight:700;">Lab OS Chapter 02</a> is carried out at the level of figures. Not "going to prove it" but "going to see where it breaks." If it does not break, the claim stands; if it breaks, revise or discard the claim. Either way is progress.</p>
+  <p style="margin-top:8px;"><b>What to confirm</b></p>
+  <ul style="margin-top:6px;">
+    <li>Do you have a sense of the method and data needed to make the figure?</li>
+    <li>Does the figure support the Contribution (can a provisional Claim be written)?</li>
+    <li>Is the comparison axis sound (comparing the same physical quantity under the same conditions)?</li>
+    <li>Are the figures not multiplying?</li>
+  </ul>
+  <div class="takeaway">If it does not break, the claim stands; if it breaks, that is progress. Either way, progress.</div>
+</div>
+
+<div class="card">
+  <h2>Stop the multiplication of figures</h2>
+  <p>While testing provisionally, an interesting result appears and you think "I want to include this figure too." This is the multiplication of figures. Added figures often do not correspond to a Contribution and blur the claim of the paper. Leave the interesting result in the Research Log; if there is no box for it in this paper's Figure 0, do not include it. It becomes the Idea-0 of the next paper.</p>
+  <div class="takeaway">An interesting result is the seed of the next paper. Do not put it in this one.</div>
+</div>
+
+<div class="card">
+  <h2>Next Judge</h2>
+  <p>What to decide at Team Meeting: for each figure, "keep the claim / revise / discard." If revising, go back to Framing-B and rewrite the Contribution. Going back here is normal. If you proceed to Draft with figures that do not support the claim, you will end up patching things together in the Discussion, and it will collapse in review.</p>
+</div>
+
+<!-- ============================================================
+     Act 4: Figures-C Freeze
+     ============================================================ -->
+
+<div class="part-head" id="part4">
+  <div class="part-num">Act 4</div>
+  <div class="part-main">
+    <div class="part-title">Freeze and reduce</div>
+    <div class="part-en">Figures-C — Freeze &amp; Reduce</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Freeze &amp; Reduce</h2>
+  <p>The purpose of Figures-C is to freeze the figures at <b>minimum number, maximum claim power</b>.</p>
+  <ul style="margin-top:8px;">
+    <li>Finalize each figure with production data</li>
+    <li>What each figure shows can be said in one sentence</li>
+    <li>Cut weak and unnecessary figures</li>
+    <li>Limit additional work to the "minimum required list"</li>
+  </ul>
+  <p style="margin-top:8px;">Write three things on the Paper Card: <b>Frozen Figures</b> (number, claim, and data source of each finalized figure), <b>Figures to Remove</b> (figures to cut and why), and <b>Minimum Required Additional Work</b> (what remains).</p>
+  <div class="takeaway">Freeze at minimum number, maximum claim power.</div>
+</div>
+
+<div class="card">
+  <h2>From here on, do not add figures</h2>
+  <p>The meaning of freezing is to concentrate all subsequent work on "turning the figures into text." If, while writing the Draft, you think "actually, this figure too," that is a decision to go back to Figures-B, not a decision to add a figure within the Draft. When a figure moves, the Results and the Discussion move too.</p>
+  <div class="takeaway">When a figure moves, the Results and the Discussion move too.</div>
+</div>
+
+<div class="card">
+  <h2>Next Judge</h2>
+  <p>Do the frozen main figures correspond one-to-one with the Contributions? If it passes, on to Draft (Lab Forum lecture "<a href="../../draft/en/" style="color:var(--primary);font-weight:700;">Writing Papers — Draft</a>").</p>
+</div>
+
+<!-- ============================================================
+     Act 5: Figure craft
+     ============================================================ -->
+
+<div class="part-head" id="part5">
+  <div class="part-num">Act 5</div>
+  <div class="part-main">
+    <div class="part-title">Do not waste the reader's brain</div>
+    <div class="part-en">Figure craft — Three levels</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Figure craft: three levels</h2>
+  <p>Once the design of the figures is decided, raise the quality of the figures themselves. Professional figure-making has three stages. Level 1 is the rules that must absolutely be kept, Level 2 is the design of the flow of information, and Level 3 is presentation.</p>
+</div>
+
+<div class="card">
+  <h2>Level 1｜Always keep</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Strict order of appearance (top priority)</div><div class="nc-sub">Figures and panels are arranged in the order they are explained in the text. A structure that explains 2c after 2a and skips 2b is not allowed. Even in the appendix, there must be no figure that is never referred to in the text</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Pixel-level alignment</div><div class="nc-sub">If the edge of a panel, the start position of text, or the height of an axis label is off by one pixel, the reader unconsciously feels something is wrong and loses trust in the author</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Unified fonts and sizes</div><div class="nc-sub">Sans-serif such as Helvetica or Arial for Latin text, gothic for Japanese. Unify sizes within a figure and across the whole paper</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Complete within the figure (self-explanatory)</div><div class="nc-sub">If you push "black is data A, white is data B" into the caption, the eye goes back and forth between figure and text. Embed the legend inside the figure</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">Statistical transparency and no Excel defaults</div><div class="nc-sub">A bar chart of means alone hides the distribution of the data. Show individual points with violin plots or jitter plots. Make matplotlib, ggplot2, or Prism the standard</div></div></div>
+  </div>
+  <div class="takeaway">Excel's default settings (shadows, gridlines, color scheme) are a symbol of "dishonesty."</div>
+</div>
+
+<div class="card">
+  <h2>Level 2｜Design the flow of information</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">One topic, one figure</div><div class="nc-sub">As stated in Act 1</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Guiding the eye</div><div class="nc-sub">The reader's eye moves in a Z from left to right, top to bottom. Arrange panels a, b, c along this flow</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Finding-oriented subtitles</div><div class="nc-sub">As stated in Act 2</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Color universal design</div><div class="nc-sub">Avoid red–green, do not distinguish by color alone, combine with line styles. Details in Part 3 of <a href="../../../design-for-research/en/" style="color:var(--primary);font-weight:700;">Design for Research</a></div></div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Level 3｜Presentation</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Scientific validity and playfulness together</div><div class="nc-sub">Lumping missing data and failed computations together as "N.D." is dishonest. Prepare your own icons that distinguish out-of-memory from time-out</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Imitate and analyze top journals</div><div class="nc-sub">Learn the patterns of layout, fonts, and typography from Nature, and the abstraction and symbolization of conceptual figures reconstructed by professional artists from Nature Reviews</div></div></div>
+  </div>
+  <div class="takeaway">Excellent visualization begins with imitation.</div>
+</div>
+
+<!-- ============================================================
+     Act 6: Daily habit
+     ============================================================ -->
+
+<div class="part-head" id="part6">
+  <div class="part-num">Act 6</div>
+  <div class="part-main">
+    <div class="part-title">The panel collection</div>
+    <div class="part-en">Daily habit — 15–30 minutes</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Make a panel every day, 15–30 minutes</h2>
+  <p>The skill of making figures is not only for writing time. When experimental data come out, shape them that same day into a <b>publication-quality panel</b> and record it in the Research Log. Every day, 15–30 minutes.</p>
+  <p style="margin-top:8px;">Repeated daily, figure-making becomes templated, and you can finish it in the little time before going home. When you write the paper, finished panels are already at hand, and writing ends with just thinking about the composition. The "Draft is an unfolding task" stated in Writing Papers presupposes this habit.</p>
+  <p style="margin-top:8px;">The provisional testing of Figures-B can also start from the daily panels. Once the empty figures are designed, you can see which of the panels at hand can be used. Not making figures from zero, but choosing from the collection.</p>
+  <div class="takeaway">A 15–30 minute habit today, so that you do not panic at writing time.</div>
+</div>
+
+<!-- ============ Final checklist ============ -->
+
+<div class="card">
+  <h2>Final checklist</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Does the figure list carry roles (question / setup / validity / claim)? Are the claim figures one-to-one with the Contributions, with a one-sentence Claim written for each (Figures-A)?</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Does the form of the figure match the form of the claim (hypothesis-first / data-first, commitment)?</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Did you look for where it breaks with minimal data? If it broke, did you go back to Framing-B (Figures-B)?</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Are the figures frozen, with none added since (Figures-C)?</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">Are the panels arranged in the order they appear in the text?</div></div></div>
+    <div class="num-card"><div class="nc-num">6</div><div class="nc-body"><div class="nc-head">Is the font Helvetica/Arial, with sizes unified across the whole paper?</div></div></div>
+    <div class="num-card"><div class="nc-num">7</div><div class="nc-body"><div class="nc-head">Are panel edges, labels, and legends aligned at pixel level?</div></div></div>
+    <div class="num-card"><div class="nc-num">8</div><div class="nc-body"><div class="nc-head">Have you eliminated Excel defaults and bar charts without distributions?</div></div></div>
+    <div class="num-card"><div class="nc-num">9</div><div class="nc-body"><div class="nc-head">Do the panel titles state findings (results)?</div></div></div>
+    <div class="num-card"><div class="nc-num">10</div><div class="nc-body"><div class="nc-head">Does the eye flow in a Z?</div></div></div>
+    <div class="num-card"><div class="nc-num">11</div><div class="nc-body"><div class="nc-head">Did you turn today's data into a publication-quality panel within 30 minutes?</div></div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Takeaways by role</h2>
+  <div class="grid-3" style="margin-top:8px;">
+    <div class="g3-card">
+      <div class="g3-who">B4</div>
+      <div class="g3-action">Write the Claim in one sentence</div>
+      <div class="g3-desc">Pick one figure from your thesis and try writing its Claim in one sentence. If you cannot, that figure has no claim</div>
+    </div>
+    <div class="g3-card">
+      <div class="g3-who">M &amp; D</div>
+      <div class="g3-action">Make the mapping table</div>
+      <div class="g3-desc">Make a table mapping the Figure 0 on your Paper Card to the main figures. Find the boxes and figures that do not correspond</div>
+    </div>
+    <div class="g3-card">
+      <div class="g3-who">Postdocs</div>
+      <div class="g3-action">Look at three points</div>
+      <div class="g3-desc">Look at a junior's figure on just three points: order of appearance, alignment, finding-titles. That alone fixes half of it</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Related links ============ -->
+
+<div class="card">
+  <h2>Related links</h2>
+  <ul>
+    <li><a href="../../../orientation/en/claim-design/">Lab OS 04 Claim Design</a> — Figure 0 and one figure, one claim</li>
+    <li><a href="../../../orientation/en/science-framework/">Lab OS 02 Inquiry Process and the Framework of Science</a> — The form of the claim and the form of the evidence</li>
+    <li><a href="../../../design-for-research/en/">Lab Forum Lectures: Design for Research</a> — Principles of fonts, color, and diagramming</li>
+    <li><a href="../../draft/en/">Lab Forum Lectures: Writing Papers — Draft</a> — Writing the text after the figures are frozen</li>
+    <li><a href="../../../lab-tools/paper-card/en/">Lab Tools: Paper Card</a> — The Figures-A/B/C fields</li>
+  </ul>
+</div>
+
+<footer>
+  &copy; DeSFE Lab (Anna Suzuki Lab), Tohoku University ｜
+  <a href="../../../en/">Portal</a>
+</footer>
+
+</div>
+</body>
+</html>
