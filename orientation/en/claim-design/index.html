@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>04 Claim Design — Framing-B — Lab OS | DeSFE Lab</title>
+<meta name="description" content="Following the Paper Card's Framing-B: design Key Contributions, the Narrative Skeleton, and Figure 0 before the results are in. How the entry and the commitment change the form of claims and evidence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<div class="lang-sw"><span>English</span> ｜ <a href="../../claim-design/">日本語</a></div>
+<div class="breadcrumb"><a href="../../../en/">🏠 Portal</a> › <a href="../">Lab OS</a> › 04</div>
+
+<header>
+  <div class="kicker">LAB OS — PART II DESIGN ｜ CHAPTER 04</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>Claim Design — Framing-B</h1>
+      <div class="subtitle">Claim Design — What you show, how you tell it, how the claims connect. Fix it before the results are in</div>
+    </div>
+  </div>
+</header>
+
+<div class="card">
+  <h2>Once the question is decided, next is "what you will say you showed"</h2>
+  <p>In Framing-A, the question became one sentence. But answering the question alone does not make a paper. A paper is the form in which you say "we showed this" and others can question it. Framing-B is the step that designs that "we showed this" — before the results are in.</p>
+  <p style="margin-top:8px;">Here, too, you do not write results. It is a conditional design: "if the results come out this way, we claim this."</p>
+</div>
+
+<div class="card">
+  <h2>The structure of Framing-B: decide the claims → make a story → draw the structure</h2>
+  <p>The Paper Card's Framing-B consists of three Steps.</p>
+  <ul style="margin-top:8px;">
+    <li><b>Step 1｜Key Contributions</b> — up to three contributions, in the form "We show that…"</li>
+    <li><b>Step 2｜Narrative Skeleton</b> — turn the contributions into a story in seven sentences</li>
+    <li><b>Step 3｜Figure 0 (Story Map)</b> — draw the dependencies among the contributions</li>
+  </ul>
+  <p style="margin-top:8px;">Order matters. Write the story once the contributions are fixed; draw the structure once the story is written. Go the other way, and you end up inflating the contributions to fit the story.</p>
+</div>
+
+<div class="card">
+  <h2>Step 1｜Key Contributions: up to three</h2>
+  <p><b>Four rules.</b></p>
+  <ul style="margin-top:8px;">
+    <li>At most three (two is fine)</li>
+    <li>All in the form "We show that…"</li>
+    <li>No vague praise words (important, significant, novel…)</li>
+    <li>Only content that figures can support</li>
+  </ul>
+  <p style="margin-top:8px;"><b>Why start with "We show that…".</b> "We propose a new method" is not a contribution. Proposing alone says nothing about what changed. A contribution states up front what is shown, in the form "We show that ○○." The method is the means of showing it, not the contribution itself.</p>
+  <p style="margin-top:8px;"><b>Why three.</b> One makes a thin paper; with four or more, readers cannot remember them. If you exceed three, either the claims are not focused or you have two papers' worth. That so many papers have three contributions is not convention; it has reasons in both readers' memory and logical structure (Notion: "Why Do Many Papers Have Three Contributions?").</p>
+  <p style="margin-top:8px;"><b>Strong and weak contributions.</b></p>
+  <p><span class="tag o">✕</span>"We propose a machine-learning framework for reservoir modeling." — A description of the method. Nothing about what was shown</p>
+  <p><span class="tag o">✕</span>"We show that our method achieves significant improvement." — Vague words. No what, no how much</p>
+  <p><span class="tag f">○</span>"We show that permeability distributions can be recovered from tracer responses with less than 20% error in branching multi-path systems." — What, under which conditions, how far — all present</p>
+  <p style="margin-top:8px;"><b>Contribution Check</b>:</p>
+  <ul style="margin-top:6px;">
+    <li>Is each contribution one sentence?</li>
+    <li>Can it be supported by a figure?</li>
+    <li>Has it turned into a description of the method?</li>
+    <li>Are three enough?</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>The entry and the commitment change the form of the claim</h2>
+  <p>When writing Key Contributions, the distinctions of Chapter 02 apply directly.</p>
+  <p style="margin-top:8px;"><b>Entry strategy</b> (<a href="../science-framework/" style="color:var(--primary);font-weight:700;">Chapter 02</a> I)</p>
+  <table class="wk">
+    <tr><th>Entry</th><th>Form of the claim</th><th>Form of the evidence</th></tr>
+    <tr><td>Hypothesis-first (model-driven)</td><td>We show that the proposed law <b>holds for</b> … / <b>breaks down at</b> …</td><td>Agreement between prediction and observation. The boundary of the range of validity</td></tr>
+    <tr><td>Data-first (data-driven)</td><td>We show that the data <b>reveal</b> … / that the index <b>predicts</b> …</td><td>Distribution and unbiasedness of the data. Reproducibility of the regularity found</td></tr>
+  </table>
+  <p style="margin-top:8px;"><b>Kind of inquiry</b> (<a href="../science-framework/" style="color:var(--primary);font-weight:700;">Chapter 02</a> II)</p>
+  <table class="wk">
+    <tr><th>Kind</th><th>Where the claim reaches</th></tr>
+    <tr><td>Passive inquiry (understanding)</td><td>The claim may end at "understanding"</td></tr>
+    <tr><td>Active inquiry (design)</td><td>The claim must reach "usable for design." The evidence is the effect when used for design</td></tr>
+  </table>
+  <p style="margin-top:8px;"><b>Commitment</b> (<a href="../science-framework/" style="color:var(--primary);font-weight:700;">Chapter 02</a> II)</p>
+  <table class="wk">
+    <tr><th>What the claim commits to</th><th>The content of "We show that…"</th></tr>
+    <tr><td>Description</td><td>… was observed</td></tr>
+    <tr><td>Explanation</td><td>… controls … (after ruling out alternative explanations)</td></tr>
+    <tr><td>Prediction</td><td>… predicts … even under unseen conditions</td></tr>
+    <tr><td>Control</td><td>manipulating … changes …</td></tr>
+  </table>
+  <p style="margin-top:8px;">Claims that straddle entries — writing an index found data-first as if it had been generalized hypothesis-first — are what reviewers attack most. If you were data-first in your master's and move to hypothesis-first in your PhD, switch all three: the question (what regularity is there → how far does this law hold), the evidence (unbiased data → prediction matching observation), and the form of the claim (reveal → holds / breaks down). Without the switch, you make hypothesis-first claims on data-first evidence, and the logic does not close.</p>
+  <p style="margin-top:8px;">Likewise, claims that exceed their commitment — writing "controls" when you have shown only correlation — get attacked. Look at what kind of evidence you have, and choose the verb in "We show that…".</p>
+</div>
+
+<div class="card">
+  <h2>Step 2｜Narrative Skeleton: the story in seven sentences</h2>
+  <p>Once the contributions are fixed, write the skeleton of the paper's Introduction in seven sentences. This is a draft of the abstract and the blueprint of the Introduction.</p>
+  <ol style="margin-top:8px;">
+    <li><b>Broad Context</b> (1–2 sentences) — an introduction for general readers. Why this field matters</li>
+    <li><b>Field Context</b> (2–3 sentences) — for researchers in the field. What the field has clarified, and how far (Framing-A's Field Belief)</li>
+    <li><b>Gap</b> (1 sentence) — "What remains unclear is …" (from Framing-A's Comparison Table)</li>
+    <li><b>Core Question</b> (1 sentence) — "This study asks:" (Framing-A's Core Question, verbatim)</li>
+    <li><b>Core Contribution</b> (1 sentence) — "Here we show that …" (<b>make it match Contribution 1</b>)</li>
+    <li><b>Field Meaning</b> (2–3 sentences) — "Compared to previous studies … / This challenges …" (Framing-A's Belief Update)</li>
+    <li><b>Broader Positioning</b> (1–2 sentences) — "This suggests that …"</li>
+  </ol>
+  <p style="margin-top:8px;">The outputs of Framing-A go straight into 2, 3, 4, and 6, and Contribution 1 from Step 1 goes into 5. The Narrative Skeleton, in other words, is the step that stitches Framing-A and Framing-B into a single story. If the sentences do not connect here, something is misaligned between Framing-A and the Contributions.</p>
+  <p style="margin-top:8px;"><b>Make "Here we show" match Contribution 1.</b> The most-read sentence in a paper is the "Here we show that…" at the end of the Introduction. If it says something different from Contribution 1, readers cannot tell which is the paper's claim.</p>
+</div>
+
+<div class="card">
+  <h2>Step 3｜Figure 0: the claim-structure map</h2>
+  <p>If you have two or more contributions, draw how they depend on one another. This is not a workflow diagram. It is a <b>claim-structure map</b>.</p>
+  <p style="margin-top:8px;"><b>How to draw</b>: boxes and arrows for the dependencies. Hand-drawn is fine.</p>
+  <pre style="margin-top:8px;">Serial structure:
+[ C1: foundational claim ]
+    ↓
+[ C2: extension that depends on C1 ]
+    ↓
+[ C3: final implication ]
+
+Parallel structure:
+[ C1 ]   [ C2 ]
+   \       /
+    ↓     ↓
+[ C3: integrating claim ]</pre>
+  <p style="margin-top:8px;"><b>Collapse test</b>: which box, if removed, makes the paper collapse? The box that collapses it is the core claim, and it should be Contribution 1. A box whose removal changes nothing may be a supplement, not a contribution.</p>
+  <p style="margin-top:8px;"><b>Provability check</b>: can each box be shown by a figure? A box that cannot is a wish, not a contribution.</p>
+  <p style="margin-top:8px;">Figure 0 does not appear in the paper. But it becomes the blueprint for deciding "which figures are needed" in Figures-A (the next stage). One box corresponds, roughly, to one main figure.</p>
+</div>
+
+<div class="card">
+  <h2>What counts as evidence — the bridge to Figures-A</h2>
+  <p>When Framing-B is done, you should be able to say "if this figure comes out, the claim stands." For each box of Figure 0, check whether you can name the form of the figure that supports it.</p>
+  <ul style="margin-top:8px;">
+    <li>Hypothesis-first: a figure showing agreement between prediction and observation; a figure showing the boundary of the range of validity</li>
+    <li>Data-first: a figure showing the distribution and unbiasedness of the data; a figure showing the reproducibility of the regularity found</li>
+    <li>Active inquiry: a figure showing the effect when used for design (time, cost, accuracy)</li>
+  </ul>
+  <p style="margin-top:8px;">If you cannot, the claim is not yet designed. Experiments and data collection are done in order to make these figures. <b>Main figures: one figure, one claim</b> — three Contributions means roughly three main figures.</p>
+  <p style="margin-top:8px;">But a paper's figures are not only main figures. Figures that show the object or the apparatus, and figures that show the validity of the method, do not carry claims, but readers need them to evaluate the claims. Only main figures correspond to boxes in Figure 0; the roles and design of the other figures are covered in Lab Forum Lectures "<a href="../../../writing-paper/figures/en/" style="color:var(--primary);font-weight:700;">Writing Papers — Figures</a>".</p>
+</div>
+
+<div class="card">
+  <h2>On the Paper Card</h2>
+  <p>Framing-B is the third tier of the Paper Card. Fill in the Key Contributions (with the Contribution Check), the seven sentences of the Narrative Skeleton, and Figure 0; receive the "Next Judge" at Team Meeting, and you can move on to Figures-A. Once Framing-A and Framing-B are filled in, the paper's claim structure is fixed. <b>Structure before data — No Card → No Paper.</b> → <a href="../../../lab-tools/paper-card/en/" style="color:var(--primary);font-weight:700;">Lab Tools "Paper Card"</a></p>
+</div>
+
+<div class="note">
+  <b>Chapter 04 summary</b>: Framing-B designs "what you will say you showed" before the results ／ Three Steps: Key Contributions → Narrative Skeleton → Figure 0 ／ Contributions are "We show that…", at most three, no vague words, supported by figures ／ The entry and the commitment change the form of claims and evidence ／ "Here we show" matches Contribution 1 ／ Figure 0 is the claim-structure map; the collapse test finds the core
+</div>
+
+<footer>
+  <a href="../question-design/">← 03 Question Design</a> ｜ <a href="../">Contents</a> ｜ <a href="../paper-types/">Next: 05 Paper Types →</a><br>
+  DeSFE Lab — Institute of Fluid Science, Tohoku University
+</footer>
+
+</div>
+</body>
+</html>
