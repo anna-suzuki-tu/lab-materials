@@ -39,6 +39,8 @@ lab-tools/
   paper-card/ (+en/)            ← 【完成】
   quarter-plan/ (+en/)          ← 【完成】
 writing-paper/ (+en/)           ← 【完成】
+  figures/                      ← Writing Papers — Figures｜図で主張を作る【完成・EN未】
+  draft/                        ← Writing Papers — Draft｜図を文章にする【完成・EN未】
 design-for-research/ (+en/)     ← 【完成】
 career-design/ (+en/)           ← 【完成・公開済み】
 ```
