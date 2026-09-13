@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Papers — Figures｜図で主張を作る｜Lab Forum｜DeSFE Lab</title>
+<meta name="description" content="Paper Card の Figures-A/B/C に沿って、図を設計し、仮検証し、確定する。主張の形と図の形の対応、図の作法3レベル、毎日のパネルコレクション。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+/* ---- 幕ヘッダー（ダーク地の上） ---- */
+.part-head {
+  display: flex; align-items: center; gap: 14px;
+  margin: 36px 0 4px; padding: 14px 16px;
+  background: rgba(255,255,255,.05); border-radius: 10px;
+  border-left: 5px solid var(--accent);
+}
+.part-num {
+  font-size: 11px; font-weight: 900; letter-spacing: .15em;
+  color: var(--accent); white-space: nowrap;
+}
+.part-main { flex: 1; }
+.part-title { font-size: 17px; font-weight: 900; color: #fff; line-height: 1.4; }
+.part-en { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+
+/* ---- 二列レイアウト（カード内） ---- */
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;
+}
+@media (max-width: 520px) { .two-col { grid-template-columns: 1fr; } }
+.col-block { background: var(--panel); border-radius: 8px; padding: 12px; }
+.col-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 6px; }
+.col-block ul { padding-left: 1.3em; }
+.col-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- Before / After ---- */
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ba-grid { grid-template-columns: 1fr; } }
+.ba-block { border-radius: 8px; padding: 12px; }
+.ba-before { background: #fdecea; border-left: 4px solid #e57373; }
+.ba-after  { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ba-label { font-size: 11px; font-weight: 900; letter-spacing: .12em; margin-bottom: 6px; }
+.ba-before .ba-label { color: #c62828; }
+.ba-after  .ba-label { color: #2e7d32; }
+.ba-block ul { padding-left: 1.3em; }
+.ba-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- ステップ（横並び） ---- */
+.steps-h { display: grid; gap: 0; margin: 10px 0; counter-reset: step; }
+.step-h {
+  display: flex; align-items: flex-start; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid var(--border); counter-increment: step;
+}
+.step-h:last-child { border-bottom: none; }
+.step-num {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.step-body { flex: 1; }
+.step-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- ステップ（縦タイムライン） ---- */
+.steps-v { margin: 10px 0; }
+.step-v { display: flex; gap: 14px; padding: 8px 0; position: relative; }
+.step-v:not(:last-child)::after {
+  content: ""; position: absolute; left: 11px; top: 32px; bottom: -8px;
+  width: 2px; background: var(--border);
+}
+.step-v-dot {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--accent);
+  color: #fff; font-size: 11px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+}
+.step-v-body { flex: 1; }
+.step-v-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-v-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- 2x2 カードグリッド ---- */
+.grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .grid-2x2 { grid-template-columns: 1fr; } }
+.g-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g-card-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g-card-sub { font-size: 12.5px; color: var(--muted); }
+
+/* ---- テイクアウェイ ---- */
+.takeaway {
+  background: rgba(32,122,145,.08); border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0; padding: 8px 12px; margin-top: 12px;
+  font-size: 13px; font-weight: 700; color: var(--text);
+}
+.takeaway::before { content: "→ "; color: var(--accent); }
+
+/* ---- 目次 ---- */
+.toc-row { display: flex; gap: 10px; align-items: baseline; padding: 8px 4px;
+  font-size: 14px; font-weight: 700; color: var(--text); text-decoration: none;
+  border-bottom: 1px solid var(--border); }
+.toc-row:last-child { border-bottom: none; }
+a.toc-row:hover { color: var(--primary); }
+.toc-n { color: var(--primary); font-weight: 900; flex-shrink: 0; font-size: 12px; }
+.toc-sub { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: auto; }
+
+/* ---- 3カードグリッド ---- */
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
+.g3-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g3-who { font-size: 11px; font-weight: 900; letter-spacing: .1em; color: var(--accent); margin-bottom: 4px; }
+.g3-action { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g3-desc { font-size: 12px; color: var(--muted); }
+
+/* ---- 問題/解決 ---- */
+.ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ps-grid { grid-template-columns: 1fr; } }
+.ps-block { border-radius: 8px; padding: 12px; }
+.ps-risk { background: #fdecea; border-left: 4px solid #e57373; }
+.ps-rule { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ps-label { font-size: 11px; font-weight: 900; letter-spacing: .1em; margin-bottom: 6px; }
+.ps-risk .ps-label { color: #c62828; }
+.ps-rule .ps-label { color: #2e7d32; }
+.ps-block ul { padding-left: 1.3em; }
+.ps-block li { font-size: 13px; color: var(--text); margin-bottom: 3px; }
+
+/* ---- 番号付きカード ---- */
+.num-cards { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
+.num-card { display: flex; gap: 12px; align-items: flex-start; }
+.nc-num {
+  width: 26px; height: 26px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.nc-body { flex: 1; background: var(--panel); border-radius: 8px; padding: 10px 12px; }
+.nc-head { font-size: 13px; font-weight: 900; color: var(--text); }
+.nc-sub { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="breadcrumb"><a href="../../">🏠 教育ポータル</a> › <a href="../">Writing Papers</a> › Figures</div>
+
+<header>
+  <div class="kicker">LAB FORUM — WRITING PAPERS ｜ FIGURES</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>図で主張を作る</h1>
+      <div class="subtitle">Figures — 図が決まるまで、文章は書かない</div>
+    </div>
+  </div>
+</header>
+
+<blockquote class="lead-quote">
+  専門家は本文を読む前に、図を順に眺めて研究の全容を掴む。図だけで「何を問い、どう確かめ、何を見つけたか」が通る論文が、良い論文である。
+</blockquote>
+
+<!-- ============ 概要 ============ -->
+
+<div class="card">
+  <h2>この資料で学べること</h2>
+  <p>Lab Forum Lectures「Writing Papers」は論文投稿の全体像（書く心構え・著者・カバーレター・査読対応）を扱いました。このページはその前段、<b>図を設計し、検証し、確定する</b>工程を扱います。Paper Card の Figures-A → B → C に対応し、<a href="../../orientation/claim-design/" style="color:var(--primary);font-weight:700;">Lab OS 04章</a>（Framing-B）で描いた Figure 0 から、Draft に入る直前までを歩きます。</p>
+  <p style="margin-top:8px;">視覚デザインの原則（フォント・色・整列・図解技法）は Lab Forum Lectures「<a href="../../design-for-research/" style="color:var(--primary);font-weight:700;">Design for Research</a>」に体系化されています。ここでは論文の図に固有の話——図が主張をどう運ぶか——に絞り、デザイン原則は必要な箇所で参照します。</p>
+  <div class="num-cards" style="margin-top:12px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">第1幕 図は主張である</div><div class="nc-sub">自分用から読者用へ</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">第2幕 Figures-A 空図を設計する</div><div class="nc-sub">データの前に図を決める</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">第3幕 Figures-B 仮検証する</div><div class="nc-sub">最小のデータで壊れる場所を探す</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">第4幕 Figures-C 確定する</div><div class="nc-sub">凍結し、削る</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">第5幕 図の作法</div><div class="nc-sub">読者の脳を無駄遣いさせない3つのレベル</div></div></div>
+    <div class="num-card"><div class="nc-num">6</div><div class="nc-body"><div class="nc-head">第6幕 毎日の習慣</div><div class="nc-sub">パネルコレクション</div></div></div>
+  </div>
+  <p style="margin-top:12px;"><b>B4</b>：図が「データの置き場」ではなく「主張」だと知る。<b>M・D</b>：自分の Paper Card の Figure 0 と主図の対応を点検する。<b>ポスドク</b>：後輩の図を「主張が読めるか」で見る目を持つ。</p>
+</div>
+
+<!-- ============================================================
+     第1幕：図は主張である
+     ============================================================ -->
+
+<div class="part-head" id="part1">
+  <div class="part-num">第1幕</div>
+  <div class="part-main">
+    <div class="part-title">図は主張である</div>
+    <div class="part-en">Figures Are Claims — 自分用から読者用へ</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>図は「自分用」には存在しない</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">記録は未来の他者のために残す</p>
+  <p>多くの学生が最初に陥る誤りは、図を「自分のデータを整理するため」に作ることです。科学において、自分用にまとめる情報は存在しません。実験ノートも含めて、記録は未来の他者（半年後の自分を含む）のために残します。図は常に他人のために作ります。</p>
+  <p style="margin-top:8px;">第三者がストレスなく研究の価値を評価できるよう、道を整備する。それが図の仕事です。図の乱れは、研究そのものの誠実さへの疑念を生みます。読者の脳のリソースを解読に使わせないこと——これがテクニカルライティングの本質です。</p>
+  <div class="takeaway">図は自分用のメモではなく、読者のための道整備。</div>
+</div>
+
+<div class="card">
+  <h2>「図から読む」習性をハックする</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">図だけで物語が完結する状態を目指す</p>
+  <p>専門家は本文を精読する前に、図を順に眺めて研究の全容を把握しようとします。優れた論文とは、図を追うだけで「何を問い、どう検証し、何を発見したか」が完結している<b>ビジュアル・ナラティブ</b>です。図を文章の補完と位置づける甘えを捨て、図だけで物語が成立する完全性を追求してください。</p>
+  <p style="margin-top:8px;">だから、図は文章の前に決めます。<a href="../../orientation/claim-design/" style="color:var(--primary);font-weight:700;">Lab OS 04章</a>で述べたとおり、Key Contributions が決まった時点で「この図が出れば主張が立つ」と言えるはずです。言えなければ、主張がまだ設計されていません。</p>
+  <div class="takeaway">図は文章の前に決める。言えなければ、主張がまだ設計されていない。</div>
+</div>
+
+<div class="card">
+  <h2>図と主張の対応：1図＝1主張</h2>
+  <p>Figure 0（主張の構造図）の箱一つが、おおむね主図一枚に対応します。Contributions が3つなら主図も3枚前後。一つの図に主張 A と主張 B を詰め込むと、読者は何を読み取ればいいかわからなくなります。主張 B は次の図へ。</p>
+  <p style="margin-top:8px;">図の集合体が「ミニ論文」の連続として機能するとき、論文全体の物語が結晶します。</p>
+  <div class="takeaway">1図＝1主張。図の集合が、論文の物語そのものになる。</div>
+</div>
+
+<!-- ============================================================
+     第2幕：Figures-A 空図を設計する
+     ============================================================ -->
+
+<div class="part-head" id="part2">
+  <div class="part-num">第2幕</div>
+  <div class="part-main">
+    <div class="part-title">データの前に、図を決める</div>
+    <div class="part-en">Figures-A — 空図の設計</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Figures-A の目的</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">軸・比較・要素だけを描いた空図から始める</p>
+  <p>Figures-A の目的は、各図が「何を主張する図か」を決めることです。データはまだ要りません。軸・比較・要素だけを描いた<b>空図</b>を作ります。</p>
+  <p style="margin-top:8px;"><b>図の一覧（役割つき）</b>：まず論文に載る図を役割（問い／前提／妥当性／主張）と置き場所つきで列挙します。次に <b>Contribution–Figure Mapping</b>：C1 → Fig.4、C2 → Fig.5 のように、主張の図だけを Contribution と対応させます。対応しない Contribution があれば、それは図で支えられない主張です。主張の図のうち対応しないものがあれば、それは主張のない図です。役割の詳しい説明は次の節に。</p>
+  <p style="margin-top:8px;"><b>各図に書くこと</b></p>
+  <ul style="margin-top:6px;">
+    <li>Question：この図は何に答えるか</li>
+    <li>Axes（x / y）：何を何に対して見せるか</li>
+    <li>Comparison dimension：何と何を比べるか（条件、手法、時間、スケール）</li>
+    <li>Panels：パネルが複数なら、それぞれの役割</li>
+    <li>Claim（1 sentence caption）：この図が出れば何が言えるか。1文で</li>
+  </ul>
+  <div class="takeaway">Claim が書けない図は、まだ設計されていない。</div>
+</div>
+
+<div class="card">
+  <h2>図の4つの役割：1図＝1仕事</h2>
+  <p>「1図＝1主張」は主図の話です。論文の図はそれだけではありません。Contribution に合わせて3枚だけ用意して止まる学生がいますが、それは「主張を運ぶ図」と「論文に載る図」を混同しています。図には4つの役割があり、役割ごとに設計の問いが違います。</p>
+  <table class="wk" style="margin-top:8px;">
+    <tr><th>役割</th><th>置き場所</th><th>図の仕事</th><th>設計の問い</th></tr>
+    <tr><td>問いの図</td><td>Introduction または Methods 冒頭（雑誌の慣習に合わせる）</td><td>Gap と Core Question を見せる。対象の全体像、概念モデル</td><td>この図なしで読者が理解できない「問い」は何か</td></tr>
+    <tr><td>前提の図</td><td>Methods</td><td>対象・装置・モデル領域・ワークフローを、再現できる粒度で見せる</td><td>この図なしで再現できない手順は何か</td></tr>
+    <tr><td>妥当性の図</td><td>Methods または Results 冒頭、Appendix</td><td>手法が信頼できることを示す。ベンチマーク、収束、較正</td><td>何が信頼できると示すか（手法についての主張）</td></tr>
+    <tr><td>主張の図</td><td>Results</td><td>Contribution を運ぶ。Figure 0 の箱と1対1</td><td>Claim は何か（1文）</td></tr>
+  </table>
+  <p style="margin-top:8px;">Figure 0 の箱に対応するのは主張の図だけです。Original 論文なら、主張の図が2〜3枚、問い・前提・妥当性の図が2〜3枚、合計5〜8枚が目安です。</p>
+  <p style="margin-top:8px;">Introduction に図を置いてよいかは分野と雑誌で幅があります。地球科学系では対象地域の地図や概念モデルを Fig.1 として Introduction 末か Methods 冒頭に置くのが普通で、工学系や Nature 系では問題設定と手法の全体像を1枚に描いた概念図を Introduction に置く論文が増えています。共通のルールは一つ、<b>Introduction の図は概念図であって、結果を見せない</b>。Framing-A の Step 1 で投稿候補の雑誌の論文を集めるときに、Fig.1 が何を描いていてどの節にあるかを見ておけば、配置は決まります。</p>
+  <p style="margin-top:8px;">妥当性の図は、実は主張を持っています。「この手法は信頼できる」という、手法についての主張です。想定 Reviewer コメントの "Assumptions are unrealistic" と "Comparison is insufficient" は、前提の図と妥当性の図が足りないときに来ます。</p>
+  <div class="takeaway">主張の図だけがFigure 0の箱に対応する。合計5〜8枚が目安。</div>
+</div>
+
+<div class="card">
+  <h2>主張の形と図の形</h2>
+  <p><a href="../../orientation/science-framework/" style="color:var(--primary);font-weight:700;">Lab OS 02章</a>・<a href="../../orientation/claim-design/" style="color:var(--primary);font-weight:700;">04章</a>の区別が、図の形を決めます。</p>
+  <table class="wk" style="margin-top:8px;">
+    <tr><th>主張の形</th><th>証拠として要る図</th></tr>
+    <tr><td>仮説先行：法則は…の範囲で成り立つ</td><td>予測 vs 観測の一致。適用範囲の境界（どこで外れるか）</td></tr>
+    <tr><td>データ先行：データは…を示す</td><td>データの分布と偏りのなさ。見つけた規則の再現性</td></tr>
+    <tr><td>能動的探究：…を設計に使える</td><td>設計に使ったときの効果（時間・コスト・精度の比較）</td></tr>
+    <tr><td>説明にコミット：…が…を支配する</td><td>代替説明を潰す比較（交絡を分離した条件）</td></tr>
+    <tr><td>予測にコミット：…は未知の条件でも当たる</td><td>学習に使っていないデータでの検証</td></tr>
+  </table>
+  <p style="margin-top:8px;">自分の主張の形を見て、図の形を選んでください。データ先行で見つけた規則を、仮説先行の図（予測 vs 観測）で見せようとすると、必ず無理が出ます。</p>
+  <div class="takeaway">主張の形と図の形がずれると、必ず無理が出る。</div>
+</div>
+
+<div class="card">
+  <h2>パネルタイトルは「発見」で書く</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">タイトルを見た瞬間に結果を予見できる状態へ</p>
+  <p>パネルのタイトルは「Analysis of X（X の解析）」ではなく、「X increases Y（X は Y を増加させる）」のように<b>得られた知見</b>で書きます。読者がタイトルを見た瞬間に結果を予見できることが、理解の速度を最大化します。空図の段階では「X は Y を増加させる（と予想）」と仮置きし、Figures-B で確かめます。</p>
+  <p style="margin-top:8px;"><a href="../../design-for-research/" style="color:var(--primary);font-weight:700;">Design for Research</a> の「要点は25文字で最上部に」と同じ原則です。スライドの要点が、論文ではパネルタイトルになります。</p>
+  <div class="takeaway">パネルタイトルは仮置きしてよい。Figures-Bで確かめる。</div>
+</div>
+
+<div class="card">
+  <h2>Next Judge</h2>
+  <p>Team Meeting で確認すること：各 Contribution に図が対応しているか／各図の Claim が1文で言えるか／図の形が主張の形に合っているか。通れば Figures-B へ。</p>
+</div>
+
+<!-- ============================================================
+     第3幕：Figures-B 仮検証する
+     ============================================================ -->
+
+<div class="part-head" id="part3">
+  <div class="part-num">第3幕</div>
+  <div class="part-main">
+    <div class="part-title">最小のデータで、壊れる場所を探す</div>
+    <div class="part-en">Figures-B — 仮検証</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Figures-B の目的</h2>
+  <p>Figures-B の目的は、最小限のデータで「その図が主張を支えられるか」を確認することです。本番データを全部取ってから図を作るのではありません。少量のデータ、粗い計算、既存データの再利用で空図を埋め、主張が壊れる場所を探します。</p>
+  <p style="margin-top:8px;"><a href="../../orientation/science-framework/" style="color:var(--primary);font-weight:700;">Lab OS 02章</a>の反証可能性を、図の単位で実行する工程です。「証明しに行く」のではなく、「壊れる場所を見に行く」。壊れなければ主張は立ち、壊れれば主張を修正するか捨てる。どちらでも前進です。</p>
+  <p style="margin-top:8px;"><b>確認すること</b></p>
+  <ul style="margin-top:6px;">
+    <li>図を作るための手法とデータの目星がついているか</li>
+    <li>図が Contribution を支えているか（仮の Claim が書けるか）</li>
+    <li>比較軸が破綻していないか（同じ物理量・同じ条件で比べているか）</li>
+    <li>図が増殖していないか</li>
+  </ul>
+  <div class="takeaway">壊れなければ主張が立ち、壊れれば前進。どちらでも前進。</div>
+</div>
+
+<div class="card">
+  <h2>図の増殖を止める</h2>
+  <p>仮検証をしていると、面白い結果が出て「この図も入れたい」となります。これが図の増殖です。増えた図は Contribution に対応していないことが多く、論文の主張をぼやけさせます。面白い結果は Research Log に残し、この論文の Figure 0 に箱がなければ入れない。次の論文の Idea-0 になります。</p>
+  <div class="takeaway">面白い結果は次の論文の種。この論文には入れない。</div>
+</div>
+
+<div class="card">
+  <h2>Next Judge</h2>
+  <p>Team Meeting で判断すること：各図について「主張を保つ／修正する／捨てる」。修正なら Framing-B に戻って Contribution を書き直す。ここで戻ることは正常です。図が主張を支えないまま Draft に進むと、Discussion で辻褄を合わせることになり、査読で崩れます。</p>
+</div>
+
+<!-- ============================================================
+     第4幕：Figures-C 確定する
+     ============================================================ -->
+
+<div class="part-head" id="part4">
+  <div class="part-num">第4幕</div>
+  <div class="part-main">
+    <div class="part-title">凍結し、削る</div>
+    <div class="part-en">Figures-C — Freeze &amp; Reduce</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Freeze &amp; Reduce</h2>
+  <p>Figures-C の目的は、図を<b>最小枚数・最大主張力</b>で凍結することです。</p>
+  <ul style="margin-top:8px;">
+    <li>本番データで各図を確定する</li>
+    <li>各図が何を示すか、1文で言える</li>
+    <li>弱い図・不要な図を削る</li>
+    <li>追加作業を「最小必要リスト」に限定する</li>
+  </ul>
+  <p style="margin-top:8px;"><b>Frozen Figures</b>（確定した図の番号・主張・データ元）、<b>Figures to Remove</b>（削る図とその理由）、<b>Minimum Required Additional Work</b>（残る作業）の3つを Paper Card に書きます。</p>
+  <div class="takeaway">最小枚数・最大主張力で凍結する。</div>
+</div>
+
+<div class="card">
+  <h2>以後、図は増やさない</h2>
+  <p>凍結の意味は、これ以降の作業をすべて「図を文章にする」ことに集中させることです。Draft を書いている途中で「やっぱりこの図も」と思ったら、それは Figures-B に戻る判断であり、Draft の中で図を足す判断ではありません。図が動くと、Results も Discussion も動きます。</p>
+  <div class="takeaway">図が動くと、Results も Discussion も動く。</div>
+</div>
+
+<div class="card">
+  <h2>Next Judge</h2>
+  <p>確定した主図が Contributions と1対1で対応しているか。通れば Draft へ（Lab Forum Lectures「<a href="../draft/" style="color:var(--primary);font-weight:700;">Writing Papers — Draft</a>」）。</p>
+</div>
+
+<!-- ============================================================
+     第5幕：図の作法
+     ============================================================ -->
+
+<div class="part-head" id="part5">
+  <div class="part-num">第5幕</div>
+  <div class="part-main">
+    <div class="part-title">読者の脳を無駄遣いさせない</div>
+    <div class="part-en">図の作法 — 3つのレベル</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>図の作法：3つのレベル</h2>
+  <p>図の設計が決まったら、図そのものの質を上げます。プロの図表作成には3つの段階があります。レベル1は絶対に守るルール、レベル2は情報の流れの設計、レベル3は演出です。</p>
+</div>
+
+<div class="card">
+  <h2>レベル1｜必ず守る</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">登場順の厳守（最優先）</div><div class="nc-sub">図とパネルは、本文で説明される順に配置する。図2aの次に2cを説明して2bを飛ばす構成は許されない。付録図であっても、本文で一度も参照されない図があってはならない</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">ピクセル単位の整列</div><div class="nc-sub">パネルの端、テキストの開始位置、軸ラベルの高さが1ピクセルずれていると、読者は無意識に違和感を抱き、著者への信頼を失う</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">フォントとサイズの統一</div><div class="nc-sub">欧文は Helvetica か Arial のサンセリフ、和文はゴシック。同一図内、論文全体でサイズを統一する</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">図内で完結させる（self-explanatory）</div><div class="nc-sub">「黒はデータA、白はデータB」をキャプションに逃がすと、視線が図と文の間を往復する。凡例は図内に埋め込む</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">統計の透明性と脱 Excel デフォルト</div><div class="nc-sub">平均値だけの棒グラフはデータの分布を隠す。バイオリンプロットやジッタープロットで個々の点を示す。matplotlib、ggplot2、Prism を標準にする</div></div></div>
+  </div>
+  <div class="takeaway">Excelの初期設定（影・罫線・配色）は「不誠実」の象徴。</div>
+</div>
+
+<div class="card">
+  <h2>レベル2｜情報の流れを設計する</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">1トピック・1フィギュア</div><div class="nc-sub">第1幕で述べたとおり</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">視線誘導</div><div class="nc-sub">読者の視線は左から右、上から下へZ字に動く。パネルa, b, cをこの流れに沿って配置する</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">発見重視のサブタイトル</div><div class="nc-sub">第2幕で述べたとおり</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">色のユニバーサルデザイン</div><div class="nc-sub">赤緑の回避、色だけで区別しない、線種の併用。詳細は<a href="../../design-for-research/" style="color:var(--primary);font-weight:700;">Design for Research</a>の Part 3</div></div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>レベル3｜演出</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">科学的正当性と遊び心の共存</div><div class="nc-sub">データの欠損や計算不能を「N.D.」と一括りにするのは不誠実。メモリー不足か時間切れかを区別する独自のアイコンを用意する</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">トップジャーナルの模倣と分析</div><div class="nc-sub">Nature 誌からレイアウト・フォント・タイポグラフィの型を、Nature Reviews 誌からプロのアーティストが再構成した概念図の抽象化と象徴化を学ぶ</div></div></div>
+  </div>
+  <div class="takeaway">優れた可視化は模倣から始まる。</div>
+</div>
+
+<!-- ============================================================
+     第6幕：毎日の習慣
+     ============================================================ -->
+
+<div class="part-head" id="part6">
+  <div class="part-num">第6幕</div>
+  <div class="part-main">
+    <div class="part-title">パネルコレクション</div>
+    <div class="part-en">毎日の習慣 — 15〜30分</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>毎日15〜30分、パネルを作る</h2>
+  <p>図を作るスキルは、執筆時だけのものではありません。実験データが出たら、その日のうちに<b>論文掲載クオリティのパネル</b>として整形し、Research Log に記録します。毎日15〜30分。</p>
+  <p style="margin-top:8px;">毎日繰り返すと図作成がテンプレート化され、帰宅前のわずかな時間で完了できるようになります。論文を書くときには完成済みのパネルが手元に揃っていて、構成を考えるだけで執筆が終わる状態になります。Writing Papers で述べた「Draft は展開作業」は、この習慣が前提です。</p>
+  <p style="margin-top:8px;">Figures-B の仮検証も、日々のパネルから始められます。空図を設計した時点で、手元のパネルのどれが使えるかが見える。ゼロから図を作るのではなく、コレクションから選ぶ。</p>
+  <div class="takeaway">執筆時に慌てないための、今日15〜30分の習慣。</div>
+</div>
+
+<!-- ============ 最終チェックリスト ============ -->
+
+<div class="card">
+  <h2>最終チェックリスト</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">図の一覧に役割（問い／前提／妥当性／主張）がついているか。主張の図は Contribution と1対1で、Claim が1文で書けているか（Figures-A）</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">図の形が主張の形（仮説先行／データ先行、コミットメント）に合っているか</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">最小のデータで壊れる場所を探したか。壊れたら Framing-B に戻ったか（Figures-B）</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">図は凍結され、以後増やしていないか（Figures-C）</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">パネルは本文の登場順に並んでいるか</div></div></div>
+    <div class="num-card"><div class="nc-num">6</div><div class="nc-body"><div class="nc-head">フォントは Helvetica/Arial、サイズは論文全体で統一されているか</div></div></div>
+    <div class="num-card"><div class="nc-num">7</div><div class="nc-body"><div class="nc-head">パネル端・ラベル・凡例がピクセル単位で整列しているか</div></div></div>
+    <div class="num-card"><div class="nc-num">8</div><div class="nc-body"><div class="nc-head">Excel デフォルトと分布のない棒グラフを排除したか</div></div></div>
+    <div class="num-card"><div class="nc-num">9</div><div class="nc-body"><div class="nc-head">パネルタイトルは発見（結果）を述べているか</div></div></div>
+    <div class="num-card"><div class="nc-num">10</div><div class="nc-body"><div class="nc-head">視線は Z 字に流れるか</div></div></div>
+    <div class="num-card"><div class="nc-num">11</div><div class="nc-body"><div class="nc-head">今日取ったデータを30分以内に論文クオリティのパネルにしたか</div></div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>立場別・今日の持ち帰り</h2>
+  <div class="grid-3" style="margin-top:8px;">
+    <div class="g3-card">
+      <div class="g3-who">B4</div>
+      <div class="g3-action">Claim を1文で書く</div>
+      <div class="g3-desc">卒論の図を1枚選び、Claim を1文で書いてみる。書けなければ、その図は主張を持っていない</div>
+    </div>
+    <div class="g3-card">
+      <div class="g3-who">M・D</div>
+      <div class="g3-action">対応表を作る</div>
+      <div class="g3-desc">Paper Card の Figure 0 と主図の対応表を作る。対応しない箱と図を洗い出す</div>
+    </div>
+    <div class="g3-card">
+      <div class="g3-who">ポスドク</div>
+      <div class="g3-action">3点で見る</div>
+      <div class="g3-desc">後輩の図を「登場順・整列・発見タイトル」の3点だけで見る。それだけで半分は直る</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 関連リンク ============ -->
+
+<div class="card">
+  <h2>関連リンク</h2>
+  <ul>
+    <li><a href="../../orientation/claim-design/">Lab OS 04 主張の設計</a> — Figure 0 と1図1主張</li>
+    <li><a href="../../orientation/science-framework/">Lab OS 02 探究のプロセスと科学の枠組み</a> — 主張の形と証拠の形</li>
+    <li><a href="../../design-for-research/">Lab Forum Lectures: Design for Research</a> — フォント・色・図解の原則</li>
+    <li><a href="../draft/">Lab Forum Lectures: Writing Papers — Draft</a> — 図が確定してからの文章化</li>
+    <li><a href="../../lab-tools/paper-card/">Lab Tools: Paper Card</a> — Figures-A/B/C の記入欄</li>
+  </ul>
+</div>
+
+<footer>
+  &copy; DeSFE Lab (Anna Suzuki Lab), Tohoku University ｜
+  <a href="../../">教育ポータル</a>
+</footer>
+
+</div>
+</body>
+</html>
