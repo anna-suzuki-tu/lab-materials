@@ -14,7 +14,7 @@
 
 ```
 index.html / en/                ← ポータル表紙【完成】
-orientation/                    ← Lab OS 導入＋3部10章＋付録1本【完成・JAのみ。EN未対応（旧6章構成のまま）】
+orientation/                    ← Lab OS 導入＋3部10章＋付録2本（03-A・07-A）【完成・JAのみ。EN未対応（旧6章構成のまま）】
 
   第Ⅰ部 探究の原理｜Principles
   what-is-research/ (+en/)      ← 01 研究とは何か【完成】
@@ -29,6 +29,7 @@ orientation/                    ← Lab OS 導入＋3部10章＋付録1本【完
 
   第Ⅲ部 研究室の運用｜Practice
   mission/                       ← 07 鈴木（杏）研は何を研究するか【完成・EN未】
+    knowledge-map/                ← 付録07-A 学びの地図｜Knowledge Map【完成・EN未】
   grade-goals/ (+en/)            ← 08 学年別のゴールと計画（旧05）【完成】
   five-layers/ (+en/)            ← 09 研究活動の5階層構造（旧04）【完成】
   habits-culture/ (+en/)         ← 10 必須習慣と文化（旧06）【完成】
