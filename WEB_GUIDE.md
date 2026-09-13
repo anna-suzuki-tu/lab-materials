@@ -28,9 +28,9 @@ orientation/                    ← Lab OS 導入＋3部10章＋付録1本【完
   responsibility/                ← 06 研究の責任【完成・EN未】
 
   第Ⅲ部 研究室の運用｜Practice
-  mission/                       ← 07 私たちは何を、なぜ研究するか【完成・EN未】
-  five-layers/ (+en/)            ← 08 研究活動の5階層構造（旧04）【完成】
-  grade-goals/ (+en/)            ← 09 学年別のゴールと計画（旧05）【完成】
+  mission/                       ← 07 鈴木（杏）研は何を研究するか【完成・EN未】
+  grade-goals/ (+en/)            ← 08 学年別のゴールと計画（旧05）【完成】
+  five-layers/ (+en/)            ← 09 研究活動の5階層構造（旧04）【完成】
   habits-culture/ (+en/)         ← 10 必須習慣と文化（旧06）【完成】
 
   research-as-design/           ← 旧02。question-design/ への meta refresh リダイレクトのみ残置（外部リンクを切らないため）
