@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>付録07-A 学びの地図｜Knowledge Map — Lab OS｜DeSFE Lab</title>
+<meta name="description" content="研究を進めるために何を知っていればよいか。両チーム共通の土台、Team Rock、Team Society それぞれの学問を、Paper Card のどこで効くか・学部授業・自習用の1冊・いつまでに、で整理。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<div class="breadcrumb"><a href="../../">🏠 教育ポータル</a> › <a href="../">Lab OS</a> › 07-A</div>
+
+<header>
+  <div class="kicker">LAB OS — PART Ⅲ 研究室の運用 ｜ APPENDIX 07-A</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>学びの地図｜Knowledge Map</h1>
+      <div class="subtitle">Knowledge Map — 研究を進めるために、何を知っていればよいか。いつまでに、何のために</div>
+    </div>
+  </div>
+</header>
+
+<blockquote class="lead-quote">
+  Paper Card を書き始めると、書けない箇所が出てきます。Field Belief が書けないのは分野の基礎がないから。推定型の問いが立たないのは逆問題の考え方がないから。この地図は、書けなくなったときに戻ってくる場所です。
+</blockquote>
+
+<div class="card">
+  <h2>使い方</h2>
+  <ul>
+    <li>各項目に「Paper Card のどこで効くか」を書いてあります。今つまずいている段階から逆引きしてください</li>
+    <li>「学部授業」は機械知能・航空工学科のカリキュラムに対応させています。取り逃した科目は自習で埋めます</li>
+    <li>「いつまでに」は目安です。B4 で全部を身につける必要はありません。B4 は土台と自分のチームの基礎、M で専門、D で横断</li>
+    <li>教科書は各1冊。迷ったらまずこれ、という意味で、他を排除しません</li>
+  </ul>
+  <p style="margin-top:8px;">（★ ＝ 授業名・教科書名を確定中の欄。順次埋めます）</p>
+</div>
+
+<div class="card">
+  <h2>Ⅰ 両チーム共通の土台</h2>
+  <table class="wk">
+    <tr><th>学問</th><th>何のために（Paper Card のどこで効くか）</th><th>学部授業</th><th>自習用の1冊</th><th>いつまでに</th></tr>
+    <tr><td>探究の理論</td><td>研究を設計として進めるため。<a href="../what-is-research/" style="color:var(--primary);font-weight:700;">Lab OS 01</a>–<a href="../science-framework/" style="color:var(--primary);font-weight:700;">02</a> そのもの</td><td>—</td><td><a href="../what-is-research/" style="color:var(--primary);font-weight:700;">Lab OS 01</a>–<a href="../responsibility/" style="color:var(--primary);font-weight:700;">06</a> ／ 鈴木・山口・柳澤（2025）デザイン学研究</td><td>B4 前期</td></tr>
+    <tr><td>逆問題とベイズ推定</td><td>推定型の問いの識別性と不確実性（<a href="../question-archetypes/" style="color:var(--primary);font-weight:700;">03-A</a>）。妥当性の図（Figures）。「ズレとわからなさ」の定量化</td><td>★（数値解析／確率統計）</td><td>Tarantola, <i>Inverse Problem Theory</i> ／ 入門なら ★</td><td>B4 後期〜M1</td></tr>
+    <tr><td>統計</td><td>帰納（データ先行）の証拠の形。偏りのなさ、再現性、信頼区間（Results）</td><td>★（確率統計）</td><td>★</td><td>B4</td></tr>
+    <tr><td>プログラミング</td><td>すべて。Python と Git は研究室の共通言語</td><td>★（プログラミング演習）</td><td>Notion「コードの書き方（Python）」「GitHub の使い方」</td><td>B4 前期</td></tr>
+    <tr><td>科学英語</td><td>Framing-A の Core Question から Draft まで。読む量が書く量を決める</td><td>★</td><td><a href="../../writing-paper/" style="color:var(--primary);font-weight:700;">Writing Papers 講義</a> ／ Nature Masterclasses</td><td>継続</td></tr>
+    <tr><td>科学哲学の基礎</td><td>反証可能性、モデルの仮定、相関と因果（<a href="../science-framework/" style="color:var(--primary);font-weight:700;">Lab OS 02</a> Ⅲ）</td><td>—</td><td><a href="../science-framework/" style="color:var(--primary);font-weight:700;">02章</a>の参考文献から1冊（Popper か Pearl）</td><td>M</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Ⅱ Team Rock｜地下の探究</h2>
+  <table class="wk">
+    <tr><th>学問</th><th>何のために</th><th>学部授業</th><th>自習用の1冊</th><th>いつまでに</th></tr>
+    <tr><td>流体力学・伝熱・熱力学</td><td>地下の熱・流体流動を記述する法則。順問題の f</td><td>★（流体力学／伝熱工学／熱力学）</td><td>★</td><td>B4 前期（授業で）</td></tr>
+    <tr><td>貯留層工学</td><td>地熱系の Field Belief。何が既知で、何が前提か（Framing-A Step 1）</td><td>—</td><td>Grant &amp; Bixley, <i>Geothermal Reservoir Engineering</i></td><td>B4 後期</td></tr>
+    <tr><td>数値シミュレーション</td><td>仮説先行のテスト（演繹）。予測 vs 観測の図</td><td>★（数値解析）</td><td>★（TOUGH 系のマニュアルか、有限差分・有限要素の入門）</td><td>M1</td></tr>
+    <tr><td>岩石物性・地質・き裂</td><td>対象の全体像（問いの図）。き裂ネットワークの物理</td><td>★（材料力学／地球科学系の選択科目）</td><td>★</td><td>M1</td></tr>
+    <tr><td>機械学習</td><td>データ先行の入口。サロゲート、逆解析の高速化。分布シフト（<a href="../question-archetypes/" style="color:var(--primary);font-weight:700;">03-A</a> E/D）</td><td>★</td><td>★</td><td>M1〜M2</td></tr>
+    <tr><td>地熱開発の実務</td><td>掘削・坑井試験・発電。社会との接点（<a href="../mission/" style="color:var(--primary);font-weight:700;">07章</a>の「なぜ地熱と社会か」）</td><td>—</td><td>★（日本地熱学会の資料、NEDO 報告書）</td><td>M</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Ⅲ Team Society｜社会の探究</h2>
+  <table class="wk">
+    <tr><th>学問</th><th>何のために</th><th>学部授業</th><th>自習用の1冊</th><th>いつまでに</th></tr>
+    <tr><td>自由エネルギー原理・能動的推論</td><td>受動的探究と能動的探究の数理（<a href="../science-framework/" style="color:var(--primary);font-weight:700;">02章</a>）。フレームの定式化（<a href="../mission/" style="color:var(--primary);font-weight:700;">07章</a>）</td><td>—</td><td>乾・阪口『自由エネルギー原理入門』 ／ Friston (2006)</td><td>B4 後期</td></tr>
+    <tr><td>認知科学・感性工学</td><td>ワクワクの数理（柳澤）。感情と情報獲得の関係</td><td>★</td><td>柳澤（2022, 2023）設計工学 ／ Yanagisawa (2021) <i>Front. Comput. Neurosci.</i></td><td>M1</td></tr>
+    <tr><td>デザイン研究</td><td>フレーム、リフレーミング、解決と探索のサイクル（<a href="../science-framework/" style="color:var(--primary);font-weight:700;">02章</a>の境界）</td><td>—</td><td>Schön &amp; Rein, <i>Frame Reflection</i> ／ Dorst (2011) ／ 山口・門内（2014）</td><td>M1</td></tr>
+    <tr><td>社会調査法・質的研究</td><td>インタビュー設計、コーディング、倫理審査。Team Society の Methods</td><td>★</td><td>★</td><td>M1（データ取得前）</td></tr>
+    <tr><td>ネットワーク科学・可視化</td><td>意見とフレームの構造化（Frame Map）。UMAP、グラフ分析</td><td>★</td><td>★</td><td>M1〜M2</td></tr>
+    <tr><td>合意形成・エネルギー政策</td><td>地域共創の Field Belief。何が既に試され、何が失敗したか</td><td>—</td><td>諏訪ほか（2018）『コミュニティと共生する地熱利用』</td><td>M</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Ⅳ 横断：D で身につけるもの</h2>
+  <ul>
+    <li><b>もう一方のチームの土台</b>：Team Rock の学生は自由エネルギー原理を、Team Society の学生は逆問題を。両チームが「見えない構造を限られた観測から推定する」という同じ問いの形を共有していることを、数理のレベルで理解する</li>
+    <li><b>分野横断の問いの型</b>（<a href="../question-archetypes/" style="color:var(--primary);font-weight:700;">03-A</a>）を、自分の分野の外の論文で見つける練習</li>
+    <li><b>研究資金と倫理</b>：Research Funding &amp; Budget 講義（準備中）</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>学年別の目安</h2>
+  <table class="wk">
+    <tr><th></th><th>B4</th><th>M1</th><th>M2</th><th>D</th></tr>
+    <tr><td>共通の土台</td><td>探究の理論、統計、Python/Git</td><td>逆問題とベイズ</td><td>科学哲学</td><td>—</td></tr>
+    <tr><td>自分のチーム</td><td>学部授業の基礎＋分野の1冊</td><td>専門2〜3項目</td><td>残り</td><td>もう一方のチーム</td></tr>
+    <tr><td>Paper Card との関係（<a href="../grade-goals/" style="color:var(--primary);font-weight:700;">08章</a>）</td><td>1周を回す：Idea → Framing → Figures → 卒論 Draft を、支えられながら経験しきる</td><td>Framing を自力で設計する（M1 中盤に Axis fixed）</td><td>Original 1本を完走する</td><td>軸を定義し、Review と複数の Original を束ねる</td></tr>
+  </table>
+  <p style="margin-top:8px;">「いつまでに」を過ぎても構いません。必要になったときが学びどきです。ただし、Paper Card のどこで止まっているかを見て、この表のどこに戻ればいいかは言えるようにしてください。</p>
+</div>
+
+<footer>
+  <a href="../mission/">← 07 鈴木（杏）研は何を研究するか</a> ｜ <a href="../">目次</a><br>
+  DeSFE Lab — Institute of Fluid Science, Tohoku University
+</footer>
+
+</div>
+</body>
+</html>
