@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>02 Inquiry Process and the Framework of Science — Lab OS | DeSFE Lab</title>
+<meta name="description" content="How inquiry proceeds, where it heads, and what it commits to. Forward and inverse problems, Peirce's three stages, hypothesis-first vs data-first, understanding and design (passive and active inquiry), what a claim commits to, and the four conditions a claim must withstand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<div class="lang-sw"><span>English</span> ｜ <a href="../../science-framework/">日本語</a></div>
+<div class="breadcrumb"><a href="../../../en/">🏠 Portal</a> › <a href="../">Lab OS</a> › 02</div>
+
+<header>
+  <div class="kicker">LAB OS — PART I PRINCIPLES ｜ CHAPTER 02</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>Inquiry Process and the Framework of Science</h1>
+      <div class="subtitle">Inquiry Process &amp; the Framework of Science — Be able to say how your research proceeds, where it heads, and what it commits to</div>
+    </div>
+  </div>
+</header>
+
+<div class="card">
+  <h2>Introduction — Same inquiry cycle, more than one way to place a hypothesis</h2>
+  <p>In <a href="../what-is-research/" style="color:var(--primary);font-weight:700;">Chapter 01</a> we said that research is a cycle from doubt to belief. But "placing a hypothesis" can be done in more than one way. What you take as the hypothesis, where you enter, what counts as evidence, where the belief lands — unless these are settled, you cannot write your question in one sentence in the next chapter.</p>
+  <p style="margin-top:8px;">This chapter has three parts. <b>How inquiry proceeds</b> (the shape of the problem, the stages of reasoning, the entry strategy), <b>where inquiry heads</b> (understanding and design, what a claim commits to), and <b>the conditions a claim must withstand</b>. All of these are distinctions long discussed in the philosophy of science and applied mathematics; sources are listed at the end of the chapter. What we do here is lay them out on a single inquiry cycle.</p>
+</div>
+
+<h2>I How inquiry proceeds</h2>
+
+<div class="card">
+  <h2>Forward and inverse problems</h2>
+  <p>When cause x and law f are known and you seek result y, that is a forward problem. "What color do blue and yellow make?" — the procedure gives the answer. Estimating cause x from result y is an inverse problem. "What colors make this green?" has no guaranteed answer. Several combinations make the same green (non-uniqueness), and a slight observation error can change the estimate greatly (instability).</p>
+  <p style="margin-top:8px;">At university and in society, inverse problems multiply. Estimating flow-path structure from the subsurface temperature distribution, estimating the distribution of values from what people say, estimating your own aptitude from how your career choices turn out — all of these are inverse problems. Inverse problems are not solved by procedure; they are solved by inquiry. Place a hypothesis θ, predict y as a forward problem, compare with observation, and update θ. The cycle in <a href="../what-is-research/" style="color:var(--primary);font-weight:700;">Chapter 01</a> is the loop for solving inverse problems.</p>
+  <p style="margin-top:8px;">Learning to solve forward problems and learning to pose inverse problems are different abilities. The former is in textbooks. The latter is what the rest of this chapter is about.</p>
+</div>
+
+<div class="card">
+  <h2>The three stages of inquiry: abduction, deduction, induction</h2>
+  <p>On how to place and test a hypothesis, Peirce distinguished three kinds of reasoning and, late in life, arranged them as the three <b>stages</b> of scientific research.</p>
+  <p style="margin-top:8px;"><b>Abduction (hypothesis formation)</b>: the reasoning that, faced with a surprising observation, comes up with an explanation — "if θ, this observation would be a matter of course." Peirce's formulation: The surprising fact C is observed. If A were true, C would be a matter of course. Hence there is reason to suspect that A is true. Of the three, it is the most fruitful and the most uncertain. Abduction alone produces new content.</p>
+  <p style="margin-top:8px;"><b>Deduction (derivation of consequences)</b>: the reasoning that traces what must necessarily be observed if the hypothesis holds. In geothermal development, this is the stage where you set a subsurface model θ, run the numerical simulation, and obtain a prediction y<sup>model</sup>. Deduction is certain, but it produces nothing new.</p>
+  <p style="margin-top:8px;"><b>Induction (testing and generalization)</b>: the reasoning that compares prediction with observation and judges whether to keep or discard the hypothesis, and how far it generalizes. This is the stage where you look at the difference between prediction y<sup>model</sup> and observation y<sup>obs</sup> and evaluate the model's validity.</p>
+  <p style="margin-top:8px;">Laid over the Inquiry Cycle of <a href="../what-is-research/" style="color:var(--primary);font-weight:700;">Chapter 01</a>: Misalignment → Question → Hypothesis is abduction, Hypothesis → prediction is deduction, Test → Belief is induction. Every inquiry passes through all three stages. People speak of "deductive research" and "inductive research," but in Peirce's sense there is no inquiry that is only one of them.</p>
+</div>
+
+<div class="card">
+  <h2>Entry strategy: hypothesis-first or data-first</h2>
+  <p>All inquiry passes through the three stages, but <b>where you enter</b> differs from study to study. This is the distinction usually meant by the everyday words "deductive" and "inductive."</p>
+  <p style="margin-top:8px;"><b>Hypothesis-first (model-driven)</b>: propose a generalized law y = f(x) first, feed in concrete x, and show the law's validity if y comes out. The question is "how far does this law hold?" The evidence is agreement between prediction and observation. The weakness: if the assumptions in f are wrong, no amount of x will help. In the philosophy of science this is the hypothetico-deductive method, the form Popper defended as the method of science.</p>
+  <p style="margin-top:8px;"><b>Data-first (data-driven)</b>: find a general y = f(x) from a body of concrete x, y data. The question is "what law can be read from these data?" The evidence is the absence of bias in the data and the reproducibility of the f you found. The weakness: if the way x, y were collected is biased, you cannot derive a general f — which is why unbiased data collection is desirable. The statistician Box criticized statistics for leaning toward testing and neglecting the problem of discovery — "where do plausible hypotheses come from?" Data-first sits exactly on that discovery side.</p>
+  <p style="margin-top:8px;">Neither is the right one. But <b>when the entry changes, the question, the evidence, and the form of the claim all change</b>. Someone who did statistical (data-first) research and moves to proposing laws (hypothesis-first) reverses their stance. The question goes from "what regularity is there?" to "how far does this law hold?"; the evidence from "unbiased data" to "prediction matching observation"; the claim from "the data show …" to "the law holds within …". Write without noticing the switch, and you end up making hypothesis-first claims on data-first evidence — the logic does not close. This continues in <a href="../claim-design/" style="color:var(--primary);font-weight:700;">Chapter 04</a>.</p>
+</div>
+
+<h2>II Where inquiry heads</h2>
+
+<div class="card">
+  <h2>Understanding and design: passive and active inquiry</h2>
+  <p>There are kinds of inquiry: inquiry that runs <b>from result to cause</b>, and inquiry that runs <b>from goal to means</b>.</p>
+  <p style="margin-top:8px;">In <i>The Sciences of the Artificial</i>, Simon distinguished the natural sciences, which deal with "how things are," from design (the sciences of the artificial), which deals with "how things ought to be." The belief of the former lands in "understanding nature"; the belief of the latter lands in "design and planning."</p>
+  <p style="margin-top:8px;">Using geothermal development as the example, Suzuki and colleagues showed that these two can be written in the same form of inquiry (Suzuki, Yamaguchi &amp; Yanagisawa 2025). Inquiry that estimates the subsurface state θ from observation y<sup>obs</sup> to understand the natural state is <b>passive inquiry</b>; inquiry that sets a goal y<sup>goal</sup> and selects the development conditions θ that achieve it is <b>active inquiry</b>. Both pass through Peirce's three stages, and both can be written as Bayesian updating. The only difference is the direction of the hypothesis: "a cause for a result" or "a means for a goal."</p>
+  <p style="margin-top:8px;">Seen from cognitive science, the two are two faces of one principle. In the free energy principle (Friston 2006), the brain holds a generative model of the world and minimizes the gap between prediction and observation (free energy). Perception updates belief to reduce the gap (corresponding to passive inquiry). Action selects, among the policies available, the one that minimizes expected free energy (corresponding to active inquiry). Understanding and design are not separate activities but the perceptual side and the action side of one principle.</p>
+  <p style="margin-top:8px;">What matters here is that <b>active inquiry rests on passive inquiry</b>. First understand the subsurface flow (passive), then use it to design the development (active). A scientific question lands in belief through passive inquiry. An engineering question layers active inquiry on top of the belief from passive inquiry. Engineering does not skip understanding; design rests on understanding. And the belief from passive inquiry always retains the "unknowability" discussed below. Passing it on to active inquiry with that unknowability intact — that is what design is.</p>
+  <p style="margin-top:8px;">One boundary to draw. Dorst (2011) divided abduction in design into two kinds: reasoning where both value and method are known and only "what to make" is sought, and reasoning where only value is known and both method and object are sought. Maekawa (2020) called the former the solution cycle and the latter the exploration cycle. The active inquiry in this chapter is the solution cycle: given goal y<sup>goal</sup> and premises, search for the best means. The exploration cycle — doubting and remaking the goal itself, the premises themselves, the frame in which the problem is grasped — lies outside this chapter. It is the lab's own research theme, taken up again in <a href="../mission/" style="color:var(--primary);font-weight:700;">Chapter 07</a>.</p>
+</div>
+
+<div class="card">
+  <h2>What a claim commits to: description, explanation, prediction, control</h2>
+  <p>Let's look one level finer at where inquiry lands. Research claims divide into four by what they commit to.</p>
+  <ul style="margin-top:8px;">
+    <li><b>Description</b>: state what is happening. Commits only to "what was observed"</li>
+    <li><b>Explanation</b>: show why it happens. Commits to "mechanism." Needs evidence that rules out alternative explanations</li>
+    <li><b>Prediction</b>: say what happens next. Commits to "unseen data." Needs validation on data not used for fitting</li>
+    <li><b>Control</b>: bring about a desired state. Commits to "it changes if we intervene." Needs evidence of intervention</li>
+  </ul>
+  <p style="margin-top:8px;">This is not a ladder of strength. Prediction is possible without explanation (much of machine learning is). Explanation does not guarantee predictive accuracy. In Pearl's ladder of causation, too, "what can be said from what is seen" (association) and "what happens if we act" (intervention) are different rungs, and prediction belongs to association.</p>
+  <p style="margin-top:8px;">So evidence does not get "heavier" as the level rises — <b>the kind of evidence required changes</b>. Explanation needs evidence of mechanism, prediction needs evidence of extrapolation, control needs evidence of intervention. Look at which kind you have in hand and decide the range of your commitment. If you can show only correlation, write "description." That is not a weak paper; it is an honest one. The larger the commitment, the more ways there are to be wrong — which connects to falsifiability, next.</p>
+  <p style="margin-top:8px;">The question archetypes of the <a href="../question-design/" style="color:var(--primary);font-weight:700;">next chapter</a> map onto this. Mechanism-type questions commit to explanation, uncertainty- and dynamics-type to prediction, design-type to control. Estimation- and validity-type questions appear at every level.</p>
+</div>
+
+<h2>III Conditions a claim must withstand</h2>
+
+<div class="card">
+  <h2>Falsifiability</h2>
+  <p>So far we have seen how inquiry proceeds and where it heads. Finally, four conditions a landed claim must satisfy to withstand others' criticism. None is meant to "weaken the claim"; each is meant to "place the claim where it can be defended."</p>
+  <p style="margin-top:8px;">A testable claim is a claim that can break. Popper set the condition for a scientific claim as "at least one conceivable observation that would show it to be wrong." A claim must forbid something. A claim that forbids nothing is compatible with any observation, and says nothing.</p>
+  <p style="margin-top:8px;">A geothermal example. "The subsurface at 2 km depth is either hot or cold" is unfalsifiable. Whatever temperature comes out, the claim survives, so it forbids nothing. "It is 300 °C or more at 2 km depth" is falsifiable. An observation of 250 °C breaks it. Because it can break, observing 300 °C means something.</p>
+  <p style="margin-top:8px;">One more. Consider the claim "local residents are not convinced because they lack information." It can explain every case in which residents were unconvinced as "they lacked information," after the fact. Unless you can say what would show it wrong, it is unfalsifiable. Rewrite it as "residents with a different frame are not convinced even when given the same information," and it breaks if residents are convinced by the same information. Now it stands as a claim.</p>
+  <p style="margin-top:8px;">The Test in <a href="../what-is-research/" style="color:var(--primary);font-weight:700;">Chapter 01</a> is meaningful only when the claim can break. "Going to prove" is not testing. "Going to see where it breaks" is testing. When you state a claim, ask yourself one thing — what observation would make me abandon this claim? If you cannot answer, the claim has not yet taken shape. If you can, going to get that observation is the next move.</p>
+  <p style="margin-top:8px;">Unbreakable hypotheses are usually shallow hypotheses. They do not break because they forbid nothing — not because they are right.</p>
+</div>
+
+<div class="card">
+  <h2>Assumptions and range of validity</h2>
+  <p>Every model makes assumptions. In Box's words, all models are wrong, but some are useful. Assumptions are evaluated not by "is it wrong?" but by "under what conditions does it break down?" When you claim validity, you must say compared with what, and within what range. A validity claim that does not state its range is the same as a claim that lacks falsifiability.</p>
+</div>
+
+<div class="card">
+  <h2>Two kinds of uncertainty: discrepancy and unknowability</h2>
+  <p>Uncertainty that shrinks as you add data or computation and uncertainty that cannot shrink in principle are different things. Engineering calls the former epistemic and the latter aleatory uncertainty (Der Kiureghian &amp; Ditlevsen 2009). In this lab we call the former <b>discrepancy</b> (<i>zure</i>) and the latter <b>unknowability</b> (<i>wakaranasa</i>).</p>
+  <p style="margin-top:8px;">Discrepancy is to be minimized: add observations, improve the model, shrink it. Unknowability is to be accepted: acknowledge that it will not shrink, and pass it on with its full width to the next inquiry (active inquiry, dialogue with society). Confuse the two and you get research that never ends because "more data will solve it" — or the opposite, research that leaves reducible discrepancy alone because "we can't know anyway." Being able to say which your uncertainty is — or which part is which — is the condition for an understanding that can be handed to design.</p>
+</div>
+
+<div class="card">
+  <h2>Correlation and causation</h2>
+  <p>Moving together and one causing the other are different things. To answer a mechanism-type question (one that commits to explanation), you need a design that rules out alternative explanations — confounding, reverse causation, chance. If you cannot, lower the claim to "description" and write honestly. A paper that stops at correlation is stronger than one that writes correlation as if it were causation.</p>
+</div>
+
+<div class="card">
+  <h2>How to use this chapter</h2>
+  <p>Write your research in one sentence and answer the following five questions.</p>
+  <ol style="margin-top:8px;">
+    <li>Forward problem, or inverse problem?</li>
+    <li>Is the entry hypothesis-first, or data-first?</li>
+    <li>Is the direction passive (understanding), active (design), or both in sequence?</li>
+    <li>Does the claim commit to description, explanation, prediction, or control?</li>
+    <li>Of your uncertainty, which part is discrepancy and which is unknowability?</li>
+  </ol>
+  <p style="margin-top:8px;">If you can answer all five, you can move on to question design in the <a href="../question-design/" style="color:var(--primary);font-weight:700;">next chapter</a>. If not, stay in this chapter a while longer. It is fine not to be able to answer when you have just started. This is a chapter you come back to every time you rewrite your Paper Card.</p>
+</div>
+
+<div class="note">
+  <b>Chapter 02 summary</b>: The inquiry cycle is shared; there is more than one way to place a hypothesis ／ How it proceeds: forward/inverse, three stages, entry ／ Where it heads: understanding and design, commitment ／ What it must withstand: falsifiability, assumptions and range, discrepancy and unknowability, correlation and causation ／ Being able to answer all five is the prerequisite for writing a question
+</div>
+
+<div class="note">
+  <b>References</b>
+  <ul style="padding-left:1.4em; margin-top:6px;">
+    <li>Peirce, C. S. (1903) The three stages of inquiry (abduction, deduction, induction). Collected Papers 5.171, 5.189, 7.202–7.203</li>
+    <li>Popper, K. (1959) <i>The Logic of Scientific Discovery</i>. Falsifiability, hypothetico-deductive method</li>
+    <li>Simon, H. A. (1969/1996) <i>The Sciences of the Artificial</i>. Natural science vs design</li>
+    <li>Friston, K. (2006) A free energy principle for the brain. <i>J. Physiol. Paris</i> 100, 70–87</li>
+    <li>Suzuki, A., Yamaguchi, J. &amp; Yanagisawa, H. (2025) C.S.パースの探究理論と自由エネルギー原理に基づく地域共創モデリング. <i>Bulletin of JSSD</i> 71(4), 11–20. Passive and active inquiry</li>
+    <li>Yamaguchi, J. &amp; Monnai, T. (2014) 設計プロセスにおける論理学的，倫理学的，美学的次元の関係. <i>J. Archit. Plann., AIJ</i> 79(703), 1881–1890</li>
+    <li>Dorst, K. (2011) The core of 'design thinking' and its application. <i>Design Studies</i> 32, 521–532. Two kinds of abduction</li>
+    <li>Maekawa, M. (2020) デザイン活動のプロトタイピングにおける推論過程. <i>Bulletin of JSSD</i> 68(1), 21–28. Solution cycle and exploration cycle</li>
+    <li>Pearl, J. &amp; Mackenzie, D. (2018) <i>The Book of Why</i>. The ladder of causation</li>
+    <li>Box, G. E. P. (1976) Science and statistics. <i>JASA</i> 71, 791–799. "All models are wrong"</li>
+    <li>Der Kiureghian, A. &amp; Ditlevsen, O. (2009) Aleatory or epistemic? Does it matter? <i>Structural Safety</i> 31, 105–112</li>
+    <li>Tarantola, A. (2005) <i>Inverse Problem Theory</i>. SIAM. Non-uniqueness and instability of inverse problems</li>
+  </ul>
+</div>
+
+<footer>
+  <a href="../what-is-research/">← 01 What is Research?</a> ｜ <a href="../">Contents</a> ｜ <a href="../question-design/">Next: Part II 03 Question Design →</a><br>
+  DeSFE Lab — Institute of Fluid Science, Tohoku University
+</footer>
+
+</div>
+</body>
+</html>
