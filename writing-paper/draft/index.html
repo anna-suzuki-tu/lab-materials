@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Papers — Draft｜図を文章にする｜Lab Forum｜DeSFE Lab</title>
+<meta name="description" content="Paper Card の Draft-A〜I に沿って、Methods から書き Abstract で閉じる。Introduction と Discussion の鏡構造、Discussion の5段落、想定 Reviewer コメントへの備え。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+/* ---- 幕ヘッダー（ダーク地の上） ---- */
+.part-head {
+  display: flex; align-items: center; gap: 14px;
+  margin: 36px 0 4px; padding: 14px 16px;
+  background: rgba(255,255,255,.05); border-radius: 10px;
+  border-left: 5px solid var(--accent);
+}
+.part-num {
+  font-size: 11px; font-weight: 900; letter-spacing: .15em;
+  color: var(--accent); white-space: nowrap;
+}
+.part-main { flex: 1; }
+.part-title { font-size: 17px; font-weight: 900; color: #fff; line-height: 1.4; }
+.part-en { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+
+/* ---- 二列レイアウト（カード内） ---- */
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;
+}
+@media (max-width: 520px) { .two-col { grid-template-columns: 1fr; } }
+.col-block { background: var(--panel); border-radius: 8px; padding: 12px; }
+.col-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 6px; }
+.col-block ul { padding-left: 1.3em; }
+.col-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- Before / After ---- */
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ba-grid { grid-template-columns: 1fr; } }
+.ba-block { border-radius: 8px; padding: 12px; }
+.ba-before { background: #fdecea; border-left: 4px solid #e57373; }
+.ba-after  { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ba-label { font-size: 11px; font-weight: 900; letter-spacing: .12em; margin-bottom: 6px; }
+.ba-before .ba-label { color: #c62828; }
+.ba-after  .ba-label { color: #2e7d32; }
+.ba-block ul { padding-left: 1.3em; }
+.ba-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- ステップ（横並び） ---- */
+.steps-h { display: grid; gap: 0; margin: 10px 0; counter-reset: step; }
+.step-h {
+  display: flex; align-items: flex-start; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid var(--border); counter-increment: step;
+}
+.step-h:last-child { border-bottom: none; }
+.step-num {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.step-body { flex: 1; }
+.step-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- ステップ（縦タイムライン） ---- */
+.steps-v { margin: 10px 0; }
+.step-v { display: flex; gap: 14px; padding: 8px 0; position: relative; }
+.step-v:not(:last-child)::after {
+  content: ""; position: absolute; left: 11px; top: 32px; bottom: -8px;
+  width: 2px; background: var(--border);
+}
+.step-v-dot {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--accent);
+  color: #fff; font-size: 11px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+}
+.step-v-body { flex: 1; }
+.step-v-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-v-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- 2x2 カードグリッド ---- */
+.grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .grid-2x2 { grid-template-columns: 1fr; } }
+.g-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g-card-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g-card-sub { font-size: 12.5px; color: var(--muted); }
+
+/* ---- テイクアウェイ ---- */
+.takeaway {
+  background: rgba(32,122,145,.08); border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0; padding: 8px 12px; margin-top: 12px;
+  font-size: 13px; font-weight: 700; color: var(--text);
+}
+.takeaway::before { content: "→ "; color: var(--accent); }
+
+/* ---- 目次 ---- */
+.toc-row { display: flex; gap: 10px; align-items: baseline; padding: 8px 4px;
+  font-size: 14px; font-weight: 700; color: var(--text); text-decoration: none;
+  border-bottom: 1px solid var(--border); }
+.toc-row:last-child { border-bottom: none; }
+a.toc-row:hover { color: var(--primary); }
+.toc-n { color: var(--primary); font-weight: 900; flex-shrink: 0; font-size: 12px; }
+.toc-sub { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: auto; }
+
+/* ---- 3カードグリッド ---- */
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
+.g3-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g3-who { font-size: 11px; font-weight: 900; letter-spacing: .1em; color: var(--accent); margin-bottom: 4px; }
+.g3-action { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g3-desc { font-size: 12px; color: var(--muted); }
+
+/* ---- 問題/解決 ---- */
+.ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ps-grid { grid-template-columns: 1fr; } }
+.ps-block { border-radius: 8px; padding: 12px; }
+.ps-risk { background: #fdecea; border-left: 4px solid #e57373; }
+.ps-rule { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ps-label { font-size: 11px; font-weight: 900; letter-spacing: .1em; margin-bottom: 6px; }
+.ps-risk .ps-label { color: #c62828; }
+.ps-rule .ps-label { color: #2e7d32; }
+.ps-block ul { padding-left: 1.3em; }
+.ps-block li { font-size: 13px; color: var(--text); margin-bottom: 3px; }
+
+/* ---- 番号付きカード ---- */
+.num-cards { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
+.num-card { display: flex; gap: 12px; align-items: flex-start; }
+.nc-num {
+  width: 26px; height: 26px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.nc-body { flex: 1; background: var(--panel); border-radius: 8px; padding: 10px 12px; }
+.nc-head { font-size: 13px; font-weight: 900; color: var(--text); }
+.nc-sub { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="breadcrumb"><a href="../../">🏠 教育ポータル</a> › <a href="../">Writing Papers</a> › Draft</div>
+
+<header>
+  <div class="kicker">LAB FORUM — WRITING PAPERS ｜ DRAFT</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>図を文章にする</h1>
+      <div class="subtitle">Draft — イントロから書かない。Methods から書き、Abstract で閉じる</div>
+    </div>
+  </div>
+</header>
+
+<blockquote class="lead-quote">
+  Results は「何が起きたか」、Discussion は「それが何を意味するか」。Introduction が「不足の宣言」なら、Discussion は「更新の宣言」。鏡になっていなければ、構造は崩れている。
+</blockquote>
+
+<!-- ============ 概要 ============ -->
+
+<div class="card">
+  <h2>この資料で学べること</h2>
+  <p>Lab Forum Lectures「Writing Papers」は投稿の全体像を、「<a href="../figures/" style="color:var(--primary);font-weight:700;">Writing Papers — Figures</a>」は図の設計を扱いました。このページは、図が確定してから原稿が完成するまで——Paper Card の Draft-A から Draft-I まで——を扱います。</p>
+  <p style="margin-top:8px;">前提は二つ。Figures-C で図が凍結されていること。Framing-A・B で Core Question と Key Contributions が固定されていること。この二つがあれば、Draft は白紙から書く作業ではなく、決まっている材料を文章に展開する作業です。</p>
+  <div class="num-cards" style="margin-top:12px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">第1幕 書く順序</div><div class="nc-sub">なぜ Methods から書くのか</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">第2幕 Methods と Results</div><div class="nc-sub">事実の土台</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">第3幕 Discussion</div><div class="nc-sub">意味を与える5つの段落</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">第4幕 Introduction</div><div class="nc-sub">Discussion の鏡として逆算する</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">第5幕 Conclusion と Abstract</div><div class="nc-sub">圧縮</div></div></div>
+    <div class="num-card"><div class="nc-num">6</div><div class="nc-body"><div class="nc-head">第6幕 完成と磨き</div><div class="nc-sub">査読耐性</div></div></div>
+  </div>
+  <p style="margin-top:12px;"><b>B4</b>：卒論の各章が何を担当するかを知る。<b>M・D</b>：自分の原稿の Introduction と Discussion が鏡になっているか点検する。<b>ポスドク</b>：Discussion の5段落構造を後輩の原稿に当てる。</p>
+</div>
+
+<!-- ============================================================
+     第1幕：書く順序
+     ============================================================ -->
+
+<div class="part-head" id="part1">
+  <div class="part-num">第1幕</div>
+  <div class="part-main">
+    <div class="part-title">イントロから書かない</div>
+    <div class="part-en">書く順序 — 読む順序と書く順序は違う</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>書く順序</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Methods → Results → Discussion → Introduction → Conclusion → Abstract → Polish</p>
+  <p>原稿は、読む順序と書く順序が違います。読者は Abstract → Introduction → … の順に読みますが、書き手は逆から書きます。</p>
+  <p style="margin-top:8px;">理由は単純で、Introduction は「この論文が何を示したか」を知らないと書けないからです。Introduction の末尾には "Here we show that…" が来ます。それは Discussion の最初の文と一致していなければならない。Discussion を書く前に Introduction を書くと、示していないことを予告するか、示したことを予告し損ねるか、どちらかになります。</p>
+  <p style="margin-top:8px;">Methods から書くのは、そこが最も「事実」に近く、最も迷わないからです。書けないときは、書ける場所から書く。Writing Papers で述べた「白紙の不安には Figure 1 のキャプションから」も同じ原理です。</p>
+  <div class="takeaway">書けないときは、書ける場所（Methods）から書く。</div>
+</div>
+
+<div class="card">
+  <h2>最重要原則：鏡構造</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Introduction と Discussion は鏡である</p>
+  <p>Introduction と Discussion は鏡です。Introduction が「分野はここまで知っていて、ここが不足している（Gap）」と宣言し、Discussion が「この結果で Gap はこう埋まり、分野の前提はこう更新される」と宣言する。Introduction で宣言した不足が Discussion で回収されていなければ、論文の構造は崩れています。</p>
+  <p style="margin-top:8px;">Results と Discussion の役割分担も同じくらい重要です。Results は「何が起きたか」だけ。Discussion は「それが何を意味するか」だけ。この二つが混ざると、読者は事実と解釈を区別できなくなり、査読者は「Overclaiming」と書きます。</p>
+  <div class="takeaway">Introductionの不足宣言がDiscussionで回収されているか、常に確認する。</div>
+</div>
+
+<!-- ============================================================
+     第2幕：Methods と Results
+     ============================================================ -->
+
+<div class="part-head" id="part2">
+  <div class="part-num">第2幕</div>
+  <div class="part-main">
+    <div class="part-title">事実の土台</div>
+    <div class="part-en">Methods と Results</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Draft-A｜Methods：他人が再現できる形で</h2>
+  <p>Methods の目的は、他人が再現できる事実の土台を書くことです。<a href="../../orientation/responsibility/" style="color:var(--primary);font-weight:700;">Lab OS 06章</a>の「再現性」を、文章として実装する場所です。</p>
+  <p style="margin-top:8px;"><b>4つのブロック</b></p>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Study Design</div><div class="nc-sub">何を、どの条件で、何と比較し、どんな制約のもとで調べたか。"We designed a study to examine …"</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Data / Materials</div><div class="nc-sub">データの出所、サンプル数、期間、選択基準。"Data were obtained from … The dataset includes …"</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Model / Procedure</div><div class="nc-sub">手順を Step 1, 2, 3 で。"We applied … The workflow consists of:"</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Evaluation</div><div class="nc-sub">評価指標と不確実性の扱い。"Performance was evaluated using … We quantified uncertainty by …"</div></div></div>
+  </div>
+  <p style="margin-top:8px;">「詳細は省略」は再現性の放棄です。逆に、修士論文の Methods をジャーナルに再利用するときは出典を引用すれば認められます（Writing Papers の自己盗用の表）。Methods は、論文の中で唯一「型どおりに書いてよい」場所です。</p>
+  <div class="takeaway">Methodsは唯一「型どおりに書いてよい」場所。</div>
+</div>
+
+<div class="card">
+  <h2>Draft-B｜Results：解釈しない</h2>
+  <p>Results の目的は、図と対応する事実だけを書くことです。</p>
+  <ul style="margin-top:8px;">
+    <li>図ごとに結果を書く。Fig.1 → Result 1、Fig.2 → Result 2。1対1</li>
+    <li>評価語を入れない。「良い」「優れた」「顕著な」は Results に居場所がない</li>
+    <li>"suggests" を使わない。示唆は Discussion の仕事</li>
+  </ul>
+  <p style="margin-top:8px;"><b>書く型</b>："Figure 1 shows … X increased as … The difference between A and B was …" 数値、信頼区間、比較の方向を入れます。</p>
+  <p style="margin-top:8px;">Results で「なぜそうなるか」を書きたくなったら、それは Discussion の Direct Answer か Assumption Refinement に移します。Results で一言でも解釈が混ざると、読者は以後の事実を解釈込みで読むようになります。</p>
+  <div class="takeaway">Resultsは事実だけ。「なぜ」はDiscussionへ移す。</div>
+</div>
+
+<!-- ============================================================
+     第3幕：Discussion
+     ============================================================ -->
+
+<div class="part-head" id="part3">
+  <div class="part-main">
+    <div class="part-title">意味を与える5つの段落</div>
+    <div class="part-en">Discussion</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Discussion：5つの段落</h2>
+  <p>Discussion の目的は、Core Question に答え、結果に意味（分野の信念の更新）を与えることです。5つの段落を、この順で書きます。順序は Framing-A の出力（Core Question、Gap、Hidden assumption、Why it matters）を逆にたどる形になっています。</p>
+</div>
+
+<div class="card">
+  <h2>1｜Direct Answer：問いに直接答える</h2>
+  <p>Core Question をコピーし、それに1〜2文で直接答えます。結果の要約を簡潔に、数字を入れてもよい。ここで解釈を広げすぎない。"This study shows that … Our results indicate that …"</p>
+  <p style="margin-top:8px;">この段落の最初の文が、Introduction の "Here we show" と Conclusion の最初の文になります。3箇所で同じことを言う。ずれていたら論文の主張が定まっていません。</p>
+</div>
+
+<div class="card">
+  <h2>2｜Gap Resolution：Gap を回収する</h2>
+  <p>Introduction の Gap 文を読み直し、「何が足りなかったか」を明示し、今回の結果でどう埋まったかを書きます。新しい Gap をここで作らない。"Our findings address the limitation that … This resolves the uncertainty regarding …"</p>
+</div>
+
+<div class="card">
+  <h2>3｜Assumption Refinement：前提を更新する</h2>
+  <p>既存研究の前提を1つ書き、それがどう変わるかを書きます。「否定」ではなく「更新」で書く。攻撃的な書き方は、査読者に前提を持っている人がいる可能性を考えれば、得がありません。"This challenges the assumption that … Instead, our results suggest that …"</p>
+  <p style="margin-top:8px;">Framing-A の Comparison Table の Hidden assumption と Our update が、そのままこの段落の材料です。</p>
+</div>
+
+<div class="card">
+  <h2>4｜Field Implication：分野への意味</h2>
+  <p>Introduction の冒頭（Broad Context）を読み直し、その文脈がどう変わるかを書きます。理論・応用・設計のどこに影響するかを明示する。世界を救わない。"These findings change how we understand … This has implications for …"</p>
+  <p style="margin-top:8px;"><a href="../../orientation/science-framework/" style="color:var(--primary);font-weight:700;">Lab OS 02章</a>のコミットメントがここで効きます。説明にコミットした論文なら理解への含意、制御にコミットした論文なら設計への含意。自分の証拠が届かない含意を書かない。</p>
+</div>
+
+<div class="card">
+  <h2>5｜Limitations：限界と次の問い</h2>
+  <p>本研究の制約を2〜3個書き、それが結果にどう影響するかを書き、次の研究方向を示します。防御的にならない。"This study assumes … One limitation is … Future work should …"</p>
+  <p style="margin-top:8px;">限界を正直に書いた論文の方が査読に耐えます。ズレ（縮められる不確実性）とわからなさ（縮められない不確実性）を分けて書けると、Limitations は弱点の告白ではなく、次の探究への橋になります。</p>
+  <div class="takeaway">限界を正直に書いた論文の方が、査読に耐える。</div>
+</div>
+
+<div class="card">
+  <h2>Discussion Check</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Core Question に直接答えているか</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Gap を回収しているか</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Context が更新されているか</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Discussion で初めて出てくる図や結果はないか</div></div></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     第4幕：Introduction
+     ============================================================ -->
+
+<div class="part-head" id="part4">
+  <div class="part-num">第4幕</div>
+  <div class="part-main">
+    <div class="part-title">鏡として逆算する</div>
+    <div class="part-en">Introduction</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Draft-D｜Introduction：Discussion の後に書く</h2>
+  <p>Introduction の目的は、Discussion で確定した暫定信念を、分野の文脈に正しく配置することです。<a href="../../orientation/claim-design/" style="color:var(--primary);font-weight:700;">Lab OS 04章</a>の Narrative Skeleton は、データが出る前に書いた設計図でした。ここでは Discussion を確定させたうえで、それを書き直します。</p>
+  <p style="margin-top:8px;"><b>5つの要素</b></p>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Broad Context（1〜2文）</div><div class="nc-sub">分野の大きな問いと、なぜ重要か。専門外でも意味がわかる導入。"Understanding X is important because …"</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Field Context（2〜3文）</div><div class="nc-sub">支配的なモデル・前提。何が「当たり前」とされているか。詳細レビューにしない。"Previous studies have assumed that … Most existing approaches focus on …"</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Gap（1文）</div><div class="nc-sub">不足の宣言。手法も結果も書かない。"However, it remains unclear whether …"</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Core Question（1文）</div><div class="nc-sub">Yes/No で終わらない。結果を匂わせない。"This study asks: How does … ?"</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">Contribution Preview（1文）</div><div class="nc-sub">"Here, we show that …" Discussion の最初の文と一致させる</div></div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Introduction Check</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Gap は Discussion で回収されているか</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Contribution Preview は Discussion と一致しているか</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">新しい主張を追加していないか</div></div></div>
+  </div>
+  <p style="margin-top:10px;">Introduction で新しい主張が増えるのは、書いているうちに「これも言える」と思うからです。言えるなら Discussion に戻して段落を足す。Discussion にないことを Introduction で予告しない。</p>
+  <div class="takeaway">Discussionにないことを、Introductionで予告しない。</div>
+</div>
+
+<!-- ============================================================
+     第5幕：Conclusion と Abstract
+     ============================================================ -->
+
+<div class="part-head" id="part5">
+  <div class="part-num">第5幕</div>
+  <div class="part-main">
+    <div class="part-title">圧縮</div>
+    <div class="part-en">Conclusion と Abstract</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Draft-E｜Conclusion：3段落以内</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Restated Contribution</div><div class="nc-sub">Discussion の最初の文を要約する。数値は入れてよい。新情報は入れない。"This study demonstrates that …"</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Field-Level Meaning</div><div class="nc-sub">この結果が前提をどう変えるか。2〜3文。過大主張しない。"These findings refine the understanding of … This suggests that …"</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Forward Look</div><div class="nc-sub">限界を踏まえた次の問い。「未来は明るい」のような抽象語を使わない。1〜2文。"Future work should …"</div></div></div>
+  </div>
+  <p style="margin-top:10px;"><b>Check</b>：Results の繰り返しになっていないか／Discussion のコピーになっていないか／過大主張していないか</p>
+</div>
+
+<div class="card">
+  <h2>Draft-F｜Abstract：6〜7文、順序は固定</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Background（1文）</div><div class="nc-sub">Broad Context を1文に。専門語を減らす</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Gap（1文）</div><div class="nc-sub">"However, it remains unclear whether …"</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Question（1文）</div><div class="nc-sub">"This study investigates …"</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Method（1文）</div><div class="nc-sub">"We developed / applied …"</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">Results（2文）</div><div class="nc-sub">"We found that … Specifically, …" 数値と方向を書く</div></div></div>
+    <div class="num-card"><div class="nc-num">6</div><div class="nc-body"><div class="nc-head">Implication（1文）</div><div class="nc-sub">"These findings suggest that …"</div></div></div>
+  </div>
+  <p style="margin-top:10px;"><b>Check</b>：Introduction と一致しているか／Discussion と一致しているか／新情報を含んでいないか／200〜250 words 以内か</p>
+  <p style="margin-top:8px;">Abstract だけ読んで主張がわかる状態が合格です。多くの読者は Abstract しか読みません。査読者もまず Abstract で論文の主張を固定し、それが本文で支えられているかを見ます。</p>
+  <div class="takeaway">多くの読者はAbstractしか読まない。それだけで主張が伝わるか。</div>
+</div>
+
+<!-- ============================================================
+     第6幕：完成と磨き
+     ============================================================ -->
+
+<div class="part-head" id="part6">
+  <div class="part-num">第6幕</div>
+  <div class="part-main">
+    <div class="part-title">査読耐性</div>
+    <div class="part-en">完成と磨き</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Draft-G｜Structural Audit</h2>
+  <p>全セクションが揃ったら、構造を監査します。</p>
+  <ul style="margin-top:8px;">
+    <li>各 Figure は Contribution を支えているか</li>
+    <li>Results と Discussion が混ざっていないか</li>
+    <li>Introduction と Discussion が鏡構造か</li>
+    <li>不要な Figure はないか</li>
+    <li>Appendix に逃がすべき内容は何か</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>想定 Reviewer コメント</h2>
+  <p>査読者が書くコメントは、驚くほど似ています。</p>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Novelty is unclear</div><div class="nc-sub">新規性がどこにあるか不明。Compared to X, we Y が Introduction に見えていない</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Comparison is insufficient</div><div class="nc-sub">比較が足りない。Comparison Table の Prior study が本文で比較されていない</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Assumptions are unrealistic</div><div class="nc-sub">前提が非現実的。Methods で仮定と適用範囲を書いていない</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Overclaiming</div><div class="nc-sub">主張が証拠を超えている。Results の事実と Discussion の含意がコミットメントを跨いでいる</div></div></div>
+  </div>
+  <p style="margin-top:10px;">4つとも、Paper Card の Framing と Figures の段階で潰せるものです。投稿前に、この4つを自分で書き、それぞれへの答えが原稿のどこにあるかを指差せるようにします。</p>
+  <div class="takeaway">投稿前に、この4つへの答えを指差せるようにする。</div>
+</div>
+
+<div class="card">
+  <h2>Draft-H｜全文：荒くてよい</h2>
+  <p>主張が一通り読める原稿を作ります。頭から書かない、完璧を目指さない、英語の細かさを気にしすぎない、Reviewer 対応を考えすぎない。Writing Papers で述べた「生成と編集を分ける」を、原稿全体で実行する段階です。コメントが欲しい点を明示して、Team Meeting か指導教員に渡します。</p>
+</div>
+
+<div class="card">
+  <h2>Draft-I｜磨き：いつまでも磨かない</h2>
+  <p>査読に耐える最小限の完成度を目指します。削れる部分を削る。想定 Reviewer コメントへの答えを書く。Appendix に逃がす内容を決める。</p>
+  <p style="margin-top:8px;">いつまでも磨き続けない。完璧な英語表現よりロジックのクリアさを優先する。一文ずつの点検には Writing Paper Skills の5項目（主張の強さ・査読者の突っ込み・根拠との対応・比較の妥当性・安全な書き換え）を使います。</p>
+  <div class="takeaway">完璧な英語より、ロジックのクリアさを優先する。</div>
+</div>
+
+<div class="card">
+  <h2>主張の強さの言葉</h2>
+  <p><a href="../../orientation/science-framework/" style="color:var(--primary);font-weight:700;">Lab OS 02章</a>のコミットメントを、動詞で実装します。</p>
+  <table class="wk" style="margin-top:8px;">
+    <tr><th>コミットメント</th><th>使える動詞</th></tr>
+    <tr><td>記述</td><td>observed, measured, found</td></tr>
+    <tr><td>説明</td><td>indicates, is consistent with, is controlled by（代替説明を潰した後で）</td></tr>
+    <tr><td>予測</td><td>predicts, generalizes to</td></tr>
+    <tr><td>制御</td><td>enables, improves, reduces</td></tr>
+  </table>
+  <p style="margin-top:8px;">"suggests" は説明への弱いコミットメントとして Discussion でのみ使う。Results には使わない。"demonstrates" と "proves" は、証拠がそのレベルに届いているときだけ。</p>
+  <div class="takeaway">動詞のコミットメントは、証拠のレベルを超えない。</div>
+</div>
+
+<!-- ============ 最終チェックリスト ============ -->
+
+<div class="card">
+  <h2>最終チェックリスト</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">書く順序は Methods → Results → Discussion → Introduction → Conclusion → Abstract か</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Methods は他人が再現できる粒度か</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Results は図と1対1で、解釈も評価語も "suggests" もないか</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Discussion は5段落（Direct Answer / Gap Resolution / Assumption Refinement / Field Implication / Limitations）か</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">Discussion の最初の文、Introduction の Here we show、Conclusion の最初の文が一致しているか</div></div></div>
+    <div class="num-card"><div class="nc-num">6</div><div class="nc-body"><div class="nc-head">Introduction の Gap は Discussion で回収されているか</div></div></div>
+    <div class="num-card"><div class="nc-num">7</div><div class="nc-body"><div class="nc-head">Abstract は6〜7文・固定順・250 words 以内で、本文と一致しているか</div></div></div>
+    <div class="num-card"><div class="nc-num">8</div><div class="nc-body"><div class="nc-head">想定 Reviewer コメント4つへの答えを、原稿の場所つきで言えるか</div></div></div>
+    <div class="num-card"><div class="nc-num">9</div><div class="nc-body"><div class="nc-head">Writing Paper Skills の5項目を一文ずつ通したか</div></div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>立場別・今日の持ち帰り</h2>
+  <div class="grid-3" style="margin-top:8px;">
+    <div class="g3-card">
+      <div class="g3-who">B4</div>
+      <div class="g3-action">解釈の文を探す</div>
+      <div class="g3-desc">卒論の Results から解釈の文を探し、Discussion に移す。それだけで章の役割が分かれる</div>
+    </div>
+    <div class="g3-card">
+      <div class="g3-who">M・D</div>
+      <div class="g3-action">3文を並べて書く</div>
+      <div class="g3-desc">Discussion の最初の文、Introduction の Here we show、Conclusion の最初の文を並べて書く。一致していなければ、論文の主張がまだ一つでない</div>
+    </div>
+    <div class="g3-card">
+      <div class="g3-who">ポスドク</div>
+      <div class="g3-action">鏡構造だけで読む</div>
+      <div class="g3-desc">後輩の原稿を「鏡構造」だけで読む。Gap と Resolution が対応していなければ、他の推敲は後回し</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 関連リンク ============ -->
+
+<div class="card">
+  <h2>関連リンク</h2>
+  <ul>
+    <li><a href="../">Lab Forum Lectures: Writing Papers</a> — 投稿の全体像・著者・カバーレター・査読対応</li>
+    <li><a href="../figures/">Lab Forum Lectures: Writing Papers — Figures</a> — 図の設計と確定</li>
+    <li><a href="../../orientation/claim-design/">Lab OS 04 主張の設計</a> — Narrative Skeleton</li>
+    <li><a href="../../orientation/responsibility/">Lab OS 06 研究の責任</a> — 再現性・誠実さ</li>
+    <li><a href="../../lab-tools/paper-card/">Lab Tools: Paper Card</a> — Draft-A〜I の記入欄</li>
+  </ul>
+</div>
+
+<footer>
+  &copy; DeSFE Lab (Anna Suzuki Lab), Tohoku University ｜
+  <a href="../../">教育ポータル</a>
+</footer>
+
+</div>
+</body>
+</html>
