@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing Papers — Draft | Turning Figures into Text | Lab Forum | DeSFE Lab</title>
+<meta name="description" content="Following Draft-A to I of the Paper Card: write from Methods and close with the Abstract. The mirror structure of Introduction and Discussion, the five paragraphs of the Discussion, and preparing for anticipated reviewer comments.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../assets/style.css">
+<style>
+/* ---- 幕ヘッダー（ダーク地の上） ---- */
+.part-head {
+  display: flex; align-items: center; gap: 14px;
+  margin: 36px 0 4px; padding: 14px 16px;
+  background: rgba(255,255,255,.05); border-radius: 10px;
+  border-left: 5px solid var(--accent);
+}
+.part-num {
+  font-size: 11px; font-weight: 900; letter-spacing: .15em;
+  color: var(--accent); white-space: nowrap;
+}
+.part-main { flex: 1; }
+.part-title { font-size: 17px; font-weight: 900; color: #fff; line-height: 1.4; }
+.part-en { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+
+/* ---- 二列レイアウト（カード内） ---- */
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;
+}
+@media (max-width: 520px) { .two-col { grid-template-columns: 1fr; } }
+.col-block { background: var(--panel); border-radius: 8px; padding: 12px; }
+.col-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 6px; }
+.col-block ul { padding-left: 1.3em; }
+.col-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- Before / After ---- */
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ba-grid { grid-template-columns: 1fr; } }
+.ba-block { border-radius: 8px; padding: 12px; }
+.ba-before { background: #fdecea; border-left: 4px solid #e57373; }
+.ba-after  { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ba-label { font-size: 11px; font-weight: 900; letter-spacing: .12em; margin-bottom: 6px; }
+.ba-before .ba-label { color: #c62828; }
+.ba-after  .ba-label { color: #2e7d32; }
+.ba-block ul { padding-left: 1.3em; }
+.ba-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- ステップ（横並び） ---- */
+.steps-h { display: grid; gap: 0; margin: 10px 0; counter-reset: step; }
+.step-h {
+  display: flex; align-items: flex-start; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid var(--border); counter-increment: step;
+}
+.step-h:last-child { border-bottom: none; }
+.step-num {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.step-body { flex: 1; }
+.step-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- ステップ（縦タイムライン） ---- */
+.steps-v { margin: 10px 0; }
+.step-v { display: flex; gap: 14px; padding: 8px 0; position: relative; }
+.step-v:not(:last-child)::after {
+  content: ""; position: absolute; left: 11px; top: 32px; bottom: -8px;
+  width: 2px; background: var(--border);
+}
+.step-v-dot {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--accent);
+  color: #fff; font-size: 11px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+}
+.step-v-body { flex: 1; }
+.step-v-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-v-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- 2x2 カードグリッド ---- */
+.grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .grid-2x2 { grid-template-columns: 1fr; } }
+.g-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g-card-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g-card-sub { font-size: 12.5px; color: var(--muted); }
+
+/* ---- テイクアウェイ ---- */
+.takeaway {
+  background: rgba(32,122,145,.08); border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0; padding: 8px 12px; margin-top: 12px;
+  font-size: 13px; font-weight: 700; color: var(--text);
+}
+.takeaway::before { content: "→ "; color: var(--accent); }
+
+/* ---- 目次 ---- */
+.toc-row { display: flex; gap: 10px; align-items: baseline; padding: 8px 4px;
+  font-size: 14px; font-weight: 700; color: var(--text); text-decoration: none;
+  border-bottom: 1px solid var(--border); }
+.toc-row:last-child { border-bottom: none; }
+a.toc-row:hover { color: var(--primary); }
+.toc-n { color: var(--primary); font-weight: 900; flex-shrink: 0; font-size: 12px; }
+.toc-sub { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: auto; }
+
+/* ---- 3カードグリッド ---- */
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
+.g3-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g3-who { font-size: 11px; font-weight: 900; letter-spacing: .1em; color: var(--accent); margin-bottom: 4px; }
+.g3-action { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g3-desc { font-size: 12px; color: var(--muted); }
+
+/* ---- 問題/解決 ---- */
+.ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ps-grid { grid-template-columns: 1fr; } }
+.ps-block { border-radius: 8px; padding: 12px; }
+.ps-risk { background: #fdecea; border-left: 4px solid #e57373; }
+.ps-rule { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ps-label { font-size: 11px; font-weight: 900; letter-spacing: .1em; margin-bottom: 6px; }
+.ps-risk .ps-label { color: #c62828; }
+.ps-rule .ps-label { color: #2e7d32; }
+.ps-block ul { padding-left: 1.3em; }
+.ps-block li { font-size: 13px; color: var(--text); margin-bottom: 3px; }
+
+/* ---- 番号付きカード ---- */
+.num-cards { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
+.num-card { display: flex; gap: 12px; align-items: flex-start; }
+.nc-num {
+  width: 26px; height: 26px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.nc-body { flex: 1; background: var(--panel); border-radius: 8px; padding: 10px 12px; }
+.nc-head { font-size: 13px; font-weight: 900; color: var(--text); }
+.nc-sub { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="lang-sw"><span>English</span> ｜ <a href="../">日本語</a></div>
+<div class="breadcrumb"><a href="../../../en/">🏠 Portal</a> › <a href="../../en/">Writing Papers</a> › Draft</div>
+
+<header>
+  <div class="kicker">LAB FORUM — WRITING PAPERS ｜ DRAFT</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>Turning Figures into Text</h1>
+      <div class="subtitle">Draft — Do not start with the Introduction. Write from Methods, close with the Abstract</div>
+    </div>
+  </div>
+</header>
+
+<blockquote class="lead-quote">
+  Results is "what happened," Discussion is "what it means." If the Introduction is a "declaration of what is lacking," the Discussion is a "declaration of what is updated." If they are not mirrors, the structure is broken.
+</blockquote>
+
+<!-- ============ Overview ============ -->
+
+<div class="card">
+  <h2>What this lecture covers</h2>
+  <p>The Lab Forum lecture "Writing Papers" covered the whole picture of submission, and "<a href="../../figures/en/" style="color:var(--primary);font-weight:700;">Writing Papers — Figures</a>" covered the design of figures. This page covers the stretch from the figures being frozen to the manuscript being complete — Draft-A to Draft-I of the Paper Card.</p>
+  <p style="margin-top:8px;">There are two prerequisites. The figures have been frozen in Figures-C. The Core Question and Key Contributions have been fixed in Framing-A and B. With these two, the Draft is not a task of writing from a blank page, but a task of unfolding decided materials into text.</p>
+  <div class="num-cards" style="margin-top:12px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Act 1 The order of writing</div><div class="nc-sub">Why write from Methods</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Act 2 Methods and Results</div><div class="nc-sub">The foundation of facts</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Act 3 Discussion</div><div class="nc-sub">Five paragraphs that give meaning</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Act 4 Introduction</div><div class="nc-sub">Work backward as the mirror of the Discussion</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">Act 5 Conclusion and Abstract</div><div class="nc-sub">Compression</div></div></div>
+    <div class="num-card"><div class="nc-num">6</div><div class="nc-body"><div class="nc-head">Act 6 Completion and polish</div><div class="nc-sub">Withstanding review</div></div></div>
+  </div>
+  <p style="margin-top:12px;"><b>B4</b>: Learn what each chapter of your thesis is responsible for. <b>M &amp; D</b>: Check whether the Introduction and Discussion of your own manuscript are mirrors. <b>Postdocs</b>: Apply the five-paragraph structure of the Discussion to a junior's manuscript.</p>
+</div>
+
+<!-- ============================================================
+     Act 1: The order of writing
+     ============================================================ -->
+
+<div class="part-head" id="part1">
+  <div class="part-num">Act 1</div>
+  <div class="part-main">
+    <div class="part-title">Do not start with the Introduction</div>
+    <div class="part-en">The order of writing — The order of reading and the order of writing differ</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>The order of writing</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Methods → Results → Discussion → Introduction → Conclusion → Abstract → Polish</p>
+  <p>In a manuscript, the order of reading and the order of writing differ. The reader reads Abstract → Introduction → …, but the writer writes from the other end.</p>
+  <p style="margin-top:8px;">The reason is simple: the Introduction cannot be written without knowing "what this paper has shown." At the end of the Introduction comes "Here we show that…". That must match the first sentence of the Discussion. If you write the Introduction before the Discussion, you either announce something you did not show, or fail to announce what you did show.</p>
+  <p style="margin-top:8px;">We write from Methods because it is closest to "facts" and the place where you get lost the least. When you cannot write, write from where you can. "Against the fear of the blank page, start from the caption of Figure 1," stated in Writing Papers, is the same principle.</p>
+  <div class="takeaway">When you cannot write, write from where you can (Methods).</div>
+</div>
+
+<div class="card">
+  <h2>The most important principle: the mirror structure</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">The Introduction and the Discussion are mirrors</p>
+  <p>The Introduction and the Discussion are mirrors. The Introduction declares "the field knows this much, and this is what is lacking (the Gap)," and the Discussion declares "with this result the Gap is filled in this way, and the field's assumption is updated in this way." If what the Introduction declared to be lacking is not recovered in the Discussion, the structure of the paper is broken.</p>
+  <p style="margin-top:8px;">The division of roles between Results and Discussion is just as important. Results is only "what happened." Discussion is only "what it means." When the two mix, the reader can no longer distinguish fact from interpretation, and the reviewer writes "Overclaiming."</p>
+  <div class="takeaway">Always check that the Introduction's declaration of what is lacking is recovered in the Discussion.</div>
+</div>
+
+<!-- ============================================================
+     Act 2: Methods and Results
+     ============================================================ -->
+
+<div class="part-head" id="part2">
+  <div class="part-num">Act 2</div>
+  <div class="part-main">
+    <div class="part-title">The foundation of facts</div>
+    <div class="part-en">Methods and Results</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Draft-A｜Methods: In a form others can reproduce</h2>
+  <p>The purpose of Methods is to write the foundation of facts that others can reproduce. It is where the "reproducibility" of <a href="../../../orientation/en/responsibility/" style="color:var(--primary);font-weight:700;">Lab OS Chapter 06</a> is implemented as text.</p>
+  <p style="margin-top:8px;"><b>Four blocks</b></p>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Study Design</div><div class="nc-sub">What was investigated, under what conditions, compared with what, under what constraints. "We designed a study to examine …"</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Data / Materials</div><div class="nc-sub">Source of the data, sample size, period, selection criteria. "Data were obtained from … The dataset includes …"</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Model / Procedure</div><div class="nc-sub">The procedure as Step 1, 2, 3. "We applied … The workflow consists of:"</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Evaluation</div><div class="nc-sub">Evaluation metrics and the treatment of uncertainty. "Performance was evaluated using … We quantified uncertainty by …"</div></div></div>
+  </div>
+  <p style="margin-top:8px;">"Details omitted" is an abandonment of reproducibility. Conversely, reusing the Methods of your master's thesis in a journal paper is accepted if you cite the source (see the self-plagiarism table in Writing Papers). Methods is the only place in a paper where "writing to a template" is allowed.</p>
+  <div class="takeaway">Methods is the only place where "writing to a template" is allowed.</div>
+</div>
+
+<div class="card">
+  <h2>Draft-B｜Results: Do not interpret</h2>
+  <p>The purpose of Results is to write only the facts that correspond to the figures.</p>
+  <ul style="margin-top:8px;">
+    <li>Write the results figure by figure. Fig.1 → Result 1, Fig.2 → Result 2. One-to-one</li>
+    <li>No evaluative words. "Good," "excellent," "remarkable" have no place in Results</li>
+    <li>Do not use "suggests." Suggestion is the job of the Discussion</li>
+  </ul>
+  <p style="margin-top:8px;"><b>Template</b>: "Figure 1 shows … X increased as … The difference between A and B was …" Include numbers, confidence intervals, and the direction of the comparison.</p>
+  <p style="margin-top:8px;">If you feel like writing "why it happens" in Results, move it to the Direct Answer or Assumption Refinement of the Discussion. Once even a single interpretation slips into Results, the reader reads all subsequent facts as interpretation-laden.</p>
+  <div class="takeaway">Results is facts only. Move "why" to the Discussion.</div>
+</div>
+
+<!-- ============================================================
+     Act 3: Discussion
+     ============================================================ -->
+
+<div class="part-head" id="part3">
+  <div class="part-num">Act 3</div>
+  <div class="part-main">
+    <div class="part-title">Five paragraphs that give meaning</div>
+    <div class="part-en">Discussion</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Discussion: Five paragraphs</h2>
+  <p>The purpose of the Discussion is to answer the Core Question and give the results meaning (an update of the field's beliefs). Write five paragraphs, in this order. The order traces the outputs of Framing-A (Core Question, Gap, Hidden assumption, Why it matters) in reverse.</p>
+</div>
+
+<div class="card">
+  <h2>1｜Direct Answer: Answer the question directly</h2>
+  <p>Copy the Core Question and answer it directly in one or two sentences. Summarize the results concisely; numbers may be included. Do not widen the interpretation here. "This study shows that … Our results indicate that …"</p>
+  <p style="margin-top:8px;">The first sentence of this paragraph becomes the "Here we show" of the Introduction and the first sentence of the Conclusion. Say the same thing in three places. If they diverge, the claim of the paper is not yet settled.</p>
+</div>
+
+<div class="card">
+  <h2>2｜Gap Resolution: Recover the Gap</h2>
+  <p>Reread the Gap sentence of the Introduction, make explicit "what was lacking," and write how the present results fill it. Do not create a new Gap here. "Our findings address the limitation that … This resolves the uncertainty regarding …"</p>
+</div>
+
+<div class="card">
+  <h2>3｜Assumption Refinement: Update the assumption</h2>
+  <p>Write one assumption of existing research and how it changes. Write it as an "update," not a "denial." An aggressive style gains nothing, considering that a reviewer may hold that assumption. "This challenges the assumption that … Instead, our results suggest that …"</p>
+  <p style="margin-top:8px;">The Hidden assumption and Our update in the Comparison Table of Framing-A are the direct material for this paragraph.</p>
+</div>
+
+<div class="card">
+  <h2>4｜Field Implication: Meaning for the field</h2>
+  <p>Reread the opening of the Introduction (Broad Context) and write how that context changes. Make explicit where it affects theory, application, or design. Do not save the world. "These findings change how we understand … This has implications for …"</p>
+  <p style="margin-top:8px;">The commitment of <a href="../../../orientation/en/science-framework/" style="color:var(--primary);font-weight:700;">Lab OS Chapter 02</a> matters here. A paper committed to explanation has implications for understanding; a paper committed to control has implications for design. Do not write implications your evidence does not reach.</p>
+</div>
+
+<div class="card">
+  <h2>5｜Limitations: Limits and the next question</h2>
+  <p>Write two or three constraints of this study, how they affect the results, and indicate the next research direction. Do not be defensive. "This study assumes … One limitation is … Future work should …"</p>
+  <p style="margin-top:8px;">A paper that writes its limitations honestly withstands review better. If you can separate discrepancy (reducible uncertainty) from unknowability (irreducible uncertainty), the Limitations become not a confession of weakness but a bridge to the next inquiry.</p>
+  <div class="takeaway">A paper that writes its limitations honestly withstands review better.</div>
+</div>
+
+<div class="card">
+  <h2>Discussion Check</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Does it answer the Core Question directly?</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Does it recover the Gap?</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Is the Context updated?</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Is there any figure or result that appears for the first time in the Discussion?</div></div></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     Act 4: Introduction
+     ============================================================ -->
+
+<div class="part-head" id="part4">
+  <div class="part-num">Act 4</div>
+  <div class="part-main">
+    <div class="part-title">Work backward as the mirror</div>
+    <div class="part-en">Introduction</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Draft-D｜Introduction: Write after the Discussion</h2>
+  <p>The purpose of the Introduction is to place the provisional belief settled in the Discussion correctly in the context of the field. The Narrative Skeleton of <a href="../../../orientation/en/claim-design/" style="color:var(--primary);font-weight:700;">Lab OS Chapter 04</a> was a blueprint written before the data came in. Here, with the Discussion settled, you rewrite it.</p>
+  <p style="margin-top:8px;"><b>Five elements</b></p>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Broad Context (1–2 sentences)</div><div class="nc-sub">The big question of the field and why it matters. An opening that makes sense even outside the specialty. "Understanding X is important because …"</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Field Context (2–3 sentences)</div><div class="nc-sub">The dominant models and assumptions. What is taken as "obvious." Do not turn it into a detailed review. "Previous studies have assumed that … Most existing approaches focus on …"</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Gap (1 sentence)</div><div class="nc-sub">The declaration of what is lacking. Write neither the method nor the result. "However, it remains unclear whether …"</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Core Question (1 sentence)</div><div class="nc-sub">Does not end in Yes/No. Does not hint at the result. "This study asks: How does … ?"</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">Contribution Preview (1 sentence)</div><div class="nc-sub">"Here, we show that …" Match it to the first sentence of the Discussion</div></div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Introduction Check</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Is the Gap recovered in the Discussion?</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Does the Contribution Preview match the Discussion?</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Have you added no new claims?</div></div></div>
+  </div>
+  <p style="margin-top:10px;">New claims grow in the Introduction because, while writing, you think "I can say this too." If you can say it, go back to the Discussion and add a paragraph. Do not announce in the Introduction what is not in the Discussion.</p>
+  <div class="takeaway">Do not announce in the Introduction what is not in the Discussion.</div>
+</div>
+
+<!-- ============================================================
+     Act 5: Conclusion and Abstract
+     ============================================================ -->
+
+<div class="part-head" id="part5">
+  <div class="part-num">Act 5</div>
+  <div class="part-main">
+    <div class="part-title">Compression</div>
+    <div class="part-en">Conclusion and Abstract</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Draft-E｜Conclusion: Within three paragraphs</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Restated Contribution</div><div class="nc-sub">Summarize the first sentence of the Discussion. Numbers may be included. No new information. "This study demonstrates that …"</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Field-Level Meaning</div><div class="nc-sub">How this result changes the assumption. 2–3 sentences. Do not overclaim. "These findings refine the understanding of … This suggests that …"</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Forward Look</div><div class="nc-sub">The next question, given the limitations. Do not use abstract phrases like "the future is bright." 1–2 sentences. "Future work should …"</div></div></div>
+  </div>
+  <p style="margin-top:10px;"><b>Check</b>: Is it not a repetition of Results? / Is it not a copy of the Discussion? / Is it not overclaiming?</p>
+</div>
+
+<div class="card">
+  <h2>Draft-F｜Abstract: 6–7 sentences, fixed order</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Background (1 sentence)</div><div class="nc-sub">The Broad Context in one sentence. Reduce technical terms</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Gap (1 sentence)</div><div class="nc-sub">"However, it remains unclear whether …"</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Question (1 sentence)</div><div class="nc-sub">"This study investigates …"</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Method (1 sentence)</div><div class="nc-sub">"We developed / applied …"</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">Results (2 sentences)</div><div class="nc-sub">"We found that … Specifically, …" Write numbers and direction</div></div></div>
+    <div class="num-card"><div class="nc-num">6</div><div class="nc-body"><div class="nc-head">Implication (1 sentence)</div><div class="nc-sub">"These findings suggest that …"</div></div></div>
+  </div>
+  <p style="margin-top:10px;"><b>Check</b>: Does it match the Introduction? / Does it match the Discussion? / Does it contain no new information? / Is it within 200–250 words?</p>
+  <p style="margin-top:8px;">The passing condition is that the claim is understood from the Abstract alone. Most readers read only the Abstract. Reviewers, too, first fix the paper's claim from the Abstract, then check whether the body supports it.</p>
+  <div class="takeaway">Most readers read only the Abstract. Does it convey the claim on its own?</div>
+</div>
+
+<!-- ============================================================
+     Act 6: Completion and polish
+     ============================================================ -->
+
+<div class="part-head" id="part6">
+  <div class="part-num">Act 6</div>
+  <div class="part-main">
+    <div class="part-title">Withstanding review</div>
+    <div class="part-en">Completion and polish</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Draft-G｜Structural Audit</h2>
+  <p>Once all sections are in place, audit the structure.</p>
+  <ul style="margin-top:8px;">
+    <li>Does each Figure support a Contribution?</li>
+    <li>Are Results and Discussion not mixed?</li>
+    <li>Are the Introduction and Discussion a mirror structure?</li>
+    <li>Is there any unnecessary Figure?</li>
+    <li>What content should be moved to the Appendix?</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>Anticipated reviewer comments</h2>
+  <p>The comments reviewers write are surprisingly similar.</p>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Novelty is unclear</div><div class="nc-sub">Where the novelty lies is unclear. "Compared to X, we Y" is not visible in the Introduction</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Comparison is insufficient</div><div class="nc-sub">The comparison is lacking. The Prior study in the Comparison Table is not compared in the text</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Assumptions are unrealistic</div><div class="nc-sub">The assumptions are unrealistic. The assumptions and range of validity are not written in Methods</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Overclaiming</div><div class="nc-sub">The claim exceeds the evidence. The facts in Results and the implications in Discussion straddle commitments</div></div></div>
+  </div>
+  <p style="margin-top:10px;">All four can be eliminated at the Framing and Figures stages of the Paper Card. Before submission, write these four yourself and be able to point to where in the manuscript the answer to each lies.</p>
+  <div class="takeaway">Before submission, be able to point to the answers to these four.</div>
+</div>
+
+<div class="card">
+  <h2>Draft-H｜Full text: Rough is fine</h2>
+  <p>Produce a manuscript in which the claim can be read through. Do not write from the top, do not aim for perfection, do not worry too much about the fine points of English, do not overthink the reviewer response. This is the stage where "separate generation from editing," stated in Writing Papers, is carried out across the whole manuscript. Mark the points where you want comments, and hand it to Team Meeting or your supervisor.</p>
+</div>
+
+<div class="card">
+  <h2>Draft-I｜Polish: Do not polish forever</h2>
+  <p>Aim for the minimum completeness that withstands review. Cut what can be cut. Write the answers to the anticipated reviewer comments. Decide what to move to the Appendix.</p>
+  <p style="margin-top:8px;">Do not keep polishing forever. Prioritize clarity of logic over perfect English expression. For sentence-by-sentence checking, use the five items of Writing Paper Skills (strength of claim, reviewer's challenge, correspondence with evidence, validity of comparison, safer rewrite).</p>
+  <div class="takeaway">Prioritize clarity of logic over perfect English.</div>
+</div>
+
+<div class="card">
+  <h2>The words of claim strength</h2>
+  <p>Implement the commitments of <a href="../../../orientation/en/science-framework/" style="color:var(--primary);font-weight:700;">Lab OS Chapter 02</a> as verbs.</p>
+  <table class="wk" style="margin-top:8px;">
+    <tr><th>Commitment</th><th>Verbs you can use</th></tr>
+    <tr><td>Description</td><td>observed, measured, found</td></tr>
+    <tr><td>Explanation</td><td>indicates, is consistent with, is controlled by (after eliminating alternative explanations)</td></tr>
+    <tr><td>Prediction</td><td>predicts, generalizes to</td></tr>
+    <tr><td>Control</td><td>enables, improves, reduces</td></tr>
+  </table>
+  <p style="margin-top:8px;">Use "suggests" only in the Discussion, as a weak commitment to explanation. Not in Results. "demonstrates" and "proves" only when the evidence reaches that level.</p>
+  <div class="takeaway">The commitment of a verb must not exceed the level of the evidence.</div>
+</div>
+
+<!-- ============ Final checklist ============ -->
+
+<div class="card">
+  <h2>Final checklist</h2>
+  <div class="num-cards" style="margin-top:8px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Is the order of writing Methods → Results → Discussion → Introduction → Conclusion → Abstract?</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Is Methods at a granularity others can reproduce?</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Is Results one-to-one with the figures, with no interpretation, no evaluative words, and no "suggests"?</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Is the Discussion five paragraphs (Direct Answer / Gap Resolution / Assumption Refinement / Field Implication / Limitations)?</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">Do the first sentence of the Discussion, the "Here we show" of the Introduction, and the first sentence of the Conclusion match?</div></div></div>
+    <div class="num-card"><div class="nc-num">6</div><div class="nc-body"><div class="nc-head">Is the Gap of the Introduction recovered in the Discussion?</div></div></div>
+    <div class="num-card"><div class="nc-num">7</div><div class="nc-body"><div class="nc-head">Is the Abstract 6–7 sentences, in fixed order, within 250 words, and consistent with the body?</div></div></div>
+    <div class="num-card"><div class="nc-num">8</div><div class="nc-body"><div class="nc-head">Can you state the answers to the four anticipated reviewer comments, with their locations in the manuscript?</div></div></div>
+    <div class="num-card"><div class="nc-num">9</div><div class="nc-body"><div class="nc-head">Have you run the five items of Writing Paper Skills sentence by sentence?</div></div></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Takeaways by role</h2>
+  <div class="grid-3" style="margin-top:8px;">
+    <div class="g3-card">
+      <div class="g3-who">B4</div>
+      <div class="g3-action">Find the interpretive sentences</div>
+      <div class="g3-desc">Find the interpretive sentences in the Results of your thesis and move them to the Discussion. That alone separates the roles of the chapters</div>
+    </div>
+    <div class="g3-card">
+      <div class="g3-who">M &amp; D</div>
+      <div class="g3-action">Write the three sentences side by side</div>
+      <div class="g3-desc">Write side by side the first sentence of the Discussion, the "Here we show" of the Introduction, and the first sentence of the Conclusion. If they do not match, the paper's claim is not yet one</div>
+    </div>
+    <div class="g3-card">
+      <div class="g3-who">Postdocs</div>
+      <div class="g3-action">Read for the mirror structure only</div>
+      <div class="g3-desc">Read a junior's manuscript for the "mirror structure" only. If the Gap and the Resolution do not correspond, postpone all other editing</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Related links ============ -->
+
+<div class="card">
+  <h2>Related links</h2>
+  <ul>
+    <li><a href="../../en/">Lab Forum Lectures: Writing Papers</a> — The whole picture of submission, authorship, cover letters, responding to reviews</li>
+    <li><a href="../../figures/en/">Lab Forum Lectures: Writing Papers — Figures</a> — Designing and freezing the figures</li>
+    <li><a href="../../../orientation/en/claim-design/">Lab OS 04 Claim Design</a> — Narrative Skeleton</li>
+    <li><a href="../../../orientation/en/responsibility/">Lab OS 06 Responsibility</a> — Reproducibility and integrity</li>
+    <li><a href="../../../lab-tools/paper-card/en/">Lab Tools: Paper Card</a> — The Draft-A to I fields</li>
+  </ul>
+</div>
+
+<footer>
+  &copy; DeSFE Lab (Anna Suzuki Lab), Tohoku University ｜
+  <a href="../../../en/">Portal</a>
+</footer>
+
+</div>
+</body>
+</html>
