@@ -14,41 +14,45 @@
 
 ```
 index.html / en/                ← ポータル表紙【完成】
-orientation/                    ← Lab OS 導入＋3部10章＋付録2本（03-A・07-A）【完成・JAのみ。EN未対応（旧6章構成のまま）】
+orientation/ (+en/)             ← Lab OS 導入＋3部10章＋付録2本（03-A・07-A）【完成・日英】
 
   第Ⅰ部 探究の原理｜Principles
   what-is-research/ (+en/)      ← 01 研究とは何か【完成】
-  science-framework/            ← 02 探究のプロセスと科学の枠組み【完成・EN未】
+  science-framework/ (+en/)     ← 02 探究のプロセスと科学の枠組み【完成】
 
   第Ⅱ部 研究の設計｜Design
-  question-design/               ← 03 問いの設計（旧 research-as-design を分割）【完成・EN未】
-    question-archetypes/         ← 付録03-A 問いの型【完成・EN未】
-  claim-design/                  ← 04 主張の設計（旧 research-as-design を分割）【完成・EN未】
+  question-design/ (+en/)        ← 03 問いの設計（旧 research-as-design を分割）【完成】
+    question-archetypes/ (+en/)  ← 付録03-A 問いの型【完成】
+  claim-design/ (+en/)           ← 04 主張の設計（旧 research-as-design を分割）【完成】
   paper-types/ (+en/)            ← 05 論文タイプ｜信念のスコープと形式（旧03を改訂、旧付録05-Aを統合）【完成】
-  responsibility/                ← 06 研究の責任【完成・EN未】
+  responsibility/ (+en/)         ← 06 研究の責任【完成】
 
   第Ⅲ部 研究室の運用｜Practice
-  mission/                       ← 07 鈴木（杏）研は何を研究するか【完成・EN未】
-    knowledge-map/                ← 付録07-A 学びの地図｜Knowledge Map【完成・EN未】
+  mission/ (+en/)                ← 07 鈴木（杏）研は何を研究するか【完成】
+    knowledge-map/ (+en/)         ← 付録07-A 学びの地図｜Knowledge Map【完成】
   grade-goals/ (+en/)            ← 08 学年別のゴールと計画（旧05）【完成】
   five-layers/ (+en/)            ← 09 研究活動の5階層構造（旧04）【完成】
   habits-culture/ (+en/)         ← 10 必須習慣と文化（旧06）【完成】
 
-  research-as-design/           ← 旧02。question-design/ への meta refresh リダイレクトのみ残置（外部リンクを切らないため）
+  research-as-design/ (+en/)    ← 旧02。question-design/ への meta refresh リダイレクトのみ残置（外部リンクを切らないため。EN も同様）
   paper-type-requirements/      ← 旧付録05-A。paper-types/ への meta refresh リダイレクトのみ残置（外部リンクを切らないため）
 lab-tools/
   paper-card/ (+en/)            ← 【完成】
   quarter-plan/ (+en/)          ← 【完成】
 writing-paper/ (+en/)           ← 【完成】
-  figures/                      ← Writing Papers — Figures｜図で主張を作る【完成・EN未】
-  draft/                        ← Writing Papers — Draft｜図を文章にする【完成・EN未】
+  figures/ (+en/)               ← Writing Papers — Figures｜図で主張を作る【完成】
+  draft/ (+en/)                 ← Writing Papers — Draft｜図を文章にする【完成】
 design-for-research/ (+en/)     ← 【完成】
 career-design/ (+en/)           ← 【完成・公開済み】
 ```
 
-Lab OS の EN版（`orientation/en/`）は旧6章構成のまま据え置き。JA側の3部10章化に伴う
-EN側の対応方針は別途決定（現状は英語話者向けに「日本語版が改訂された」旨の注記を
-各章に入れる案を検討中）。
+EN版の規約: 日本語版 HTML を正とし、`en/` の同パスに同一構造で置く（クラス・リンク先は
+同じ、リンク先だけ en/ 側の相対パス）。用語は `draft/glossary-en.md` に従う。
+言語切替は `div.lang-sw` を breadcrumb の直前に置く（JA: `日本語 ｜ English`、EN: `English ｜ 日本語`）。
+部名は Part I Principles / Part II Design / Part III Practice。付録（03-A・07-A）はポータルの
+タイルには出さない（ハブ orientation/ からのみ辿る）。
+既知の未整備: 導入スライドの英語版 PDF（orientation/lab_orientation_day1_en.pdf）は未作成で、
+EN ハブは日本語 PDF に「(Japanese)」表記でリンクしている。
 
 各ページ完成時は、ポータル（index.html / en/index.html）の該当タイルを
 `div.tile.soon` → `a.tile`（badge を `live` に）へ更新すること。
