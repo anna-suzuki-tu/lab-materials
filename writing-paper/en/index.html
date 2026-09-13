@@ -3,359 +3,695 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Writing Papers — From Draft to the World | Lab Forum | DeSFE Lab</title>
-<meta name="description" content="A paper only becomes research once it is written. Four acts: draft mindset, polishing a manuscript, submitting, and dialogue with reviewers. DeSFE Lab, Tohoku University.">
+<title>Writing Papers — A Paper Becomes Research Only When It Is Written | Lab Forum | DeSFE Lab</title>
+<meta name="description" content="The whole process of submitting a paper, from writing to responding to reviews, in four acts. Draft Mindset, authorship, cover letters, and the review process, grounded in the practice of Suzuki-A. Lab. DeSFE Lab, Tohoku University.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/style.css">
 <style>
+/* ---- 幕ヘッダー（ダーク地の上） ---- */
 .part-head {
-  border-left: 5px solid var(--accent); padding: 10px 0 10px 16px; margin: 28px 0 6px;
+  display: flex; align-items: center; gap: 14px;
+  margin: 36px 0 4px; padding: 14px 16px;
+  background: rgba(255,255,255,.05); border-radius: 10px;
+  border-left: 5px solid var(--accent);
 }
-.part-num { font-size: 11px; font-weight: 900; letter-spacing: .18em; color: var(--accent); }
-.part-title { font-size: 20px; font-weight: 900; color: #FFFFFF; line-height: 1.3; }
-.part-en { font-size: 13px; color: var(--ink-muted); margin-top: 2px; }
+.part-num {
+  font-size: 11px; font-weight: 900; letter-spacing: .15em;
+  color: var(--accent); white-space: nowrap;
+}
+.part-main { flex: 1; }
+.part-title { font-size: 17px; font-weight: 900; color: #fff; line-height: 1.4; }
+.part-en { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+
+/* ---- 二列レイアウト（カード内） ---- */
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;
+}
+@media (max-width: 520px) { .two-col { grid-template-columns: 1fr; } }
+.col-block { background: var(--panel); border-radius: 8px; padding: 12px; }
+.col-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 6px; }
+.col-block ul { padding-left: 1.3em; }
+.col-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- Before / After ---- */
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ba-grid { grid-template-columns: 1fr; } }
+.ba-block { border-radius: 8px; padding: 12px; }
+.ba-before { background: #fdecea; border-left: 4px solid #e57373; }
+.ba-after  { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ba-label { font-size: 11px; font-weight: 900; letter-spacing: .12em; margin-bottom: 6px; }
+.ba-before .ba-label { color: #c62828; }
+.ba-after  .ba-label { color: #2e7d32; }
+.ba-block ul { padding-left: 1.3em; }
+.ba-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- ステップ（横並び） ---- */
+.steps-h { display: grid; gap: 0; margin: 10px 0; counter-reset: step; }
+.step-h {
+  display: flex; align-items: flex-start; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid var(--border); counter-increment: step;
+}
+.step-h:last-child { border-bottom: none; }
+.step-num {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.step-body { flex: 1; }
+.step-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- ステップ（縦タイムライン） ---- */
+.steps-v { margin: 10px 0; }
+.step-v { display: flex; gap: 14px; padding: 8px 0; position: relative; }
+.step-v:not(:last-child)::after {
+  content: ""; position: absolute; left: 11px; top: 32px; bottom: -8px;
+  width: 2px; background: var(--border);
+}
+.step-v-dot {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--accent);
+  color: #fff; font-size: 11px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+}
+.step-v-body { flex: 1; }
+.step-v-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-v-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- 2x2 カードグリッド ---- */
+.grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .grid-2x2 { grid-template-columns: 1fr; } }
+.g-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g-card-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g-card-sub { font-size: 12.5px; color: var(--muted); }
+
+/* ---- テイクアウェイ ---- */
 .takeaway {
-  border-left: 5px solid var(--accent); background: rgba(144,194,207,.09);
-  border-radius: 0 8px 8px 0; padding: 10px 14px; margin-top: 14px;
-  font-size: 13.5px; font-weight: 700; color: var(--text);
+  background: rgba(32,122,145,.08); border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0; padding: 8px 12px; margin-top: 12px;
+  font-size: 13px; font-weight: 700; color: var(--text);
 }
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
-@media (max-width: 560px) { .two-col { grid-template-columns: 1fr; } }
-.col-block { background: var(--panel); border-radius: 8px; padding: 13px 14px; font-size: 13.5px; line-height: 1.75; color: var(--text); }
-.col-block b { display: block; font-size: 13px; font-weight: 900; color: var(--primary); margin-bottom: 4px; }
-.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
-@media (max-width: 500px) { .ba-grid { grid-template-columns: 1fr; } }
-.ba-before { background: #fef2f2; border: 1px solid #f5c6c6; border-radius: 8px; padding: 11px 13px; font-size: 13px; color: var(--text); }
-.ba-after  { background: #f0faf4; border: 1px solid #b5dfc7; border-radius: 8px; padding: 11px 13px; font-size: 13px; color: var(--text); }
-.ba-before b, .ba-after b { display: block; font-size: 12px; font-weight: 900; margin-bottom: 5px; letter-spacing: .06em; }
-.ba-before b { color: #c0392b; }
-.ba-after b  { color: #1e8449; }
-.steps-v { display: flex; flex-direction: column; gap: 0; margin: 12px 0; }
-.sv-item { display: flex; gap: 12px; align-items: stretch; }
-.sv-left { display: flex; flex-direction: column; align-items: center; width: 28px; flex-shrink: 0; }
-.sv-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); margin-top: 5px; flex-shrink: 0; }
-.sv-line { width: 2px; background: var(--border); flex: 1; margin: 4px auto 0; }
-.sv-item:last-child .sv-line { display: none; }
-.sv-body { padding-bottom: 14px; }
-.sv-label { font-size: 13.5px; font-weight: 900; color: var(--text); }
-.sv-desc { font-size: 13px; color: var(--muted); margin-top: 2px; }
-.sv-last .sv-dot { background: var(--primary); width: 14px; height: 14px; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
-@media (max-width: 560px) { .grid-3 { grid-template-columns: 1fr; } }
-.g3-card { background: var(--panel); border-radius: 8px; padding: 12px 13px; font-size: 13px; color: var(--text); }
-.g3-card b { display: block; font-size: 14px; font-weight: 900; color: var(--primary); margin-bottom: 6px; }
-.grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
-@media (max-width: 480px) { .grid-2x2 { grid-template-columns: 1fr; } }
-.g-card { background: var(--panel); border-radius: 8px; padding: 12px 13px; font-size: 13px; color: var(--text); }
-.g-card b { display: block; font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
-.g-card em { font-style: normal; font-size: 11.5px; color: var(--muted); }
-.num-cards { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
-.nc-item { display: flex; gap: 12px; align-items: flex-start; background: var(--panel); border-radius: 8px; padding: 12px 14px; }
-.nc-num { font-size: 22px; font-weight: 900; color: var(--primary); flex-shrink: 0; line-height: 1; margin-top: 2px; min-width: 28px; }
-.nc-body { font-size: 13.5px; color: var(--text); }
-.nc-body b { font-weight: 900; }
-.nc-body small { display: block; font-size: 12px; color: var(--muted); margin-top: 3px; }
+.takeaway::before { content: "→ "; color: var(--accent); }
+
+/* ---- 目次 ---- */
+.toc-row { display: flex; gap: 10px; align-items: baseline; padding: 8px 4px;
+  font-size: 14px; font-weight: 700; color: var(--text); text-decoration: none;
+  border-bottom: 1px solid var(--border); }
+.toc-row:last-child { border-bottom: none; }
+a.toc-row:hover { color: var(--primary); }
+.toc-n { color: var(--primary); font-weight: 900; flex-shrink: 0; font-size: 12px; }
+.toc-sub { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: auto; }
+
+/* ---- 3カードグリッド ---- */
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
+.g3-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g3-who { font-size: 11px; font-weight: 900; letter-spacing: .1em; color: var(--accent); margin-bottom: 4px; }
+.g3-action { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g3-desc { font-size: 12px; color: var(--muted); }
+
+/* ---- 問題/解決 ---- */
+.ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ps-grid { grid-template-columns: 1fr; } }
+.ps-block { border-radius: 8px; padding: 12px; }
+.ps-risk { background: #fdecea; border-left: 4px solid #e57373; }
+.ps-rule { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ps-label { font-size: 11px; font-weight: 900; letter-spacing: .1em; margin-bottom: 6px; }
+.ps-risk .ps-label { color: #c62828; }
+.ps-rule .ps-label { color: #2e7d32; }
+.ps-block ul { padding-left: 1.3em; }
+.ps-block li { font-size: 13px; color: var(--text); margin-bottom: 3px; }
+
+/* ---- 番号付きカード ---- */
+.num-cards { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
+.num-card { display: flex; gap: 12px; align-items: flex-start; }
+.nc-num {
+  width: 26px; height: 26px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.nc-body { flex: 1; background: var(--panel); border-radius: 8px; padding: 10px 12px; }
+.nc-head { font-size: 13px; font-weight: 900; color: var(--text); }
+.nc-sub { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <div class="lang-sw"><span>English</span> ｜ <a href="../">日本語</a></div>
-<div class="breadcrumb"><a href="../../en/">🏠 Education Portal</a> › Lab Forum › Writing Papers</div>
+<div class="breadcrumb"><a href="../../en/">🏠 Portal</a> › Writing Papers</div>
 
 <header>
   <div class="kicker">LAB FORUM — WRITING PAPERS</div>
   <div class="title-row">
     <div class="bar"></div>
     <div>
-      <h1>Writing Papers</h1>
-      <div class="subtitle">A paper only becomes research once it is written — from draft to the world</div>
+      <h1>A Paper Becomes Research Only When It Is Written</h1>
+      <div class="subtitle">Writing Papers — From Draft to the World</div>
     </div>
   </div>
 </header>
 
 <blockquote class="lead-quote">
-  A discovery never written down is a discovery that never happened.
-  <span class="src">— Writing Papers, Suzuki Lab Forum 2026</span>
+  A discovery never written down is the same as one that never existed.
+  <span class="src">Research results become science only when they are "shared in a reproducible form" — the paper is the final phase of the inquiry cycle</span>
 </blockquote>
 
+<!-- ============ Overview ============ -->
+
 <div class="card">
-  <p>Research only becomes science once it is shared in a reproducible form. A paper is your belief expressed to the world — and the final phase of the inquiry cycle. In December you will be pressing Submit. Today's goal: see yourself submitting.</p>
+  <h2>What this lecture covers</h2>
+  <p>This page is a readable reconstruction of the Suzuki-A. Lab Lab Forum lecture "Writing Papers" (9 July 2026). The goal is for everyone, from B4 to doctoral students and postdocs, to be able to walk the whole process of submitting a paper with the map they need.</p>
   <div class="num-cards" style="margin-top:12px;">
-    <div class="nc-item"><div class="nc-num">1</div><div class="nc-body"><b>Act 1 — Write</b><small>Draft mindset: your greatest enemy is perfectionism</small></div></div>
-    <div class="nc-item"><div class="nc-num">2</div><div class="nc-body"><b>Act 2 — Polish</b><small>Authorship · acknowledgements · data · self-plagiarism · AI</small></div></div>
-    <div class="nc-item"><div class="nc-num">3</div><div class="nc-body"><b>Act 3 — Submit</b><small>Cover letter and journal selection</small></div></div>
-    <div class="nc-item"><div class="nc-num">4</div><div class="nc-body"><b>Act 4 — Dialogue</b><small>Peer review and the response letter</small></div></div>
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Act 1 Write</div><div class="nc-sub">Draft Mindset — Let go of perfectionism, separate generation from editing</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Act 2 Prepare</div><div class="nc-sub">Beyond the manuscript — Authorship, acknowledgements, data, reuse, AI use</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Act 3 Submit</div><div class="nc-sub">Cover letter — Write the 90-second pitch to the editor</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Act 4 Converse</div><div class="nc-sub">Review process — Peer review is free consulting</div></div></div>
+  </div>
+  <p style="margin-top:12px;"><b>B4</b>: Grasp the whole picture and make the roadmap to December your own. <b>M &amp; D</b>: Check where you are now and identify the next bottleneck. <b>Postdocs</b>: Check for gaps and update your practical routines.</p>
+</div>
+
+<!-- ============================================================
+     Act 1: Write — Draft Mindset
+     ============================================================ -->
+
+<div class="part-head" id="part1">
+  <div class="part-num">Act 1</div>
+  <div class="part-main">
+    <div class="part-title">The greatest enemy is perfectionism</div>
+    <div class="part-en">Draft Mindset — Know what the struggle really is, and separate generation from editing</div>
   </div>
 </div>
 
-<!-- ============ Act 1 ============ -->
-
-<div class="part-head">
-  <div class="part-num">ACT 1</div>
-  <div class="part-title">Your Greatest Enemy Is Perfectionism</div>
-  <div class="part-en">Write</div>
+<div class="card">
+  <h2>Not being able to write is normal</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">If it flows easily, it is not new</p>
+  <p><b>Struggling is a marker of novelty</b> — struggling to write is evidence that you are challenging the unknown. Uncertainty is a marker of scientific novelty. At the stage where an idea "seems sort of sayable," you have not yet reached the real question.</p>
+  <p style="margin-top:8px;">Paradoxically, the "ugly first draft" is the entrance to originality. Text that flows easily is a reproduction of what you already know. The struggle is not an obstacle to eliminate but a signal that "the novelty is here."</p>
+  <div class="takeaway">The struggle is not a matter of ability; it is evidence of challenging the unknown.</div>
 </div>
 
 <div class="card">
-  <h2>Once Figures Are Fixed, Just Write</h2>
-  <p>At the Figures stage of your <a href="../../lab-tools/paper-card/en/">Paper Card</a>, the figure set is frozen. Once that happens — write the next day. The order is fixed:</p>
-  <p style="font-weight:700; font-size:14.5px; margin:10px 0;">🌱 Idea → 🧭 Framing → 🖼 Figures → ✍️ Draft</p>
-  <p>The Draft stage has one rule: <b>write it all the way through, rough is fine</b>. Struggling with a sentence is a signal that the logic or claim is still unclear. Struggling is not a sign of poor English — it is a marker of where the argument still needs work.</p>
-  <p style="margin-top:8px;">The two stages each have a dedicated lecture: <a href="../figures/en/">Writing Papers — Figures</a> (building the claim through figures) and <a href="../draft/en/">Writing Papers — Draft</a> (writing from the frozen figure set to a complete draft).</p>
-  <div class="takeaway">Struggling IS a marker of novelty — it means you are articulating something that has not been said before.</div>
-</div>
-
-<div class="card">
-  <h2>Multi-Stage Drafting: Dump → Structure → Revise</h2>
-  <p>Do not try to write a clean draft in one pass. Use three stages:</p>
-  <div class="num-cards">
-    <div class="nc-item"><div class="nc-num">1</div><div class="nc-body"><b>Dump</b> — Write everything out without editing. Facts, claims, half-formed thoughts. No self-censoring.<small>Goal: get something onto the page. A blank page is the enemy.</small></div></div>
-    <div class="nc-item"><div class="nc-num">2</div><div class="nc-body"><b>Structure</b> — Read what you dumped and impose order. Does each sentence have a reason for being there? Can you say why every sentence is in its position?<small>A passage that doesn't land signals a flaw in the logic or the claim.</small></div></div>
-    <div class="nc-item"><div class="nc-num">3</div><div class="nc-body"><b>Revise</b> — Polish sentence by sentence. Cut redundancy. Sharpen the claim.<small>Your own stumbling is a preview of the reviewer's stumbling. Fix what trips you.</small></div></div>
+  <h2>Separate generation from editing</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">The writing brain and the editing brain do not run at the same time</p>
+  <p><b>Multi-stage drafting</b> — "Perfect Draft Syndrome," trying to write perfect sentences from the start, cuts writing speed to one tenth. The solution is to separate the writing stage and the editing stage into different time slots.</p>
+  <div class="two-col" style="margin-top:12px;">
+    <div class="col-block">
+      <div class="col-head">First draft (generation)</div>
+      <ul>
+        <li>A dump only you will see</li>
+        <li>Precision does not matter, do not stop</li>
+        <li>Spoken language is fine</li>
+      </ul>
+    </div>
+    <div class="col-block">
+      <div class="col-head">Revision (editing)</div>
+      <ul>
+        <li>Done later, as a separate step</li>
+        <li>Elegance is added here</li>
+        <li>Reread with a reviewer's eyes</li>
+      </ul>
+    </div>
   </div>
-  <div class="takeaway">Paper Card can be the stem of your writing — your contributions are already written as "We show that …"</div>
+  <div class="takeaway">Put "writing time" and "editing time" in your calendar as separate slots.</div>
 </div>
 
 <div class="card">
-  <h2>Sharpening the Manuscript Until It Can Withstand Peer Review</h2>
-  <div class="num-cards">
-    <div class="nc-item"><div class="nc-num">1</div><div class="nc-body"><b>A methods paper lives or dies by the strength of its claim</b><small>"We made X possible for the first time," not merely "we observed X."</small></div></div>
-    <div class="nc-item"><div class="nc-num">2</div><div class="nc-body"><b>Read the output sentence by sentence</b><small>It won't get stronger until you can say, for every sentence, why it's there.</small></div></div>
-    <div class="nc-item"><div class="nc-num">3</div><div class="nc-body"><b>A passage that doesn't land signals a flaw in the logic or the claim</b><small>Don't dismiss unreadability as style — your own snag previews the reviewer's snag.</small></div></div>
-    <div class="nc-item"><div class="nc-num">4</div><div class="nc-body"><b>The smell of AI erodes a reviewer's trust</b><small>Removing it is a defense for getting through review, not an aesthetic preference.</small></div></div>
-    <div class="nc-item"><div class="nc-num">5</div><div class="nc-body"><b>Anticipate the review — don't just react to it</b><small>Own weaknesses as stated limitations. AI is a drafting tool, not the author.</small></div></div>
+  <h2>Prescriptions for when you are stuck</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Not willpower, but an intervention matched to the symptom</p>
+  <p><b>Tactical fixes for writer's block</b> — there are three kinds of symptoms of being stuck, and a different intervention works for each.</p>
+  <div class="num-cards" style="margin-top:12px;">
+    <div class="num-card">
+      <div class="nc-num">1</div>
+      <div class="nc-body">
+        <div class="nc-head">Fear of the blank page</div>
+        <div class="nc-sub">Ten minutes of freewriting — dump it out regardless of precision. You may throw away what you wrote</div>
+      </div>
+    </div>
+    <div class="num-card">
+      <div class="nc-num">2</div>
+      <div class="nc-body">
+        <div class="nc-head">Loss of momentum</div>
+        <div class="nc-sub">The WIRMI method — rewrite in spoken language: "What I really mean is…". Saying it aloud loosens the block</div>
+      </div>
+    </div>
+    <div class="num-card">
+      <div class="nc-num">3</div>
+      <div class="nc-body">
+        <div class="nc-head">Feeling overwhelmed</div>
+        <div class="nc-sub">Break the task down to "write the caption of Figure 1." Decide only the next step, not the finish</div>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway">Suzuki-A. Lab's Writing Paper Skills turn these prescriptions into a system.</div>
+</div>
+
+<div class="card">
+  <h2>Workflow: The first draft is an "unfolding task"</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Once Framing and Figures are done, the Draft becomes an unfolding task</p>
+  <p><b>From weekly habit to submission</b> — you do not need to start writing from a blank page. If the materials are in place, the first draft is an unfolding task.</p>
+  <div class="steps-h" style="margin-top:12px;">
+    <div class="step-h"><div class="step-num">1</div><div class="step-body"><div class="step-label">Framing / Figures</div><div class="step-sub">Fix the structure of the figures and the framework of the paper first (see <a href="../../orientation/en/question-design/">Lab OS 03</a> and <a href="../../orientation/en/claim-design/">04</a>; details in <a href="../figures/en/">Writing Papers — Figures</a>)</div></div></div>
+    <div class="step-h"><div class="step-num">2</div><div class="step-body"><div class="step-label">Paper card (updated weekly)</div><div class="step-sub">The weekly habit of keeping the one-sentence claim "Compared to X, we Y" updated</div></div></div>
+    <div class="step-h"><div class="step-num">3</div><div class="step-body"><div class="step-label">The one-sentence claim is ready</div><div class="step-sub">If you have a claim you can state outright, the skeleton of the first draft is done</div></div></div>
+    <div class="step-h"><div class="step-num">4</div><div class="step-body"><div class="step-label">Draft = unfolding</div><div class="step-sub">Just unfold the assembled materials into text. Write from materials, not from a blank page (details in <a href="../draft/en/">Writing Papers — Draft</a>)</div></div></div>
+  </div>
+  <div class="takeaway">Here is this week's habit, so that you do not panic in December.</div>
+</div>
+
+<div class="card">
+  <h2>Writing Paper Skills — The "form" that makes claims stronger</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Suzuki-A. Lab has put into words the "form" that makes claims stronger</p>
+  <p>The strength of a paper is decided by the strength of its claim. A manuscript that ends up writing "we observed X" and one that states outright "we <strong>enabled X for the first time</strong>" get completely different reactions from reviewers. <b>Writing Paper Skills</b> is this "form for stating outright," made explicit as a process to run together with AI.</p>
+  <div class="ba-grid" style="margin-top:12px;">
+    <div class="ba-block ba-before">
+      <div class="ba-label">BEFORE</div>
+      <ul>
+        <li>Ends up writing "we observed X"</li>
+        <li>The claim is weak; the novelty does not come through</li>
+      </ul>
+    </div>
+    <div class="ba-block ba-after">
+      <div class="ba-label">AFTER</div>
+      <ul>
+        <li>States outright "we <strong>enabled X for the first time</strong>"</li>
+        <li>Reviewers' objections are answered in advance</li>
+      </ul>
+    </div>
+  </div>
+  <div class="takeaway">The process run together with AI is Writing Paper Skills (contents in the next section).</div>
+</div>
+
+<div class="card">
+  <h2>Writing Paper Skills — Five checks</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Check sentence by sentence, through the eyes of 3–4 imagined reviewers</p>
+  <p><b>Five checks, sentence by sentence</b> — check each sentence against the following five items.</p>
+  <div class="num-cards" style="margin-top:12px;">
+    <div class="num-card"><div class="nc-num">①</div><div class="nc-body"><div class="nc-head">Claim-strength</div><div class="nc-sub">Is the level of claim strength appropriate — are observed / indicates / suggests used distinctly?</div></div></div>
+    <div class="num-card"><div class="nc-num">②</div><div class="nc-body"><div class="nc-head">Reviewer objection</div><div class="nc-sub">Where will the reviewer push — is the anticipated objection pre-empted?</div></div></div>
+    <div class="num-card"><div class="nc-num">③</div><div class="nc-body"><div class="nc-head">Evidence alignment</div><div class="nc-sub">Are evidence and claim in balance — is the claim as strong as the data can support?</div></div></div>
+    <div class="num-card"><div class="nc-num">④</div><div class="nc-body"><div class="nc-head">Comparison validity</div><div class="nc-sub">Is the comparison valid — same physical quantity, same conditions?</div></div></div>
+    <div class="num-card"><div class="nc-num">⑤</div><div class="nc-body"><div class="nc-head">Safer rewrite</div><div class="nc-sub">Is it a safe rewrite without an AI smell — check dashes, stock phrases, and quantified exaggerations</div></div></div>
+  </div>
+  <div class="takeaway">There are two modes of use.</div>
+</div>
+
+<div class="card">
+  <h2>Writing Paper Skills — Two ways to use it</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Draft-diagnosis mode and supervisor mode are different things</p>
+  <p><b>Two modes, one purpose: sharpen the claim</b> — both modes share the same core principle, "make the claim stronger."</p>
+  <div class="two-col" style="margin-top:12px;">
+    <div class="col-block">
+      <div class="col-head">Student mode: Draft diagnosis</div>
+      <ul>
+        <li>Check what is being said vs. what should be said</li>
+        <li>Take the "form" home through before / after</li>
+        <li>No clean copy — the next one you do yourself</li>
+      </ul>
+    </div>
+    <div class="col-block">
+      <div class="col-head">Supervisor mode: Working draft</div>
+      <ul>
+        <li>Working draft → expressing what feels off</li>
+        <li>Translate what feels off into a claim</li>
+        <li>Final responsibility for the text stays with the author</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note" style="margin-top:12px;">
+    <b>Common principle</b>: AI is a drafting device, not the writer. Being able to say, sentence by sentence, "why it is there" is the author's final responsibility.
+  </div>
+  <div class="takeaway">AI is a tool. Only humans can bear responsibility.</div>
+</div>
+
+<!-- ============================================================
+     Act 2: Prepare — Beyond the manuscript
+     ============================================================ -->
+
+<div class="part-head" id="part2">
+  <div class="part-num">Act 2</div>
+  <div class="part-main">
+    <div class="part-title">A paper is not complete with the text alone</div>
+    <div class="part-en">Beyond the manuscript — Authors, acknowledgements, data, reuse, AI</div>
   </div>
 </div>
 
-<!-- ============ Act 2 ============ -->
-
-<div class="part-head">
-  <div class="part-num">ACT 2</div>
-  <div class="part-title">A Paper Isn't Finished With the Manuscript Alone</div>
-  <div class="part-en">Polish</div>
-</div>
-
 <div class="card">
-  <h2>Authorship Needs All Four Criteria, Not Some</h2>
-  <p>The ICMJE defines authorship by four pillars. All four are required — not some.</p>
-  <div class="num-cards">
-    <div class="nc-item"><div class="nc-num">1</div><div class="nc-body"><b>Substantial contribution</b> to conception, design, data acquisition, or analysis</div></div>
-    <div class="nc-item"><div class="nc-num">2</div><div class="nc-body"><b>Drafting or critically revising</b> the manuscript</div></div>
-    <div class="nc-item"><div class="nc-num">3</div><div class="nc-body"><b>Final approval</b> of the version to be published</div></div>
-    <div class="nc-item"><div class="nc-num">4</div><div class="nc-body"><b>Accountability</b> for all aspects of the work</div></div>
+  <h2>Authorship — The four criteria</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Authorship requires all four criteria</p>
+  <p>Under the <b>ICMJE (International Committee of Medical Journal Editors)</b> criteria, an author must meet all four of the following. If even one is missing, the person is not an author.</p>
+  <div class="num-cards" style="margin-top:12px;">
+    <div class="num-card"><div class="nc-num">①</div><div class="nc-body"><div class="nc-head">Substantial contribution</div><div class="nc-sub">Substantial contribution to conception, data acquisition, analysis, or interpretation</div></div></div>
+    <div class="num-card"><div class="nc-num">②</div><div class="nc-body"><div class="nc-head">Drafting or revising</div><div class="nc-sub">Drafting the manuscript, or critically revising it for important intellectual content</div></div></div>
+    <div class="num-card"><div class="nc-num">③</div><div class="nc-body"><div class="nc-head">Final approval</div><div class="nc-sub">Final approval of the very version to be published</div></div></div>
+    <div class="num-card"><div class="nc-num">④</div><div class="nc-body"><div class="nc-head">Accountability</div><div class="nc-sub">Accountability for all aspects of the work — <b>all four together make an author</b></div></div></div>
   </div>
-  <p style="margin-top:10px;">"Just collected data" or "just funded it" → those contributions go in Acknowledgements, not on the author list.</p>
-  <div class="takeaway">All four criteria, or it isn't authorship. Decide author order before you start writing — disputes at submission are the most draining. Talk early, not at the last moment. When unsure, ask Suzuki.</div>
+  <div class="takeaway">"Data collection only" or "funding only" is not authorship; it goes in the acknowledgements.</div>
 </div>
 
 <div class="card">
-  <h2>Acknowledgements Record Sub-authorship Contributions Accurately</h2>
-  <div class="grid-2x2">
-    <div class="g-card"><b>Material providers</b>Include their institutional location</div>
-    <div class="g-card"><b>Technical support, language editing</b>Name the service or person</div>
-    <div class="g-card"><b>Funding</b>Get grant numbers exactly right</div>
-    <div class="g-card"><b>Everyone listed</b>Get their consent before listing them</div>
+  <h2>Authorship — When to talk about it</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Discuss author order and responsibilities before you start writing</p>
+  <p><b>Talk early, not at submission</b> — the most draining authorship troubles are disputes right before submission. Agree on author order, first author, corresponding author, and the roles of co-authors during the project's <b>Framing period</b>.</p>
+  <div class="note">
+    If in doubt, consult Suzuki. The final decision is made in consultation with your supervisor. The same goes for acknowledgements: always obtain the person's consent before listing them.
   </div>
-  <div class="takeaway">Acknowledgements need consent and accuracy too.</div>
+  <div class="takeaway">The time to talk is the Framing period — right before submission is too late.</div>
 </div>
 
 <div class="card">
-  <h2>Data Is Now Reviewed as Part of the Paper</h2>
-  <p>Open science is the default. Many journals have data-sharing policies, and data is now held to the same standard as the paper itself.</p>
-  <ul style="padding-left:1.3em; font-size:14px; margin-top:8px;">
-    <li><b>FAIR</b>: Findable, Accessible, Interoperable, Reusable</li>
-    <li>Use a DOI-backed repository (e.g., Zenodo)</li>
-    <li>README must include: file naming, variable definitions, ORCID, software requirements, dates in ISO 8601 (YYYY-MM-DD)</li>
-    <li>State the license explicitly (CC0 / CC-BY)</li>
-  </ul>
-  <div class="takeaway">Your data is a package addressed to a stranger. Package it so a stranger can use it without asking you.</div>
+  <h2>Data Repository — Data is part of the paper</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">An era in which data is reviewed as part of the paper</p>
+  <p><b>Open science is the default</b> — many journals, including Geothermics, have data-sharing policies. Follow the <b>FAIR principles</b> (Findable, Accessible, Interoperable, Reusable) and publish in a repository with a DOI (Zenodo, etc.).</p>
+  <div class="note" style="margin-top:10px;">
+    <b>Required README items</b>: file naming conventions, variable definitions, software requirements, ORCID. <b>Dates in ISO 8601 (YYYY-MM-DD)</b>. State the license explicitly, CC0 or CC-BY. Grant numbers must be exact (LOTUS etc. — do not forget to check the funding conditions).
+  </div>
+  <div class="takeaway">Data is a package for an unknown someone in the future. Hand it over with a README and a license.</div>
 </div>
 
 <div class="card">
-  <h2>Even Your Own Text Can Become Self-Plagiarism</h2>
-  <p>Text recycling has section-specific rules. Extra caution is required when turning a thesis into a journal paper.</p>
-  <table class="wk">
-    <tr><th>Section</th><th>Reuse</th><th>Conditions</th></tr>
-    <tr><td>Methods</td><td>○</td><td>Reuse is common, but cite the source</td></tr>
-    <tr><td>Introduction</td><td>△</td><td>Wholesale copying is not allowed</td></tr>
-    <tr><td>Results / Discussion</td><td>✕</td><td>No reuse (counts as duplicate publication)</td></tr>
+  <h2>Self-plagiarism</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Even your own text becomes self-plagiarism when copy-pasted</p>
+  <p>The tolerance for <b>text recycling</b> differs by section. Take particular care when turning a master's thesis into a journal paper.</p>
+  <table class="wk" style="margin-top:10px;">
+    <tr><th>Section</th><th>Reuse</th><th>Conditions / cautions</th></tr>
+    <tr><td><b>Methods</b></td><td style="color:#2e7d32; font-weight:700;">○</td><td>Generally accepted if the source is cited</td></tr>
+    <tr><td><b>Introduction</b></td><td style="color:#f57c00; font-weight:700;">△</td><td>Wholesale copying is not allowed. Substantial rewriting is required</td></tr>
+    <tr><td><b>Results / Discussion</b></td><td style="color:#c62828; font-weight:700;">✕</td><td>Reuse amounts to duplicate publication. Always write anew</td></tr>
   </table>
-  <div class="takeaway">How much reuse is allowed depends on the section.</div>
+  <div class="takeaway">Master's thesis → journal paper is the most dangerous moment.</div>
 </div>
 
 <div class="card">
-  <h2>AI Cannot Be an Author</h2>
-  <div class="ba-grid">
-    <div class="ba-before">
-      <b>What AI cannot do</b>
-      AI cannot sign a copyright agreement or bear ethical responsibility. Authors bear full responsibility for hallucinated (fake) citations generated by AI.
+  <h2>AI use — Why AI cannot be an author, and the rules of Suzuki-A. Lab</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">AI cannot be an author — because it cannot bear responsibility</p>
+  <p><b>Deficit of accountability &amp; confidentiality</b> — AI cannot sign a copyright agreement and cannot bear ethical responsibility.</p>
+  <div class="ps-grid" style="margin-top:12px;">
+    <div class="ps-block ps-risk">
+      <div class="ps-label">Risks</div>
+      <ul>
+        <li>All responsibility for hallucinations (fake citations) lies with the author</li>
+        <li>Uploading a paper under review is a <b>breach of confidentiality and copyright</b></li>
+        <li>Violation of publisher policies (Springer Nature: generative-AI figures prohibited in principle, etc.)</li>
+      </ul>
     </div>
-    <div class="ba-after">
-      <b>How to use AI responsibly</b>
-      If AI was used, disclose: tool name, version, and purpose in Methods or Acknowledgements. Check each publisher's policy. Feeding an unpublished manuscript to AI = breach of confidentiality and copyright.
+    <div class="ps-block ps-rule">
+      <div class="ps-label">Suzuki-A. Lab rules</div>
+      <ul>
+        <li>If used, disclose tool name, version, and purpose in Methods / acknowledgements</li>
+        <li>Never enter unpublished manuscripts — absolutely</li>
+        <li>Keep a usage record and check the disclosure statement before submission</li>
+      </ul>
     </div>
   </div>
-  <div class="takeaway">What can't be held accountable can't be an author. Suzuki Lab practice: log every AI tool use and check the disclosure statement before submission.</div>
+  <div class="takeaway">Only humans can bear responsibility — hence records and disclosure.</div>
 </div>
 
-<!-- ============ Act 3 ============ -->
+<!-- ============================================================
+     Act 3: Submit — Cover letter
+     ============================================================ -->
 
-<div class="part-head">
-  <div class="part-num">ACT 3</div>
-  <div class="part-title">The Editor Doesn't Read the Paper First</div>
-  <div class="part-en">Submit</div>
-</div>
-
-<div class="card">
-  <h2>From Submission to Publication</h2>
-  <div class="steps-v">
-    <div class="sv-item"><div class="sv-left"><div class="sv-dot"></div><div class="sv-line"></div></div><div class="sv-body"><div class="sv-label">Submission</div><div class="sv-desc">You click submit</div></div></div>
-    <div class="sv-item"><div class="sv-left"><div class="sv-dot"></div><div class="sv-line"></div></div><div class="sv-body"><div class="sv-label">Editor decision</div><div class="sv-desc">Desk rejection is possible here — before it reaches reviewers</div></div></div>
-    <div class="sv-item"><div class="sv-left"><div class="sv-dot"></div><div class="sv-line"></div></div><div class="sv-body"><div class="sv-label">Peer review</div><div class="sv-desc">1–3 months</div></div></div>
-    <div class="sv-item"><div class="sv-left"><div class="sv-dot"></div><div class="sv-line"></div></div><div class="sv-body"><div class="sv-label">Decision</div><div class="sv-desc">Accept / Minor revision / Major revision / Reject</div></div></div>
-    <div class="sv-item"><div class="sv-left"><div class="sv-dot"></div><div class="sv-line"></div></div><div class="sv-body"><div class="sv-label">Major revision</div><div class="sv-desc">Still in the running — after revision, re-review</div></div></div>
-    <div class="sv-item sv-last"><div class="sv-left"><div class="sv-dot"></div><div class="sv-line"></div></div><div class="sv-body"><div class="sv-label">Publication</div><div class="sv-desc">Your work goes out to the world</div></div></div>
+<div class="part-head" id="part3">
+  <div class="part-num">Act 3</div>
+  <div class="part-main">
+    <div class="part-title">The first thing the editor reads is not the paper</div>
+    <div class="part-en">The cover letter — Most desk rejections are decided here</div>
   </div>
 </div>
 
 <div class="card">
-  <h2>The Cover Letter Is Your 90-Second Pitch to the Editor</h2>
-  <div class="num-cards">
-    <div class="nc-item"><div class="nc-num">1</div><div class="nc-body"><b>Most desk rejections are decided right here</b><small>The cover letter is the editor's first and sometimes only impression of your work.</small></div></div>
-    <div class="nc-item"><div class="nc-num">2</div><div class="nc-body"><b>A copy-pasted abstract is spotted instantly</b><small>The cover letter must be written, not recycled.</small></div></div>
-    <div class="nc-item"><div class="nc-num">3</div><div class="nc-body"><b>Say why this journal, why now, and what's new</b><small>In your own words — not the words of your abstract.</small></div></div>
-  </div>
-  <div class="takeaway">The cover letter is a 90-second first impression. A copy-pasted abstract signals that you don't understand the journal.</div>
+  <h2>The role of the cover letter</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">The cover letter is a 90-second pitch to the editor</p>
+  <p><b>Your first (and maybe only) pitch</b> — most desk rejections (rejection without review) are decided at the stage of reading the cover letter. A copy-paste of the abstract is spotted instantly.</p>
+  <p style="margin-top:8px;">You are expected to write three points — "why this journal, why now, what is new" — <b>in your own words</b>. Editors are busy researchers handling dozens of submissions every day. If these three points do not come through clearly, the journey ends before it reaches the reviewers.</p>
+  <div class="takeaway">A copy-paste of the abstract is spotted instantly. Tell the three points in your own words.</div>
 </div>
 
 <div class="card">
-  <h2>Choosing Your Journal: Four Axes</h2>
-  <div class="grid-2x2">
-    <div class="g-card"><b>Scope fit</b><em>Does this journal publish this type of work?</em></div>
-    <div class="g-card"><b>Impact level</b><em>Is your contribution strong enough for this tier?</em></div>
-    <div class="g-card"><b>Speed</b><em>How long is the typical review process?</em></div>
-    <div class="g-card"><b>Open access</b><em>Funder requirements? Article processing charges?</em></div>
+  <h2>Four axes of persuasion</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Speak along four axes: trust, logic, curiosity, timing</p>
+  <p><b>Ethos, Logos, Pathos, Kairos</b> — the four axes of persuasion organized by ancient Greek rhetoric apply directly to the cover letter.</p>
+  <div class="grid-2x2" style="margin-top:12px;">
+    <div class="g-card">
+      <div class="g-card-head">Ethos (trust)</div>
+      <div class="g-card-sub">Declaration of ethical compliance and no duplicate submission. Show that the authors understand this journal's rules</div>
+    </div>
+    <div class="g-card">
+      <div class="g-card-head">Logos (logic)</div>
+      <div class="g-card-sub">The difference from prior work, in plain words. Make "what is different" clear without leaning on jargon</div>
+    </div>
+    <div class="g-card">
+      <div class="g-card-head">Pathos (curiosity)</div>
+      <div class="g-card-sub">Hint at an elegant solution to a long-standing problem. Pose a question the reader wants to read about</div>
+    </div>
+    <div class="g-card">
+      <div class="g-card-head">Kairos (timing)</div>
+      <div class="g-card-sub">Why now, and why this journal. Show the timely reason and the fit with the journal</div>
+    </div>
   </div>
-  <div class="takeaway">Read the scope statement. Read recent papers in the journal. Ask Suzuki before submitting.</div>
+  <div class="takeaway">If the four axes cannot be filled, the story of the submission is not yet settled.</div>
 </div>
 
 <div class="card">
-  <h2>Submission Checklist — Suzuki Lab</h2>
-  <ul style="padding-left:1.3em; font-size:14px;">
-    <li>Core Question is answered explicitly in Discussion</li>
-    <li>Introduction and Discussion mirror each other</li>
-    <li>Every figure is referenced in the text and carries a 1-sentence claim</li>
-    <li>Author list and order confirmed with Suzuki</li>
-    <li>Acknowledgements: all contributors listed with consent, grant numbers exact</li>
-    <li>Data sharing: repository, README, and license in place</li>
-    <li>AI usage logged and disclosure statement written</li>
-    <li>Cover letter written (not a copy-paste of the abstract)</li>
-    <li>Journal scope confirmed: re-read 3 recent papers in the journal</li>
+  <h2>Practice at Suzuki-A. Lab</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Use the checklist plus the Geothermics supplementary sheet</p>
+  <div class="num-cards" style="margin-top:10px;">
+    <div class="num-card">
+      <div class="nc-num">1</div>
+      <div class="nc-body">
+        <div class="nc-head">Lab checklist (Notion)</div>
+        <div class="nc-sub">The submission checklist includes cover-letter items. Pass the checklist before pressing the submit button</div>
+      </div>
+    </div>
+    <div class="num-card">
+      <div class="nc-num">2</div>
+      <div class="nc-body">
+        <div class="nc-head">Recommending and excluding reviewers</div>
+        <div class="nc-sub">Watch for conflicts of interest. Always consult your supervisor before filling this in</div>
+      </div>
+    </div>
+    <div class="num-card">
+      <div class="nc-num">3</div>
+      <div class="nc-body">
+        <div class="nc-head">Check overlap with Editorial Manager</div>
+        <div class="nc-sub">Rules on overlap between the submission system's fields and the letter differ by journal. Check in advance</div>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway">Next: what happens after you press the submit button.</div>
+</div>
+
+<!-- ============================================================
+     Act 4: Converse — Review process
+     ============================================================ -->
+
+<div class="part-head" id="part4">
+  <div class="part-num">Act 4</div>
+  <div class="part-main">
+    <div class="part-title">Peer review is not criticism; it is free consulting</div>
+    <div class="part-en">The review process — From submission to publication, the conversation begins</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>The whole process</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">From submission to publication, a conversation of several months on average</p>
+  <p><b>What actually happens after you click submit</b></p>
+  <div class="steps-h" style="margin-top:12px;">
+    <div class="step-h"><div class="step-num">1</div><div class="step-body"><div class="step-label">Submission</div><div class="step-sub">The editor acknowledges receipt and checks scope and format. If it does not fit: desk rejection</div></div></div>
+    <div class="step-h"><div class="step-num">2</div><div class="step-body"><div class="step-label">Review (1–3 months)</div><div class="step-sub">2–4 reviewers evaluate anonymously. The editor invites and chases the reviewers</div></div></div>
+    <div class="step-h"><div class="step-num">3</div><div class="step-body"><div class="step-label">The decision arrives</div><div class="step-sub">Four kinds: Accept / Minor revision / Major revision / Reject. Major is a sign of "still alive"</div></div></div>
+    <div class="step-h"><div class="step-num">4</div><div class="step-body"><div class="step-label">Revision → re-review</div><div class="step-sub">Submit the response letter and the revised manuscript. The re-review → decision loop may continue once or twice</div></div></div>
+  </div>
+  <div class="note" style="margin-top:12px;">
+    <b>Major revision is a sign of "still alive."</b> It is not a Reject. It is evidence that the editor judged "this can be published if fixed." Respond carefully and there is a good chance of acceptance.
+  </div>
+  <div class="takeaway">When the decision arrives — first, manage your emotions.</div>
+</div>
+
+<div class="card">
+  <h2>Managing emotions</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">For harsh comments, a 72-hour cooling-off period</p>
+  <p><b>Never reply in anger</b> — the emotional reaction on first reading the review comments never goes into the response letter.</p>
+  <div class="num-cards" style="margin-top:12px;">
+    <div class="num-card">
+      <div class="nc-num">1</div>
+      <div class="nc-body">
+        <div class="nc-head">Do not write a rebuttal on first reading</div>
+        <div class="nc-sub">Wait 24–72 hours before designing the response. Vent the anger in a memo; do not put it in the response letter</div>
+      </div>
+    </div>
+    <div class="num-card">
+      <div class="nc-num">2</div>
+      <div class="nc-body">
+        <div class="nc-head">A reviewer's misunderstanding = your insufficient explanation</div>
+        <div class="nc-sub">Start with "As you point out, our explanation was insufficient." Do not blame the reviewer</div>
+      </div>
+    </div>
+    <div class="num-card">
+      <div class="nc-num">3</div>
+      <div class="nc-body">
+        <div class="nc-head">Separate emotion from response</div>
+        <div class="nc-sub">Feeling angry is normal. But carrying that emotion into the response letter lowers the acceptance rate</div>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway">Once you have cooled down — on to the craft of the response letter.</div>
+</div>
+
+<div class="card">
+  <h2>The craft of the response letter</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Make the response letter self-contained, and write the conclusion first</p>
+  <p><b>Self-contained, answer-first responses</b> — a good response letter can be understood without the reviewer opening the revised manuscript.</p>
+  <div class="ba-grid" style="margin-top:12px;">
+    <div class="ba-block ba-before">
+      <div class="ba-label">A bad response letter</div>
+      <ul>
+        <li>Starts with a long rebuttal</li>
+        <li>Makes the reviewer open the manuscript and search</li>
+        <li>The conclusion comes last</li>
+      </ul>
+    </div>
+    <div class="ba-block ba-after">
+      <div class="ba-label">A good response letter</div>
+      <ul>
+        <li>States <b>Yes / No / Revised</b> explicitly at the top</li>
+        <li>Quotes the revised text directly in the response letter</li>
+        <li>Distinguishes comment, response, and revised text by color and indentation</li>
+      </ul>
+    </div>
+  </div>
+  <div class="takeaway">Reducing the reviewer's effort is the shortest path to acceptance.</div>
+</div>
+
+<div class="card">
+  <h2>Dealing with an unfair review</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">The opponent is not the reviewer; fight through a letter to the editor</p>
+  <p>If an unfair attack by a competitor is suspected, do not fight directly in the response letter.</p>
+  <div class="two-col" style="margin-top:12px;">
+    <div class="col-block">
+      <div class="col-head">Response letter (public)</div>
+      <ul>
+        <li>Stick to calm, fact-based responses</li>
+        <li>Do not confront the reviewer directly</li>
+        <li>Show your handling of the comments carefully</li>
+      </ul>
+    </div>
+    <div class="col-block">
+      <div class="col-head">Letter to the editor (confidential)</div>
+      <ul>
+        <li>Convey the concern about an unfair attack by a competitor in a private letter</li>
+        <li>Lay out facts, not emotions</li>
+        <li>Ask for the editor's judgment</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note" style="margin-top:12px;">
+    Let us also uphold the culture of <b>reviewing the Work, not the Peer</b>. The peer-review process exists to evaluate the research, not the person.
+  </div>
+  <div class="takeaway">There are ways to counter an unfair review. But calmly, and fact-based.</div>
+</div>
+
+<!-- ============================================================
+     Closing
+     ============================================================ -->
+
+<div class="part-head" id="closing">
+  <div class="part-num">Closing</div>
+  <div class="part-main">
+    <div class="part-title">December's submit button starts with today's step</div>
+    <div class="part-en">Count backwards — from December to today</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Counting backwards from December</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">For a December submission, freeze the Figures in October</p>
+  <p>Not a distant goal, but a weekly habit.</p>
+  <div class="steps-v" style="margin-top:12px;">
+    <div class="step-v">
+      <div class="step-v-dot" style="background:var(--accent); font-size:10px;">Now</div>
+      <div class="step-v-body">
+        <div class="step-v-label">Now (July): Polish the one-sentence claim on the Paper card</div>
+        <div class="step-v-sub">Write, this week, a sentence you can state outright in the form "Compared to X, we Y"</div>
+      </div>
+    </div>
+    <div class="step-v">
+      <div class="step-v-dot" style="font-size:10px;">Oct</div>
+      <div class="step-v-body">
+        <div class="step-v-label">October: Freeze the Figures + agree on author order</div>
+        <div class="step-v-sub">Fix the minimal figure set that supports the claim, and agree on author order and roles with co-authors</div>
+      </div>
+    </div>
+    <div class="step-v">
+      <div class="step-v-dot" style="font-size:10px;">Nov</div>
+      <div class="step-v-body">
+        <div class="step-v-label">November: Complete the Draft → circulate to co-authors → write the cover letter</div>
+        <div class="step-v-sub">Finish the manuscript, get co-author feedback, then write the letter</div>
+      </div>
+    </div>
+    <div class="step-v">
+      <div class="step-v-dot" style="background:var(--primary); font-size:10px;">Dec</div>
+      <div class="step-v-body">
+        <div class="step-v-label">December: Submit — inquiry cycle Phase 6 complete</div>
+        <div class="step-v-sub">Press the submit button. And the next Discomfort (Phase 0) begins</div>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway">Not a distant goal, but a weekly habit.</div>
+</div>
+
+<div class="card">
+  <h2>Takeaways by role</h2>
+  <p style="font-size:15px; font-weight:900; color:var(--text); margin-bottom:8px;">Your next step is this</p>
+  <div class="grid-3" style="margin-top:12px;">
+    <div class="g3-card">
+      <div class="g3-who">B4</div>
+      <div class="g3-action">Write the claim in one sentence</div>
+      <div class="g3-desc">Try writing it on the Paper card in the form "Compared to X, we Y"</div>
+    </div>
+    <div class="g3-card">
+      <div class="g3-who">M &amp; D</div>
+      <div class="g3-action">Self-diagnose</div>
+      <div class="g3-desc">Check where your manuscript stands with the submission checklist</div>
+    </div>
+    <div class="g3-card">
+      <div class="g3-who">Postdocs</div>
+      <div class="g3-action">Update your routines</div>
+      <div class="g3-desc">Update the response-letter template to your own style</div>
+    </div>
+  </div>
+  <div class="takeaway">December's submit button starts with today's step.</div>
+</div>
+
+<div class="card">
+  <h2>Now, start writing</h2>
+  <blockquote class="lead-quote">
+    A paper becomes research only when it is written.
+    <span class="src">The picture up to submission is already in view</span>
+  </blockquote>
+  <p>The inquiry cycle closes with Expression (Phase 6) and leads to the next Discomfort (Phase 0). Publishing a paper is not the end; it is the beginning of the next question.</p>
+  <p style="margin-top:8px;">Questions and consultations anytime: Lab Forum / Team Meeting / individual consultation</p>
+</div>
+
+<!-- ============ Slides and related links ============ -->
+
+<div class="card">
+  <h2>Related links</h2>
+  <ul>
+    <li><a href="../old/writing_papers_en.pdf">Lecture slides (PDF, English) ↓</a></li>
+    <li><a href="../figures/en/">Writing Papers — Figures</a> — Design, test, and freeze the figures</li>
+    <li><a href="../draft/en/">Writing Papers — Draft</a> — Writing the text after the figures are frozen</li>
+    <li><a href="../../lab-tools/paper-card/en/">Lab Tools: Paper Card</a> — The weekly one-sentence claim starts here</li>
+    <li><a href="../../orientation/en/question-design/">Lab OS 03: Question Design</a></li>
+    <li><a href="../../orientation/en/what-is-research/">Lab OS 01: What is Research?</a></li>
   </ul>
-</div>
-
-<!-- ============ Act 4 ============ -->
-
-<div class="part-head">
-  <div class="part-num">ACT 4</div>
-  <div class="part-title">A Reviewer Is Not Your Opponent</div>
-  <div class="part-en">Dialogue</div>
-</div>
-
-<div class="card">
-  <h2>How Peer Review Works</h2>
-  <div class="ba-grid">
-    <div class="ba-before">
-      <b>Wrong frame</b>
-      Review = attack / Reviewer = adversary → You respond defensively → Relationship worsens → Research does not improve
-    </div>
-    <div class="ba-after">
-      <b>Right frame</b>
-      Review = dialogue from a different perspective → Reviewer = your first collaborator → Blind spots surface → Research becomes stronger
-    </div>
-  </div>
-  <p style="margin-top:10px;">The 72-hour rule: do not touch the response letter for 72 hours after receiving a decision. Let the emotional reaction settle. Then read the comments as information.</p>
-  <div class="takeaway">Major revision means you are still in the running. Treat it as an opportunity, not a rejection.</div>
-</div>
-
-<div class="card">
-  <h2>The Response Letter</h2>
-  <div class="ba-grid">
-    <div class="ba-before">
-      <b>What not to do</b>
-      Defensive explanations / Ignoring comments / Vague responses ("we have revised this section") / No indication of where the change appears in the manuscript
-    </div>
-    <div class="ba-after">
-      <b>What to do</b>
-      Thank the reviewer specifically / Quote the comment in full / State your response clearly / Show exactly where in the manuscript the change appears / If you disagree, explain why with evidence
-    </div>
-  </div>
-  <div class="takeaway">Every comment gets a response. "We have noted this" is not a response. Show your reasoning.</div>
-</div>
-
-<div class="card">
-  <h2>What to Do With an Unfair Review</h2>
-  <div class="two-col">
-    <div class="col-block">
-      <b>Before escalating</b>
-      Re-read 72 hours later. Ask Suzuki. A comment that felt "unfair" often contains a valid point buried under the tone.
-    </div>
-    <div class="col-block">
-      <b>When escalation is warranted</b>
-      Factually incorrect claims / Out-of-scope objections / Requests that contradict the journal's scope. Document clearly and write to the editor — calmly and with evidence.
-    </div>
-  </div>
-</div>
-
-<!-- ============ Closing ============ -->
-
-<div class="part-head">
-  <div class="part-num">CLOSING</div>
-  <div class="part-title">Submitting in December Means Figures Are Locked by October</div>
-  <div class="part-en">Count backwards from today</div>
-</div>
-
-<div class="card">
-  <h2>Count Backwards From December</h2>
-  <div class="steps-v">
-    <div class="sv-item"><div class="sv-left"><div class="sv-dot"></div><div class="sv-line"></div></div><div class="sv-body"><div class="sv-label">December</div><div class="sv-desc">Submit</div></div></div>
-    <div class="sv-item"><div class="sv-left"><div class="sv-dot"></div><div class="sv-line"></div></div><div class="sv-body"><div class="sv-label">November</div><div class="sv-desc">Co-author review; write the cover letter</div></div></div>
-    <div class="sv-item"><div class="sv-left"><div class="sv-dot"></div><div class="sv-line"></div></div><div class="sv-body"><div class="sv-label">October</div><div class="sv-desc">Draft complete</div></div></div>
-    <div class="sv-item"><div class="sv-left"><div class="sv-dot"></div><div class="sv-line"></div></div><div class="sv-body"><div class="sv-label">August</div><div class="sv-desc">Figures locked</div></div></div>
-    <div class="sv-item sv-last"><div class="sv-left"><div class="sv-dot"></div><div class="sv-line"></div></div><div class="sv-body"><div class="sv-label">Now (July)</div><div class="sv-desc">Sharpen your Paper Card's one-line claim</div></div></div>
-  </div>
-  <div class="takeaway">Work backward from December, starting today.</div>
-</div>
-
-<div class="card">
-  <h2>Your Next Step — One Action Per Career Stage</h2>
-  <div class="grid-3">
-    <div class="g3-card">
-      <b>B4</b>
-      One-sentence claim<br>Write your Paper Card's claim in one sentence. That's the whole job right now.
-    </div>
-    <div class="g3-card">
-      <b>M · D</b>
-      Self-diagnose<br>Run your draft through the submission checklist. Find the three weakest points.
-    </div>
-    <div class="g3-card">
-      <b>PD</b>
-      Update the template<br>Update your response-letter template to fit your style and your field's norms.
-    </div>
-  </div>
-  <div class="takeaway">One step to take home today.</div>
-</div>
-
-<div class="card">
-  <p>The inquiry cycle completes when the paper goes out to the world. Every word you write is an act of making your thinking reproducible — and therefore shareable. Writing is not the end of research. It is what makes it research.</p>
 </div>
 
 <footer>
-  Related: <a href="../old/writing_papers_en.pdf">Lecture slides (PDF, EN)</a> ｜ <a href="../figures/en/">Writing Papers — Figures</a> ｜ <a href="../draft/en/">Writing Papers — Draft</a> ｜ <a href="../../lab-tools/paper-card/en/">Paper Card</a> ｜ <a href="../../design-for-research/en/">Design for Research</a> ｜ <a href="../../en/">🏠 Education Portal</a><br>
-  DeSFE Lab — Institute of Fluid Science, Tohoku University
+  &copy; DeSFE Lab (Anna Suzuki Lab), Tohoku University ｜
+  <a href="../../en/">Portal</a>
 </footer>
 
 </div>
