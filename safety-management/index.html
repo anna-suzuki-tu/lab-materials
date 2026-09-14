@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safety Management — 安全管理（骨子）｜Lab Forum｜DeSFE Lab</title>
+<meta name="description" content="事故は防げる。防げなかったときは、報告が最初の一手。安全の考え方、実験前・実験中のルール、事故・故障が起きたときの手順、情報と健康の安全。骨子として公開し、順次埋めます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+/* ---- 幕ヘッダー（ダーク地の上） ---- */
+.part-head {
+  display: flex; align-items: center; gap: 14px;
+  margin: 36px 0 4px; padding: 14px 16px;
+  background: rgba(255,255,255,.05); border-radius: 10px;
+  border-left: 5px solid var(--accent);
+}
+.part-num {
+  font-size: 11px; font-weight: 900; letter-spacing: .15em;
+  color: var(--accent); white-space: nowrap;
+}
+.part-main { flex: 1; }
+.part-title { font-size: 17px; font-weight: 900; color: #fff; line-height: 1.4; }
+.part-en { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+
+/* ---- 二列レイアウト（カード内） ---- */
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;
+}
+@media (max-width: 520px) { .two-col { grid-template-columns: 1fr; } }
+.col-block { background: var(--panel); border-radius: 8px; padding: 12px; }
+.col-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 6px; }
+.col-block ul { padding-left: 1.3em; }
+.col-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- Before / After ---- */
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ba-grid { grid-template-columns: 1fr; } }
+.ba-block { border-radius: 8px; padding: 12px; }
+.ba-before { background: #fdecea; border-left: 4px solid #e57373; }
+.ba-after  { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ba-label { font-size: 11px; font-weight: 900; letter-spacing: .12em; margin-bottom: 6px; }
+.ba-before .ba-label { color: #c62828; }
+.ba-after  .ba-label { color: #2e7d32; }
+.ba-block ul { padding-left: 1.3em; }
+.ba-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- ステップ（横並び） ---- */
+.steps-h { display: grid; gap: 0; margin: 10px 0; counter-reset: step; }
+.step-h {
+  display: flex; align-items: flex-start; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid var(--border); counter-increment: step;
+}
+.step-h:last-child { border-bottom: none; }
+.step-num {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.step-body { flex: 1; }
+.step-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- ステップ（縦タイムライン） ---- */
+.steps-v { margin: 10px 0; }
+.step-v { display: flex; gap: 14px; padding: 8px 0; position: relative; }
+.step-v:not(:last-child)::after {
+  content: ""; position: absolute; left: 11px; top: 32px; bottom: -8px;
+  width: 2px; background: var(--border);
+}
+.step-v-dot {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--accent);
+  color: #fff; font-size: 11px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+}
+.step-v-body { flex: 1; }
+.step-v-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-v-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- 2x2 カードグリッド ---- */
+.grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .grid-2x2 { grid-template-columns: 1fr; } }
+.g-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g-card-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g-card-sub { font-size: 12.5px; color: var(--muted); }
+
+/* ---- テイクアウェイ ---- */
+.takeaway {
+  background: rgba(32,122,145,.08); border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0; padding: 8px 12px; margin-top: 12px;
+  font-size: 13px; font-weight: 700; color: var(--text);
+}
+.takeaway::before { content: "→ "; color: var(--accent); }
+
+/* ---- 目次 ---- */
+.toc-row { display: flex; gap: 10px; align-items: baseline; padding: 8px 4px;
+  font-size: 14px; font-weight: 700; color: var(--text); text-decoration: none;
+  border-bottom: 1px solid var(--border); }
+.toc-row:last-child { border-bottom: none; }
+a.toc-row:hover { color: var(--primary); }
+.toc-n { color: var(--primary); font-weight: 900; flex-shrink: 0; font-size: 12px; }
+.toc-sub { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: auto; }
+
+/* ---- 3カードグリッド ---- */
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
+.g3-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g3-who { font-size: 11px; font-weight: 900; letter-spacing: .1em; color: var(--accent); margin-bottom: 4px; }
+.g3-action { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g3-desc { font-size: 12px; color: var(--muted); }
+
+/* ---- 問題/解決 ---- */
+.ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ps-grid { grid-template-columns: 1fr; } }
+.ps-block { border-radius: 8px; padding: 12px; }
+.ps-risk { background: #fdecea; border-left: 4px solid #e57373; }
+.ps-rule { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ps-label { font-size: 11px; font-weight: 900; letter-spacing: .1em; margin-bottom: 6px; }
+.ps-risk .ps-label { color: #c62828; }
+.ps-rule .ps-label { color: #2e7d32; }
+.ps-block ul { padding-left: 1.3em; }
+.ps-block li { font-size: 13px; color: var(--text); margin-bottom: 3px; }
+
+/* ---- 番号付きカード ---- */
+.num-cards { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
+.num-card { display: flex; gap: 12px; align-items: flex-start; }
+.nc-num {
+  width: 26px; height: 26px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.nc-body { flex: 1; background: var(--panel); border-radius: 8px; padding: 10px 12px; }
+.nc-head { font-size: 13px; font-weight: 900; color: var(--text); }
+.nc-sub { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="lang-sw"><span>日本語</span> ｜ <a href="en/">English</a></div>
+<div class="breadcrumb"><a href="../">🏠 教育ポータル</a> › Safety Management</div>
+
+<header>
+  <div class="kicker">LAB FORUM — SAFETY MANAGEMENT</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>安全管理（骨子）</h1>
+      <div class="subtitle">Safety — 事故は防げる。防げなかったときは、報告が最初の一手</div>
+    </div>
+  </div>
+</header>
+
+<blockquote class="lead-quote">
+  研究室の安全は、ルールの数ではなく、全員が「何が危ないか」を言えることで決まる。
+</blockquote>
+
+<div class="note">
+  ★ ＝ 研究室の実態に合わせて鈴木が確定する欄。骨子として公開し、順次埋めます。
+</div>
+
+<!-- ============ 概要 ============ -->
+
+<div class="card">
+  <h2>この資料で学べること</h2>
+  <div class="num-cards">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">第1幕 安全の考え方</div><div class="nc-sub">予測と報告</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">第2幕 実験前</div><div class="nc-sub">承諾・2名以上・準備</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">第3幕 実験中</div><div class="nc-sub">装置・薬品・電気・高温</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">第4幕 事故・故障が起きたら</div><div class="nc-sub">報告の手順</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">第5幕 情報と健康の安全</div><div class="nc-sub">バックアップ・個人情報・心身</div></div></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     第1幕：安全の考え方
+     ============================================================ -->
+
+<div class="part-head" id="part1">
+  <div class="part-num">第1幕</div>
+  <div class="part-main">
+    <div class="part-title">安全の考え方</div>
+    <div class="part-en">予測と報告</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>安全管理は探究と同じ構造</h2>
+  <p>安全管理は、<a href="../orientation/science-framework/" style="color:var(--primary);font-weight:700;">Lab OS 02章</a>の探究と同じ構造をしています。何が起きうるかを予測し（仮説）、起きたことと比べて（観測）、ルールを更新する（信念）。予測できていなかった事故が「ヒヤリ・ハット」で、それを報告することがルールを更新する唯一の方法です。責めるためではなく、次を防ぐために報告します。</p>
+  <div class="takeaway">報告は責めるためではなく、次を防ぐため。</div>
+</div>
+
+<!-- ============================================================
+     第2幕：実験前
+     ============================================================ -->
+
+<div class="part-head" id="part2">
+  <div class="part-num">第2幕</div>
+  <div class="part-main">
+    <div class="part-title">実験前</div>
+    <div class="part-en">承諾・2名以上・準備</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>実験に入る前に</h2>
+  <ul>
+    <li>実験は安全確保のため、必ず事前に指導教員の承諾を得る</li>
+    <li>実験は2名以上で実施する。1人で装置を動かさない</li>
+    <li>大学の安全教育（★ 受講必須の講習名、時期）を受講してから実験に入る</li>
+    <li>実験計画に、想定される危険（高温・高圧・薬品・電気・重量物）と対処を1行ずつ書く</li>
+  </ul>
+</div>
+
+<!-- ============================================================
+     第3幕：実験中
+     ============================================================ -->
+
+<div class="part-head" id="part3">
+  <div class="part-num">第3幕</div>
+  <div class="part-main">
+    <div class="part-title">実験中</div>
+    <div class="part-en">装置・薬品・電気・高温</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>実験室でのルール</h2>
+  <ul>
+    <li>実験室で飲食しない</li>
+    <li>試薬・消耗品は使用量を記録する</li>
+    <li>装置の故障は勝手に修理せず報告する</li>
+    <li>★ 装置ごとの注意事項（高圧容器、加熱炉、レーザー等、研究室にあるもの）</li>
+    <li>★ 薬品の保管・廃棄ルール（SDS の所在、廃液の分別）</li>
+    <li>★ 保護具（保護メガネ、手袋、白衣）の着用基準</li>
+  </ul>
+</div>
+
+<!-- ============================================================
+     第4幕：事故・故障が起きたら
+     ============================================================ -->
+
+<div class="part-head" id="part4">
+  <div class="part-num">第4幕</div>
+  <div class="part-main">
+    <div class="part-title">事故・故障が起きたら</div>
+    <div class="part-en">報告の手順</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>報告の手順</h2>
+  <div class="num-cards">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">人の安全を確保する</div><div class="nc-sub">怪我があればまず処置・救急（★ 学内の連絡先）</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">装置を止める</div><div class="nc-sub">止め方がわからなければ触らず、電源だけ落とす</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">指導教員に連絡</div><div class="nc-sub">309・内線5284、または Slack。夜間・休日は ★</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Research Log に残す</div><div class="nc-sub">ヒヤリ・ハットも含めて、何が起きたかを記録する（<a href="../lab-tools/research-log/">Lab Tools「Research Log &amp; Thinking Log」</a>）</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">Team Meeting で共有し、ルールを更新する</div><div class="nc-sub">次の Team Meeting で共有する</div></div></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     第5幕：情報と健康の安全
+     ============================================================ -->
+
+<div class="part-head" id="part5">
+  <div class="part-num">第5幕</div>
+  <div class="part-main">
+    <div class="part-title">情報と健康の安全</div>
+    <div class="part-en">バックアップ・個人情報・心身</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>データと心身も、安全の対象</h2>
+  <ul>
+    <li>データのバックアップは週1回以上（<a href="../lab-tools/infrastructure/" style="color:var(--primary);font-weight:700;">Lab Tools「研究室のインフラ」</a>）</li>
+    <li>個人情報を含むデータ（インタビュー、アンケート）は倫理審査の条件に従って保管する。Team Society は特に注意</li>
+    <li>心身の不調は研究の一部として扱う。Individual Meeting で共有する。学内の相談窓口：★</li>
+  </ul>
+</div>
+
+<!-- ============ チェックリスト ============ -->
+
+<div class="card">
+  <h2>チェックリスト</h2>
+  <div class="num-cards">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">承諾を得たか／2名以上か／安全講習を受けたか</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">想定される危険と対処を書いたか</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">保護具は着けたか</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">事故・ヒヤリ・ハットは報告したか</div></div></div>
+  </div>
+</div>
+
+<!-- ============ 関連リンク ============ -->
+
+<div class="card">
+  <h2>関連リンク</h2>
+  <ul>
+    <li><a href="../orientation/responsibility/">Lab OS 06 研究の責任</a></li>
+    <li>Notion Lab OS「研究室で暮らす › 安全教育」</li>
+    <li>★ 東北大学の安全マニュアル（リンク）</li>
+  </ul>
+</div>
+
+<footer>
+  &copy; DeSFE Lab (Anna Suzuki Lab), Tohoku University ｜
+  <a href="../">教育ポータル</a>
+</footer>
+
+</div>
+</body>
+</html>
