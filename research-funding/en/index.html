@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Funding &amp; Budget (Outline) | Lab Forum | DeSFE Lab</title>
+<meta name="description" content="Where research funds come from, what they can be used for, how to apply, and where the ethical line lies. Types of funding, permitted uses and procedures, funding students can apply for, budget ethics, and the practicalities of travel and purchases. Published as an outline, to be filled in step by step.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+/* ---- 幕ヘッダー（ダーク地の上） ---- */
+.part-head {
+  display: flex; align-items: center; gap: 14px;
+  margin: 36px 0 4px; padding: 14px 16px;
+  background: rgba(255,255,255,.05); border-radius: 10px;
+  border-left: 5px solid var(--accent);
+}
+.part-num {
+  font-size: 11px; font-weight: 900; letter-spacing: .15em;
+  color: var(--accent); white-space: nowrap;
+}
+.part-main { flex: 1; }
+.part-title { font-size: 17px; font-weight: 900; color: #fff; line-height: 1.4; }
+.part-en { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+
+/* ---- 二列レイアウト（カード内） ---- */
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;
+}
+@media (max-width: 520px) { .two-col { grid-template-columns: 1fr; } }
+.col-block { background: var(--panel); border-radius: 8px; padding: 12px; }
+.col-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 6px; }
+.col-block ul { padding-left: 1.3em; }
+.col-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- Before / After ---- */
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ba-grid { grid-template-columns: 1fr; } }
+.ba-block { border-radius: 8px; padding: 12px; }
+.ba-before { background: #fdecea; border-left: 4px solid #e57373; }
+.ba-after  { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ba-label { font-size: 11px; font-weight: 900; letter-spacing: .12em; margin-bottom: 6px; }
+.ba-before .ba-label { color: #c62828; }
+.ba-after  .ba-label { color: #2e7d32; }
+.ba-block ul { padding-left: 1.3em; }
+.ba-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- ステップ（横並び） ---- */
+.steps-h { display: grid; gap: 0; margin: 10px 0; counter-reset: step; }
+.step-h {
+  display: flex; align-items: flex-start; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid var(--border); counter-increment: step;
+}
+.step-h:last-child { border-bottom: none; }
+.step-num {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.step-body { flex: 1; }
+.step-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- ステップ（縦タイムライン） ---- */
+.steps-v { margin: 10px 0; }
+.step-v { display: flex; gap: 14px; padding: 8px 0; position: relative; }
+.step-v:not(:last-child)::after {
+  content: ""; position: absolute; left: 11px; top: 32px; bottom: -8px;
+  width: 2px; background: var(--border);
+}
+.step-v-dot {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--accent);
+  color: #fff; font-size: 11px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+}
+.step-v-body { flex: 1; }
+.step-v-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-v-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- 2x2 カードグリッド ---- */
+.grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .grid-2x2 { grid-template-columns: 1fr; } }
+.g-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g-card-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g-card-sub { font-size: 12.5px; color: var(--muted); }
+
+/* ---- テイクアウェイ ---- */
+.takeaway {
+  background: rgba(32,122,145,.08); border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0; padding: 8px 12px; margin-top: 12px;
+  font-size: 13px; font-weight: 700; color: var(--text);
+}
+.takeaway::before { content: "→ "; color: var(--accent); }
+
+/* ---- 目次 ---- */
+.toc-row { display: flex; gap: 10px; align-items: baseline; padding: 8px 4px;
+  font-size: 14px; font-weight: 700; color: var(--text); text-decoration: none;
+  border-bottom: 1px solid var(--border); }
+.toc-row:last-child { border-bottom: none; }
+a.toc-row:hover { color: var(--primary); }
+.toc-n { color: var(--primary); font-weight: 900; flex-shrink: 0; font-size: 12px; }
+.toc-sub { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: auto; }
+
+/* ---- 3カードグリッド ---- */
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
+.g3-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g3-who { font-size: 11px; font-weight: 900; letter-spacing: .1em; color: var(--accent); margin-bottom: 4px; }
+.g3-action { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g3-desc { font-size: 12px; color: var(--muted); }
+
+/* ---- 問題/解決 ---- */
+.ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ps-grid { grid-template-columns: 1fr; } }
+.ps-block { border-radius: 8px; padding: 12px; }
+.ps-risk { background: #fdecea; border-left: 4px solid #e57373; }
+.ps-rule { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ps-label { font-size: 11px; font-weight: 900; letter-spacing: .1em; margin-bottom: 6px; }
+.ps-risk .ps-label { color: #c62828; }
+.ps-rule .ps-label { color: #2e7d32; }
+.ps-block ul { padding-left: 1.3em; }
+.ps-block li { font-size: 13px; color: var(--text); margin-bottom: 3px; }
+
+/* ---- 番号付きカード ---- */
+.num-cards { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
+.num-card { display: flex; gap: 12px; align-items: flex-start; }
+.nc-num {
+  width: 26px; height: 26px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.nc-body { flex: 1; background: var(--panel); border-radius: 8px; padding: 10px 12px; }
+.nc-head { font-size: 13px; font-weight: 900; color: var(--text); }
+.nc-sub { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="lang-sw"><span>English</span> ｜ <a href="../">日本語</a></div>
+<div class="breadcrumb"><a href="../../en/">🏠 Education Portal</a> › Research Funding &amp; Budget</div>
+
+<header>
+  <div class="kicker">LAB FORUM — RESEARCH FUNDING &amp; BUDGET</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>Research Funding &amp; Budget (Outline)</h1>
+      <div class="subtitle">Funding — Research runs on money. Knowing the flow of money is knowing the freedom of your research</div>
+    </div>
+  </div>
+</header>
+
+<blockquote class="lead-quote">
+  A researcher who does not know the budget is a researcher who does not know the range of what is possible.
+</blockquote>
+
+<div class="note">
+  ★ = fields to be finalized by Suzuki to match the actual state of the lab. Published as an outline, to be filled in step by step.
+</div>
+
+<!-- ============ Overview ============ -->
+
+<div class="card">
+  <h2>What this lecture covers</h2>
+  <p>This was conceived as the third Lab Forum lecture. It covers where research funds come from, what they can be used for, how to apply, and where the ethical line lies.</p>
+  <div class="num-cards" style="margin-top:12px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Act 1 Types of research funding</div><div class="nc-sub">Whose money is it?</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Act 2 What it can be used for</div><div class="nc-sub">Permitted uses and procedures</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Act 3 Applying</div><div class="nc-sub">Funding students can apply for</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Act 4 Budget ethics</div><div class="nc-sub">What must not be done</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">Act 5 Travel and purchases</div><div class="nc-sub">Practicalities</div></div></div>
+  </div>
+  <p style="margin-top:12px;"><b>B4</b>: Learn that research funding exists. <b>M</b>: Apply for JSPS fellowships and on-campus grants. <b>D</b>: Hold your own research funding.</p>
+</div>
+
+<!-- ============================================================
+     Act 1: Types of research funding
+     ============================================================ -->
+
+<div class="part-head" id="part1">
+  <div class="part-num">Act 1</div>
+  <div class="part-main">
+    <div class="part-title">Types of research funding</div>
+    <div class="part-en">Whose money is it?</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Where research funds come from</h2>
+  <table class="wk">
+    <tr><th>Type</th><th>Source</th><th>Whose money</th><th>Examples</th></tr>
+    <tr><td>Operating grant</td><td>University</td><td>The lab's base</td><td>Consumables, part of students' conference travel</td></tr>
+    <tr><td>Competitive funding</td><td>Government (JSPS, JST, NEDO)</td><td>For the research project applied for</td><td>KAKENHI, PRESTO, NEDO commissioned research</td></tr>
+    <tr><td>Joint / contract research</td><td>Companies, local governments</td><td>For the contracted project</td><td>★</td></tr>
+    <tr><td>Donations</td><td>Companies, individuals</td><td>Few restrictions on use</td><td>★</td></tr>
+    <tr><td>Funding for students</td><td>JSPS, foundations, on-campus</td><td>The student's own research and living</td><td>JSPS DC fellowship, ★ on-campus grants</td></tr>
+  </table>
+  <p style="margin-top:10px;">Competitive funding is money "for that project." It cannot be used for other research, even within the same lab. This is where the ethical line starts.</p>
+  <div class="takeaway">Competitive funding is money "for that project." This is where the ethical line starts.</div>
+</div>
+
+<!-- ============================================================
+     Act 2: What it can be used for
+     ============================================================ -->
+
+<div class="part-head" id="part2">
+  <div class="part-num">Act 2</div>
+  <div class="part-main">
+    <div class="part-title">What it can be used for</div>
+    <div class="part-en">Permitted uses and procedures</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Permitted uses and procedures</h2>
+  <ul>
+    <li>Goods (consumables, equipment), travel, personnel and honoraria, other (publication fees, conference registration)</li>
+    <li>★ How the lab budget is used (whom to consult, how to order)</li>
+    <li>Do not go to the store yourself to order. ★ The procedure through the administrative office (Ms. Otomo)</li>
+    <li>The fiscal-year wall: there is a constraint that funds cannot be used in March. Order by counting backwards</li>
+  </ul>
+</div>
+
+<!-- ============================================================
+     Act 3: Applying
+     ============================================================ -->
+
+<div class="part-head" id="part3">
+  <div class="part-num">Act 3</div>
+  <div class="part-main">
+    <div class="part-title">Applying</div>
+    <div class="part-en">Funding students can apply for</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Funding students can apply for</h2>
+  <ul>
+    <li><b>JSPS DC1/DC2</b>: apply in M2 or D1. Framing-A/B of the <a href="../../lab-tools/paper-card/en/" style="color:var(--primary);font-weight:700;">Paper Card</a> becomes the skeleton of the research plan as is (Core Question, Compared to X we Y, Key Contributions)</li>
+    <li>★ On-campus student grants, foundation grants (list and timing)</li>
+    <li>Write the application on the assumption that "the reviewer reads it in five minutes." The principles of <a href="../../design-for-research/en/" style="color:var(--primary);font-weight:700;">Design for Research</a> apply</li>
+    <li>Even if you are not selected, what you wrote is not wasted. The Paper Card gets stronger</li>
+  </ul>
+  <div class="takeaway">The skeleton of the research plan is Framing-A/B of the Paper Card. Even if you are not selected, the Paper Card gets stronger.</div>
+</div>
+
+<!-- ============================================================
+     Act 4: Budget ethics
+     ============================================================ -->
+
+<div class="part-head" id="part4">
+  <div class="part-num">Act 4</div>
+  <div class="part-main">
+    <div class="part-title">Budget ethics</div>
+    <div class="part-en">What must not be done</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>What must not be done</h2>
+  <ul>
+    <li>Use outside the purpose: do not use one project's money for another project</li>
+    <li>Personal use: goes without saying</li>
+    <li>Relations with vendors: deposited funds, fictitious travel, fictitious honoraria are treated the same as research misconduct</li>
+    <li>If in doubt, ask before spending. If you ask after spending, it sometimes cannot be undone</li>
+    <li>★ The university's handbook on the use of research funds (link)</li>
+  </ul>
+  <div class="takeaway">If in doubt, ask before spending. After spending, it sometimes cannot be undone.</div>
+</div>
+
+<!-- ============================================================
+     Act 5: Travel and purchases
+     ============================================================ -->
+
+<div class="part-head" id="part5">
+  <div class="part-num">Act 5</div>
+  <div class="part-main">
+    <div class="part-title">Travel and purchases</div>
+    <div class="part-en">Practicalities</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>The practicalities of travel and purchases</h2>
+  <ul>
+    <li>Travel procedures are in Notion Lab OS "Administration (AA, travel)." Apply in advance; settle within two weeks after attending</li>
+    <li>Registration fees and travel expenses are, in principle, paid out of pocket and reimbursed. If that is difficult, consult Suzuki early</li>
+    <li>When goods arrive, inspect and accept them. ★ The acceptance procedure</li>
+  </ul>
+</div>
+
+<!-- ============ Checklist ============ -->
+
+<div class="card">
+  <h2>Checklist</h2>
+  <div class="num-cards">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">Can you say which research fund your research runs on?</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">Before spending, did you check that the item is allowed under that fund?</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">Did you put the JSPS application period in your Quarter Plan?</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">Did you submit the travel application in advance?</div></div></div>
+  </div>
+</div>
+
+<!-- ============ Related links ============ -->
+
+<div class="card">
+  <h2>Related links</h2>
+  <ul>
+    <li><a href="../../orientation/en/responsibility/">Lab OS 06 Responsibility</a></li>
+    <li>Notion Lab OS "Living in the lab › Administration"</li>
+    <li><a href="../../lab-tools/paper-card/en/">Lab Tools: Paper Card</a> — The skeleton of applications</li>
+  </ul>
+</div>
+
+<footer>
+  &copy; DeSFE Lab (Anna Suzuki Lab), Tohoku University ｜
+  <a href="../../en/">Education Portal</a>
+</footer>
+
+</div>
+</body>
+</html>
