@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Funding &amp; Budget — 研究資金と予算（骨子）｜Lab Forum｜DeSFE Lab</title>
+<meta name="description" content="研究費がどこから来て、何に使え、どう申請し、どこに倫理の線があるか。研究費の種類、使途と手続き、学生が出せる資金、予算の倫理、出張と物品の実務。骨子として公開し、順次埋めます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+/* ---- 幕ヘッダー（ダーク地の上） ---- */
+.part-head {
+  display: flex; align-items: center; gap: 14px;
+  margin: 36px 0 4px; padding: 14px 16px;
+  background: rgba(255,255,255,.05); border-radius: 10px;
+  border-left: 5px solid var(--accent);
+}
+.part-num {
+  font-size: 11px; font-weight: 900; letter-spacing: .15em;
+  color: var(--accent); white-space: nowrap;
+}
+.part-main { flex: 1; }
+.part-title { font-size: 17px; font-weight: 900; color: #fff; line-height: 1.4; }
+.part-en { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+
+/* ---- 二列レイアウト（カード内） ---- */
+.two-col {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0;
+}
+@media (max-width: 520px) { .two-col { grid-template-columns: 1fr; } }
+.col-block { background: var(--panel); border-radius: 8px; padding: 12px; }
+.col-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 6px; }
+.col-block ul { padding-left: 1.3em; }
+.col-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- Before / After ---- */
+.ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ba-grid { grid-template-columns: 1fr; } }
+.ba-block { border-radius: 8px; padding: 12px; }
+.ba-before { background: #fdecea; border-left: 4px solid #e57373; }
+.ba-after  { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ba-label { font-size: 11px; font-weight: 900; letter-spacing: .12em; margin-bottom: 6px; }
+.ba-before .ba-label { color: #c62828; }
+.ba-after  .ba-label { color: #2e7d32; }
+.ba-block ul { padding-left: 1.3em; }
+.ba-block li { font-size: 13px; color: var(--text); margin-bottom: 2px; }
+
+/* ---- ステップ（横並び） ---- */
+.steps-h { display: grid; gap: 0; margin: 10px 0; counter-reset: step; }
+.step-h {
+  display: flex; align-items: flex-start; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid var(--border); counter-increment: step;
+}
+.step-h:last-child { border-bottom: none; }
+.step-num {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.step-body { flex: 1; }
+.step-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- ステップ（縦タイムライン） ---- */
+.steps-v { margin: 10px 0; }
+.step-v { display: flex; gap: 14px; padding: 8px 0; position: relative; }
+.step-v:not(:last-child)::after {
+  content: ""; position: absolute; left: 11px; top: 32px; bottom: -8px;
+  width: 2px; background: var(--border);
+}
+.step-v-dot {
+  width: 24px; height: 24px; border-radius: 50%; background: var(--accent);
+  color: #fff; font-size: 11px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;
+}
+.step-v-body { flex: 1; }
+.step-v-label { font-size: 13px; font-weight: 900; color: var(--text); }
+.step-v-sub { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+
+/* ---- 2x2 カードグリッド ---- */
+.grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .grid-2x2 { grid-template-columns: 1fr; } }
+.g-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g-card-head { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g-card-sub { font-size: 12.5px; color: var(--muted); }
+
+/* ---- テイクアウェイ ---- */
+.takeaway {
+  background: rgba(32,122,145,.08); border-left: 4px solid var(--accent);
+  border-radius: 0 6px 6px 0; padding: 8px 12px; margin-top: 12px;
+  font-size: 13px; font-weight: 700; color: var(--text);
+}
+.takeaway::before { content: "→ "; color: var(--accent); }
+
+/* ---- 目次 ---- */
+.toc-row { display: flex; gap: 10px; align-items: baseline; padding: 8px 4px;
+  font-size: 14px; font-weight: 700; color: var(--text); text-decoration: none;
+  border-bottom: 1px solid var(--border); }
+.toc-row:last-child { border-bottom: none; }
+a.toc-row:hover { color: var(--primary); }
+.toc-n { color: var(--primary); font-weight: 900; flex-shrink: 0; font-size: 12px; }
+.toc-sub { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: auto; }
+
+/* ---- 3カードグリッド ---- */
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
+.g3-card { background: var(--panel); border-radius: 8px; padding: 12px; }
+.g3-who { font-size: 11px; font-weight: 900; letter-spacing: .1em; color: var(--accent); margin-bottom: 4px; }
+.g3-action { font-size: 13px; font-weight: 900; color: var(--text); margin-bottom: 4px; }
+.g3-desc { font-size: 12px; color: var(--muted); }
+
+/* ---- 問題/解決 ---- */
+.ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+@media (max-width: 520px) { .ps-grid { grid-template-columns: 1fr; } }
+.ps-block { border-radius: 8px; padding: 12px; }
+.ps-risk { background: #fdecea; border-left: 4px solid #e57373; }
+.ps-rule { background: #e8f5e9; border-left: 4px solid #66bb6a; }
+.ps-label { font-size: 11px; font-weight: 900; letter-spacing: .1em; margin-bottom: 6px; }
+.ps-risk .ps-label { color: #c62828; }
+.ps-rule .ps-label { color: #2e7d32; }
+.ps-block ul { padding-left: 1.3em; }
+.ps-block li { font-size: 13px; color: var(--text); margin-bottom: 3px; }
+
+/* ---- 番号付きカード ---- */
+.num-cards { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
+.num-card { display: flex; gap: 12px; align-items: flex-start; }
+.nc-num {
+  width: 26px; height: 26px; border-radius: 50%; background: var(--primary);
+  color: #fff; font-size: 12px; font-weight: 900; display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.nc-body { flex: 1; background: var(--panel); border-radius: 8px; padding: 10px 12px; }
+.nc-head { font-size: 13px; font-weight: 900; color: var(--text); }
+.nc-sub { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="lang-sw"><span>日本語</span> ｜ <a href="en/">English</a></div>
+<div class="breadcrumb"><a href="../">🏠 教育ポータル</a> › Research Funding &amp; Budget</div>
+
+<header>
+  <div class="kicker">LAB FORUM — RESEARCH FUNDING &amp; BUDGET</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>研究資金と予算（骨子）</h1>
+      <div class="subtitle">Funding — 研究はお金で動く。お金の流れを知ることは、研究の自由を知ること</div>
+    </div>
+  </div>
+</header>
+
+<blockquote class="lead-quote">
+  予算を知らない研究者は、できることの範囲を知らない研究者である。
+</blockquote>
+
+<div class="note">
+  ★ ＝ 研究室の実態に合わせて鈴木が確定する欄。骨子として公開し、順次埋めます。
+</div>
+
+<!-- ============ 概要 ============ -->
+
+<div class="card">
+  <h2>この資料で学べること</h2>
+  <p>Lab Forum の第3回として構想されていた内容です。研究費がどこから来て、何に使え、どう申請し、どこに倫理の線があるかを扱います。</p>
+  <div class="num-cards" style="margin-top:12px;">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">第1幕 研究費の種類</div><div class="nc-sub">誰のお金か</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">第2幕 何に使えるか</div><div class="nc-sub">使途と手続き</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">第3幕 申請する</div><div class="nc-sub">学生が出せる資金</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">第4幕 予算の倫理</div><div class="nc-sub">やってはいけないこと</div></div></div>
+    <div class="num-card"><div class="nc-num">5</div><div class="nc-body"><div class="nc-head">第5幕 出張と物品</div><div class="nc-sub">実務</div></div></div>
+  </div>
+  <p style="margin-top:12px;"><b>B4</b>：研究費の存在を知る。<b>M</b>：学振・学内助成に出す。<b>D</b>：自分の研究費を持つ。</p>
+</div>
+
+<!-- ============================================================
+     第1幕：研究費の種類
+     ============================================================ -->
+
+<div class="part-head" id="part1">
+  <div class="part-num">第1幕</div>
+  <div class="part-main">
+    <div class="part-title">研究費の種類</div>
+    <div class="part-en">誰のお金か</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>研究費はどこから来るか</h2>
+  <table class="wk">
+    <tr><th>種類</th><th>出所</th><th>誰のお金か</th><th>例</th></tr>
+    <tr><td>運営費交付金</td><td>大学</td><td>研究室の基盤</td><td>消耗品、学生の学会旅費の一部</td></tr>
+    <tr><td>競争的資金</td><td>国（JSPS、JST、NEDO）</td><td>申請した研究課題のため</td><td>科研費、さきがけ、NEDO 委託</td></tr>
+    <tr><td>共同研究・受託</td><td>企業・自治体</td><td>契約した課題のため</td><td>★</td></tr>
+    <tr><td>寄附</td><td>企業・個人</td><td>使途の制約が少ない</td><td>★</td></tr>
+    <tr><td>学生向け資金</td><td>JSPS、財団、学内</td><td>学生本人の研究と生活</td><td>学振 DC、★ 学内助成</td></tr>
+  </table>
+  <p style="margin-top:10px;">競争的資金は「その課題のため」のお金です。別の研究に使うことは、たとえ同じ研究室でもできません。ここが倫理の線の起点です。</p>
+  <div class="takeaway">競争的資金は「その課題のため」のお金。ここが倫理の線の起点。</div>
+</div>
+
+<!-- ============================================================
+     第2幕：何に使えるか
+     ============================================================ -->
+
+<div class="part-head" id="part2">
+  <div class="part-num">第2幕</div>
+  <div class="part-main">
+    <div class="part-title">何に使えるか</div>
+    <div class="part-en">使途と手続き</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>使途と手続き</h2>
+  <ul>
+    <li>物品費（消耗品・備品）、旅費、人件費・謝金、その他（論文投稿料、学会参加費）</li>
+    <li>★ 研究室の予算の使い方（誰に相談し、どう発注するか）</li>
+    <li>発注は自分で店に行かない。★ 事務（大友さん）を通す手順</li>
+    <li>年度の壁：3月に使えない、という制約がある。逆算して発注する</li>
+  </ul>
+</div>
+
+<!-- ============================================================
+     第3幕：申請する
+     ============================================================ -->
+
+<div class="part-head" id="part3">
+  <div class="part-num">第3幕</div>
+  <div class="part-main">
+    <div class="part-title">申請する</div>
+    <div class="part-en">学生が出せる資金</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>学生が出せる資金</h2>
+  <ul>
+    <li><b>学振 DC1/DC2</b>：M2・D1 で申請。研究計画書は <a href="../lab-tools/paper-card/" style="color:var(--primary);font-weight:700;">Paper Card</a> の Framing-A/B がそのまま骨格になる（Core Question、Compared to X we Y、Key Contributions）</li>
+    <li>★ 学内の学生助成、財団の助成（一覧と時期）</li>
+    <li>申請書は「審査員が5分で読む」前提で書く。<a href="../design-for-research/" style="color:var(--primary);font-weight:700;">Design for Research</a> の原則が効く</li>
+    <li>落ちても書いたことは無駄にならない。Paper Card が強くなる</li>
+  </ul>
+  <div class="takeaway">研究計画書の骨格は Paper Card の Framing-A/B。落ちても Paper Card が強くなる。</div>
+</div>
+
+<!-- ============================================================
+     第4幕：予算の倫理
+     ============================================================ -->
+
+<div class="part-head" id="part4">
+  <div class="part-num">第4幕</div>
+  <div class="part-main">
+    <div class="part-title">予算の倫理</div>
+    <div class="part-en">やってはいけないこと</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>やってはいけないこと</h2>
+  <ul>
+    <li>目的外使用：その課題のお金を別の課題に使わない</li>
+    <li>私的流用：言うまでもない</li>
+    <li>業者との関係：預け金、カラ出張、カラ謝金は研究不正と同じ扱い</li>
+    <li>迷ったら使う前に聞く。使った後に聞くと、戻せないことがある</li>
+    <li>★ 大学の研究費使用ハンドブック（リンク）</li>
+  </ul>
+  <div class="takeaway">迷ったら使う前に聞く。使った後では戻せないことがある。</div>
+</div>
+
+<!-- ============================================================
+     第5幕：出張と物品
+     ============================================================ -->
+
+<div class="part-head" id="part5">
+  <div class="part-num">第5幕</div>
+  <div class="part-main">
+    <div class="part-title">出張と物品</div>
+    <div class="part-en">実務</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>出張と物品の実務</h2>
+  <ul>
+    <li>出張手続きは Notion Lab OS「事務（AA・出張）」に。申請は事前、精算は参加後2週間以内</li>
+    <li>参加費・旅費は基本立替払。立替が難しい場合は早めに鈴木に相談</li>
+    <li>物品は届いたら検収。★ 検収の手順</li>
+  </ul>
+</div>
+
+<!-- ============ チェックリスト ============ -->
+
+<div class="card">
+  <h2>チェックリスト</h2>
+  <div class="num-cards">
+    <div class="num-card"><div class="nc-num">1</div><div class="nc-body"><div class="nc-head">自分の研究がどの研究費で動いているか言えるか</div></div></div>
+    <div class="num-card"><div class="nc-num">2</div><div class="nc-body"><div class="nc-head">使う前に、その研究費で使えるものか確認したか</div></div></div>
+    <div class="num-card"><div class="nc-num">3</div><div class="nc-body"><div class="nc-head">学振の申請時期を Quarter Plan に入れたか</div></div></div>
+    <div class="num-card"><div class="nc-num">4</div><div class="nc-body"><div class="nc-head">出張の申請を事前に出したか</div></div></div>
+  </div>
+</div>
+
+<!-- ============ 関連リンク ============ -->
+
+<div class="card">
+  <h2>関連リンク</h2>
+  <ul>
+    <li><a href="../orientation/responsibility/">Lab OS 06 研究の責任</a></li>
+    <li>Notion Lab OS「研究室で暮らす › 事務」</li>
+    <li><a href="../lab-tools/paper-card/">Lab Tools: Paper Card</a> — 申請書の骨格</li>
+  </ul>
+</div>
+
+<footer>
+  &copy; DeSFE Lab (Anna Suzuki Lab), Tohoku University ｜
+  <a href="../">教育ポータル</a>
+</footer>
+
+</div>
+</body>
+</html>
