@@ -39,11 +39,16 @@ orientation/ (+en/)             ← Lab OS 導入＋3部10章＋付録2本（03-
 lab-tools/
   paper-card/ (+en/)            ← 【完成】
   quarter-plan/ (+en/)          ← 【完成】
+  research-log/ (+en/)          ← Research Log & Thinking Log｜記録の道具【完成】
+  peer-review/ (+en/)           ← Presentation Peer Review｜発表を批評的に見る力【完成】
+  infrastructure/ (+en/)        ← 研究室のインフラ｜どこに何を置くか【完成・★あり】
 writing-paper/ (+en/)           ← 【完成】
   figures/ (+en/)               ← Writing Papers — Figures｜図で主張を作る【完成】
   draft/ (+en/)                 ← Writing Papers — Draft｜図を文章にする【完成】
 design-for-research/ (+en/)     ← 【完成】
 career-design/ (+en/)           ← 【完成・公開済み】
+safety-management/ (+en/)       ← Safety Management｜安全管理（骨子）【公開・★を順次埋める】
+research-funding/ (+en/)        ← Research Funding & Budget｜研究資金と予算（骨子）【公開・★を順次埋める】
 ```
 
 EN版の規約: 日本語版 HTML を正とし、`en/` の同パスに同一構造で置く（クラス・リンク先は
@@ -51,6 +56,9 @@ EN版の規約: 日本語版 HTML を正とし、`en/` の同パスに同一構�
 言語切替は `div.lang-sw` を breadcrumb の直前に置く（JA: `日本語 ｜ English`、EN: `English ｜ 日本語`）。
 部名は Part I Principles / Part II Design / Part III Practice。付録（03-A・07-A）はポータルの
 タイルには出さない（ハブ orientation/ からのみ辿る）。
+講義ページ（writing-paper/ 系・safety-management/・research-funding/）は writing-paper/index.html の
+`<style>` ブロックを複製した幕構成（part-head／num-cards／takeaway）。Lab Tools は lab-tools/paper-card/ を手本にする。
+「（骨子）」ページの ★ は鈴木が確定する欄。埋めたら日英両方を更新する。
 既知の未整備: 導入スライドの英語版 PDF（orientation/lab_orientation_day1_en.pdf）は未作成で、
 EN ハブは日本語 PDF に「(Japanese)」表記でリンクしている。
 
