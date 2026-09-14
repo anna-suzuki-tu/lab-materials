@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab Infrastructure — Where Everything Lives | Lab Tools | DeSFE Lab</title>
+<meta name="description" content="The division of roles among Slack, Notion, Drive, GitHub, and Overleaf. One kind of information, one place (source of truth). Naming rules, and what to leave behind when you graduate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<div class="lang-sw"><span>English</span> ｜ <a href="../">日本語</a></div>
+<div class="breadcrumb"><a href="../../../en/">🏠 Education Portal</a> › Lab Tools › Lab Infrastructure</div>
+
+<header>
+  <div class="kicker">LAB TOOLS — LAB INFRASTRUCTURE</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>Lab Infrastructure — Where Everything Lives</h1>
+      <div class="subtitle">Lab Infrastructure — The division of roles among Slack, Notion, Drive, GitHub, and Overleaf</div>
+    </div>
+  </div>
+</header>
+
+<blockquote class="lead-quote">
+  A lab where information is scattered is a lab where decisions are scattered. Deciding where things live is deciding where your thinking lives.
+</blockquote>
+
+<!-- ============ Principle ============ -->
+
+<div class="card">
+  <h2>Principle: One kind of information, one place</h2>
+  <p>Research produces five kinds of information: communication, thinking and decisions, data and results, code and experimental conditions, and the manuscript to be submitted. If these five are mixed in one place, they cannot be found later, cannot be shared, and cannot be handed over at graduation. At Suzuki-A. Lab, each kind has a fixed place. We call this the <b>source of truth</b>.</p>
+  <table class="wk" style="margin-top:10px;">
+    <tr><th>Kind of information</th><th>Where it lives</th><th>What goes there</th><th>What does not</th></tr>
+    <tr><td>Communication</td><td>Slack</td><td>Daily communication, questions, scheduling</td><td>Records of decisions, data</td></tr>
+    <tr><td>Thinking, decisions, plans</td><td>Notion</td><td>Paper Card, Quarter Plan, Research Log, Team Meeting minutes</td><td>Raw data, code itself</td></tr>
+    <tr><td>Data and results</td><td>OneDrive / Google Drive</td><td>Raw data from experiments and computations, processed data, source files of figures</td><td>Code (goes to GitHub)</td></tr>
+    <tr><td>Code and experimental conditions</td><td>GitHub / Google Colaboratory</td><td>Scripts, configuration files, run conditions, environment</td><td>Large data</td></tr>
+    <tr><td>Manuscript to be submitted</td><td>Overleaf</td><td>The text of the paper, the submitted version</td><td>Draft notes (go to Notion)</td></tr>
+  </table>
+  <p style="margin-top:10px;">If in doubt, decide by asking "where would my future self six months from now, and a junior, look for this information?"</p>
+</div>
+
+<!-- ============ Slack ============ -->
+
+<div class="card">
+  <h2>Slack｜Communication</h2>
+  <ul>
+    <li>Daily communication and questions. Replies need not be quick, but acknowledge that you have read them</li>
+    <li>Do not let decisions flow through Slack. Keep them in the Team Meeting minutes (Notion)</li>
+    <li>For how channels are used, see the lab's Slack (★ channel list)</li>
+  </ul>
+</div>
+
+<!-- ============ Notion ============ -->
+
+<div class="card">
+  <h2>Notion｜Thinking, decisions, plans</h2>
+  <p>Notion is the place for "what you thought."</p>
+  <ul style="margin-top:8px;">
+    <li><b>Paper Card</b>: one per paper. Lives on the Paper Progress Board. Updated and reported at the biweekly Team Meeting (<a href="../../paper-card/en/">Lab Tools "Paper Card"</a>)</li>
+    <li><b>Quarter Plan</b>: one per quarter. Lives in the Quarter Plan DB (<a href="../../quarter-plan/en/">Lab Tools "Quarter Plan"</a>)</li>
+    <li><b>Research Log / Thinking Log</b>: the method is yours, but many keep it in Notion (<a href="../../research-log/en/">Lab Tools "Research Log &amp; Thinking Log"</a>)</li>
+    <li><b>Team Meeting minutes</b>: the record of Next Judges. Decisions are always kept here</li>
+    <li><b>Lab OS</b>: how the lab runs (when, where, how)</li>
+  </ul>
+</div>
+
+<!-- ============ Drive ============ -->
+
+<div class="card">
+  <h2>OneDrive / Google Drive｜Data and results</h2>
+  <ul>
+    <li>Save research data in the "research folder" on OneDrive and share it with your supervisor</li>
+    <li>Back up at least once a week. For large volumes of data, consult your supervisor to decide on storage</li>
+    <li>At graduation: create your own folder in the Google Drive "Ito-lab_Graduated20XX-20XX" and save all your data there, and also on the lab HDD</li>
+  </ul>
+  <p style="margin-top:8px;"><b>Naming rule</b>: <code>[date YYYYMMDD]_[project name]_[version].ext</code> (e.g., <code>20240115_HeatFlowAnalysis_v2.xlsx</code>). "New File.xlsx" and "data1.csv" are forbidden. Folder names should make sense to others and to your future self.</p>
+</div>
+
+<!-- ============ GitHub ============ -->
+
+<div class="card">
+  <h2>GitHub / Google Colaboratory｜Code and experimental conditions</h2>
+  <ul>
+    <li>Code and run conditions (parameters, environment, location of input data) go to GitHub. The data itself lives on Drive and does not go to GitHub</li>
+    <li>Commit messages should say "what changed" in one line. Some members set rules for AI and have them generated automatically (example E in <a href="../../research-log/en/">Research Log &amp; Thinking Log</a>)</li>
+    <li>For usage, see Notion "How to use GitHub," "How to write code (Python)," "Using AI tools (Claude Code)"</li>
+  </ul>
+</div>
+
+<!-- ============ Overleaf ============ -->
+
+<div class="card">
+  <h2>Overleaf｜Manuscript to be submitted</h2>
+  <ul>
+    <li>When you start a manuscript, contact Suzuki. An invitation from the paid version lets you share for free</li>
+    <li>Source files of figures go to Drive, figure design goes to the Paper Card. Only finished figures go to Overleaf</li>
+  </ul>
+</div>
+
+<!-- ============ At graduation ============ -->
+
+<div class="card">
+  <h2>What to leave behind when you graduate</h2>
+  <ul>
+    <li><b>Drive</b>: all data (the Ito-lab_Graduated folder)</li>
+    <li><b>GitHub</b>: the complete code (with run instructions in the README)</li>
+    <li><b>Notion</b>: Paper Card, Research Log, Thinking Log</li>
+    <li><b>Overleaf</b>: the submitted version of the manuscript</li>
+  </ul>
+  <p style="margin-top:8px;">Leaving these in a state that Suzuki and your juniors can see is your last responsibility to the lab (<a href="../../../orientation/en/responsibility/" style="color:var(--primary);font-weight:700;">Lab OS 06 Responsibility</a>).</p>
+</div>
+
+<div class="note">
+  <b>Summary of this page</b>: One kind of information, one place (source of truth) ／ Communication in Slack, thinking and decisions in Notion, data on Drive, code on GitHub, manuscripts on Overleaf ／ Decisions go to the minutes, not Slack ／ Follow the naming rule ／ Leave everything behind at graduation.
+</div>
+
+<footer>
+  Related: <a href="../../../orientation/en/responsibility/">Lab OS 06 Responsibility</a> (reproducibility) ｜ <a href="../../research-log/en/">Lab Tools Research Log &amp; Thinking Log</a> ｜ Notion Lab OS "Advancing research" (latest operating rules) ｜ <a href="../../../en/">🏠 Education Portal</a><br>
+  DeSFE Lab — Institute of Fluid Science, Tohoku University
+</footer>
+
+</div>
+</body>
+</html>
