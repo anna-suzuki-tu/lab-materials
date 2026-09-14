@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Log &amp; Thinking Log — Tools for Recording | Lab Tools | DeSFE Lab</title>
+<meta name="description" content="Why the Research Log (what you did) and the Thinking Log (what you thought) are kept separate, the shared rules, members' examples, and how to keep a detailed lab notebook. The purpose is shared; the method is yours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<div class="lang-sw"><span>English</span> ｜ <a href="../">日本語</a></div>
+<div class="breadcrumb"><a href="../../../en/">🏠 Education Portal</a> › Lab Tools › Research Log &amp; Thinking Log</div>
+
+<header>
+  <div class="kicker">LAB TOOLS — RESEARCH LOG &amp; THINKING LOG</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>Research Log &amp; Thinking Log</h1>
+      <div class="subtitle">Tools for recording — The purpose is shared; the method is yours</div>
+    </div>
+  </div>
+</header>
+
+<blockquote class="lead-quote">
+  The purpose is shared; the method is yours.
+  <span class="src">目的は共通、手段は各自。</span>
+</blockquote>
+
+<!-- ============ Why two kinds ============ -->
+
+<div class="card">
+  <h2>Why keep two kinds?</h2>
+  <table class="wk">
+    <tr><th></th><th>Research Log</th><th>Thinking Log</th></tr>
+    <tr><td>What to write</td><td><b>What you did</b> (facts)</td><td><b>What you thought</b> (misalignments, questions, hypotheses)</td></tr>
+    <tr><td>Frequency</td><td>One entry a day</td><td>Every Monday (three lines is enough)</td></tr>
+    <tr><td>Role</td><td>Reproducibility, progress, responsibility for the research</td><td>Not letting the seeds of questions slip away</td></tr>
+    <tr><td>Who reads it</td><td>Your future self, the team, your supervisor</td><td>You, first of all</td></tr>
+  </table>
+  <p style="margin-top:10px;">The Research Log is a record of "what you did." Experimental conditions, analysis settings, papers read, results obtained, what to do next. It is enough if, looking back later, you can immediately tell what you did. Once interviews or experiments begin, this becomes mandatory as part of your responsibility for the research.</p>
+  <p style="margin-top:8px;">The Thinking Log is a record of "misalignment." It differed from what you expected, you are not convinced by the explanation, something bothers you for some reason. Inquiry begins with a sense of misalignment, so unless you keep a record of it, no question is born. It is not a place to keep perfect information; it is a place to keep your own misalignments.</p>
+</div>
+
+<!-- ============ Shared rules ============ -->
+
+<div class="card">
+  <h2>Shared rules</h2>
+  <ol>
+    <li><b>Write in your own words</b>. You may have AI summarize, but do not paste it as is. Use 50% as a base and edit it yourself</li>
+    <li><b>Prioritize continuing</b>. Do not strain. Three lines is enough for the Thinking Log</li>
+    <li><b>Keep it in a searchable form</b>. Make it findable by date, title, or keyword</li>
+    <li><b>Decide where it lives</b>. Notion / local Markdown / Obsidian / GitHub — any is fine, but pick one place and do not scatter</li>
+  </ol>
+</div>
+
+<!-- ============ Members' examples ============ -->
+
+<div class="card">
+  <h2>Members' examples (from the July 2026 Lab Forum)</h2>
+  <p>Reference points for finding a form that suits you. There is no right answer.</p>
+  <p style="margin-top:10px;"><b>A: Notion calendar + AI summary in the evening</b><br>Records by day on a Notion calendar, with titles written so the content is clear at a glance. On leaving for home, has Claude summarize the day, then corrects and adds to it and carries it over to the next day. Instructs the AI to include questions for the AI in the summary.</p>
+  <p style="margin-top:8px;"><b>B: Notion weekly view + long titles</b><br>Uses a weekly calendar view and records the content by writing longer titles. Uses Notion AI to search the past.</p>
+  <p style="margin-top:8px;"><b>C: Local Markdown, bullet points, three lines</b><br>Does not use Notion; manages everything in local Markdown files. Uses bullet points because there are several tasks a day. Values "keeping it going" and writes without straining. The Thinking Log is about three lines. Shares the files with Claude for reference.</p>
+  <p style="margin-top:8px;"><b>D: Obsidian, weekly Thinking Log, in English</b><br>Keeps a Weekly Thinking Log in Obsidian. Runs a reading log for papers and textbooks and a rule-based Research Log. Values rewriting in one's own words and is also practicing recording in English. Since all data is local Markdown, migrating to another LLM in the future is not a problem.</p>
+  <p style="margin-top:8px;"><b>E: Division of labor between Notion and GitHub</b><br>Records research concepts and trial and error in Notion week by week, and moves to GitHub once the code is settled. Has set rules for Claude on how to write commit logs, so that commit messages following the rules are generated automatically.</p>
+  <p style="margin-top:8px;"><b>F: A Notion space per paper</b><br>Creates a Notion space for each paper and manages importance, priority, and status. Attaches the PDF and summarizes it in one's own words. Sometimes summarizes with AI, but tries to write in one's own sentences.</p>
+  <p style="margin-top:8px;"><b>G: Separating daily logs from topic pages</b><br>Runs daily logs and topic pages separately. Recently started keeping conversations with Claude directly as a log. Before reading a paper, has Claude produce a chapter-by-chapter weighting guide.</p>
+</div>
+
+<!-- ============ Lab Notebook ============ -->
+
+<div class="card">
+  <h2>Detailed logs for experiments and analyses (Lab Notebook)</h2>
+  <p>When you run experiments or analyses, keep a detailed log separate from the Research Log.</p>
+  <p style="margin-top:8px;"><b>What to write</b>: date, purpose, procedure (equipment, settings, parameters), results (tables, graphs, photos), interpretation, next steps.</p>
+  <p style="margin-top:10px;"><b>Example entry (Markdown / Jupyter)</b></p>
+<pre style="background:var(--panel); border-radius:8px; padding:12px; margin-top:6px; font-size:12.5px; line-height:1.6; overflow-x:auto; white-space:pre-wrap;"># 2024/06/01 Thermal conductivity measurement of geothermal fluid
+## Purpose
+Measure the change in thermal conductivity with pressure and compare experiment with simulation
+## Procedure
+1. Compute with TOUGH2 at 10 / 15 / 20 MPa
+2. Compare with experimental data
+## Results
+| Pressure (MPa) | Temperature change (°C) | Thermal conductivity (W/mK) |
+|---|---|---|
+| 10 | 5 | 0.58 |
+| 15 | 5 | 0.61 |
+| 20 | 5 | 0.65 |
+## Interpretation
+- Thermal conductivity rises with higher permeability
+- Difference between experiment and simulation (needs re-verification)
+## Next steps
+- Acquire additional data with varied permeability</pre>
+  <p style="margin-top:10px;"><b>Good and bad examples</b></p>
+  <table class="wk" style="margin-top:6px;">
+    <tr><th>Good</th><th>Bad</th></tr>
+    <tr><td>Date and conditions are stated explicitly</td><td>Only "ran the experiment," conditions unknown</td></tr>
+    <tr><td>Results are organized in tables and graphs</td><td>Numbers are scattered</td></tr>
+    <tr><td>Interpretation and next steps are present</td><td>Ends with "acquired data"</td></tr>
+  </table>
+  <p style="margin-top:8px;">A Google Colaboratory format example is in Notion (Data Management).</p>
+</div>
+
+<!-- ============ AI Tips ============ -->
+
+<div class="card">
+  <h2>Working with AI (Tips)</h2>
+  <ul>
+    <li>Feeding a PDF directly to an LLM consumes tokens. Convert it to Markdown first</li>
+    <li>For text generation, including a list of "do nots" (do not assume, do not add long sentences, etc.) in the prompt raises the quality</li>
+    <li>Precisely because AI now advances code and workflows for you, spending your time on judgment, selection, and putting things into words has value</li>
+  </ul>
+</div>
+
+<div class="note">
+  <b>Summary of this page</b>: Research Log is facts, Thinking Log is misalignment ／ In your own words, keep going, searchable, in one place ／ The method is yours: choose from examples A–G ／ Keep a separate detailed log for experiments and analyses ／ The misalignments in the Thinking Log become Idea-0 on the Paper Card.
+</div>
+
+<footer>
+  Related: <a href="../../../orientation/en/habits-culture/">Lab OS 10 Essential Habits &amp; Culture</a> ｜ <a href="../../paper-card/en/">Lab Tools Paper Card</a> (the misalignments in the Thinking Log become Idea-0) ｜ <a href="../../../en/">🏠 Education Portal</a><br>
+  DeSFE Lab — Institute of Fluid Science, Tohoku University
+</footer>
+
+</div>
+</body>
+</html>
