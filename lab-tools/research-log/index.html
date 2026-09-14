@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Log &amp; Thinking Log — 記録の道具｜Lab Tools｜DeSFE Lab</title>
+<meta name="description" content="Research Log（何をやったか）と Thinking Log（何を思ったか）を分ける理由、共通のルール、メンバーの実例、実験・解析の詳細ログの書き方。目的は共通、手段は各自。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<div class="lang-sw"><span>日本語</span> ｜ <a href="en/">English</a></div>
+<div class="breadcrumb"><a href="../../">🏠 教育ポータル</a> › Lab Tools › Research Log &amp; Thinking Log</div>
+
+<header>
+  <div class="kicker">LAB TOOLS — RESEARCH LOG &amp; THINKING LOG</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>Research Log &amp; Thinking Log</h1>
+      <div class="subtitle">記録の道具 — 目的は共通、手段は各自</div>
+    </div>
+  </div>
+</header>
+
+<blockquote class="lead-quote">
+  目的は共通、手段は各自。
+  <span class="src">The purpose is shared; the method is yours.</span>
+</blockquote>
+
+<!-- ============ なぜ2種類か ============ -->
+
+<div class="card">
+  <h2>なぜ2種類に分けるのか</h2>
+  <table class="wk">
+    <tr><th></th><th>Research Log</th><th>Thinking Log</th></tr>
+    <tr><td>何を書くか</td><td><b>何をやったか</b>（事実）</td><td><b>何を思ったか</b>（違和感・疑問・仮説）</td></tr>
+    <tr><td>頻度</td><td>毎日1件</td><td>毎週月曜（3行でよい）</td></tr>
+    <tr><td>役割</td><td>再現性・進捗・研究の責任</td><td>問いの種を逃さない</td></tr>
+    <tr><td>誰が読むか</td><td>未来の自分、チーム、指導教員</td><td>まず自分</td></tr>
+  </table>
+  <p style="margin-top:10px;">Research Log は「やったこと」の記録です。実験条件、解析の設定、読んだ論文、出た結果、次にやること。後から見返して「何をやったか」がすぐわかれば十分です。インタビューや実験が始まると、これは研究の責任として必須になります。</p>
+  <p style="margin-top:8px;">Thinking Log は「ズレ」の記録です。予想と違った、説明に納得できない、なぜか気になる。探究は違和感から始まるので、違和感を残さないと問いが生まれません。完璧な情報を残す場所ではなく、自分の違和感を残す場所です。</p>
+</div>
+
+<!-- ============ 共通のルール ============ -->
+
+<div class="card">
+  <h2>共通のルール</h2>
+  <ol>
+    <li><b>自分の言葉で書く</b>。AIに要約させてもよいが、そのまま貼らない。50%を土台にして自分で編集する</li>
+    <li><b>続けることを優先する</b>。気負わない。Thinking Log は3行でよい</li>
+    <li><b>後から探せる形にする</b>。日付、タイトル、キーワードのどれかで検索できるように</li>
+    <li><b>どこに置くかを決める</b>。Notion / ローカル Markdown / Obsidian / GitHub、どれでもよいが、1箇所に決めて散らさない</li>
+  </ol>
+</div>
+
+<!-- ============ メンバーの実例 ============ -->
+
+<div class="card">
+  <h2>メンバーの実例（2026年7月 Lab Forum より）</h2>
+  <p>自分に合う形を見つけるための参考です。正解はありません。</p>
+  <p style="margin-top:10px;"><b>A：Notion カレンダー ＋ 夜に AI で要約</b><br>Notion のカレンダーで日ごとに記録。タイトルで内容がわかるように書く。帰宅時に Claude にその日の内容をまとめさせ、自分で修正・加筆して翌日に持ち越す。AI への質問事項も要約に含めるよう指示している。</p>
+  <p style="margin-top:8px;"><b>B：Notion 週表示 ＋ 長めのタイトル</b><br>週単位のカレンダー表示で、タイトルを長めに書くことで内容を記録。過去の検索には Notion AI を使う。</p>
+  <p style="margin-top:8px;"><b>C：ローカル Markdown、箇条書き、3行</b><br>Notion は使わず、ローカルの Markdown ファイルで管理。1日に複数タスクがあるので箇条書き。「続けること」を重視し、気負わず書く。Thinking Log は3行程度。ファイルを Claude と共有して参照させている。</p>
+  <p style="margin-top:8px;"><b>D：Obsidian、週次 Thinking Log、英語で</b><br>Obsidian で Weekly Thinking Log を作成。論文・教科書の読書ログと、ルールベースの Research Log を運用。自分の言葉で書き直すことを重視し、英語での記録も実践中。全データがローカルの Markdown なので、将来別の LLM に移行しても対応できる。</p>
+  <p style="margin-top:8px;"><b>E：Notion ＋ GitHub の分業</b><br>研究の概念・トライ＆エラーは Notion に週ごとに記録し、コードが決まったら GitHub へ。Claude にコミットログの書き方ルールを設定し、規則に沿ったコミットメッセージを自動生成させている。</p>
+  <p style="margin-top:8px;"><b>F：論文ごとの Notion スペース</b><br>論文ごとに Notion にスペースを作り、重要度・優先度・ステータスを管理。PDF を添付して自分の言葉でまとめる。AI ベースでまとめることもあるが、自分の文章で書くことを心がけている。</p>
+  <p style="margin-top:8px;"><b>G：日次ログとテーマ別ページの分離</b><br>日ごとのログとテーマごとのページに分けて運用。最近は Claude との会話内容をそのままログとして残す方法を始めた。論文は章ごとの重みづけガイドを Claude に出させてから読み始める。</p>
+</div>
+
+<!-- ============ Lab Notebook ============ -->
+
+<div class="card">
+  <h2>実験・解析の詳細ログ（Lab Notebook）</h2>
+  <p>実験や解析をするときは、Research Log とは別に詳細ログを残します。</p>
+  <p style="margin-top:8px;"><b>何を書くか</b>：日付、目的、手順（機器・設定値・パラメータ）、結果（表・グラフ・写真）、考察、次のステップ。</p>
+  <p style="margin-top:10px;"><b>記入例（Markdown / Jupyter）</b></p>
+<pre style="background:var(--panel); border-radius:8px; padding:12px; margin-top:6px; font-size:12.5px; line-height:1.6; overflow-x:auto; white-space:pre-wrap;"># 2024/06/01 地熱流体の熱伝導率測定
+## 目的
+圧力変化による熱伝導率の変化を測定し、実験とシミュレーションを比較する
+## 手順
+1. TOUGH2 で 10 / 15 / 20 MPa の条件で計算
+2. 実験データと比較
+## 結果
+| 圧力 (MPa) | 温度変化 (°C) | 熱伝導率 (W/mK) |
+|---|---|---|
+| 10 | 5 | 0.58 |
+| 15 | 5 | 0.61 |
+| 20 | 5 | 0.65 |
+## 考察
+- 透水係数が高いほど熱伝導率が上昇
+- 実験とシミュレーションに差あり（要再検証）
+## 次のステップ
+- 透水係数を変えた追加データを取得</pre>
+  <p style="margin-top:10px;"><b>良い例・悪い例</b></p>
+  <table class="wk" style="margin-top:6px;">
+    <tr><th>良い</th><th>悪い</th></tr>
+    <tr><td>日付と条件が明記されている</td><td>「実験した」だけで条件が不明</td></tr>
+    <tr><td>結果が表・グラフで整理されている</td><td>数値が散らばっている</td></tr>
+    <tr><td>考察と次のステップがある</td><td>「データ取得した」で終わっている</td></tr>
+  </table>
+  <p style="margin-top:8px;">Google Colaboratory のフォーマット例は Notion（データ管理）にあります。</p>
+</div>
+
+<!-- ============ AI Tips ============ -->
+
+<div class="card">
+  <h2>AI との付き合い方（Tips）</h2>
+  <ul>
+    <li>PDF をそのまま LLM に投げるとトークンを消費する。Markdown に変換してから渡す</li>
+    <li>文章生成では「しないこと」のリスト（do not assume, do not add long sentences など）をプロンプトに含めると品質が上がる</li>
+    <li>AI がコードやフローを進めてくれる時代だからこそ、判断・選別・言語化に時間を使うことに価値がある</li>
+  </ul>
+</div>
+
+<div class="note">
+  <b>このページのまとめ</b>：Research Log は事実、Thinking Log はズレ ／ 自分の言葉で・続ける・探せる形で・1箇所に ／ 手段は各自、実例 A〜G から選ぶ ／ 実験・解析は詳細ログを別に残す ／ Thinking Log の違和感が Paper Card の Idea-0 になる。
+</div>
+
+<footer>
+  関連：<a href="../../orientation/habits-culture/">Lab OS 10 必須習慣と文化</a> ｜ <a href="../paper-card/">Lab Tools Paper Card</a>（Thinking Log の違和感が Idea-0 になる） ｜ <a href="../../">🏠 教育ポータル</a><br>
+  DeSFE Lab — Institute of Fluid Science, Tohoku University
+</footer>
+
+</div>
+</body>
+</html>
