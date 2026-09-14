@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究室のインフラ — どこに何を置くか｜Lab Tools｜DeSFE Lab</title>
+<meta name="description" content="Slack・Notion・Drive・GitHub・Overleaf の役割分担。1種類の情報に1つの置き場所（source of truth）。命名規則、卒業時に置いていくもの。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<div class="lang-sw"><span>日本語</span> ｜ <a href="en/">English</a></div>
+<div class="breadcrumb"><a href="../../">🏠 教育ポータル</a> › Lab Tools › 研究室のインフラ</div>
+
+<header>
+  <div class="kicker">LAB TOOLS — LAB INFRASTRUCTURE</div>
+  <div class="title-row">
+    <div class="bar"></div>
+    <div>
+      <h1>研究室のインフラ — どこに何を置くか</h1>
+      <div class="subtitle">Lab Infrastructure — Slack・Notion・Drive・GitHub・Overleaf の役割分担</div>
+    </div>
+  </div>
+</header>
+
+<blockquote class="lead-quote">
+  情報が散らばる研究室は、判断が散らばる研究室である。置き場所を決めることは、思考の置き場所を決めることだ。
+</blockquote>
+
+<!-- ============ 原則 ============ -->
+
+<div class="card">
+  <h2>原則：1種類の情報に、1つの置き場所</h2>
+  <p>研究では5種類の情報が生まれます。連絡、思考と判断、データと結果、コードと実験条件、提出する原稿。この5つを1か所に混ぜると、後から探せなくなり、共有できなくなり、卒業時に引き継げなくなります。鈴木研では、種類ごとに置き場所を固定しています。これを <b>source of truth</b>（正の在りか）と呼びます。</p>
+  <table class="wk" style="margin-top:10px;">
+    <tr><th>情報の種類</th><th>置き場所</th><th>何を置くか</th><th>置かないもの</th></tr>
+    <tr><td>連絡</td><td>Slack</td><td>日々の連絡、質問、予定の調整</td><td>判断の記録、データ</td></tr>
+    <tr><td>思考・判断・計画</td><td>Notion</td><td>Paper Card、Quarter Plan、Research Log、Team Meeting 議事録</td><td>生データ、コード本体</td></tr>
+    <tr><td>データ・結果</td><td>OneDrive / Google Drive</td><td>実験・計算の生データ、処理済みデータ、図のもとファイル</td><td>コード（GitHub へ）</td></tr>
+    <tr><td>コード・実験条件</td><td>GitHub / Google Colaboratory</td><td>スクリプト、設定ファイル、実行条件、環境</td><td>大容量データ</td></tr>
+    <tr><td>提出する原稿</td><td>Overleaf</td><td>論文の本文、投稿版</td><td>下書きのメモ（Notion へ）</td></tr>
+  </table>
+  <p style="margin-top:10px;">迷ったら「この情報は、半年後の自分と後輩が、どこを探すか」で決めます。</p>
+</div>
+
+<!-- ============ Slack ============ -->
+
+<div class="card">
+  <h2>Slack｜連絡</h2>
+  <ul>
+    <li>日々の連絡と質問。返事は急がなくてよいが、既読の反応はする</li>
+    <li>判断や決定は Slack に流さない。Team Meeting の議事録（Notion）に残す</li>
+    <li>チャンネルの使い分けは研究室の Slack を参照（★ チャンネル一覧）</li>
+  </ul>
+</div>
+
+<!-- ============ Notion ============ -->
+
+<div class="card">
+  <h2>Notion｜思考・判断・計画</h2>
+  <p>Notion は「考えたこと」の置き場所です。</p>
+  <ul style="margin-top:8px;">
+    <li><b>Paper Card</b>：論文ごとに1枚。Paper Progress Board に置く。隔週の Team Meeting で更新して報告（<a href="../paper-card/">Lab Tools「Paper Card」</a>）</li>
+    <li><b>Quarter Plan</b>：四半期ごとに1枚。Quarter Plan DB に置く（<a href="../quarter-plan/">Lab Tools「Quarter Plan」</a>）</li>
+    <li><b>Research Log / Thinking Log</b>：手段は各自だが、Notion に置く人が多い（<a href="../research-log/">Lab Tools「Research Log &amp; Thinking Log」</a>）</li>
+    <li><b>Team Meeting 議事録</b>：Next Judge の記録。判断は必ずここに残す</li>
+    <li><b>Lab OS</b>：研究室の運用（いつ・どこで・どうするか）</li>
+  </ul>
+</div>
+
+<!-- ============ Drive ============ -->
+
+<div class="card">
+  <h2>OneDrive / Google Drive｜データ・結果</h2>
+  <ul>
+    <li>研究データは OneDrive の「研究フォルダ」に保存し、指導教員と共有する</li>
+    <li>バックアップは週1回以上。大量データは指導教員と相談してストレージを決める</li>
+    <li>卒業時：Google Drive「Ito-lab_Graduated20XX-20XX」に自分のフォルダを作って全データを保存し、研究室の HDD にも保存する</li>
+  </ul>
+  <p style="margin-top:8px;"><b>命名規則</b>：<code>[日付 YYYYMMDD]_[プロジェクト名]_[バージョン].拡張子</code>（例：<code>20240115_HeatFlowAnalysis_v2.xlsx</code>）。「New File.xlsx」「データ1.csv」は禁止。フォルダ名は他人にも未来の自分にもわかるように。</p>
+</div>
+
+<!-- ============ GitHub ============ -->
+
+<div class="card">
+  <h2>GitHub / Google Colaboratory｜コード・実験条件</h2>
+  <ul>
+    <li>コードと実行条件（パラメータ、環境、入力データの所在）は GitHub に。データ本体は Drive に置き、GitHub には置かない</li>
+    <li>コミットメッセージは「何を変えたか」が一行でわかるように。AI にルールを設定して自動生成させている人もいる（<a href="../research-log/">Research Log &amp; Thinking Log</a> の実例 E）</li>
+    <li>使い方は Notion「GitHub の使い方」「コードの書き方（Python）」「AI ツールの活用（Claude Code）」</li>
+  </ul>
+</div>
+
+<!-- ============ Overleaf ============ -->
+
+<div class="card">
+  <h2>Overleaf｜提出する原稿</h2>
+  <ul>
+    <li>原稿を作るときは鈴木に連絡。有料版から招待すると無料で共有できる</li>
+    <li>図の元ファイルは Drive に、図の設計は Paper Card に。Overleaf には完成した図だけを置く</li>
+  </ul>
+</div>
+
+<!-- ============ 卒業時 ============ -->
+
+<div class="card">
+  <h2>卒業時に置いていくもの</h2>
+  <ul>
+    <li><b>Drive</b>：全データ（Ito-lab_Graduated フォルダ）</li>
+    <li><b>GitHub</b>：コード一式（README に実行手順）</li>
+    <li><b>Notion</b>：Paper Card、Research Log、Thinking Log</li>
+    <li><b>Overleaf</b>：投稿版の原稿</li>
+  </ul>
+  <p style="margin-top:8px;">鈴木と後輩が見られる状態で残すことが、研究室に対する最後の責任です（<a href="../../orientation/responsibility/" style="color:var(--primary);font-weight:700;">Lab OS 06 研究の責任</a>）。</p>
+</div>
+
+<div class="note">
+  <b>このページのまとめ</b>：1種類の情報に1つの置き場所（source of truth） ／ 連絡は Slack、思考と判断は Notion、データは Drive、コードは GitHub、原稿は Overleaf ／ 判断は Slack に流さず議事録へ ／ 命名規則を守る ／ 卒業時にすべて置いていく。
+</div>
+
+<footer>
+  関連：<a href="../../orientation/responsibility/">Lab OS 06 研究の責任</a>（再現性） ｜ <a href="../research-log/">Lab Tools Research Log &amp; Thinking Log</a> ｜ Notion Lab OS「研究を進める」（最新の運用ルール） ｜ <a href="../../">🏠 教育ポータル</a><br>
+  DeSFE Lab — Institute of Fluid Science, Tohoku University
+</footer>
+
+</div>
+</body>
+</html>
